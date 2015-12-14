@@ -13,7 +13,7 @@ Requirements:
 Steps:
 
 1. Clone the repo
-2. `npm install`
-3. `bower install`
+2. Install node packages: `npm install`
+3. Install bower packages: `bower install`
 4. Start the BrowserSync and Jekyll livereload process with `npm run gulp`
 5. Edit files refresh-free

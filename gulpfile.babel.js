@@ -81,10 +81,8 @@ gulp.task('jekyll-build', (cb) => {
 gulp.task('jekyll-watch', ['watch'], (cb) => {
   gulp.watch([
     '_config.yml',
-    '*.html', '*.md',
-    '_includes/**/*',
-    '_layouts/**/*',
-    '_posts/**/*'
+    '*.{html,md}',
+    '{_includes,_layouts,_projects}/**/*',
   ], ['jekyll-build']);
 });
 
