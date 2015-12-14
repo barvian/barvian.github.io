@@ -4,9 +4,9 @@
   "description": "Personal portfolio.",
   "private": "true",
   "scripts": {
-    "gulp": "gulp jekyll-default",
-    "build": "gulp jekyll-build",
-    "watch": "gulp jekyll-watch",
+    "gulp": "gulp",
+    "build": "gulp build",
+    "watch": "gulp watch",
     "clean": "gulp clean"
   },
   "devDependencies": {

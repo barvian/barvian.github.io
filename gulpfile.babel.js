@@ -1,6 +1,7 @@
 import gulp from 'gulp';
 import bower from 'bower';
 import gulpfile from 'gulpfile';
+import clean from 'gulpfile/tasks/clean';
 import cp from 'child_process';
 
 // Project paths
@@ -9,6 +10,23 @@ const tmp     = 'tmp';
 const vendor  = 'scripts/vendor';
 const dest    = 'public';
 const site    = '_site';
+
+gulp.task('jekyll:build', (cb) => {
+  cp.spawn('jekyll', ['build', '--incremental', '--no-watch'], {stdio: 'inherit'})
+    .on('close', cb);
+});
+
+gulp.task('jekyll:watch', (cb) => {
+  gulp.watch([
+    '_config.yml',
+    '*.{html,md}', '!README.md',
+    '{_includes,_layouts,_projects}/**/*',
+  ], ['jekyll:build']);
+});
+
+gulp.task('jekyll:clean', (cb) => {
+  clean(site, cb);
+});
 
 gulpfile(gulp, {
   styles: {
@@ -51,10 +69,6 @@ gulpfile(gulp, {
     dest: '_includes'
   },
 
-  clean: [
-    site
-  ],
-
   watch: {
     promptsReload: `${site}/**/*.html`,
     browserSync: {
@@ -72,18 +86,3 @@ gulpfile(gulp, {
     }
   }
 });
-
-gulp.task('jekyll-build', (cb) => {
-  cp.spawn('jekyll', ['build', '--incremental', '--no-watch'], {stdio: 'inherit'})
-    .on('close', cb);
-});
-
-gulp.task('jekyll-watch', ['watch'], (cb) => {
-  gulp.watch([
-    '_config.yml',
-    '*.{html,md}', '!README.md',
-    '{_includes,_layouts,_projects}/**/*',
-  ], ['jekyll-build']);
-});
-
-gulp.task('jekyll-default', ['jekyll-build', 'build', 'jekyll-watch']);
