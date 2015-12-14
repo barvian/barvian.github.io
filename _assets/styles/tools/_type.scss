@@ -1,0 +1,18 @@
+// Type
+// ====
+
+$fonts: () !default;
+
+@mixin font($family, $weight: null, $style: null, $size: null) {
+  $name: nth(map-get(map-get($fonts, $family), stack), 1);
+  font-family: map-get(map-get($fonts, $family), stack);
+  @if $size { font-size: if(type-of($size) == number, $size, size($size)); }
+  @if $weight {
+    $num: map-get(map-get(map-get($fonts, $family), weights), $weight);
+    @if $num { font-weight: $num; } @else { @warn "`#{$name}` has no `#{$weight}` weight listed."; }
+  }
+  @if $style {
+    @if $weight == null { $weight: normal; }
+    @if index(map-get(map-get(map-get($fonts, $family), styles), $weight), $style) { font-style: $style; } @else { @warn "`#{$name}` has no `#{$style}` style for the `#{$weight}` weight."; }
+  }
+}

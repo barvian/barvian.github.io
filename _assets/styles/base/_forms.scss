@@ -1,0 +1,212 @@
+// Forms`
+// =====
+
+$field-placeholder-color: lighten($light, 10%) !default;
+
+*:focus {
+  outline: none;
+}
+
+%unstyled-button {
+  appearance: none;
+  background: none;
+  border: none;
+  display: inline-block;
+  padding: 0;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  @include leading;
+
+  & + & {
+    border-top: $hr-size $hr-style $hr-color;
+    padding-top: size(spacing);
+  }
+}
+
+legend {
+  @extend %label;
+
+  display: block;
+  margin-bottom: 1em;
+}
+
+label[for], label > span {
+  @extend %label;
+
+  clear: both;
+  color: darken($light, 10%);
+  display: block;
+
+  @include trailing(0.35rem);
+}
+
+input[type="hidden"] {
+  @include trailing(0);
+}
+
+[class^="has-pre"], [class*=" has-pre"] {
+  position: relative;
+
+  &::before, > .pre {
+    align-items: center;
+    bottom: 0;
+    font-size: 1.25em;
+    display: flex;
+    left: 0;
+    padding-left: 0.85em;
+    position: absolute;
+    top: 0;
+
+    @include font($sans, $weight: semibold);
+  }
+
+  &::before {
+    content: attr(data-pre);
+  }
+
+  > .pre {
+    @include removed;
+  }
+
+  > %field {
+    padding-left: 2em;
+  }
+}
+
+[class^="has-post"], [class*=" has-post"] {
+  position: relative;
+
+  &::before, > .post {
+    align-items: center;
+    bottom: 0;
+    font-size: 1.25em;
+    display: flex;
+    padding-right: 0.85em;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @include font($sans, $weight: semibold);
+
+    > .sprite {
+      height: 1.75em;
+      width: 1.75em;
+
+      @include trailing(0);
+    }
+  }
+
+  &::before {
+    content: attr(data-pre);
+  }
+
+  > .post {
+    @include removed;
+  }
+
+  > %field {
+    padding-right: 2em;
+  }
+}
+
+%field {
+  appearance: none;
+  background: #fff;
+  border: none;
+  border: 1px solid lighten($light, 33.333%);
+  border-radius: 0;
+  color: $base;
+  display: block;
+  padding: 0.75em;
+  width: 100%;
+
+  @include font($sans, $size: medium);
+
+  &:focus {
+    border-color: $light;
+  }
+
+  &::placeholder {
+    color: $field-placeholder-color;
+  }
+
+  &.abbr {
+    text-transform: uppercase;
+  }
+}
+
+%tick {
+  margin-right: 0.45em;
+
+  & + label {
+    display: inline-block;
+    font-size: size(base);
+    vertical-align: baseline;
+  }
+
+  &.btn {
+    @extend .invisible;
+
+    + label {
+      background-color: rgba(#000, 0.05);
+      border: 1px solid rgba(#000, 0.1);
+      cursor: pointer;
+      display: inline-block;
+      padding: 0.6em 0.7em;
+      margin-top: 0;
+
+      @include font($sans);
+    }
+
+    &:focus + label, + label:hover {
+      background-color: rgba(#000, 0.1);
+    }
+
+    &:checked + label {
+      background-color: lighten($blue, 10%);
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(#000, 0.25);
+    }
+
+    &--med + label {
+      @extend .btn--med;
+    }
+  }
+}
+
+input:not([type]), input[type="text"],
+input[type="password"], input[type="date"],
+input[type="datetime"], input[type="datetime-local"],
+input[type="month"], input[type="week"],
+input[type="email"], input[type="number"],
+input[type="search"], input[type="tel"],
+input[type="time"], input[type="url"],
+input[type="color"], input[type="file"],
+textarea {
+  @extend %field;
+}
+
+textarea {
+  height: 6.5em;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  @extend %tick;
+}
+
+input[type="file"] {
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+select {
+  option[disabled]:first-child {
+    color: $field-placeholder-color;
+  }
+}

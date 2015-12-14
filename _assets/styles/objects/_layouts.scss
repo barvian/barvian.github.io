@@ -1,0 +1,59 @@
+// Layouts
+// =======
+
+.layout {
+  list-style-type: none;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $layout;
+  padding-right: $gutter;
+
+  & & {
+    margin-left: -$gutter;
+    margin-right: -$gutter;
+  }
+
+  &__unit {
+    display: inline-block;
+    padding-left: $gutter;
+    vertical-align: top;
+    width: 100%;
+  }
+
+  &--wide {
+    max-width: $wide;
+  }
+
+  &__span {
+    margin-left: -($wide - $layout)/2;
+    margin-right: -($wide - $layout)/2;
+  }
+
+  &--flush {
+    margin-left: 0;
+
+    > .layout__unit {
+      padding-left: 0;
+    }
+  }
+
+  &--middle {
+    > .layout__unit {
+      vertical-align: middle;
+    }
+  }
+
+  &--bottom {
+    > .layout__unit {
+      vertical-align: bottom;
+    }
+  }
+
+  &--center {
+    text-align: center;
+
+    > .layout__unit {
+      text-align: left;
+    }
+  }
+}

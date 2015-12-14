@@ -1,0 +1,56 @@
+# Barvian.me
+# ==========
+
+title: Maxwell Barvian
+email: max@barvian.me
+url: http://barvian.me
+description: Web designer, front-end developer
+keywords:
+  - designer
+  - web designer
+  - web
+  - developer
+  - web developer
+  - chicago web designer
+  - chicago web developer
+  - front-end development
+  - web design
+
+
+# Social
+# ------
+
+dribbble_username: mbarvian
+twitter_username: mbarvian
+github_username:  mbarvian
+
+
+# Collections
+# -----------
+
+collections:
+  projects:
+    output: true
+    permalink: /:path/
+
+
+# Build settings
+# --------------
+
+exclude: ['node_modules', 'gulpfile.*', 'package.json', 'CNAME']
+markdown: kramdown
+permalink: pretty
+
+defaults:
+  -
+    scope:
+      path: '' # all files
+    values:
+      layout: 'page'
+  -
+    scope:
+      path: ''
+      type: 'projects'
+    values:
+      layout: 'project'
+      author: 'Maxwell Barvian'

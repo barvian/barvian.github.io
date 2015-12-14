@@ -1,0 +1,17 @@
+// Features
+// ========
+
+// JavaScript
+// ---------
+
+.js {
+  @include lacks(js) {
+    @include hidden;
+  }
+}
+
+.no-js {
+  @include supports(js) {
+    @include hidden;
+  }
+}

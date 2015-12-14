@@ -1,0 +1,11 @@
+node_modules
+bower_components
+*.log
+npm-debug*
+.DS_Store
+.sass-cache
+
+_site
+.jekyll-metadata
+
+tmp/

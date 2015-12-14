@@ -1,0 +1,33 @@
+// Type
+// ====
+
+// Scale
+// -----
+
+$ms-base: 1rem;
+$ms-ratio: 1.618,1.236;
+
+// Stack
+// -----
+
+$sans: raleway;
+$serif: libre-baskerville;
+$script: pacifico;
+
+$fonts: (
+  raleway: (
+    stack: ("Raleway", helvetica, serif),
+    weights: (medium: 500, semibold: 600),
+    styles: (medium: normal, semibold: normal)
+  ),
+  libre-baskerville: (
+    stack: ("Libre Baskerville", serif),
+    weights: (normal: 400, bold: 700),
+    styles: (normal: normal italic, bold: normal)
+  ),
+  pacifico: (
+    stack: ("Pacifico", cursive),
+    weights: (normal: 400),
+    styles: (normal: normal)
+  )
+);

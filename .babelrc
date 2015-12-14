@@ -1,0 +1,7 @@
+{
+  "ignore": [
+    "_assets/bower_components",
+    "_assets/scripts/vendor"
+  ],
+  "retainLines": true
+}
