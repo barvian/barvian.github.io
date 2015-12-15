@@ -22,8 +22,8 @@ gulp.task('jekyll:build', (cb) => {
   ).on('close', cb);
 });
 
-gulp.task('jekyll:watch', (cb) => {
-  gulp.watch([
+gulp.task('jekyll:watch', () => {
+  return gulp.watch([
     config,
     '*.{html,md}', '!README.md',
     `{
@@ -37,7 +37,7 @@ gulp.task('jekyll:watch', (cb) => {
 });
 
 gulp.task('jekyll:clean', () => {
-  cleanTask(jekyll.destination);
+  return cleanTask(jekyll.destination);
 });
 
 gulpfile(gulp, {
