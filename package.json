@@ -11,7 +11,9 @@
   },
   "devDependencies": {
     "bower": "^1.6.5",
+    "fs": "0.0.2",
     "gulp": "^3.9.0",
-    "gulpfile": "mbarvian/gulpfile.js"
+    "gulpfile": "mbarvian/gulpfile.js",
+    "js-yaml": "^3.4.6"
   }
 }

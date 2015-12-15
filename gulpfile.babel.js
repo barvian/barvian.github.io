@@ -3,29 +3,41 @@ import bower from 'bower';
 import gulpfile from 'gulpfile';
 import clean from 'gulpfile/tasks/clean';
 import cp from 'child_process';
+import fs from 'fs';
+import yaml from 'js-yaml';
 
 // Project paths
 const src     = '_assets';
 const tmp     = 'tmp';
 const vendor  = 'scripts/vendor';
 const dest    = 'public';
-const site    = '_site';
+
+// Jekyll config
+const config  = '_config.yml';
+const jekyll = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
 
 gulp.task('jekyll:build', (cb) => {
-  cp.spawn('jekyll', ['build', '--incremental', '--no-watch'], {stdio: 'inherit'})
-    .on('close', cb);
+  cp.spawn('jekyll', ['build', '--incremental', '--no-watch', '--config', config],
+    {stdio: 'inherit'}
+  ).on('close', cb);
 });
 
 gulp.task('jekyll:watch', (cb) => {
   gulp.watch([
-    '_config.yml',
+    config,
     '*.{html,md}', '!README.md',
-    '{_includes,_layouts,_projects}/**/*',
+    `{
+      ${jekyll.plugins_dir},
+      ${jekyll.layouts_dir},
+      ${jekyll.includes_dir},
+      ${jekyll.data_dir},
+      ${Object.keys(jekyll.collections).map(c => '_'+c).join()}
+    }/**/*`,
   ], ['jekyll:build']);
 });
 
 gulp.task('jekyll:clean', (cb) => {
-  clean(site, cb);
+  clean(jekyll.destination, cb);
 });
 
 gulpfile(gulp, {
@@ -33,7 +45,7 @@ gulpfile(gulp, {
     src: `${src}/styles/barvian.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
     includePaths: [bower.config.directory],
-    dest: [`${dest}/styles`, `${site}/${dest}/styles`],
+    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],
     autoprefixer: {
       browsers: ['> 5%', 'last 2 versions'],
       cascade: false
@@ -42,7 +54,7 @@ gulpfile(gulp, {
 
   scripts: {
     src: `${src}/scripts/barvian.js`,
-    dest: [`${dest}/scripts`, `${site}/${dest}/scripts`],
+    dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`],
     bundle: 'barvian'
   },
 
@@ -51,17 +63,17 @@ gulpfile(gulp, {
     src: [
       `${vendor}/modernizr*.js`
     ],
-    dest: [dest, `${site}/${dest}`]
+    dest: [dest, `${jekyll.destination}/${dest}`]
   },
 
   fonts: {
     src: `${src}/fonts/**/*`,
-    dest: [`${dest}/fonts`, `${site}/${dest}/fonts`]
+    dest: [`${dest}/fonts`, `${jekyll.destination}/${dest}/fonts`]
   },
 
   images: {
     src: `${src}/images/**/*`,
-    dest: [`${dest}/images`, `${site}/${dest}/images`]
+    dest: [`${dest}/images`, `${jekyll.destination}/${dest}/images`]
   },
 
   sprites: {
@@ -70,9 +82,9 @@ gulpfile(gulp, {
   },
 
   watch: {
-    promptsReload: `${site}/**/*.html`,
+    promptsReload: `${jekyll.destination}/**/*.html`,
     browserSync: {
-      server: site,
+      server: jekyll.destination,
       logPrefix: 'Barvian',
       scrollElementMapping: ['[role="main"]'],
       snippetOptions: {
