@@ -78,7 +78,7 @@ gulpfile(gulp, {
 
   sprites: {
     src: `${src}/sprites/**/*`,
-    dest: '_includes'
+    dest: jekyll.includes_dir
   },
 
   watch: {
