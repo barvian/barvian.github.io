@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import bower from 'bower';
 import gulpfile from 'gulpfile';
-import clean from 'gulpfile/tasks/clean';
+import cleanTask from 'gulpfile/tasks/clean';
 import cp from 'child_process';
 import fs from 'fs';
 import yaml from 'js-yaml';
@@ -14,7 +14,7 @@ const dest    = 'public';
 
 // Jekyll config
 const config  = '_config.yml';
-const jekyll = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
+const jekyll  = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
 
 gulp.task('jekyll:build', (cb) => {
   cp.spawn('jekyll', ['build', '--incremental', '--no-watch', '--config', config],
@@ -36,8 +36,8 @@ gulp.task('jekyll:watch', (cb) => {
   ], ['jekyll:build']);
 });
 
-gulp.task('jekyll:clean', (cb) => {
-  clean(jekyll.destination, cb);
+gulp.task('jekyll:clean', () => {
+  cleanTask(jekyll.destination);
 });
 
 gulpfile(gulp, {
