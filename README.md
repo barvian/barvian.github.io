@@ -6,7 +6,7 @@ My personal website.
 
 Requirements:
 
-* Node/NPM
+* Node, NPM
 * Bower
 * Jekyll (Bundler optional)
 
