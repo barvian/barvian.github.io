@@ -1,11 +1,1048 @@
-!function e(t,n,i){function r(o,a){if(!n[o]){if(!t[o]){var c="function"==typeof require&&require;if(!a&&c)return c(o,!0);if(s)return s(o,!0);var u=new Error("Cannot find module '"+o+"'");throw u.code="MODULE_NOT_FOUND",u}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return r(n?n:e)},l,l.exports,e,t,n,i)}return n[o].exports}for(var s="function"==typeof require&&require,o=0;o<i.length;o++)r(i[o]);return r}({1:[function(e,t,n){!function(e,n,i){var r=window.matchMedia;"undefined"!=typeof t&&t.exports?t.exports=i(r):"function"==typeof define&&define.amd?define(function(){return n[e]=i(r)}):n[e]=i(r)}("enquire",this,function(e){"use strict";function t(e,t){var n,i=0,r=e.length;for(i;r>i&&(n=t(e[i],i),n!==!1);i++);}function n(e){return"[object Array]"===Object.prototype.toString.apply(e)}function i(e){return"function"==typeof e}function r(e){this.options=e,!e.deferSetup&&this.setup()}function s(t,n){this.query=t,this.isUnconditional=n,this.handlers=[],this.mql=e(t);var i=this;this.listener=function(e){i.mql=e,i.assess()},this.mql.addListener(this.listener)}function o(){if(!e)throw new Error("matchMedia not present, legacy browsers require a polyfill");this.queries={},this.browserIsIncapable=!e("only all").matches}return r.prototype={setup:function(){this.options.setup&&this.options.setup(),this.initialised=!0},on:function(){!this.initialised&&this.setup(),this.options.match&&this.options.match()},off:function(){this.options.unmatch&&this.options.unmatch()},destroy:function(){this.options.destroy?this.options.destroy():this.off()},equals:function(e){return this.options===e||this.options.match===e}},s.prototype={addHandler:function(e){var t=new r(e);this.handlers.push(t),this.matches()&&t.on()},removeHandler:function(e){var n=this.handlers;t(n,function(t,i){return t.equals(e)?(t.destroy(),!n.splice(i,1)):void 0})},matches:function(){return this.mql.matches||this.isUnconditional},clear:function(){t(this.handlers,function(e){e.destroy()}),this.mql.removeListener(this.listener),this.handlers.length=0},assess:function(){var e=this.matches()?"on":"off";t(this.handlers,function(t){t[e]()})}},o.prototype={register:function(e,r,o){var a=this.queries,c=o&&this.browserIsIncapable;return a[e]||(a[e]=new s(e,c)),i(r)&&(r={match:r}),n(r)||(r=[r]),t(r,function(t){i(t)&&(t={match:t}),a[e].addHandler(t)}),this},unregister:function(e,t){var n=this.queries[e];return n&&(t?n.removeHandler(t):(n.clear(),delete this.queries[e])),this}},new o})},{}],2:[function(e,t,n){/*! Picturefill - v2.3.1 - 2015-04-09
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/*!
+ * enquire.js v2.1.2 - Awesome Media Queries in JavaScript
+ * Copyright (c) 2014 Nick Williams - http://wicky.nillia.ms/enquire.js
+ * License: MIT (http://www.opensource.org/licenses/mit-license.php)
+ */
+
+;(function (name, context, factory) {
+	var matchMedia = window.matchMedia;
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = factory(matchMedia);
+	}
+	else if (typeof define === 'function' && define.amd) {
+		define(function() {
+			return (context[name] = factory(matchMedia));
+		});
+	}
+	else {
+		context[name] = factory(matchMedia);
+	}
+}('enquire', this, function (matchMedia) {
+
+	'use strict';
+
+    /*jshint unused:false */
+    /**
+     * Helper function for iterating over a collection
+     *
+     * @param collection
+     * @param fn
+     */
+    function each(collection, fn) {
+        var i      = 0,
+            length = collection.length,
+            cont;
+
+        for(i; i < length; i++) {
+            cont = fn(collection[i], i);
+            if(cont === false) {
+                break; //allow early exit
+            }
+        }
+    }
+
+    /**
+     * Helper function for determining whether target object is an array
+     *
+     * @param target the object under test
+     * @return {Boolean} true if array, false otherwise
+     */
+    function isArray(target) {
+        return Object.prototype.toString.apply(target) === '[object Array]';
+    }
+
+    /**
+     * Helper function for determining whether target object is a function
+     *
+     * @param target the object under test
+     * @return {Boolean} true if function, false otherwise
+     */
+    function isFunction(target) {
+        return typeof target === 'function';
+    }
+
+    /**
+     * Delegate to handle a media query being matched and unmatched.
+     *
+     * @param {object} options
+     * @param {function} options.match callback for when the media query is matched
+     * @param {function} [options.unmatch] callback for when the media query is unmatched
+     * @param {function} [options.setup] one-time callback triggered the first time a query is matched
+     * @param {boolean} [options.deferSetup=false] should the setup callback be run immediately, rather than first time query is matched?
+     * @constructor
+     */
+    function QueryHandler(options) {
+        this.options = options;
+        !options.deferSetup && this.setup();
+    }
+    QueryHandler.prototype = {
+
+        /**
+         * coordinates setup of the handler
+         *
+         * @function
+         */
+        setup : function() {
+            if(this.options.setup) {
+                this.options.setup();
+            }
+            this.initialised = true;
+        },
+
+        /**
+         * coordinates setup and triggering of the handler
+         *
+         * @function
+         */
+        on : function() {
+            !this.initialised && this.setup();
+            this.options.match && this.options.match();
+        },
+
+        /**
+         * coordinates the unmatch event for the handler
+         *
+         * @function
+         */
+        off : function() {
+            this.options.unmatch && this.options.unmatch();
+        },
+
+        /**
+         * called when a handler is to be destroyed.
+         * delegates to the destroy or unmatch callbacks, depending on availability.
+         *
+         * @function
+         */
+        destroy : function() {
+            this.options.destroy ? this.options.destroy() : this.off();
+        },
+
+        /**
+         * determines equality by reference.
+         * if object is supplied compare options, if function, compare match callback
+         *
+         * @function
+         * @param {object || function} [target] the target for comparison
+         */
+        equals : function(target) {
+            return this.options === target || this.options.match === target;
+        }
+
+    };
+    /**
+     * Represents a single media query, manages it's state and registered handlers for this query
+     *
+     * @constructor
+     * @param {string} query the media query string
+     * @param {boolean} [isUnconditional=false] whether the media query should run regardless of whether the conditions are met. Primarily for helping older browsers deal with mobile-first design
+     */
+    function MediaQuery(query, isUnconditional) {
+        this.query = query;
+        this.isUnconditional = isUnconditional;
+        this.handlers = [];
+        this.mql = matchMedia(query);
+
+        var self = this;
+        this.listener = function(mql) {
+            self.mql = mql;
+            self.assess();
+        };
+        this.mql.addListener(this.listener);
+    }
+    MediaQuery.prototype = {
+
+        /**
+         * add a handler for this query, triggering if already active
+         *
+         * @param {object} handler
+         * @param {function} handler.match callback for when query is activated
+         * @param {function} [handler.unmatch] callback for when query is deactivated
+         * @param {function} [handler.setup] callback for immediate execution when a query handler is registered
+         * @param {boolean} [handler.deferSetup=false] should the setup callback be deferred until the first time the handler is matched?
+         */
+        addHandler : function(handler) {
+            var qh = new QueryHandler(handler);
+            this.handlers.push(qh);
+
+            this.matches() && qh.on();
+        },
+
+        /**
+         * removes the given handler from the collection, and calls it's destroy methods
+         * 
+         * @param {object || function} handler the handler to remove
+         */
+        removeHandler : function(handler) {
+            var handlers = this.handlers;
+            each(handlers, function(h, i) {
+                if(h.equals(handler)) {
+                    h.destroy();
+                    return !handlers.splice(i,1); //remove from array and exit each early
+                }
+            });
+        },
+
+        /**
+         * Determine whether the media query should be considered a match
+         * 
+         * @return {Boolean} true if media query can be considered a match, false otherwise
+         */
+        matches : function() {
+            return this.mql.matches || this.isUnconditional;
+        },
+
+        /**
+         * Clears all handlers and unbinds events
+         */
+        clear : function() {
+            each(this.handlers, function(handler) {
+                handler.destroy();
+            });
+            this.mql.removeListener(this.listener);
+            this.handlers.length = 0; //clear array
+        },
+
+        /*
+         * Assesses the query, turning on all handlers if it matches, turning them off if it doesn't match
+         */
+        assess : function() {
+            var action = this.matches() ? 'on' : 'off';
+
+            each(this.handlers, function(handler) {
+                handler[action]();
+            });
+        }
+    };
+    /**
+     * Allows for registration of query handlers.
+     * Manages the query handler's state and is responsible for wiring up browser events
+     *
+     * @constructor
+     */
+    function MediaQueryDispatch () {
+        if(!matchMedia) {
+            throw new Error('matchMedia not present, legacy browsers require a polyfill');
+        }
+
+        this.queries = {};
+        this.browserIsIncapable = !matchMedia('only all').matches;
+    }
+
+    MediaQueryDispatch.prototype = {
+
+        /**
+         * Registers a handler for the given media query
+         *
+         * @param {string} q the media query
+         * @param {object || Array || Function} options either a single query handler object, a function, or an array of query handlers
+         * @param {function} options.match fired when query matched
+         * @param {function} [options.unmatch] fired when a query is no longer matched
+         * @param {function} [options.setup] fired when handler first triggered
+         * @param {boolean} [options.deferSetup=false] whether setup should be run immediately or deferred until query is first matched
+         * @param {boolean} [shouldDegrade=false] whether this particular media query should always run on incapable browsers
+         */
+        register : function(q, options, shouldDegrade) {
+            var queries         = this.queries,
+                isUnconditional = shouldDegrade && this.browserIsIncapable;
+
+            if(!queries[q]) {
+                queries[q] = new MediaQuery(q, isUnconditional);
+            }
+
+            //normalise to object in an array
+            if(isFunction(options)) {
+                options = { match : options };
+            }
+            if(!isArray(options)) {
+                options = [options];
+            }
+            each(options, function(handler) {
+                if (isFunction(handler)) {
+                    handler = { match : handler };
+                }
+                queries[q].addHandler(handler);
+            });
+
+            return this;
+        },
+
+        /**
+         * unregisters a query and all it's handlers, or a specific handler for a query
+         *
+         * @param {string} q the media query to target
+         * @param {object || function} [handler] specific handler to unregister
+         */
+        unregister : function(q, handler) {
+            var query = this.queries[q];
+
+            if(query) {
+                if(handler) {
+                    query.removeHandler(handler);
+                }
+                else {
+                    query.clear();
+                    delete this.queries[q];
+                }
+            }
+
+            return this;
+        }
+    };
+
+	return new MediaQueryDispatch();
+
+}));
+},{}],2:[function(require,module,exports){
+/*! Picturefill - v2.3.1 - 2015-04-09
 * http://scottjehl.github.io/picturefill
 * Copyright (c) 2015 https://github.com/scottjehl/picturefill/blob/master/Authors.txt; Licensed MIT */
 /*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas, David Knight. Dual MIT/BSD license */
-window.matchMedia||(window.matchMedia=function(){"use strict";var e=window.styleMedia||window.media;if(!e){var t=document.createElement("style"),n=document.getElementsByTagName("script")[0],i=null;t.type="text/css",t.id="matchmediajs-test",n.parentNode.insertBefore(t,n),i="getComputedStyle"in window&&window.getComputedStyle(t,null)||t.currentStyle,e={matchMedium:function(e){var n="@media "+e+"{ #matchmediajs-test { width: 1px; } }";return t.styleSheet?t.styleSheet.cssText=n:t.textContent=n,"1px"===i.width}}}return function(t){return{matches:e.matchMedium(t||"all"),media:t||"all"}}}()),/*! Picturefill - Responsive Images that work today.
+
+window.matchMedia || (window.matchMedia = function() {
+	"use strict";
+
+	// For browsers that support matchMedium api such as IE 9 and webkit
+	var styleMedia = (window.styleMedia || window.media);
+
+	// For those that don't support matchMedium
+	if (!styleMedia) {
+		var style       = document.createElement('style'),
+			script      = document.getElementsByTagName('script')[0],
+			info        = null;
+
+		style.type  = 'text/css';
+		style.id    = 'matchmediajs-test';
+
+		script.parentNode.insertBefore(style, script);
+
+		// 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
+		info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
+
+		styleMedia = {
+			matchMedium: function(media) {
+				var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+
+				// 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
+				if (style.styleSheet) {
+					style.styleSheet.cssText = text;
+				} else {
+					style.textContent = text;
+				}
+
+				// Test if media query is true or false
+				return info.width === '1px';
+			}
+		};
+	}
+
+	return function(media) {
+		return {
+			matches: styleMedia.matchMedium(media || 'all'),
+			media: media || 'all'
+		};
+	};
+}());
+/*! Picturefill - Responsive Images that work today.
 *  Author: Scott Jehl, Filament Group, 2012 ( new proposal implemented by Shawn Jansepar )
 *  License: MIT/GPLv2
 *  Spec: http://picture.responsiveimages.org/
 */
-function(e,n,i){"use strict";function r(n){"object"==typeof t&&"object"==typeof t.exports?t.exports=n:"function"==typeof define&&define.amd&&define("picturefill",function(){return n}),"object"==typeof e&&(e.picturefill=n)}function s(e){var t,n,i,r,s,o=e||{};t=o.elements||a.getAllElements();for(var u=0,l=t.length;l>u;u++)if(n=t[u],i=n.parentNode,r=void 0,s=void 0,"IMG"===n.nodeName.toUpperCase()&&(n[a.ns]||(n[a.ns]={}),o.reevaluate||!n[a.ns].evaluated)){if(i&&"PICTURE"===i.nodeName.toUpperCase()){if(a.removeVideoShim(i),r=a.getMatch(n,i),r===!1)continue}else r=void 0;(i&&"PICTURE"===i.nodeName.toUpperCase()||!a.sizesSupported&&n.srcset&&c.test(n.srcset))&&a.dodgeSrcset(n),r?(s=a.processSourceSet(r),a.applyBestCandidate(s,n)):(s=a.processSourceSet(n),(void 0===n.srcset||n[a.ns].srcset)&&a.applyBestCandidate(s,n)),n[a.ns].evaluated=!0}}function o(){function t(){clearTimeout(i),i=setTimeout(o,60)}a.initTypeDetects(),s();var i,r=setInterval(function(){return s(),/^loaded|^i|^c/.test(n.readyState)?void clearInterval(r):void 0},250),o=function(){s({reevaluate:!0})};e.addEventListener?e.addEventListener("resize",t,!1):e.attachEvent&&e.attachEvent("onresize",t)}if(e.HTMLPictureElement)return void r(function(){});n.createElement("picture");var a=e.picturefill||{},c=/\s+\+?\d+(e\d+)?w/;a.ns="picturefill",function(){a.srcsetSupported="srcset"in i,a.sizesSupported="sizes"in i,a.curSrcSupported="currentSrc"in i}(),a.trim=function(e){return e.trim?e.trim():e.replace(/^\s+|\s+$/g,"")},a.makeUrl=function(){var e=n.createElement("a");return function(t){return e.href=t,e.href}}(),a.restrictsMixedContent=function(){return"https:"===e.location.protocol},a.matchesMedia=function(t){return e.matchMedia&&e.matchMedia(t).matches},a.getDpr=function(){return e.devicePixelRatio||1},a.getWidthFromLength=function(e){var t;if(!e||e.indexOf("%")>-1!=!1||!(parseFloat(e)>0||e.indexOf("calc(")>-1))return!1;e=e.replace("vw","%"),a.lengthEl||(a.lengthEl=n.createElement("div"),a.lengthEl.style.cssText="border:0;display:block;font-size:1em;left:0;margin:0;padding:0;position:absolute;visibility:hidden",a.lengthEl.className="helper-from-picturefill-js"),a.lengthEl.style.width="0px";try{a.lengthEl.style.width=e}catch(i){}return n.body.appendChild(a.lengthEl),t=a.lengthEl.offsetWidth,0>=t&&(t=!1),n.body.removeChild(a.lengthEl),t},a.detectTypeSupport=function(t,n){var i=new e.Image;return i.onerror=function(){a.types[t]=!1,s()},i.onload=function(){a.types[t]=1===i.width,s()},i.src=n,"pending"},a.types=a.types||{},a.initTypeDetects=function(){a.types["image/jpeg"]=!0,a.types["image/gif"]=!0,a.types["image/png"]=!0,a.types["image/svg+xml"]=n.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1"),a.types["image/webp"]=a.detectTypeSupport("image/webp","data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=")},a.verifyTypeSupport=function(e){var t=e.getAttribute("type");if(null===t||""===t)return!0;var n=a.types[t];return"string"==typeof n&&"pending"!==n?(a.types[t]=a.detectTypeSupport(t,n),"pending"):"function"==typeof n?(n(),"pending"):n},a.parseSize=function(e){var t=/(\([^)]+\))?\s*(.+)/g.exec(e);return{media:t&&t[1],length:t&&t[2]}},a.findWidthFromSourceSize=function(t){for(var i,r=a.trim(t).split(/\s*,\s*/),s=0,o=r.length;o>s;s++){var c=r[s],u=a.parseSize(c),l=u.length,d=u.media;if(l&&(!d||a.matchesMedia(d))&&(i=a.getWidthFromLength(l)))break}return i||Math.max(e.innerWidth||0,n.documentElement.clientWidth)},a.parseSrcset=function(e){for(var t=[];""!==e;){e=e.replace(/^\s+/g,"");var n,i=e.search(/\s/g),r=null;if(-1!==i){n=e.slice(0,i);var s=n.slice(-1);if((","===s||""===n)&&(n=n.replace(/,+$/,""),r=""),e=e.slice(i+1),null===r){var o=e.indexOf(",");-1!==o?(r=e.slice(0,o),e=e.slice(o+1)):(r=e,e="")}}else n=e,e="";(n||r)&&t.push({url:n,descriptor:r})}return t},a.parseDescriptor=function(e,t){var n,i=t||"100vw",r=e&&e.replace(/(^\s+|\s+$)/g,""),s=a.findWidthFromSourceSize(i);if(r)for(var o=r.split(" "),c=o.length-1;c>=0;c--){var u=o[c],l=u&&u.slice(u.length-1);if("h"!==l&&"w"!==l||a.sizesSupported){if("x"===l){var d=u&&parseFloat(u,10);n=d&&!isNaN(d)?d:1}}else n=parseFloat(parseInt(u,10)/s)}return n||1},a.getCandidatesFromSourceSet=function(e,t){for(var n=a.parseSrcset(e),i=[],r=0,s=n.length;s>r;r++){var o=n[r];i.push({url:o.url,resolution:a.parseDescriptor(o.descriptor,t)})}return i},a.dodgeSrcset=function(e){e.srcset&&(e[a.ns].srcset=e.srcset,e.srcset="",e.setAttribute("data-pfsrcset",e[a.ns].srcset))},a.processSourceSet=function(e){var t=e.getAttribute("srcset"),n=e.getAttribute("sizes"),i=[];return"IMG"===e.nodeName.toUpperCase()&&e[a.ns]&&e[a.ns].srcset&&(t=e[a.ns].srcset),t&&(i=a.getCandidatesFromSourceSet(t,n)),i},a.backfaceVisibilityFix=function(e){var t=e.style||{},n="webkitBackfaceVisibility"in t,i=t.zoom;n&&(t.zoom=".999",n=e.offsetWidth,t.zoom=i)},a.setIntrinsicSize=function(){var t={},i=function(e,t,n){t&&e.setAttribute("width",parseInt(t/n,10))};return function(r,s){var o;r[a.ns]&&!e.pfStopIntrinsicSize&&(void 0===r[a.ns].dims&&(r[a.ns].dims=r.getAttribute("width")||r.getAttribute("height")),r[a.ns].dims||(s.url in t?i(r,t[s.url],s.resolution):(o=n.createElement("img"),o.onload=function(){if(t[s.url]=o.width,!t[s.url])try{n.body.appendChild(o),t[s.url]=o.width||o.offsetWidth,n.body.removeChild(o)}catch(e){}r.src===s.url&&i(r,t[s.url],s.resolution),r=null,o.onload=null,o=null},o.src=s.url)))}}(),a.applyBestCandidate=function(e,t){var n,i,r;e.sort(a.ascendingSort),i=e.length,r=e[i-1];for(var s=0;i>s;s++)if(n=e[s],n.resolution>=a.getDpr()){r=n;break}r&&(r.url=a.makeUrl(r.url),t.src!==r.url&&(a.restrictsMixedContent()&&"http:"===r.url.substr(0,"http:".length).toLowerCase()?void 0!==window.console&&console.warn("Blocked mixed content image "+r.url):(t.src=r.url,a.curSrcSupported||(t.currentSrc=t.src),a.backfaceVisibilityFix(t))),a.setIntrinsicSize(t,r))},a.ascendingSort=function(e,t){return e.resolution-t.resolution},a.removeVideoShim=function(e){var t=e.getElementsByTagName("video");if(t.length){for(var n=t[0],i=n.getElementsByTagName("source");i.length;)e.insertBefore(i[0],n);n.parentNode.removeChild(n)}},a.getAllElements=function(){for(var e=[],t=n.getElementsByTagName("img"),i=0,r=t.length;r>i;i++){var s=t[i];("PICTURE"===s.parentNode.nodeName.toUpperCase()||null!==s.getAttribute("srcset")||s[a.ns]&&null!==s[a.ns].srcset)&&e.push(s)}return e},a.getMatch=function(e,t){for(var n,i=t.childNodes,r=0,s=i.length;s>r;r++){var o=i[r];if(1===o.nodeType){if(o===e)return n;if("SOURCE"===o.nodeName.toUpperCase()){null!==o.getAttribute("src")&&void 0!==typeof console&&console.warn("The `src` attribute is invalid on `picture` `source` element; instead, use `srcset`.");var c=o.getAttribute("media");if(o.getAttribute("srcset")&&(!c||a.matchesMedia(c))){var u=a.verifyTypeSupport(o);if(u===!0){n=o;break}if("pending"===u)return!1}}}}return n},o(),s._=a,r(s)}(window,window.document,new window.Image)},{}],3:[function(e,t,n){"use strict";function i(e){return e&&e.__esModule?e:{"default":e}}var r=(e("../variables"),e("./../bower_components/picturefill/dist/picturefill.js")),s=(i(r),e("./../bower_components/enquire/dist/enquire.js"));i(s)},{"../variables":4,"./../bower_components/enquire/dist/enquire.js":1,"./../bower_components/picturefill/dist/picturefill.js":2}],4:[function(e,t,n){t.exports={breakpoints:{alpha:"screen and (min-width: 560px)",bravo:"screen and (min-width: 780px)",charlie:"screen and (min-width: 1240px)","short":"screen and (min-width: 780px) and (max-height: 740px)"}}},{}]},{},[3]);
-//# sourceMappingURL=barvian.js.map
+(function( w, doc, image ) {
+	// Enable strict mode
+	"use strict";
+
+	function expose(picturefill) {
+		/* expose picturefill */
+		if ( typeof module === "object" && typeof module.exports === "object" ) {
+			// CommonJS, just export
+			module.exports = picturefill;
+		} else if ( typeof define === "function" && define.amd ) {
+			// AMD support
+			define( "picturefill", function() { return picturefill; } );
+		}
+		if ( typeof w === "object" ) {
+			// If no AMD and we are in the browser, attach to window
+			w.picturefill = picturefill;
+		}
+	}
+
+	// If picture is supported, well, that's awesome. Let's get outta here...
+	if ( w.HTMLPictureElement ) {
+		expose(function() { });
+		return;
+	}
+
+	// HTML shim|v it for old IE (IE9 will still need the HTML video tag workaround)
+	doc.createElement( "picture" );
+
+	// local object for method references and testing exposure
+	var pf = w.picturefill || {};
+
+	var regWDesc = /\s+\+?\d+(e\d+)?w/;
+
+	// namespace
+	pf.ns = "picturefill";
+
+	// srcset support test
+	(function() {
+		pf.srcsetSupported = "srcset" in image;
+		pf.sizesSupported = "sizes" in image;
+		pf.curSrcSupported = "currentSrc" in image;
+	})();
+
+	// just a string trim workaround
+	pf.trim = function( str ) {
+		return str.trim ? str.trim() : str.replace( /^\s+|\s+$/g, "" );
+	};
+
+	/**
+	 * Gets a string and returns the absolute URL
+	 * @param src
+	 * @returns {String} absolute URL
+	 */
+	pf.makeUrl = (function() {
+		var anchor = doc.createElement( "a" );
+		return function(src) {
+			anchor.href = src;
+			return anchor.href;
+		};
+	})();
+
+	/**
+	 * Shortcut method for https://w3c.github.io/webappsec/specs/mixedcontent/#restricts-mixed-content ( for easy overriding in tests )
+	 */
+	pf.restrictsMixedContent = function() {
+		return w.location.protocol === "https:";
+	};
+	/**
+	 * Shortcut method for matchMedia ( for easy overriding in tests )
+	 */
+
+	pf.matchesMedia = function( media ) {
+		return w.matchMedia && w.matchMedia( media ).matches;
+	};
+
+	// Shortcut method for `devicePixelRatio` ( for easy overriding in tests )
+	pf.getDpr = function() {
+		return ( w.devicePixelRatio || 1 );
+	};
+
+	/**
+	 * Get width in css pixel value from a "length" value
+	 * http://dev.w3.org/csswg/css-values-3/#length-value
+	 */
+	pf.getWidthFromLength = function( length ) {
+		var cssValue;
+		// If a length is specified and doesn’t contain a percentage, and it is greater than 0 or using `calc`, use it. Else, abort.
+        if ( !(length && length.indexOf( "%" ) > -1 === false && ( parseFloat( length ) > 0 || length.indexOf( "calc(" ) > -1 )) ) {
+            return false;
+        }
+
+		/**
+		 * If length is specified in  `vw` units, use `%` instead since the div we’re measuring
+		 * is injected at the top of the document.
+		 *
+		 * TODO: maybe we should put this behind a feature test for `vw`? The risk of doing this is possible browser inconsistancies with vw vs %
+		 */
+		length = length.replace( "vw", "%" );
+
+		// Create a cached element for getting length value widths
+		if ( !pf.lengthEl ) {
+			pf.lengthEl = doc.createElement( "div" );
+
+			// Positioning styles help prevent padding/margin/width on `html` or `body` from throwing calculations off.
+			pf.lengthEl.style.cssText = "border:0;display:block;font-size:1em;left:0;margin:0;padding:0;position:absolute;visibility:hidden";
+
+			// Add a class, so that everyone knows where this element comes from
+			pf.lengthEl.className = "helper-from-picturefill-js";
+		}
+
+		pf.lengthEl.style.width = "0px";
+
+        try {
+		    pf.lengthEl.style.width = length;
+        } catch ( e ) {}
+
+		doc.body.appendChild(pf.lengthEl);
+
+		cssValue = pf.lengthEl.offsetWidth;
+
+		if ( cssValue <= 0 ) {
+			cssValue = false;
+		}
+
+		doc.body.removeChild( pf.lengthEl );
+
+		return cssValue;
+	};
+
+    pf.detectTypeSupport = function( type, typeUri ) {
+        // based on Modernizr's lossless img-webp test
+        // note: asynchronous
+        var image = new w.Image();
+        image.onerror = function() {
+            pf.types[ type ] = false;
+            picturefill();
+        };
+        image.onload = function() {
+            pf.types[ type ] = image.width === 1;
+            picturefill();
+        };
+        image.src = typeUri;
+
+        return "pending";
+    };
+	// container of supported mime types that one might need to qualify before using
+	pf.types = pf.types || {};
+
+	pf.initTypeDetects = function() {
+        // Add support for standard mime types
+        pf.types[ "image/jpeg" ] = true;
+        pf.types[ "image/gif" ] = true;
+        pf.types[ "image/png" ] = true;
+        pf.types[ "image/svg+xml" ] = doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1");
+        pf.types[ "image/webp" ] = pf.detectTypeSupport("image/webp", "data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=");
+    };
+
+	pf.verifyTypeSupport = function( source ) {
+		var type = source.getAttribute( "type" );
+		// if type attribute exists, return test result, otherwise return true
+		if ( type === null || type === "" ) {
+			return true;
+		} else {
+				var pfType = pf.types[ type ];
+			// if the type test is a function, run it and return "pending" status. The function will rerun picturefill on pending elements once finished.
+			if ( typeof pfType === "string" && pfType !== "pending") {
+				pf.types[ type ] = pf.detectTypeSupport( type, pfType );
+				return "pending";
+			} else if ( typeof pfType === "function" ) {
+				pfType();
+				return "pending";
+			} else {
+				return pfType;
+			}
+		}
+	};
+
+	// Parses an individual `size` and returns the length, and optional media query
+	pf.parseSize = function( sourceSizeStr ) {
+		var match = /(\([^)]+\))?\s*(.+)/g.exec( sourceSizeStr );
+		return {
+			media: match && match[1],
+			length: match && match[2]
+		};
+	};
+
+	// Takes a string of sizes and returns the width in pixels as a number
+	pf.findWidthFromSourceSize = function( sourceSizeListStr ) {
+		// Split up source size list, ie ( max-width: 30em ) 100%, ( max-width: 50em ) 50%, 33%
+		//                            or (min-width:30em) calc(30% - 15px)
+		var sourceSizeList = pf.trim( sourceSizeListStr ).split( /\s*,\s*/ ),
+			winningLength;
+
+		for ( var i = 0, len = sourceSizeList.length; i < len; i++ ) {
+			// Match <media-condition>? length, ie ( min-width: 50em ) 100%
+			var sourceSize = sourceSizeList[ i ],
+				// Split "( min-width: 50em ) 100%" into separate strings
+				parsedSize = pf.parseSize( sourceSize ),
+				length = parsedSize.length,
+				media = parsedSize.media;
+
+			if ( !length ) {
+				continue;
+			}
+			// if there is no media query or it matches, choose this as our winning length
+			if ( (!media || pf.matchesMedia( media )) &&
+				// pass the length to a method that can properly determine length
+				// in pixels based on these formats: http://dev.w3.org/csswg/css-values-3/#length-value
+				(winningLength = pf.getWidthFromLength( length )) ) {
+				break;
+			}
+		}
+
+		//if we have no winningLength fallback to 100vw
+		return winningLength || Math.max(w.innerWidth || 0, doc.documentElement.clientWidth);
+	};
+
+	pf.parseSrcset = function( srcset ) {
+		/**
+		 * A lot of this was pulled from Boris Smus’ parser for the now-defunct WHATWG `srcset`
+		 * https://github.com/borismus/srcset-polyfill/blob/master/js/srcset-info.js
+		 *
+		 * 1. Let input (`srcset`) be the value passed to this algorithm.
+		 * 2. Let position be a pointer into input, initially pointing at the start of the string.
+		 * 3. Let raw candidates be an initially empty ordered list of URLs with associated
+		 *    unparsed descriptors. The order of entries in the list is the order in which entries
+		 *    are added to the list.
+		 */
+		var candidates = [];
+
+		while ( srcset !== "" ) {
+			srcset = srcset.replace( /^\s+/g, "" );
+
+			// 5. Collect a sequence of characters that are not space characters, and let that be url.
+			var pos = srcset.search(/\s/g),
+				url, descriptor = null;
+
+			if ( pos !== -1 ) {
+				url = srcset.slice( 0, pos );
+
+				var last = url.slice(-1);
+
+				// 6. If url ends with a U+002C COMMA character (,), remove that character from url
+				// and let descriptors be the empty string. Otherwise, follow these substeps
+				// 6.1. If url is empty, then jump to the step labeled descriptor parser.
+
+				if ( last === "," || url === "" ) {
+					url = url.replace( /,+$/, "" );
+					descriptor = "";
+				}
+				srcset = srcset.slice( pos + 1 );
+
+				// 6.2. Collect a sequence of characters that are not U+002C COMMA characters (,), and
+				// let that be descriptors.
+				if ( descriptor === null ) {
+					var descpos = srcset.indexOf( "," );
+					if ( descpos !== -1 ) {
+						descriptor = srcset.slice( 0, descpos );
+						srcset = srcset.slice( descpos + 1 );
+					} else {
+						descriptor = srcset;
+						srcset = "";
+					}
+				}
+			} else {
+				url = srcset;
+				srcset = "";
+			}
+
+			// 7. Add url to raw candidates, associated with descriptors.
+			if ( url || descriptor ) {
+				candidates.push({
+					url: url,
+					descriptor: descriptor
+				});
+			}
+		}
+		return candidates;
+	};
+
+	pf.parseDescriptor = function( descriptor, sizesattr ) {
+		// 11. Descriptor parser: Let candidates be an initially empty source set. The order of entries in the list
+		// is the order in which entries are added to the list.
+		var sizes = sizesattr || "100vw",
+			sizeDescriptor = descriptor && descriptor.replace( /(^\s+|\s+$)/g, "" ),
+			widthInCssPixels = pf.findWidthFromSourceSize( sizes ),
+			resCandidate;
+
+			if ( sizeDescriptor ) {
+				var splitDescriptor = sizeDescriptor.split(" ");
+
+				for (var i = splitDescriptor.length - 1; i >= 0; i--) {
+					var curr = splitDescriptor[ i ],
+						lastchar = curr && curr.slice( curr.length - 1 );
+
+					if ( ( lastchar === "h" || lastchar === "w" ) && !pf.sizesSupported ) {
+						resCandidate = parseFloat( ( parseInt( curr, 10 ) / widthInCssPixels ) );
+					} else if ( lastchar === "x" ) {
+						var res = curr && parseFloat( curr, 10 );
+						resCandidate = res && !isNaN( res ) ? res : 1;
+					}
+				}
+			}
+		return resCandidate || 1;
+	};
+
+	/**
+	 * Takes a srcset in the form of url/
+	 * ex. "images/pic-medium.png 1x, images/pic-medium-2x.png 2x" or
+	 *     "images/pic-medium.png 400w, images/pic-medium-2x.png 800w" or
+	 *     "images/pic-small.png"
+	 * Get an array of image candidates in the form of
+	 *      {url: "/foo/bar.png", resolution: 1}
+	 * where resolution is http://dev.w3.org/csswg/css-values-3/#resolution-value
+	 * If sizes is specified, resolution is calculated
+	 */
+	pf.getCandidatesFromSourceSet = function( srcset, sizes ) {
+		var candidates = pf.parseSrcset( srcset ),
+			formattedCandidates = [];
+
+		for ( var i = 0, len = candidates.length; i < len; i++ ) {
+			var candidate = candidates[ i ];
+
+			formattedCandidates.push({
+				url: candidate.url,
+				resolution: pf.parseDescriptor( candidate.descriptor, sizes )
+			});
+		}
+		return formattedCandidates;
+	};
+
+	/**
+	 * if it's an img element and it has a srcset property,
+	 * we need to remove the attribute so we can manipulate src
+	 * (the property's existence infers native srcset support, and a srcset-supporting browser will prioritize srcset's value over our winning picture candidate)
+	 * this moves srcset's value to memory for later use and removes the attr
+	 */
+	pf.dodgeSrcset = function( img ) {
+		if ( img.srcset ) {
+			img[ pf.ns ].srcset = img.srcset;
+			img.srcset = "";
+			img.setAttribute( "data-pfsrcset", img[ pf.ns ].srcset );
+		}
+	};
+
+	// Accept a source or img element and process its srcset and sizes attrs
+	pf.processSourceSet = function( el ) {
+		var srcset = el.getAttribute( "srcset" ),
+			sizes = el.getAttribute( "sizes" ),
+			candidates = [];
+
+		// if it's an img element, use the cached srcset property (defined or not)
+		if ( el.nodeName.toUpperCase() === "IMG" && el[ pf.ns ] && el[ pf.ns ].srcset ) {
+			srcset = el[ pf.ns ].srcset;
+		}
+
+		if ( srcset ) {
+			candidates = pf.getCandidatesFromSourceSet( srcset, sizes );
+		}
+		return candidates;
+	};
+
+	pf.backfaceVisibilityFix = function( picImg ) {
+		// See: https://github.com/scottjehl/picturefill/issues/332
+		var style = picImg.style || {},
+			WebkitBackfaceVisibility = "webkitBackfaceVisibility" in style,
+			currentZoom = style.zoom;
+
+		if (WebkitBackfaceVisibility) {
+			style.zoom = ".999";
+
+			WebkitBackfaceVisibility = picImg.offsetWidth;
+
+			style.zoom = currentZoom;
+		}
+	};
+
+	pf.setIntrinsicSize = (function() {
+		var urlCache = {};
+		var setSize = function( picImg, width, res ) {
+            if ( width ) {
+			    picImg.setAttribute( "width", parseInt(width / res, 10) );
+            }
+		};
+		return function( picImg, bestCandidate ) {
+			var img;
+			if ( !picImg[ pf.ns ] || w.pfStopIntrinsicSize ) {
+				return;
+			}
+			if ( picImg[ pf.ns ].dims === undefined ) {
+				picImg[ pf.ns].dims = picImg.getAttribute("width") || picImg.getAttribute("height");
+			}
+			if ( picImg[ pf.ns].dims ) { return; }
+
+			if ( bestCandidate.url in urlCache ) {
+				setSize( picImg, urlCache[bestCandidate.url], bestCandidate.resolution );
+			} else {
+				img = doc.createElement( "img" );
+				img.onload = function() {
+					urlCache[bestCandidate.url] = img.width;
+
+                    //IE 10/11 don't calculate width for svg outside document
+                    if ( !urlCache[bestCandidate.url] ) {
+                        try {
+                            doc.body.appendChild( img );
+                            urlCache[bestCandidate.url] = img.width || img.offsetWidth;
+                            doc.body.removeChild( img );
+                        } catch(e){}
+                    }
+
+					if ( picImg.src === bestCandidate.url ) {
+						setSize( picImg, urlCache[bestCandidate.url], bestCandidate.resolution );
+					}
+					picImg = null;
+					img.onload = null;
+					img = null;
+				};
+				img.src = bestCandidate.url;
+			}
+		};
+	})();
+
+	pf.applyBestCandidate = function( candidates, picImg ) {
+		var candidate,
+			length,
+			bestCandidate;
+
+		candidates.sort( pf.ascendingSort );
+
+		length = candidates.length;
+		bestCandidate = candidates[ length - 1 ];
+
+		for ( var i = 0; i < length; i++ ) {
+			candidate = candidates[ i ];
+			if ( candidate.resolution >= pf.getDpr() ) {
+				bestCandidate = candidate;
+				break;
+			}
+		}
+
+		if ( bestCandidate ) {
+
+			bestCandidate.url = pf.makeUrl( bestCandidate.url );
+
+			if ( picImg.src !== bestCandidate.url ) {
+				if ( pf.restrictsMixedContent() && bestCandidate.url.substr(0, "http:".length).toLowerCase() === "http:" ) {
+					if ( window.console !== undefined ) {
+						console.warn( "Blocked mixed content image " + bestCandidate.url );
+					}
+				} else {
+					picImg.src = bestCandidate.url;
+					// currentSrc attribute and property to match
+					// http://picture.responsiveimages.org/#the-img-element
+					if ( !pf.curSrcSupported ) {
+						picImg.currentSrc = picImg.src;
+					}
+
+					pf.backfaceVisibilityFix( picImg );
+				}
+			}
+
+			pf.setIntrinsicSize(picImg, bestCandidate);
+		}
+	};
+
+	pf.ascendingSort = function( a, b ) {
+		return a.resolution - b.resolution;
+	};
+
+	/**
+	 * In IE9, <source> elements get removed if they aren't children of
+	 * video elements. Thus, we conditionally wrap source elements
+	 * using <!--[if IE 9]><video style="display: none;"><![endif]-->
+	 * and must account for that here by moving those source elements
+	 * back into the picture element.
+	 */
+	pf.removeVideoShim = function( picture ) {
+		var videos = picture.getElementsByTagName( "video" );
+		if ( videos.length ) {
+			var video = videos[ 0 ],
+				vsources = video.getElementsByTagName( "source" );
+			while ( vsources.length ) {
+				picture.insertBefore( vsources[ 0 ], video );
+			}
+			// Remove the video element once we're finished removing its children
+			video.parentNode.removeChild( video );
+		}
+	};
+
+	/**
+	 * Find all `img` elements, and add them to the candidate list if they have
+	 * a `picture` parent, a `sizes` attribute in basic `srcset` supporting browsers,
+	 * a `srcset` attribute at all, and they haven’t been evaluated already.
+	 */
+	pf.getAllElements = function() {
+		var elems = [],
+			imgs = doc.getElementsByTagName( "img" );
+
+		for ( var h = 0, len = imgs.length; h < len; h++ ) {
+			var currImg = imgs[ h ];
+
+			if ( currImg.parentNode.nodeName.toUpperCase() === "PICTURE" ||
+			( currImg.getAttribute( "srcset" ) !== null ) || currImg[ pf.ns ] && currImg[ pf.ns ].srcset !== null ) {
+				elems.push( currImg );
+			}
+		}
+		return elems;
+	};
+
+	pf.getMatch = function( img, picture ) {
+		var sources = picture.childNodes,
+			match;
+
+		// Go through each child, and if they have media queries, evaluate them
+		for ( var j = 0, slen = sources.length; j < slen; j++ ) {
+			var source = sources[ j ];
+
+			// ignore non-element nodes
+			if ( source.nodeType !== 1 ) {
+				continue;
+			}
+
+			// Hitting the `img` element that started everything stops the search for `sources`.
+			// If no previous `source` matches, the `img` itself is evaluated later.
+			if ( source === img ) {
+				return match;
+			}
+
+			// ignore non-`source` nodes
+			if ( source.nodeName.toUpperCase() !== "SOURCE" ) {
+				continue;
+			}
+			// if it's a source element that has the `src` property set, throw a warning in the console
+			if ( source.getAttribute( "src" ) !== null && typeof console !== undefined ) {
+				console.warn("The `src` attribute is invalid on `picture` `source` element; instead, use `srcset`.");
+			}
+
+			var media = source.getAttribute( "media" );
+
+			// if source does not have a srcset attribute, skip
+			if ( !source.getAttribute( "srcset" ) ) {
+				continue;
+			}
+
+			// if there's no media specified, OR w.matchMedia is supported
+			if ( ( !media || pf.matchesMedia( media ) ) ) {
+				var typeSupported = pf.verifyTypeSupport( source );
+
+				if ( typeSupported === true ) {
+					match = source;
+					break;
+				} else if ( typeSupported === "pending" ) {
+					return false;
+				}
+			}
+		}
+
+		return match;
+	};
+
+	function picturefill( opt ) {
+		var elements,
+			element,
+			parent,
+			firstMatch,
+			candidates,
+			options = opt || {};
+
+		elements = options.elements || pf.getAllElements();
+
+		// Loop through all elements
+		for ( var i = 0, plen = elements.length; i < plen; i++ ) {
+			element = elements[ i ];
+			parent = element.parentNode;
+			firstMatch = undefined;
+			candidates = undefined;
+
+			// immediately skip non-`img` nodes
+			if ( element.nodeName.toUpperCase() !== "IMG" ) {
+				continue;
+			}
+
+			// expando for caching data on the img
+			if ( !element[ pf.ns ] ) {
+				element[ pf.ns ] = {};
+			}
+
+			// if the element has already been evaluated, skip it unless
+			// `options.reevaluate` is set to true ( this, for example,
+			// is set to true when running `picturefill` on `resize` ).
+			if ( !options.reevaluate && element[ pf.ns ].evaluated ) {
+				continue;
+			}
+
+			// if `img` is in a `picture` element
+			if ( parent && parent.nodeName.toUpperCase() === "PICTURE" ) {
+
+				// IE9 video workaround
+				pf.removeVideoShim( parent );
+
+				// return the first match which might undefined
+				// returns false if there is a pending source
+				// TODO the return type here is brutal, cleanup
+				firstMatch = pf.getMatch( element, parent );
+
+				// if any sources are pending in this picture due to async type test(s)
+				// remove the evaluated attr and skip for now ( the pending test will
+				// rerun picturefill on this element when complete)
+				if ( firstMatch === false ) {
+					continue;
+				}
+			} else {
+				firstMatch = undefined;
+			}
+
+			// Cache and remove `srcset` if present and we’re going to be doing `picture`/`srcset`/`sizes` polyfilling to it.
+			if ( ( parent && parent.nodeName.toUpperCase() === "PICTURE" ) ||
+			( !pf.sizesSupported && ( element.srcset && regWDesc.test( element.srcset ) ) ) ) {
+				pf.dodgeSrcset( element );
+			}
+
+			if ( firstMatch ) {
+				candidates = pf.processSourceSet( firstMatch );
+				pf.applyBestCandidate( candidates, element );
+			} else {
+				// No sources matched, so we’re down to processing the inner `img` as a source.
+				candidates = pf.processSourceSet( element );
+
+				if ( element.srcset === undefined || element[ pf.ns ].srcset ) {
+					// Either `srcset` is completely unsupported, or we need to polyfill `sizes` functionality.
+					pf.applyBestCandidate( candidates, element );
+				} // Else, resolution-only `srcset` is supported natively.
+			}
+
+			// set evaluated to true to avoid unnecessary reparsing
+			element[ pf.ns ].evaluated = true;
+		}
+	}
+
+	/**
+	 * Sets up picture polyfill by polling the document and running
+	 * the polyfill every 250ms until the document is ready.
+	 * Also attaches picturefill on resize
+	 */
+	function runPicturefill() {
+		pf.initTypeDetects();
+		picturefill();
+		var intervalId = setInterval( function() {
+			// When the document has finished loading, stop checking for new images
+			// https://github.com/ded/domready/blob/master/ready.js#L15
+			picturefill();
+
+			if ( /^loaded|^i|^c/.test( doc.readyState ) ) {
+				clearInterval( intervalId );
+				return;
+			}
+		}, 250 );
+
+		var resizeTimer;
+		var handleResize = function() {
+	        picturefill({ reevaluate: true });
+	    };
+		function checkResize() {
+		    clearTimeout(resizeTimer);
+		    resizeTimer = setTimeout( handleResize, 60 );
+		}
+
+		if ( w.addEventListener ) {
+			w.addEventListener( "resize", checkResize, false );
+		} else if ( w.attachEvent ) {
+			w.attachEvent( "onresize", checkResize );
+		}
+	}
+
+	runPicturefill();
+
+	/* expose methods for testing */
+	picturefill._ = pf;
+
+	expose( picturefill );
+
+} )( window, window.document, new window.Image() );
+
+},{}],3:[function(require,module,exports){
+'use strict';var _variables = require('../variables');var _picturefill = require("./../bower_components/picturefill/dist/picturefill.js");var _picturefill2 = _interopRequireDefault(_picturefill);var _enquire = require("./../bower_components/enquire/dist/enquire.js");var _enquire2 = _interopRequireDefault(_enquire);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+},{"../variables":4,"./../bower_components/enquire/dist/enquire.js":1,"./../bower_components/picturefill/dist/picturefill.js":2}],4:[function(require,module,exports){
+module.exports={
+  "breakpoints": {
+    "alpha": "screen and (min-width: 560px)",
+    "bravo": "screen and (min-width: 780px)",
+    "charlie": "screen and (min-width: 1240px)",
+    "short": "screen and (min-width: 780px) and (max-height: 740px)"
+  }
+}
+},{}]},{},[3]);

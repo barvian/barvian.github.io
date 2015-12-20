@@ -46,7 +46,14 @@ collections:
 # Build settings
 # --------------
 
-exclude: ['node_modules', 'gulpfile.*', 'package.json', 'CNAME']
+exclude: [
+  'node_modules',
+  'gulpfile.*',
+  'package.json',
+  'CNAME',
+  'bower.json',
+  'README.md'
+]
 markdown: kramdown
 permalink: pretty
 

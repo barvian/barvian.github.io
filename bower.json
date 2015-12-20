@@ -2,13 +2,15 @@
   "name": "barvian",
   "version": "0.0.0",
   "dependencies": {
-    "picturefill": "~2.3.1",
-    "enquire": "~2.1.2"
-  },
-  "devDependencies": {
     "animate.css": "~3.4.0",
-    "modular-scale": "~2.1.1",
+    "picturefill": "~2.3.1",
+    "enquire": "~2.1.2",
     "normalize-css": "normalize.css#~3.0.3",
+    "modular-scale": "~2.1.1",
+    "polymer": "Polymer/polymer#~1.2.3",
+    "iron-elements": "PolymerElements/iron-elements#~1.0.7",
+    "neon-elements": "PolymerElements/neon-elements#~1.0.0",
+    "page": "visionmedia/page.js#~1.6.4",
     "quantity-queries": "~0.4.0",
     "SassyLists": "~2.2.4"
   }

@@ -1,0 +1,18 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles.html">
+<link rel="import" href="my-greeting-styles.html">
+
+<dom-module id="my-greeting">
+
+  <template>
+
+    <style include="shared-styles"></style>
+    <style include="header-styles"></style>
+
+    <h2 class="page-title">{{greeting}}</h2>
+    <input value="{{greeting::input}}">
+  </template>
+
+  <script src="my-greeting.js"></script>
+
+</dom-module>

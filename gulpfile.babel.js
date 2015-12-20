@@ -1,7 +1,7 @@
 import gulp from 'gulp';
-import bower from 'bower';
-import gulpfile from 'gulpfile';
-import cleanTask from 'gulpfile/tasks/clean';
+import tasks from 'barvian-tasks';
+import Bower from 'bower'; const bower = Bower.config.directory;
+import cleanTask from 'barvian-tasks/tasks/clean';
 import cp from 'child_process';
 import fs from 'fs';
 import yaml from 'js-yaml';
@@ -16,6 +16,16 @@ const dest    = 'public';
 const config  = '_config.yml';
 const jekyll  = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
 
+gulp.task('components:build', () => {
+  return gulp.src([
+    `${bower}/webcomponentsjs/webcomponents-lite.min.js`
+  ]).pipe(gulp.dest(`${dest}/${vendor}`));
+});
+
+gulp.task('components:clean', () => {
+  return cleanTask(`${dest}/${vendor}/webcomponents-lite.min.js`);
+});
+
 gulp.task('jekyll:build', (cb) => {
   cp.spawn('jekyll', ['build', '--incremental', '--no-watch', '--config', config],
     {stdio: 'inherit'}
@@ -23,16 +33,17 @@ gulp.task('jekyll:build', (cb) => {
 });
 
 gulp.task('jekyll:watch', () => {
+  console.log()
   return gulp.watch([
     config,
     '*.{html,md}', '!README.md',
-    `{
-      ${jekyll.plugins_dir},
-      ${jekyll.layouts_dir},
-      ${jekyll.includes_dir},
-      ${jekyll.data_dir},
-      ${Object.keys(jekyll.collections).map(c => '_'+c).join()}
-    }/**/*`,
+    '{'
+      + jekyll.plugins_dir + ','
+      + jekyll.layouts_dir + ','
+      + jekyll.includes_dir + ','
+      + jekyll.data_dir + ','
+      + Object.keys(jekyll.collections).map(c => '_'+c).join()
+    + '}/**/*',
   ], ['jekyll:build']);
 });
 
@@ -40,22 +51,38 @@ gulp.task('jekyll:clean', () => {
   return cleanTask(jekyll.destination);
 });
 
-gulpfile(gulp, {
+tasks(gulp, {
+  browserSync: {
+    files: [`${jekyll.destination}/**/*.html`, `!${jekyll.destination}/${dest}/elements/**/*`],
+    server: jekyll.destination,
+    scrollElementMapping: ['[role="main"]'],
+    snippetOptions: {
+      rule: {
+        match: /<\/html>/i,
+        fn: function (snippet, match) {
+          return snippet + match;
+        }
+      }
+    }
+  },
+
+  elements: {
+    base: `${src}/elements`,
+    entry: 'barvian.html',
+    dest: [`${dest}/elements`, `${jekyll.destination}/${dest}/elements`]
+  },
+
   styles: {
     src: `${src}/styles/barvian.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
-    includePaths: [bower.config.directory],
-    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],
-    autoprefixer: {
-      browsers: ['> 5%', 'last 2 versions'],
-      cascade: false
-    }
+    includePaths: [bower],
+    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`]
   },
 
   scripts: {
     src: `${src}/scripts/barvian.js`,
-    dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`],
-    bundle: 'barvian'
+    bundle: 'barvian.js',
+    dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`]
   },
 
   copy: {
@@ -79,22 +106,5 @@ gulpfile(gulp, {
   sprites: {
     src: `${src}/sprites/**/*`,
     dest: jekyll.includes_dir
-  },
-
-  watch: {
-    promptsReload: `${jekyll.destination}/**/*.html`,
-    browserSync: {
-      server: jekyll.destination,
-      logPrefix: 'Barvian',
-      scrollElementMapping: ['[role="main"]'],
-      snippetOptions: {
-        rule: {
-          match: /<\/html>/i,
-          fn: function (snippet, match) {
-            return snippet + match;
-          }
-        }
-      }
-    }
   }
 });
