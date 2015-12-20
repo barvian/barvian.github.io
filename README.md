@@ -1,6 +1,6 @@
 # barvian.me
 
-My personal website.  Safe Jekyll with precompiled assets checked into `public/`.
+My personal website.  Safe-mode Jekyll with precompiled assets checked into `public/`.
 
 ## Developing locally
 
