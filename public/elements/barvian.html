@@ -1350,17 +1350,13 @@ Example:
 <dom-module id="shared-styles" assetpath="/">
 <template>
 <style>
-:root {
-  color: red; }
 
 </style>
 </template>
 </dom-module><dom-module id="my-greeting-styles" assetpath="my-greeting/">
 <template>
 <style>
-body {
-  color: blue;
-}
+
 </style>
 </template>
 </dom-module><dom-module id="my-greeting" assetpath="my-greeting/">
@@ -1371,7 +1367,6 @@ body {
     <style include="header-styles"></style>
 
     <h2 class="page-title">{{greeting}}</h2>
-    <h3>sucker</h3>
     <input value="{{greeting::input}}">
   </template>
 

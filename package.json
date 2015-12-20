@@ -4,11 +4,10 @@
   "description": "Personal portfolio.",
   "private": "true",
   "scripts": {
-    "gulp": "gulp",
-    "build": "gulp build",
-    "watch": "gulp watch",
-    "clean": "gulp clean",
-    "production": "gulp clena && gulp build --env production"
+    "gulp": "gulp --env production",
+    "build": "gulp build --env production",
+    "watch": "gulp watch --env production",
+    "clean": "gulp clean"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
