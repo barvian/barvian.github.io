@@ -3,17 +3,18 @@ import tasks from 'barvian-tasks';
 import cleanTask from 'barvian-tasks/tasks/clean';
 import Bower from 'bower'; const bower = Bower.config.directory;
 import cp from 'child_process';
+import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 
 // Project paths
 const src     = '_assets';
-const tmp     = 'tmp';
 const vendor  = 'scripts/vendor';
 const dest    = 'public';
 
 // Jekyll config
 const config  = '_config.yml';
+// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 const jekyll  = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
 
 gulp.task('components:build', () => {
@@ -33,17 +34,16 @@ gulp.task('jekyll:build', (cb) => {
 });
 
 gulp.task('jekyll:watch', () => {
-  console.log()
   return gulp.watch([
     config,
     '*.{html,md}', '!README.md',
-    '{'
-      + jekyll.plugins_dir + ','
-      + jekyll.layouts_dir + ','
-      + jekyll.includes_dir + ','
-      + jekyll.data_dir + ','
-      + Object.keys(jekyll.collections).map(c => '_'+c).join()
-    + '}/**/*',
+    `{
+      ${jekyll.plugins_dir},
+      ${jekyll.layouts_dir},
+      ${jekyll.includes_dir},
+      ${jekyll.data_dir},
+      ${Object.keys(jekyll.collections).map(c => `_${c}`).join()}
+    }/**/*`.replace(/\s/g, ''),
   ], ['jekyll:build']);
 });
 
@@ -59,9 +59,7 @@ tasks(gulp, {
     snippetOptions: {
       rule: {
         match: /<\/html>/i,
-        fn: function (snippet, match) {
-          return snippet + match;
-        }
+        fn: (snippet, match) => snippet + match
       }
     }
   },
@@ -81,6 +79,11 @@ tasks(gulp, {
 
   scripts: {
     src: `${src}/scripts/barvian.js`,
+    all: [
+      `${src}/scripts/**/*.js`,
+      `!${src}/${vendor}/**/*`,
+      path.basename(__filename)
+    ],
     bundle: 'barvian.js',
     dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`]
   },

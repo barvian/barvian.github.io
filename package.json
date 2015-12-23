@@ -7,7 +7,8 @@
     "gulp": "gulp --env production",
     "build": "gulp build --env production",
     "watch": "gulp watch --env production",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "lint": "gulp lint"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
@@ -17,6 +18,7 @@
     "bower": "^1.7.1",
     "fs": "0.0.2",
     "gulp": "^3.9.0",
-    "js-yaml": "^3.4.6"
+    "js-yaml": "^3.4.6",
+    "path": "^0.12.7"
   }
 }
