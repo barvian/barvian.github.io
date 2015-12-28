@@ -8,14 +8,14 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 
 // Project paths
-const src     = '_assets';
-const vendor  = 'scripts/vendor';
-const dest    = 'public';
+const src = '_assets';
+const vendor = 'scripts/vendor';
+const dest = 'public';
 
 // Jekyll config
-const config  = '_config.yml';
+const config = '_config.yml';
 // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-const jekyll  = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
+const jekyll = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
 
 gulp.task('components:build', () => {
   return gulp.src([
@@ -27,8 +27,8 @@ gulp.task('components:clean', () => {
   return cleanTask(`${dest}/${vendor}/webcomponents-lite.min.js`);
 });
 
-gulp.task('jekyll:build', (cb) => {
-  cp.spawn('jekyll', ['build', '--incremental', '--no-watch', '--config', config],
+gulp.task('jekyll:build', cb => {
+  cp.spawn('jekyll', ['build', '-I', '--no-watch', '--config', config],
     {stdio: 'inherit'}
   ).on('close', cb);
 });
@@ -43,7 +43,7 @@ gulp.task('jekyll:watch', () => {
       ${jekyll.includes_dir},
       ${jekyll.data_dir},
       ${Object.keys(jekyll.collections).map(c => `_${c}`).join()}
-    }/**/*`.replace(/\s/g, ''),
+    }/**/*`.replace(/\s/g, '')
   ], ['jekyll:build']);
 });
 
@@ -53,7 +53,10 @@ gulp.task('jekyll:clean', () => {
 
 tasks(gulp, {
   browserSync: {
-    files: [`${jekyll.destination}/**/*.html`, `!${jekyll.destination}/${dest}/elements/**/*`],
+    files: [
+      `${jekyll.destination}/**/*.html`,
+      `!${jekyll.destination}/${dest}/elements/**/*`
+    ],
     server: jekyll.destination,
     scrollElementMapping: ['[role="main"]'],
     snippetOptions: {

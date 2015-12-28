@@ -1,3 +1,1 @@
-/*jshint unused: false */
-
-import pictureFill from 'picturefill';
+import pictureFill from 'picturefill'; // eslint-disable-line no-unused-vars
