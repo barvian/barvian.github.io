@@ -3,7 +3,6 @@
 
 Polymer({
   is: 'my-greeting',
-
   properties: {
     greeting: {
       type: String,
