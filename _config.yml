@@ -16,6 +16,11 @@ keywords:
   - front-end development
   - web design
 
+dribbble_username: barvian
+twitter_username: mbarvian
+github_username:  barvian
+
+
 # Sources
 # -------
 
@@ -24,14 +29,6 @@ plugins_dir:  _plugins
 layouts_dir:  _layouts
 data_dir:     _data
 includes_dir: _includes
-
-
-# Social
-# ------
-
-dribbble_username: barvian
-twitter_username: mbarvian
-github_username:  barvian
 
 
 # Collections
