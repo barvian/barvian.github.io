@@ -13,5 +13,8 @@
     "page": "visionmedia/page.js#~1.6.4",
     "quantity-queries": "~0.4.0",
     "SassyLists": "~2.2.4"
+  },
+  "devDependencies": {
+    "web-component-tester": "~4.0.3"
   }
 }

@@ -8,7 +8,8 @@
     "build": "gulp build --env production",
     "watch": "gulp watch --env production",
     "clean": "gulp clean",
-    "lint": "gulp lint"
+    "lint": "gulp lint",
+    "test": "gulp test"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",

@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import tasks from 'barvian-tasks';
 import cleanTask from 'barvian-tasks/tasks/clean';
-import Bower from 'bower'; const bower = Bower.config.directory;
+import _bower from 'bower'; const bower = _bower.config.directory;
 import cp from 'child_process';
 import path from 'path';
 import fs from 'fs';
