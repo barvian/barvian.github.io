@@ -16,8 +16,9 @@
   </test-fixture>
 
   <script>
+    /* eslint-disable no-undef */
     suite('my-greeting tests', () => {
-      let greeting, header;
+      let greeting, header; // eslint-disable-line one-var
       setup(() => {
         greeting = fixture('basic');
       });
