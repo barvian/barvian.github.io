@@ -1,6 +1,7 @@
+/* eslint-disable require-jsdoc */
 import gulp from 'gulp';
-import tasks from 'barvian-tasks';
-import cleanTask from 'barvian-tasks/tasks/clean';
+import CommonRegistry from 'barvian-registry';
+import del from 'del';
 import _bower from 'bower'; const bower = _bower.config.directory;
 import cp from 'child_process';
 import path from 'path';
@@ -14,44 +15,9 @@ const dest = 'public';
 
 // Jekyll config
 const config = '_config.yml';
-// jscs:disable requireCamelCaseOrUpperCaseIdentifiers
 const jekyll = yaml.safeLoad(fs.readFileSync(`./${config}`, 'utf8'));
 
-gulp.task('components:build', () => {
-  return gulp.src([
-    `${bower}/webcomponentsjs/webcomponents-lite.min.js`
-  ]).pipe(gulp.dest(`${dest}/${vendor}`));
-});
-
-gulp.task('components:clean', () => {
-  return cleanTask(`${dest}/${vendor}/webcomponents-lite.min.js`);
-});
-
-gulp.task('jekyll:build', cb => {
-  cp.spawn('jekyll', ['build', '-I', '--no-watch', '--config', config],
-    {stdio: 'inherit'}
-  ).on('close', cb);
-});
-
-gulp.task('jekyll:watch', () => {
-  return gulp.watch([
-    config,
-    '*.{html,md}', '!README.md',
-    `{
-      ${jekyll.plugins_dir},
-      ${jekyll.layouts_dir},
-      ${jekyll.includes_dir},
-      ${jekyll.data_dir},
-      ${Object.keys(jekyll.collections).map(c => `_${c}`).join()}
-    }/**/*`.replace(/\s/g, '')
-  ], ['jekyll:build']);
-});
-
-gulp.task('jekyll:clean', () => {
-  return cleanTask(jekyll.destination);
-});
-
-tasks(gulp, {
+gulp.registry(new CommonRegistry({
   browserSync: {
     files: [
       `${jekyll.destination}/**/*.html`,
@@ -113,4 +79,58 @@ tasks(gulp, {
     src: `${src}/sprites/**/*`,
     dest: jekyll.includes_dir
   }
-});
+}));
+
+function buildComponents() {
+  return gulp.src([
+    `${bower}/webcomponentsjs/webcomponents-lite.min.js`
+  ]).pipe(gulp.dest(`${dest}/${vendor}`));
+}
+buildComponents.displayName = 'components:build';
+buildComponents.description = 'Copy bower components';
+gulp.task(buildComponents);
+
+function cleanComponents() {
+  return del([
+    `${dest}/${vendor}/webcomponents-lite.min.js`
+  ]);
+}
+cleanComponents.displayName = 'components:clean';
+cleanComponents.description = 'Clean copied components';
+gulp.task(cleanComponents);
+
+function runJekyll(done) {
+  cp.spawn('jekyll', ['build', '-I', '--no-watch', '--config', config],
+    {stdio: 'inherit'}
+  ).on('close', done);
+}
+runJekyll.displayName = 'jekyll';
+runJekyll.description = 'Generate jekyll build';
+gulp.task(runJekyll);
+
+function watchJekyll() {
+  gulp.watch([
+    config,
+    '*.{html,md}', '!README.md',
+    `{
+      ${jekyll.plugins_dir},
+      ${jekyll.layouts_dir},
+      ${jekyll.includes_dir},
+      ${jekyll.data_dir},
+      ${Object.keys(jekyll.collections).map(c => `_${c}`).join()}
+    }/**/*`.replace(/\s/g, '')
+  ], runJekyll);
+}
+watchJekyll.displayName = 'jekyll:watch';
+watchJekyll.description = 'Watch jekyll files and re-generate';
+gulp.task(watchJekyll);
+
+function cleanJekyll() {
+  return del(jekyll.destination);
+}
+cleanJekyll.displayName = 'jekyll:clean';
+cleanJekyll.description = 'Clean jekyll';
+gulp.task(cleanJekyll);
+
+let oldBuild = gulp.task('build');
+gulp.task('build', gulp.series(oldBuild, runJekyll));

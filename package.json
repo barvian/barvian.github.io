@@ -8,17 +8,19 @@
     "build": "gulp build --env production",
     "watch": "gulp watch --env production",
     "clean": "gulp clean",
+    "test": "gulp test",
     "lint": "gulp lint",
-    "test": "gulp test"
+    "tasks": "gulp --tasks"
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
-    "barvian-tasks": "mbarvian/tasks",
+    "barvian-registry": "barvian/registry",
     "bower": "^1.7.1",
+    "del": "^2.2.0",
     "fs": "0.0.2",
-    "gulp": "^3.9.0",
+    "gulp": "gulpjs/gulp#4.0",
     "js-yaml": "^3.4.6",
     "path": "^0.12.7"
   }
