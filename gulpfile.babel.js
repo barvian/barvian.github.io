@@ -110,7 +110,7 @@ gulp.task('jekyll:watch', () => {
       ${jekyll.data_dir},
       ${Object.keys(jekyll.collections).map(c => `_${c}`).join()}
     }/**/*`.replace(/\s/g, '')
-  ], gulp.series('jekyll'));
+  ], gulp.task('jekyll'));
 });
 
 gulp.task('jekyll:clean', () => {
