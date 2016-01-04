@@ -81,34 +81,25 @@ gulp.registry(new CommonRegistry({
   }
 }));
 
-function buildComponents() {
+gulp.task('components:build', () => {
   return gulp.src([
     `${bower}/webcomponentsjs/webcomponents-lite.min.js`
   ]).pipe(gulp.dest(`${dest}/${vendor}`));
-}
-buildComponents.displayName = 'components:build';
-buildComponents.description = 'Copy bower components';
-gulp.task(buildComponents);
+});
 
-function cleanComponents() {
+gulp.task('components:clean', () => {
   return del([
     `${dest}/${vendor}/webcomponents-lite.min.js`
   ]);
-}
-cleanComponents.displayName = 'components:clean';
-cleanComponents.description = 'Clean copied components';
-gulp.task(cleanComponents);
+});
 
-function runJekyll(done) {
+gulp.task('jekyll', done => {
   cp.spawn('jekyll', ['build', '-I', '--no-watch', '--config', config],
     {stdio: 'inherit'}
   ).on('close', done);
-}
-runJekyll.displayName = 'jekyll';
-runJekyll.description = 'Generate jekyll build';
-gulp.task(runJekyll);
+});
 
-function watchJekyll() {
+gulp.task('jekyll:watch', () => {
   gulp.watch([
     config,
     '*.{html,md}', '!README.md',
@@ -119,18 +110,12 @@ function watchJekyll() {
       ${jekyll.data_dir},
       ${Object.keys(jekyll.collections).map(c => `_${c}`).join()}
     }/**/*`.replace(/\s/g, '')
-  ], runJekyll);
-}
-watchJekyll.displayName = 'jekyll:watch';
-watchJekyll.description = 'Watch jekyll files and re-generate';
-gulp.task(watchJekyll);
+  ], gulp.series('jekyll'));
+});
 
-function cleanJekyll() {
+gulp.task('jekyll:clean', () => {
   return del(jekyll.destination);
-}
-cleanJekyll.displayName = 'jekyll:clean';
-cleanJekyll.description = 'Clean jekyll';
-gulp.task(cleanJekyll);
+});
 
 let oldBuild = gulp.task('build');
-gulp.task('build', gulp.series(oldBuild, runJekyll));
+gulp.task('build', gulp.series(oldBuild, 'jekyll'));
