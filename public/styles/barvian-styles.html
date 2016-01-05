@@ -1,0 +1,1186 @@
+<dom-module id="barvian-styles">
+<template>
+<style>
+/**
+ * Checks whether `$functions` exist in global scope.
+ *
+ * @access private
+ *
+ * @param {ArgList} $functions - list of functions to check for
+ *
+ * @return {Bool} Whether or not there are missing dependencies
+ */
+/**
+ * Compares `$a` and `$b` based on `$order`.
+ *
+ * @access private
+ *
+ * @param {*}       $a      - first value
+ * @param {*}       $b      - second value
+ * @param {List}    $matrix - alphabetical order
+ *
+ * @return {Bool}
+ */
+/**
+ * Returns truthiness of `$value`.
+ *
+ * @access private
+ *
+ * @param {*} $value - value to check
+ *
+ * @return {Bool}
+ */
+/**
+ * Check whether value is a number
+ *
+ * @access private
+ *
+ * @param {*} $value - value to run test against
+ *
+ * @return {Bool}
+ */
+/**
+ * Chunks `$list` into `$size` large lists.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
+ *
+ * @param {List}   $list  - list to chunk
+ * @param {Number} $size  - length of lists
+ *
+ * @throws $size is not a number for `sl-chunk`.
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-chunk(a b c d e, 2)
+ * // a b, c d, e
+ *
+ * @return {List | Null}
+ */
+/**
+ * Initialize an empty comma-separated list.
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
+ *
+ * @example
+ * sl-comma-list()
+ * // ()
+ *
+ * @return {List}
+ */
+/**
+ * Returns whether `$list` contains `$value`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-contain
+ *
+ * @param {List}    $list  - list to check
+ * @param {*}       $value - value to look for
+ *
+ * @example
+ * sl-contain(a b c, a)
+ * // true
+ *
+ * @example
+ * sl-contain(a b c, z)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-contain
+ * @alias sl-contain
+ */
+/**
+ * Counts the number of occurrences of each value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-count-values
+ *
+ * @param {List} $list - list to count values from
+ *
+ * @example
+ * sl-count-values(a b c a)
+ * // (a: 2, b: 1, c: 1) 
+ *
+ * @return {Map} Values mapped to their count
+ */
+/**
+ * Returns `$list` as a string, prettified if `$pre` is set to true.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
+ *
+ * @param {List}   $list          - list to debug
+ * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+ * @param {Number} $level (1)     - internal variable for recursion
+ *
+ * @requires sl-is-empty
+ * @requires sl-is-single
+ * @requires sl-has-multiple-values
+ * 
+ * @example
+ * sl-debug(a b c)
+ * // '("a", "b", "c")'
+ *
+ * @return {String}
+ */
+/**
+ * Mixin displaying clean debug
+ *
+ * @param {List} $list - list
+ *
+ * @requires sl-debug
+ */
+/**
+ * Tests whether all items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-every
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-every(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-every(1 2 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Explodes `$string` into a list using `$delimiter` as a delimiter.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
+ *
+ * @param {String} $string              - string to explode
+ * @param {String} $delimiter ('')      - string to use as a delimiter
+ * @param {String} $separator ('space') - list separator
+ *
+ * @throws $string is not a string for `sl-explode`.
+ * @throws $delimiter is not a string for `sl-explode`.
+ *
+ * @example
+ * sl-explode(abc)
+ * // a b c
+ *
+ * @example
+ * sl-explode(abc, b)
+ * // a c
+ * 
+ * @return {List | Null}
+ */
+/** Returns first element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-first
+ *
+ * @param {List} $list - list to retrieve first item from
+ *
+ * @throws Cannot find first item of empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-first(a b c)
+ * // a
+ *
+ * @example
+ * sl-first(a)
+ * // a
+ *
+ * @example
+ * sl-first(())
+ * // null
+ * 
+ * @return {*}
+ */
+/**
+ * @requires sl-first
+ * @alias sl-first
+ */
+/**
+ * Turns multidimensional `$list` into a one-level list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#flatten
+ *
+ * @param {List} $list - list to flatten
+ * 
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-flatten(a b c, d e f, g h i)
+ * // a b c d e f g h i
+ *
+ * @return {List}
+ */
+/** 
+ * @requires sl-flatten
+ * @alias sl-flatten
+ */
+/** Tests whether `$list` is not empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-values(a)
+ * // true
+ *
+ * @example 
+ * sl-has-values(())
+ * // false
+ * 
+ * @return {Bool}
+ */
+/**
+ * Tests whether `$list` has at least 2 values.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-multiple-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-multiple-values(a)
+ * // false
+ *
+ * @example 
+ * sl-has-multiple-values(a b)
+ * // true
+ * 
+ * @return {Bool}
+ */
+/** Adds `$value` at `$index` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
+ *
+ * @requires sl-is-true
+ *
+ * @param {List}    $list  - list to update
+ * @param {Number}  $index - index to add
+ * @param {*}       $value - value to add
+ *
+ * @throws List index $index is not a number for `sl-insert-nth`.
+ * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
+ *
+ * @example
+ * sl-insert-nth(a b c, 2, z)
+ * // a z b c
+ *
+ * @example
+ * sl-insert-nth(a b c, 42, z)
+ * // a b c z
+ *
+ * @example 
+ * sl-insert-nth(a b c, -42, z)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+/**
+ * Returns a list of shared value from `$list` and `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
+ *
+ * @requires sl-remove-duplicates
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - first list
+ * @param {ArgList} $lists - other lists
+ *
+ * @example
+ * sl-intersection(a b c, b e d, a c b)
+ * // b
+ * 
+ * @return {List}
+ */
+/** 
+ * Tests whether `$list` is empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-empty(())
+ * // true
+ *
+ * @example
+ * sl-is-empty(a)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-is-empty
+ * @alias sl-is-empty
+ */
+/**
+ * Tests whether `$list` has a single item.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-single(())
+ * // false
+ *
+ * @example
+ * sl-is-single(a)
+ * // true
+ *
+ * @example
+ * sl-is-single(a b)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Checks whether `$list` is symmetrical.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-symmetrical
+ *
+ * @requires sl-reverse
+ *
+ * @param {List} $list - list to check
+ *
+ * @example
+ * sl-is-symmetrical(a b c)
+ * // false
+ *
+ * 
+ * @example
+ * sl-is-symmetrical(a b a)
+ * // true
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-is-symmetrical
+ * @alias sl-is-symmetrical
+ */
+/**
+ * Returns last element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last
+ *
+ * @param {List} $list - list to retrieve last value from
+ *
+ * @throws Cannot find last item of empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-last(a b c)
+ * // c
+ * 
+ * @example
+ * sl-last(a)
+ * // a
+ *
+ * @example
+ * sl-last(())
+ * // null
+ * 
+ * @return {*}
+ */
+/**
+ * Returns last index of `$value` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last-index
+ *
+ * @param {List} $list  - list to search
+ * @param {*}    $value - value to be searched for
+ *
+ * @example
+ * sl-last-index(a b a, a)
+ * // 3
+ *
+ * @example
+ * sl-last-index(a b a, z)
+ * // null
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Shift indexes from `$list` of `$value`.
+ *
+ * @author Ana Tudor
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
+ *
+ * @param {List}   $list      - list to update
+ * @param {Number} $value (1) - number of position between old and new indexes
+ *
+ * @throws $value is not a number for `loop`.
+ *
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-loop(a b c)
+ * // c a b
+ * 
+ * @example
+ * sl-loop(a b c, 2)
+ * // b c a
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-loop
+ * @alias sl-loop
+ */
+/**
+ * Adds `$value` as first index of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to preprend value to
+ * @param {*}    $value - value to prepend to the list
+ *
+ * @example
+ * sl-prepend(a b c, z)
+ * // z a b c
+ * 
+ * @return {List}
+ */
+/** Removes all false and null values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#purge
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list - list to purge
+ *
+ * @example
+ * sl-purge(null a false b)
+ * // a b
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-purge
+ * @alias sl-purge
+ */
+/**
+ * Returns a random value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#random-value
+ *
+ * @param {List} $list - list to random value from
+ *
+ * @throws Cannot find a random value in an empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-random-value(a b c)
+ * // a
+ * 
+ * @return {*}
+ */
+/**
+ * @requires sl-random-value
+ * @alias sl-random-value
+ */
+/**
+ * @requires sl-random-value
+ * @alias sl-random-value
+ */
+/**
+ * Build a list of values from 1 through `$n`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-range
+ *
+ * @param {Number} $n - maximum value
+ *
+ * @throws `$n` is not a number for `sl-range`.
+ * @throws `$n` is not unitless for `sl-range`.
+ * @throws `$n` is not greater than 0 for `sl-range`.
+ *
+ * @example
+ * sl-range(5)
+ * // 1 2 3 4 5
+ *
+ * @example
+ * sl-range(1)
+ * // 1
+ *
+ * @example
+ * sl-range(-42)
+ * // null
+ *
+ * @return {List | Number | Null}
+ */
+/**
+ * Removes value(s) `$value` from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove
+ *
+ * @requires sl-replace
+ *
+ * @param {List}    $list      - list to update
+ * @param {*}       $value     - value to remove
+ *
+ * @example
+ * sl-remove(a b c, a)
+ * // b c
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-remove
+ * @alias sl-remove
+ */
+/**
+ * Removes duplicate values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-duplicates
+ *
+ * @param {List} $list - list to remove duplicates from
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-remove-duplicates(a b a b)
+ * // a b
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-remove-duplicates
+ * @alias sl-remove-duplicates
+ */
+/**
+ * Removes value from `$list` at index `$index`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-nth
+ *
+ * @requires sl-replace-nth
+ *
+ * @param {List}   $list  - list to remove value from
+ * @param {Number} $index - index to remove
+ *
+ * @example
+ * sl-remove-nth(a b c, 2)
+ * // a c
+ *
+ * @example
+ * sl-remove-nth(a b c, 42)
+ * // null
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-remove-nth
+ * @alias sl-remove-nth
+ */
+/**
+ * Replaces `$old` by `$new` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#replace
+ *
+ * @requires sl-is-true
+ * @requires sl-purge
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - list to update
+ * @param {*}       $old   - value to replace
+ * @param {*}       $value - new value for $old
+ *
+ * @example
+ * sl-replace(a b c, b, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace(a b c, y, z)
+ * // a b c
+ * 
+ * @return {List}
+ */
+/**
+ * Replaces value at `$index` from `$list` by `$value`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-replace-nth
+ *
+ * @requires sl-purge
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List}   $list  - list to update
+ * @param {Number} $index - index to update
+ * @param {*}      $value - new value for index
+ *
+ * @throws Invalid index $index for `sl-replace-nth`.
+ *
+ * @example
+ * sl-replace-nth(a b c, 2, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace-nth(a b c, 100, z)
+ * // null
+ *
+ * @return {List | Null}
+ */
+/**
+ * Reverses the order of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-reverse
+ *
+ * @param {List} $list - list to reverse
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-reverse(a b c)
+ * // c b a
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-reverse
+ * @alias sl-reverse
+ */
+/**
+ * Shuffle `$list` using Fisher-Yates method.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-shuffle
+ *
+ * @param {List} $list - list to shuffle
+ *
+ * @requires sl-to-list
+ * 
+ * @example
+ * sl-shuffle(a b c)
+ * // b a c
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-shuffle
+ * @alias sl-shuffle
+ */
+/**
+ * Slices `$list` between `$start` and `$end`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-slice
+ *
+ * @param {List}   $list                  - list to slice
+ * @param {Number} $start (1)             - start index
+ * @param {Number} $end   (length($list)) - end index
+ *
+ * @throws List indexes $start and $end must be numbers for `sl-slice`.
+ * @throws Start index has to be lesser than or equals to the end index for `sl-slice`.
+ * @throws List indexes must be non-zero integers for `sl-slice`.
+ * @throws Start index has to be lesser than or equal to list length for `sl-slice`.
+ * @throws End index has to be lesser than or equal to list length for `sl-slice`.
+ * 
+ * @example
+ * sl-slice(a b c d e, 2, 4)
+ * // b c d
+ *
+ * @example
+ * sl-slice(a b c d e, 2, 2)
+ * // b
+ *
+ * @example
+ * sl-slice(a b c d e, 4, 2)
+ * // null
+ *
+ * @example
+ * sl-slice(a b c d e, -1, 6)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+/**
+ * Sorts values of `$list` using quick-sort algorithm using `$order`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-sort
+ *
+ * @requires sl-str-compare
+ * @requires sl-has-multiple-values
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to sort
+ * @param {List} $order - order to respect
+ *
+ * @example
+ * sl-sort(b a c)
+ * // a b c
+ *
+ * @example
+ * sl-sort(3 5 1)
+ * // 1 3 5 
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-sort
+ * @alias sl-sort
+ */
+/**
+ * Tests whether some items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-some
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-some(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-some(1 2 3px, unitless)
+ * // true
+ *
+ * @example
+ * sl-some(1px 2px 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Sums up all numeric values in `$list`, stripping unit if `$force` set to `true`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
+ *
+ * @param {List} $list          - list
+ * @param {Bool} $force (false) - enable/disable parseInt
+ *
+ * @requires sl-every
+ * @requires sl-is-number
+ *
+ * @throws All items from list are not numbers for `sl-sum`.
+ *
+ * @example
+ * sl-sum(1 2 3)
+ * // 6
+ *
+ * @example
+ * sl-sum(a b 1)
+ * null
+ *
+ * @example
+ * sl-sum(1 2 3px, true)
+ * // 6
+ * 
+ * @return {Number}
+ */
+/**
+ * Returns the tail of `$list`: all items except the first (head).
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
+ *
+ * @requires sl-slice
+ *
+ * @param {List} $list - list to retrieve tail from
+ *
+ * @example
+ * sl-tail(a b c)
+ * // b c 
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-tail
+ * @alias sl-tail
+ */
+/**
+ * Casts `$value` into a list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
+ *
+ * @param {*} $value - value to cast to list
+ * @param {String} $separator (space) - separator to use
+ *
+ * @example
+ * sl-to-list(a b c, comma)
+ * // a, b, c
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-to-list
+ * @alias sl-to-list
+ */
+/**
+ * Casts `$list` into a map, using indexes as keys (starting with `$start`).
+ * Useful for iterating through a list with an index variable.
+ * e.g. `@each $index, $value in to-map($list)`
+ *
+ * @author Andrey "Lolmaus" Mikhaylov
+ * @author Chris Eppstein
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
+ * 
+ * @param {List} $list - list to turn into map
+ *
+ * @requires sl-range
+ * @requires sl-is-empty
+ * 
+ * @throws List cannot be empty for `sl-to-map`.
+ *
+ * @example
+ * sl-to-map(a b c)
+ * // 1 a, 2 b, 3 c
+ * 
+ * @return {Map | Null}
+ */
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+/**
+ * Joins all elements of `$list` with `$glue`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-string
+ *
+ * @param {List}   $list      - list to cast
+ * @param {String} $glue ('') - value to use as a join string
+ *
+ * @requires sl-has-multiple-values
+ * @requires sl-last
+ * 
+ * @example
+ * sl-to-string(a b c)
+ * // abc
+ *
+ * @example
+ * sl-to-string(a b c, '-')
+ * // a-b-c
+ * 
+ * @return {String}
+ */
+/**
+ * @requires sl-to-string
+ * @alias sl-to-string
+ */
+/**
+ * Returns a list of values from `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-union
+ *
+ * @requires sl-flatten
+ * @requires sl-remove-duplicates
+ *
+ * @param {ArgList} $lists - lists to unify
+ *
+ * @example
+ * sl-union(a b c, b e d, a c b)
+ * // a b c e d
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-union
+ * @alias sl-union
+ */
+/**
+ * Apply `$function` to every item from `$list` passing $args as parameters.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-walk
+ *
+ * @param {List}    $list     - list to update
+ * @param {String}  $function - function to call on each value
+ * @param {ArgList} $args     - optional function arguments
+ *
+ * @throws There is no `$function` function for `sl-walk`.
+ *
+ * @requires sl-to-map
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-walk(a b c, to-upper-case)
+ * // A B C
+ *
+ * @return {List | Null}
+ */
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+html {
+  color: #1c3654;
+  line-height: 1.618;
+  text-rendering: optimizeLegibility;
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  text-size-adjust: none;
+  font-family: "Soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 100%; }
+
+* {
+  margin-top: 0;
+  margin-bottom: 0; }
+  * + * {
+    margin-top: 24.443px;
+    margin-top: 1.527696rem; }
+
+* + body {
+  margin-top: 0; }
+
+.left {
+  float: left !important; }
+
+.right {
+  float: right !important; }
+
+* + .layout__unit.w1\/1, * + .layout__unit.w2\/2, * + .layout__unit.w3\/3, * + .layout__unit.w4\/4, * + .layout__unit.w5\/5, * + .layout__unit.w6\/6, * + .layout__unit.w1\/2, * + .layout__unit.w2\/4, * + .layout__unit.w3\/6, * + .layout__unit.w1\/3, * + .layout__unit.w2\/6, * + .layout__unit.w2\/3, * + .layout__unit.w4\/6, * + .layout__unit.w1\/4, * + .layout__unit.w3\/4, * + .layout__unit.w1\/5, * + .layout__unit.w2\/5, * + .layout__unit.w3\/5, * + .layout__unit.w4\/5, * + .layout__unit.w1\/6, * + .layout__unit.w5\/6 {
+  margin-top: 0; }
+
+.w1\/1, .w2\/2, .w3\/3, .w4\/4, .w5\/5, .w6\/6 {
+  width: 100% !important; }
+
+.w1\/2, .w2\/4, .w3\/6 {
+  width: 50% !important; }
+
+.w1\/3, .w2\/6 {
+  width: 33.3333333333% !important; }
+
+.w2\/3, .w4\/6 {
+  width: 66.6666666667% !important; }
+
+.w1\/4 {
+  width: 25% !important; }
+
+.w3\/4 {
+  width: 75% !important; }
+
+.w1\/5 {
+  width: 20% !important; }
+
+.w2\/5 {
+  width: 40% !important; }
+
+.w3\/5 {
+  width: 60% !important; }
+
+.w4\/5 {
+  width: 80% !important; }
+
+.w1\/6 {
+  width: 16.6666666667% !important; }
+
+.w5\/6 {
+  width: 83.3333333333% !important; }
+
+@media screen and (min-width: 560px) {
+  * + .layout__unit.w1\/1\@alpha, * + .layout__unit.w2\/2\@alpha, * + .layout__unit.w3\/3\@alpha, * + .layout__unit.w4\/4\@alpha, * + .layout__unit.w5\/5\@alpha, * + .layout__unit.w6\/6\@alpha, * + .layout__unit.w1\/2\@alpha, * + .layout__unit.w2\/4\@alpha, * + .layout__unit.w3\/6\@alpha, * + .layout__unit.w1\/3\@alpha, * + .layout__unit.w2\/6\@alpha, * + .layout__unit.w2\/3\@alpha, * + .layout__unit.w4\/6\@alpha, * + .layout__unit.w1\/4\@alpha, * + .layout__unit.w3\/4\@alpha, * + .layout__unit.w1\/5\@alpha, * + .layout__unit.w2\/5\@alpha, * + .layout__unit.w3\/5\@alpha, * + .layout__unit.w4\/5\@alpha, * + .layout__unit.w1\/6\@alpha, * + .layout__unit.w5\/6\@alpha {
+    margin-top: 0; }
+  .w1\/1\@alpha, .w2\/2\@alpha, .w3\/3\@alpha, .w4\/4\@alpha, .w5\/5\@alpha, .w6\/6\@alpha {
+    width: 100% !important; }
+  .w1\/2\@alpha, .w2\/4\@alpha, .w3\/6\@alpha {
+    width: 50% !important; }
+  .w1\/3\@alpha, .w2\/6\@alpha {
+    width: 33.3333333333% !important; }
+  .w2\/3\@alpha, .w4\/6\@alpha {
+    width: 66.6666666667% !important; }
+  .w1\/4\@alpha {
+    width: 25% !important; }
+  .w3\/4\@alpha {
+    width: 75% !important; }
+  .w1\/5\@alpha {
+    width: 20% !important; }
+  .w2\/5\@alpha {
+    width: 40% !important; }
+  .w3\/5\@alpha {
+    width: 60% !important; }
+  .w4\/5\@alpha {
+    width: 80% !important; }
+  .w1\/6\@alpha {
+    width: 16.6666666667% !important; }
+  .w5\/6\@alpha {
+    width: 83.3333333333% !important; } }
+
+@media screen and (min-width: 780px) {
+  * + .layout__unit.w1\/1\@bravo, * + .layout__unit.w2\/2\@bravo, * + .layout__unit.w3\/3\@bravo, * + .layout__unit.w4\/4\@bravo, * + .layout__unit.w5\/5\@bravo, * + .layout__unit.w6\/6\@bravo, * + .layout__unit.w1\/2\@bravo, * + .layout__unit.w2\/4\@bravo, * + .layout__unit.w3\/6\@bravo, * + .layout__unit.w1\/3\@bravo, * + .layout__unit.w2\/6\@bravo, * + .layout__unit.w2\/3\@bravo, * + .layout__unit.w4\/6\@bravo, * + .layout__unit.w1\/4\@bravo, * + .layout__unit.w3\/4\@bravo, * + .layout__unit.w1\/5\@bravo, * + .layout__unit.w2\/5\@bravo, * + .layout__unit.w3\/5\@bravo, * + .layout__unit.w4\/5\@bravo, * + .layout__unit.w1\/6\@bravo, * + .layout__unit.w5\/6\@bravo {
+    margin-top: 0; }
+  .w1\/1\@bravo, .w2\/2\@bravo, .w3\/3\@bravo, .w4\/4\@bravo, .w5\/5\@bravo, .w6\/6\@bravo {
+    width: 100% !important; }
+  .w1\/2\@bravo, .w2\/4\@bravo, .w3\/6\@bravo {
+    width: 50% !important; }
+  .w1\/3\@bravo, .w2\/6\@bravo {
+    width: 33.3333333333% !important; }
+  .w2\/3\@bravo, .w4\/6\@bravo {
+    width: 66.6666666667% !important; }
+  .w1\/4\@bravo {
+    width: 25% !important; }
+  .w3\/4\@bravo {
+    width: 75% !important; }
+  .w1\/5\@bravo {
+    width: 20% !important; }
+  .w2\/5\@bravo {
+    width: 40% !important; }
+  .w3\/5\@bravo {
+    width: 60% !important; }
+  .w4\/5\@bravo {
+    width: 80% !important; }
+  .w1\/6\@bravo {
+    width: 16.6666666667% !important; }
+  .w5\/6\@bravo {
+    width: 83.3333333333% !important; } }
+
+@media screen and (min-width: 1240px) {
+  * + .layout__unit.w1\/1\@charlie, * + .layout__unit.w2\/2\@charlie, * + .layout__unit.w3\/3\@charlie, * + .layout__unit.w4\/4\@charlie, * + .layout__unit.w5\/5\@charlie, * + .layout__unit.w6\/6\@charlie, * + .layout__unit.w1\/2\@charlie, * + .layout__unit.w2\/4\@charlie, * + .layout__unit.w3\/6\@charlie, * + .layout__unit.w1\/3\@charlie, * + .layout__unit.w2\/6\@charlie, * + .layout__unit.w2\/3\@charlie, * + .layout__unit.w4\/6\@charlie, * + .layout__unit.w1\/4\@charlie, * + .layout__unit.w3\/4\@charlie, * + .layout__unit.w1\/5\@charlie, * + .layout__unit.w2\/5\@charlie, * + .layout__unit.w3\/5\@charlie, * + .layout__unit.w4\/5\@charlie, * + .layout__unit.w1\/6\@charlie, * + .layout__unit.w5\/6\@charlie {
+    margin-top: 0; }
+  .w1\/1\@charlie, .w2\/2\@charlie, .w3\/3\@charlie, .w4\/4\@charlie, .w5\/5\@charlie, .w6\/6\@charlie {
+    width: 100% !important; }
+  .w1\/2\@charlie, .w2\/4\@charlie, .w3\/6\@charlie {
+    width: 50% !important; }
+  .w1\/3\@charlie, .w2\/6\@charlie {
+    width: 33.3333333333% !important; }
+  .w2\/3\@charlie, .w4\/6\@charlie {
+    width: 66.6666666667% !important; }
+  .w1\/4\@charlie {
+    width: 25% !important; }
+  .w3\/4\@charlie {
+    width: 75% !important; }
+  .w1\/5\@charlie {
+    width: 20% !important; }
+  .w2\/5\@charlie {
+    width: 40% !important; }
+  .w3\/5\@charlie {
+    width: 60% !important; }
+  .w4\/5\@charlie {
+    width: 80% !important; }
+  .w1\/6\@charlie {
+    width: 16.6666666667% !important; }
+  .w5\/6\@charlie {
+    width: 83.3333333333% !important; } }
+
+@media screen and (min-width: 780px) and (max-height: 740px) {
+  * + .layout__unit.w1\/1\@short, * + .layout__unit.w2\/2\@short, * + .layout__unit.w3\/3\@short, * + .layout__unit.w4\/4\@short, * + .layout__unit.w5\/5\@short, * + .layout__unit.w6\/6\@short, * + .layout__unit.w1\/2\@short, * + .layout__unit.w2\/4\@short, * + .layout__unit.w3\/6\@short, * + .layout__unit.w1\/3\@short, * + .layout__unit.w2\/6\@short, * + .layout__unit.w2\/3\@short, * + .layout__unit.w4\/6\@short, * + .layout__unit.w1\/4\@short, * + .layout__unit.w3\/4\@short, * + .layout__unit.w1\/5\@short, * + .layout__unit.w2\/5\@short, * + .layout__unit.w3\/5\@short, * + .layout__unit.w4\/5\@short, * + .layout__unit.w1\/6\@short, * + .layout__unit.w5\/6\@short {
+    margin-top: 0; }
+  .w1\/1\@short, .w2\/2\@short, .w3\/3\@short, .w4\/4\@short, .w5\/5\@short, .w6\/6\@short {
+    width: 100% !important; }
+  .w1\/2\@short, .w2\/4\@short, .w3\/6\@short {
+    width: 50% !important; }
+  .w1\/3\@short, .w2\/6\@short {
+    width: 33.3333333333% !important; }
+  .w2\/3\@short, .w4\/6\@short {
+    width: 66.6666666667% !important; }
+  .w1\/4\@short {
+    width: 25% !important; }
+  .w3\/4\@short {
+    width: 75% !important; }
+  .w1\/5\@short {
+    width: 20% !important; }
+  .w2\/5\@short {
+    width: 40% !important; }
+  .w3\/5\@short {
+    width: 60% !important; }
+  .w4\/5\@short {
+    width: 80% !important; }
+  .w1\/6\@short {
+    width: 16.6666666667% !important; }
+  .w5\/6\@short {
+    width: 83.3333333333% !important; } }
+
+/**
+ * Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both; }
+
+html /deep/ .hidden {
+  display: none !important; }
+  html /deep/ * + .hidden {
+    margin-top: 0; }
+  html /deep/ .hidden:first-child + * {
+    margin-top: 0; }
+
+html /deep/ .invisible {
+  height: 0 !important;
+  width: 0 !important;
+  position: absolute !important;
+  visibility: hidden !important; }
+  html /deep/ * + .invisible {
+    margin-top: 0; }
+  html /deep/ .invisible:first-child + * {
+    margin-top: 0; }
+
+@media screen and (max-width: 560px) {
+  .visible\@alpha {
+    display: none !important; }
+    * + .visible\@alpha {
+      margin-top: 0; }
+    .visible\@alpha:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (min-width: 560px) {
+  .hidden\@alpha {
+    display: none !important; }
+    * + .hidden\@alpha {
+      margin-top: 0; }
+    .hidden\@alpha:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (max-width: 780px) {
+  .visible\@bravo {
+    display: none !important; }
+    * + .visible\@bravo {
+      margin-top: 0; }
+    .visible\@bravo:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (min-width: 780px) {
+  .hidden\@bravo {
+    display: none !important; }
+    * + .hidden\@bravo {
+      margin-top: 0; }
+    .hidden\@bravo:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (max-width: 1240px) {
+  .visible\@charlie {
+    display: none !important; }
+    * + .visible\@charlie {
+      margin-top: 0; }
+    .visible\@charlie:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (min-width: 1240px) {
+  .hidden\@charlie {
+    display: none !important; }
+    * + .hidden\@charlie {
+      margin-top: 0; }
+    .hidden\@charlie:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (max-width: 780px) and (min-height: 740px) {
+  .visible\@short {
+    display: none !important; }
+    * + .visible\@short {
+      margin-top: 0; }
+    .visible\@short:first-child + * {
+      margin-top: 0; } }
+
+@media screen and (min-width: 780px) and (max-height: 740px) {
+  .hidden\@short {
+    display: none !important; }
+    * + .hidden\@short {
+      margin-top: 0; }
+    .hidden\@short:first-child + * {
+      margin-top: 0; } }
+
+</style>
+</template>
+</dom-module>

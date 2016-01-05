@@ -1,33 +1,7 @@
 // Barvian.me
 // ==========
 
-@import "normalize-css/normalize";
-@import "animate.css/animate";
-@import "modular-scale/stylesheets/modular-scale";
-@import "quantity-queries/stylesheets/quantity-queries";
-@import "SassyLists/stylesheets/SassyLists";
-
-// Tools
-// -----
-//
-// Any reusable mixins or helper classes that aren't object-specific.
-// Examples:
-//  * Color functions
-//  * Number functions
-//  * Spacing mixins
-//
-@import "tools";
-
-
-// Settings
-// --------
-//
-// Any helper variables that are Sass-specific (and/or not appropriate for the
-// package manager).  Examples:
-//  * Media query lists
-//
-@import "settings";
-
+@import "shared";
 
 // Base
 // ----
@@ -40,17 +14,6 @@
 //  * Lists
 //
 @import "base";
-
-// Objects
-// -------
-//
-// Objects are reusable BEM-style classes that describe site
-// components. Examples:
-//  * Header/footer
-//  * Tabs
-//  * Pods/modules
-//
-@import "objects";
 
 // Utilities
 // ---------

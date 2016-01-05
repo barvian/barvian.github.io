@@ -4,7 +4,7 @@
 title: Maxwell Barvian
 email: max@barvian.me
 url: http://barvian.me
-description: Web designer, front-end developer
+description: Portfolio of Maxwell Barvian, digital product designer
 keywords:
   - designer
   - web designer
@@ -36,7 +36,7 @@ includes_dir: _includes
 
 collections:
   projects:
-    output: true
+    output: false
     permalink: /:path/
 
 

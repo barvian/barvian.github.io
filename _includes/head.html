@@ -8,11 +8,16 @@
 
   <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl | prepend: site.url }}">
 
+  <!-- Vendor -->
   <script src="{{ '/public/scripts/vendor/modernizr-custom.min.js' | prepend: site.baseurl }}"></script>
   <script src="{{ '/public/scripts/vendor/webcomponents-lite.min.js' | prepend: site.baseurl }}"></script>
 
-  <link rel="stylesheet" href="{{ '/public/styles/barvian.css' | prepend: site.baseurl }}">
+  <!-- Styles -->
+  {% include typekit.html %}
+  <link rel="import" href="{{ '/public/styles/barvian-styles.html' | prepend: site.baseurl }}">
+  <style is="custom-style" include="barvian-styles"></style>
 
+  <!-- Elements -->
   <link rel="import" href="{{ '/public/elements/barvian.html' | prepend: site.baseurl }}">
 </head>
 <body unresolved>

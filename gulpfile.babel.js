@@ -36,14 +36,16 @@ gulp.registry(new CommonRegistry({
   elements: {
     base: `${src}/elements`,
     entry: 'barvian.html',
-    dest: [`${dest}/elements`, `${jekyll.destination}/${dest}/elements`]
+    dest: [`${dest}/elements`, `${jekyll.destination}/${dest}/elements`],
+    includePaths: [bower]
   },
 
   styles: {
     src: `${src}/styles/barvian.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
     includePaths: [bower],
-    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`]
+    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],
+    modularize: true
   },
 
   scripts: {
