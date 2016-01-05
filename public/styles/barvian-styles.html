@@ -925,6 +925,11 @@ html {
   font-family: "Soleto", "San Francisco Display", "Avenir", sans-serif;
   font-size: 100%; }
 
+code {
+  color: red;
+  font-size: 12.944px;
+  font-size: 0.8090614887rem; }
+
 * {
   margin-top: 0;
   margin-bottom: 0; }
@@ -1100,21 +1105,21 @@ html {
   display: table;
   clear: both; }
 
-html /deep/ .hidden {
+.hidden {
   display: none !important; }
-  html /deep/ * + .hidden {
+  * + .hidden {
     margin-top: 0; }
-  html /deep/ .hidden:first-child + * {
+  .hidden:first-child + * {
     margin-top: 0; }
 
-html /deep/ .invisible {
+.invisible {
   height: 0 !important;
   width: 0 !important;
   position: absolute !important;
   visibility: hidden !important; }
-  html /deep/ * + .invisible {
+  * + .invisible {
     margin-top: 0; }
-  html /deep/ .invisible:first-child + * {
+  .invisible:first-child + * {
     margin-top: 0; }
 
 @media screen and (max-width: 560px) {

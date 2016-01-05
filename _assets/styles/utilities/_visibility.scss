@@ -1,11 +1,11 @@
 // Visibility
 // ==========
 
-html /deep/ .hidden {
+.hidden {
   @include hidden;
 }
 
-html /deep/ .invisible {
+.invisible {
   height: 0 !important;
   width: 0 !important;
   position: absolute !important;

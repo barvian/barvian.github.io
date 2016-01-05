@@ -1,6 +1,6 @@
 ---
 title: About
-published: false
+order: 0
 ---
 
-Coming soon.
+Coming soon. Here's [Google](http://google.com).

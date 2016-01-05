@@ -1,14 +1,20 @@
 ---
 layout: default
 ---
-<article class="post">
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-  </header>
+{% comment %}
+  For deep-linking we need every page to be exactly the same.
+  JavaScript will configure the route based on the URL.
+{% endcomment %}
 
-  <div class="post-content">
-    {{ content }}
-  </div>
-
-</article>
+{% assign pages = site.pages | sort: 'order' %}
+<template is="dom-bind" id="app">
+  <iron-pages attr-for-selected="data-route" selected="{{route}}">
+    {% for page in pages %}
+      <section data-route="{{ page.url }}">
+        {{ page.content }}
+      </section>
+    {% endfor %}
+    </section>
+  </iron-pages>
+</template>

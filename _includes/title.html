@@ -1,0 +1,10 @@
+{% capture title %}
+  {% if page.layout == 'work' %}
+    "{{ page.title }}", by {{ site.name }}
+  {% elsif page.url == '/' %}
+    {{ site.name }}, {{ site.title }}
+  {% else %}
+    {{ page.title }} {{ site.name }}
+  {% endif %}
+{% endcapture %}
+<title>{{ title | strip }}</title>
