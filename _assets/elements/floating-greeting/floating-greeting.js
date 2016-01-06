@@ -6,7 +6,6 @@ Polymer({
 
   ready: function() {
     this._splitCharacters(this);
-    console.log(this);
   },
 
   _splitCharacters(parent) {

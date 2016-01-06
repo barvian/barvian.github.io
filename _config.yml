@@ -5,6 +5,7 @@ name: Maxwell Barvian
 title: Digital product designer
 email: max@barvian.me
 url: http://barvian.me
+baseurl: ''
 keywords:
   - designer
   - web designer
@@ -43,14 +44,13 @@ collections:
 # Build settings
 # --------------
 
-exclude: [
-  'node_modules',
-  'gulpfile.*',
-  'package.json',
-  'CNAME',
-  'bower.json',
-  'README.md'
-]
+exclude:
+  - node_modules
+  - gulpfile.*
+  - package.json
+  - CNAME
+  - bower.json
+  - README.md
 markdown: kramdown
 permalink: pretty
 

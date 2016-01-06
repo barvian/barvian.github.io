@@ -8047,8 +8047,7 @@ Polymer({
   is: 'floating-greeting', 
 
   ready: function ready() {
-    this._splitCharacters(this);
-    console.log(this);}, 
+    this._splitCharacters(this);}, 
 
 
   _splitCharacters: function _splitCharacters(parent) {var _this = this;

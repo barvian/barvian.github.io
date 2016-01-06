@@ -5,13 +5,13 @@
     "picturefill": "~2.3.1",
     "enquire": "~2.1.2",
     "modular-scale": "~2.1.1",
-    "polymer": "Polymer/polymer#~1.2.3",
-    "iron-elements": "PolymerElements/iron-elements#~1.0.7",
-    "neon-elements": "PolymerElements/neon-elements#~1.0.0",
+    "polymer": "polymer/polymer#~1.2.3",
+    "iron-pages": "polymerelements/iron-pages#~1.0.5",
+    "iron-selector": "polymerelements/iron-selector#~1.0.8",
+    "neon-animation": "polymerelements/neon-animation#~1.0.8",
     "page": "visionmedia/page.js#~1.6.4",
     "quantity-queries": "~0.4.0",
-    "SassyLists": "~2.2.4",
-    "neon-animation": "PolymerElements/neon-animation#~1.0.8"
+    "SassyLists": "~2.2.4"
   },
   "devDependencies": {
     "web-component-tester": "~4.0.3"

@@ -3,11 +3,13 @@
     "browser": true
   },
   "globals": {
-    "Polymer": true
+    "Polymer": true,
+    "app": true
   },
   "rules": {
     "new-cap": [2, {
       "capIsNewExceptions": ["Polymer"]
-    }]
+    }],
+    "require-jsdoc": 0
   }
 }
