@@ -2,26 +2,5 @@
 // ==========
 
 @import "shared";
-
-// Base
-// ----
-//
-// All tag-level or typographic styling.  Will be easily
-// overridden by object or utility styles. Examples:
-//  * Resets/normalize
-//  * Headings
-//  * Links
-//  * Lists
-//
 @import "base";
-
-// Utilities
-// ---------
-//
-// Utilities are non-object helper classes that usually
-// override any object styles for quick fixes. Examples:
-//  * Clearfix
-//  * Right/left floats
-//  * Breakpoint show/hides
-//
 @import "utilities";

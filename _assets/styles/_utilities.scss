@@ -1,5 +1,12 @@
 // Utilities
 // =========
+//
+// Utilities are non-object helper classes that usually
+// override any object styles for quick fixes. Examples:
+//  * Clearfix
+//  * Right/left floats
+//  * Breakpoint show/hides
+//
 
 @import "utilities/floats";
 @import "utilities/widths";

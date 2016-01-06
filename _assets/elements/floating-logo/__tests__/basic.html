@@ -1,29 +1,29 @@
 <!doctype html>
 <html>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>floating-greeting-basic</title>
+  <title>floating-logo-basic</title>
 
   <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
   <script src="../../../bower_components/web-component-tester/browser.js"></script>
 
   <!-- Import the element to test -->
-  <link rel="import" href="../floating-greeting.html">
+  <link rel="import" href="../floating-logo.html">
 
   <test-fixture id="empty">
     <template>
-      <floating-greeting></floating-greeting>
+      <floating-logo></floating-logo>
     </template>
   </test-fixture>
 
   <script>
     /* eslint-disable no-undef */
-    suite('floating-greeting tests', () => {
-      let greeting;
+    suite('floating-logo tests', () => {
+      let logo;
       setup(() => {
-        greeting = fixture('basic');
+        logo = fixture('basic');
       });
       test('empty', () => {
-        assert.equal(greeting.textContent, '');
+        assert.equal(logo.textContent, '');
       });
     });
   </script>

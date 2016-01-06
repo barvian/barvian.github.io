@@ -5,6 +5,9 @@
 // ----
 
 html {
+  &, body {
+    background: $bg;
+  }
   color: $base;
   line-height: strip-units(ms(3));
   text-rendering: optimizeLegibility;

@@ -8044,7 +8044,14 @@ Polymer({
 // ===========
 
 Polymer({ 
+  is: 'floating-logo', 
+  extends: 'a' });
+'use strict'; // My greeting
+// ===========
+
+Polymer({ 
   is: 'floating-greeting', 
+  extends: 'a', 
 
   ready: function ready() {
     this._splitCharacters(this);}, 

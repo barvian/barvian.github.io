@@ -1,0 +1,30 @@
+@import "../../styles/shared";
+
+:host {
+  @extend %ui;
+  @include compact;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: size(giant);
+  position: relative;
+  width: size(giant);
+
+  span {
+    color: $bg;
+
+    @include font($sans, $weight: bold, $size: large);
+    position: relative;
+  }
+}
+
+svg {
+  fill: $invert;
+  filter: drop-shadow(0 10px 20px rgba($base, 0.4));
+  left: 0;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  width: 100%;
+}

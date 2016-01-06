@@ -1,5 +1,16 @@
 // Tools
 // =====
+//
+// Any reusable mixins or helper classes that aren't object-specific.
+// Examples:
+//  * Color functions
+//  * Number functions
+//  * Spacing mixins
+//
+
+@import "modular-scale/stylesheets/modular-scale";
+@import "quantity-queries/stylesheets/quantity-queries";
+@import "SassyLists/stylesheets/SassyLists";
 
 @import "tools/strings";
 @import "tools/colors";

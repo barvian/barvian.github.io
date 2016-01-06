@@ -1,35 +1,30 @@
 @import "../../styles/shared";
 
-@keyframes 'charUp' {
-  from {
-    opacity: 0;
-    top: 0.85em;
-    transform: rotate(-10deg);
-  }
-  to {
-    opacity: 1;
-    top: 0;
-  }
-}
-
 :host {
   @extend %callout;
-  @include font($sans, $size: big);
+  @extend %unstyled-link;
 
-  /deep/ .sentence {
-    @include horizontal(0);
+  display: block;
+  max-width: $line;
+  text-align: center;
 
-    .ch {
+  > ::content {
+    .sentence {
+      @include compact;
 
-      position: relative;
+      > .ch {
+        position: relative;
+      }
     }
 
-    &.animated {
-      @for $c from 1 through 100 {
-        > .ch:nth-child(#{$c}) {
-          animation: 'charUp' 0.5s ease-in-out 10ms*$c 1 normal both;
-        }
-      }
+    mark {
+      background: $primary;
+      box-shadow:
+        0.25em 0 0 $primary, -0.25em 0 0 $primary;
+      margin-left: 0.25em;
+      margin-right: 0.25em;
+      color: #fff;
+      text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.35em 0.7em rgba($base, 0.4);
     }
   }
 }

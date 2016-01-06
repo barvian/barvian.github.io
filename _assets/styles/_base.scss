@@ -1,5 +1,13 @@
 // Base
 // ====
+//
+// All tag-level or typographic styling.  Will be easily
+// overridden by object or utility styles. Examples:
+//  * Resets/normalize
+//  * Headings
+//  * Links
+//  * Lists
+//
 
 @import "base/box-sizing";
 @import "base/type";

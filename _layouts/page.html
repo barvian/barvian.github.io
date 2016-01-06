@@ -9,6 +9,7 @@ layout: default
 
 {% assign pages = site.pages | sort: 'order' %}
 <template is="dom-bind" id="app">
+  <a is="floating-logo" href="{{ '/' | prepend: site.baseurl }}">mb</a>
   <iron-pages attr-for-selected="data-route" selected="[[route]]">
     {% for page in pages %}
       <section data-route="{{ page.url }}">
@@ -17,3 +18,6 @@ layout: default
     {% endfor %}
   </iron-pages>
 </template>
+
+<!-- Fallback -->
+{% include noscript.html %}

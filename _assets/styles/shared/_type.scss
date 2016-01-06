@@ -1,0 +1,81 @@
+// Type
+// ====
+
+// Headings
+// --------
+//
+// Limit properties to the same in each heading style, and add extra embellishments
+// elsewhere.  This way, styles can be interchanged and overriden easily
+// regardless of HTML tag.
+//
+
+// This hidden class can be used to target all
+// headings in an element
+%heading {
+  line-height: strip-units(size(medium));
+}
+
+%title {
+  @extend %heading;
+
+  letter-spacing: 0;
+  text-transform: none;
+
+  @include font($sans, $size: xxlarge, $style: normal, $weight: bold);
+}
+
+%callout {
+  @extend %heading;
+
+  letter-spacing: 0;
+  text-transform: none;
+
+  @include font($sans, $size: big, $style: normal, $weight: normal);
+}
+
+%sidekick {
+  @extend %heading;
+
+  @include font($sans, $size: ms(2), $style: normal, $weight: medium);
+}
+
+%shrimp {
+  @extend %heading;
+
+  letter-spacing: 0;
+  text-transform: none;
+
+  @include font($sans, $size: medium, $style: normal, $weight: bold);
+}
+
+%label {
+  @extend %heading;
+  @extend %uppercase;
+
+  @include font($sans, $size: base, $style: normal, $weight: semibold);
+}
+
+// Misc
+// ----
+
+%ui {
+  &:not(a):not(input):not(button) {
+    cursor: default;
+  }
+  user-select: none;
+}
+
+%uppercase {
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+%small {
+  font-size: size(small);
+}
+
+%caption {
+  @extend %small;
+
+  @include font($sans, $style: italic);
+}
