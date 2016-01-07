@@ -1,9 +1,8 @@
-// My greeting
-// ===========
+// Floating greeting
+// =================
 
 Polymer({
   is: 'floating-greeting',
-  extends: 'a',
 
   ready: function() {
     this._splitCharacters(this);

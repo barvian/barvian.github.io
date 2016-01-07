@@ -1902,6 +1902,10 @@ window.addEventListener('WebComponentsReady', function () {
     app.route = '/about/';});
 
 
+  (0, _page2.default)('/contact/', function () {
+    app.route = '/contact/';});
+
+
   (0, _page2.default)({ 
     hashbang: false });});
 

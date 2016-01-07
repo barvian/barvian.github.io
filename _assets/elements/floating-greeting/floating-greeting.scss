@@ -2,13 +2,27 @@
 
 :host {
   @extend %callout;
-  @extend %unstyled-link;
 
   display: block;
   max-width: $line;
   text-align: center;
 
   > ::content {
+    a {
+      @extend %unstyled-link;
+
+      display: inline-block;
+      transition: all 250ms $ease-out-back;
+
+      @include attention {
+        text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.35em 0.7em rgba($base, 0.4);
+        transform: scale(1.1);
+      }
+      @include pressed {
+        transform: scale(0.95);
+      }
+    }
+
     .sentence {
       @include compact;
 
@@ -17,14 +31,13 @@
       }
     }
 
-    mark {
+    .highlight, mark {
       background: $primary;
       box-shadow:
         0.25em 0 0 $primary, -0.25em 0 0 $primary;
       margin-left: 0.25em;
       margin-right: 0.25em;
       color: #fff;
-      text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.35em 0.7em rgba($base, 0.4);
     }
   }
 }

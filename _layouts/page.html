@@ -2,18 +2,29 @@
 layout: default
 ---
 
+<link rel="import" href="{{ '/public/styles/app-styles.html' | prepend: site.baseurl }}" />
+
 {% comment %}
-  For deep-linking we need every page to be exactly the same.
-  JavaScript will configure the route based on the URL.
+  For deep-linking we need every page to be exactly the same,
+  so no {{ content }}. JavaScript will configure the route
+  based on the URL.
 {% endcomment %}
 
 {% assign pages = site.pages | sort: 'order' %}
 <template is="dom-bind" id="app">
+  <style is="custom-style" include="app-styles"></style>
+
   <a is="floating-logo" href="{{ '/' | prepend: site.baseurl }}">mb</a>
   <iron-pages attr-for-selected="data-route" selected="[[route]]">
     {% for page in pages %}
       <section data-route="{{ page.url }}">
-        {{ page.content }}
+        {% comment %}
+          Jekyll doesn't like interpolating when rendering a page's
+          content externally, so do all post-processing here.
+        {% endcomment %}
+
+        {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}
+        {{ page.content | replace: 'href="/', baseHref }}
       </section>
     {% endfor %}
   </iron-pages>

@@ -1,5 +1,5 @@
-// My greeting
-// ===========
+// Floating logo
+// =============
 
 Polymer({
   is: 'floating-logo',

@@ -64,6 +64,9 @@
   }
   user-select: none;
 }
+a%ui {
+  @extend %unstyled-link;
+}
 
 %uppercase {
   letter-spacing: 0.07em;

@@ -11,6 +11,18 @@
   position: relative;
   width: size(giant);
 
+  @extend %unstyled-link;
+
+  transition: all 250ms $ease-out-back;
+
+  @include attention {
+    text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.35em 0.7em rgba($base, 0.4);
+    transform: scale(1.1);
+  }
+  @include pressed {
+    transform: scale(0.95);
+  }
+
   span {
     color: $bg;
 

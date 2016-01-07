@@ -41,7 +41,7 @@ gulp.registry(new CommonRegistry({
   },
 
   styles: {
-    src: `${src}/styles/barvian.scss`,
+    src: `${src}/styles/{app,barvian}.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
     includePaths: [bower],
     dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],

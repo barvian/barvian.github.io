@@ -1,6 +1,49 @@
 // Links
 // =====
 
+@mixin attention($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin pressed($self: false) {
+  @if $self {
+    &,
+    &:active {
+      @content;
+    }
+  } @else {
+    &:active {
+      @content;
+    }
+  }
+}
+
+@mixin disabled($self: false) {
+  @if $self {
+    &,
+    &[disabled],
+    &.is-disabled {
+      @content;
+    }
+  } @else {
+    &[disabled],
+    &.is-disabled {
+      @content;
+    }
+  }
+}
+
 %unstyled-link {
   color: inherit;
   text-decoration: none;

@@ -32,6 +32,10 @@ window.addEventListener('WebComponentsReady', () => {
     app.route = '/about/';
   });
 
+  page('/contact/', function() {
+    app.route = '/contact/';
+  });
+
   page({
     hashbang: false
   });

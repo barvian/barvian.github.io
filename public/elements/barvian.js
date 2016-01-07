@@ -8040,18 +8040,17 @@ Polymer({
       this.async(this.notifyResize);
     }
   });
-'use strict'; // My greeting
-// ===========
+'use strict'; // Floating logo
+// =============
 
 Polymer({ 
   is: 'floating-logo', 
   extends: 'a' });
-'use strict'; // My greeting
-// ===========
+'use strict'; // Floating greeting
+// =================
 
 Polymer({ 
   is: 'floating-greeting', 
-  extends: 'a', 
 
   ready: function ready() {
     this._splitCharacters(this);}, 
