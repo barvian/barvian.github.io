@@ -33,12 +33,22 @@ gulp.registry(new CommonRegistry({
     }
   },
 
+  copy: {
+    src: [
+      `${bower}/webcomponentsjs/webcomponents-lite.min.js`,
+      `${src}/${vendor}/modernizr*.js`
+    ],
+    dest: [`${dest}/${vendor}`, `${jekyll.destination}/${dest}/${vendor}`]
+  },
+
   elements: {
     base: `${src}/elements`,
     entry: 'barvian.html',
     dest: [`${dest}/elements`, `${jekyll.destination}/${dest}/elements`],
     includePaths: [bower]
   },
+
+  jekyll: true,
 
   styles: {
     src: `${src}/styles/{app,barvian}.scss`,
@@ -59,14 +69,6 @@ gulp.registry(new CommonRegistry({
     dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`]
   },
 
-  copy: {
-    base: src,
-    src: [
-      `${vendor}/modernizr*.js`
-    ],
-    dest: [dest, `${jekyll.destination}/${dest}`]
-  },
-
   fonts: {
     src: `${src}/fonts/**/*`,
     dest: [`${dest}/fonts`, `${jekyll.destination}/${dest}/fonts`]
@@ -82,18 +84,6 @@ gulp.registry(new CommonRegistry({
     dest: jekyll.includes_dir
   }
 }));
-
-gulp.task('components:build', () => {
-  return gulp.src([
-    `${bower}/webcomponentsjs/webcomponents-lite.min.js`
-  ]).pipe(gulp.dest(`${dest}/${vendor}`));
-});
-
-gulp.task('components:clean', () => {
-  return del([
-    `${dest}/${vendor}/webcomponents-lite.min.js`
-  ]);
-});
 
 gulp.task('jekyll', done => {
   cp.spawn('jekyll', ['build', '-I', '--no-watch', '--config', config],

@@ -16,6 +16,19 @@
   }
 }
 
+@mixin inattention($self: false) {
+  @if $self {
+    &,
+    &:not(:hover):not(:focus) {
+      @content;
+    }
+  } @else {
+    &:not(:hover):not(:focus) {
+      @content;
+    }
+  }
+}
+
 @mixin pressed($self: false) {
   @if $self {
     &,

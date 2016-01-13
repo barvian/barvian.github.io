@@ -11,7 +11,8 @@
     "neon-animation": "polymerelements/neon-animation#~1.0.8",
     "page": "visionmedia/page.js#~1.6.4",
     "quantity-queries": "~0.4.0",
-    "SassyLists": "~2.2.4"
+    "SassyLists": "~2.2.4",
+    "page-title": "~1.0.0"
   },
   "devDependencies": {
     "web-component-tester": "~4.0.3"

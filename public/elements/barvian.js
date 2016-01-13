@@ -8011,6 +8011,90 @@ this.fire('dom-change');
 
   });
 Polymer({
+    is: 'page-title',
+
+    properties: {
+      /**
+       * The base title of your webpage which never changes. Possibly the
+       * name of your application. Optional.
+       *
+       * @type String
+       * @default ''
+       */
+      baseTitle: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * The divider to be used between your base title and title, if a
+       * base title is supplied. Optional.
+       *
+       * @type String
+       * @default ' - '
+       */
+      divider: {
+        type: String,
+        value: '-'
+      },
+
+      /**
+       * The current title of your webpage.
+       *
+       * @type String
+       * @required
+       */
+      title: {
+        type: String
+      },
+
+      /**
+       * The direction your base title and title should be shown.
+       * Defaults to `standard`. Can be one of these values:
+       *
+       *  | Value | Meaning |
+       *  | standard | `baseTitle` comes first. |
+       *  | reversed | `title` comes first. |
+       *
+       * @type String
+       * @default 'standard'
+       */
+      direction: {
+        type: String,
+        value: 'standard'
+      },
+
+      /**
+       * The current title as computed by the element.
+       */
+      computedTitle: {
+        type: String,
+        readOnly: true,
+        notify: true
+      }
+    },
+
+    observers: [
+      '_updatePageTitle(baseTitle, divider, title, direction)'
+    ],
+
+    _updatePageTitle: function(baseTitle, divider, title, direction) {
+      var pieces;
+
+      if (direction == 'standard') {
+        pieces = (baseTitle) ? [baseTitle, title] : [title];
+      } else if (direction == 'reversed') {
+        pieces = (baseTitle) ? [title, baseTitle] : [title];
+      } else {
+        console.warn("page-title - Did not recognize `direction` property.");
+        return;
+      }
+
+      document.title = pieces.join(" " + divider + " ");
+      this._setComputedTitle(document.title);
+    }
+  });
+Polymer({
 
     is: 'iron-pages',
 
@@ -8053,7 +8137,10 @@ Polymer({
   is: 'floating-greeting', 
 
   ready: function ready() {
-    this._splitCharacters(this);}, 
+    this._splitCharacters(this);
+
+    var sentences = this.innerHTML;
+    this.innerHTML = '<div class="content">' + sentences + '</div>';}, 
 
 
   _splitCharacters: function _splitCharacters(parent) {var _this = this;

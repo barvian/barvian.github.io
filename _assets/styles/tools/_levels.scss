@@ -1,0 +1,28 @@
+// Levels
+// ======
+//      __    _______    __________   _____
+//     / /   / ____/ |  / / ____/ /  / ___/
+//    / /   / __/  | | / / __/ / /   \__ \
+//   / /___/ /___  | |/ / /___/ /______/ /
+//  /_____/_____/  |___/_____/_____/____/
+//
+//                      N I C K  J Ø N A S
+
+$perspective: 24rem !default;
+$levels: (
+  0: 0,
+  1: 10px
+) !default;
+
+@function level($level: 0) {
+  @return map-get($levels, $level);
+}
+
+@mixin level($level: 0) {
+  transform: translateZ(level($level));
+}
+
+@mixin surface {
+  perspective: $perspective;
+  perspective-origin: 50% 50%;
+}

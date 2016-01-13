@@ -1,8 +1,64 @@
 @import "shared";
 
-:host {
+// App
+// ===
 
+:root {
+  padding-top: calc(var(--header-padding)*2 + var(--logo-size));
+
+  // Theme
+  // ------
+  --header-padding: 5vh;
+
+  --logo-color: $invert;
+  --logo-size: size(giant);
+
+  @include surface;
 }
 
-[is="floating-logo"] {
+// Nav
+// ---
+
+#nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--header-padding);
+  padding-top: var(--header-padding);
+  position: fixed;
+  top: 0;
+  transform-style: preserve-3d;
+  width: 100%;
+
+  @include compact;
+  @include trailing(0);
+
+  > ul {
+    @extend %unstyled-list;
+
+    align-items: baseline;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+
+    @include compact;
+
+    > li {
+      > a {
+        @extend %unstyled-link;
+
+        @include font($ui);
+      }
+    }
+  }
 }
+
+// Pages
+// -----
+
+#pages {
+  > * {
+    transform-style: preserve-3d;
+  }
+}
+

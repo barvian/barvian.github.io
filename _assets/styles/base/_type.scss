@@ -9,14 +9,18 @@ html {
     background: $bg;
   }
   color: $base;
-  line-height: strip-units(ms(3));
-  text-rendering: optimizeLegibility;
+  line-height: strip-units(size(big));
+  font-feature-settings: "liga" 1, "kern" 1;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   text-size-adjust: none;
 
-  @include font($sans, $size: 100%);
+  @include font($sans, $size: 15px);
+  @include query(tall) {
+    font-size: 17px;
+  }
 }
 
 // Misc

@@ -30,33 +30,18 @@
   letter-spacing: 0;
   text-transform: none;
 
-  @include font($sans, $size: big, $style: normal, $weight: normal);
+  @include font($ui, $size: big, $style: normal, $weight: normal);
 }
 
-%sidekick {
-  @extend %heading;
-
-  @include font($sans, $size: ms(2), $style: normal, $weight: medium);
-}
-
-%shrimp {
-  @extend %heading;
-
-  letter-spacing: 0;
-  text-transform: none;
-
-  @include font($sans, $size: medium, $style: normal, $weight: bold);
-}
-
-%label {
-  @extend %heading;
-  @extend %uppercase;
-
-  @include font($sans, $size: base, $style: normal, $weight: semibold);
-}
 
 // Misc
 // ----
+
+%line {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $line;
+}
 
 %ui {
   &:not(a):not(input):not(button) {

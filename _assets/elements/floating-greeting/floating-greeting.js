@@ -6,6 +6,9 @@ Polymer({
 
   ready: function() {
     this._splitCharacters(this);
+
+    const sentences = this.innerHTML;
+    this.innerHTML = `<div class="content">${sentences}</div>`;
   },
 
   _splitCharacters(parent) {

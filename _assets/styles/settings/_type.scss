@@ -7,16 +7,22 @@ $line: 30em;
 // -----
 
 $ms-base: 1rem;
-$ms-ratio: 1.618,1.236;
+$ms-ratio: 1.618, 1.236;
 
 // Stack
 // -----
 
-$sans: soleto;
+$sans: source;
+$ui: soleto;
 
 $fonts: (
+  source: (
+    stack: ("source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif),
+    weights: (normal: 400, bold: 700),
+    styles: (normal: normal italic, bold: normal italic)
+  ),
   soleto: (
-    stack: ("Soleto", "San Francisco Display", "Avenir", sans-serif),
+    stack: ("soleto", "San Francisco Display", "Avenir", sans-serif),
     weights: (normal: 400, bold: 700),
     styles: (normal: normal, bold: normal)
   )

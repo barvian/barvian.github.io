@@ -1,10 +1,9 @@
 {% capture title %}
-  {% if page.layout == 'work' %}
-    "{{ page.title }}", by {{ site.name }}
-  {% elsif page.url == '/' %}
+  {% if include.page.layout == 'work' %}
+    "{{ include.page.title }}", by {{ site.name }}
+  {% elsif include.page.url == '/' %}
     {{ site.name }}, {{ site.title }}
   {% else %}
-    {{ page.title }} {{ site.name }}
+    {{ include.page.title }} {{ site.name }}
   {% endif %}
-{% endcapture %}
-<title>{{ title | strip }}</title>
+{% endcapture %}{% if include.tag %}<title>{% endif %}{{ title | strip }}{% if include.tag %}</title>{% endif %}

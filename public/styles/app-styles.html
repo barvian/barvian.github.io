@@ -908,6 +908,74 @@
  *
  * @return {List | Null}
  */
+#nav > ul > li > a {
+  color: inherit;
+  text-decoration: none; }
+
+#nav > ul {
+  list-style-type: none;
+  padding-left: 0; }
+
+:root {
+  padding-top: calc(var(--header-padding)*2 + var(--logo-size));
+  --header-padding: 5vh;
+  --logo-color: black;
+  --logo-size: 70.509px;
+  --logo-size: 4.406860421rem;
+  -webkit-perspective: 24rem;
+  perspective: 24rem;
+  -webkit-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%; }
+
+#nav {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-bottom: var(--header-padding);
+  padding-top: var(--header-padding);
+  position: fixed;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  width: 100%; }
+  #nav > * + * {
+    margin-top: 0; }
+  #nav + * {
+    margin-top: 0; }
+  #nav > ul {
+    -webkit-box-align: baseline;
+    -webkit-align-items: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    #nav > ul > * + * {
+      margin-top: 0; }
+    #nav > ul > li > a {
+      font-family: "soleto", "San Francisco Display", "Avenir", sans-serif; }
+
+#pages > * {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
 
 </style>
 </template>

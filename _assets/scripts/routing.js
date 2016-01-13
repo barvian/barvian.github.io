@@ -24,16 +24,9 @@ window.addEventListener('WebComponentsReady', () => {
     next();
   });
 
-  page(app.baseUrl, function() {
-    app.route = '/';
-  });
-
-  page('/about/', function() {
-    app.route = '/about/';
-  });
-
-  page('/contact/', function() {
-    app.route = '/contact/';
+  // Static pages
+  [app.baseUrl, '/about/', '/contact/'].forEach(url => {
+    page(url, () => app.route = url);
   });
 
   page({

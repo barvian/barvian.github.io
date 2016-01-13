@@ -2,38 +2,39 @@
 
 :host {
   @extend %ui;
-  @include compact;
 
+  background-color: var(--logo-color);
+  border-radius: 90%;
+  box-shadow: 0 10px 20px rgba($base, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: size(giant);
+  height: var(--logo-size);
   position: relative;
-  width: size(giant);
+  width: var(--logo-size);
 
-  @extend %unstyled-link;
+  @include compact;
 
   transition: all 250ms $ease-out-back;
 
   @include attention {
     text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.35em 0.7em rgba($base, 0.4);
-    transform: scale(1.1);
+    transform: translateZ(22px);
   }
   @include pressed {
-    transform: scale(0.95);
+    transform: translateZ(-10px);
   }
 
   span {
     color: $bg;
 
-    @include font($sans, $weight: bold, $size: large);
+    @include font($ui, $weight: bold, $size: large);
     position: relative;
   }
 }
 
 svg {
-  fill: $invert;
-  filter: drop-shadow(0 10px 20px rgba($base, 0.4));
+  fill: var(--logo-color);
   left: 0;
   height: 100%;
   top: 0;

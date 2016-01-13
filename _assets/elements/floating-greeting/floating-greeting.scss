@@ -1,25 +1,40 @@
 @import "../../styles/shared";
 
 :host {
+  @extend %line;
   @extend %callout;
 
   display: block;
-  max-width: $line;
   text-align: center;
+  transition: transform 250ms $ease-out-back;
 
-  > ::content {
+  @include attention {
+    transform: translateZ(15px);
+  }
+  @include pressed {
+    transform: translateZ(-10px);
+  }
+
+  > ::content > .content {
+    display: inline;
+
+    @include attention {
+      a {
+        opacity: 0.3;
+
+        @include inattention {
+          transition-duration: 100ms;
+        }
+      }
+    }
+
     a {
       @extend %unstyled-link;
 
-      display: inline-block;
-      transition: all 250ms $ease-out-back;
+      transition: all 200ms linear;
 
       @include attention {
-        text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.35em 0.7em rgba($base, 0.4);
-        transform: scale(1.1);
-      }
-      @include pressed {
-        transform: scale(0.95);
+        opacity: 1;
       }
     }
 
@@ -32,12 +47,12 @@
     }
 
     .highlight, mark {
-      background: $primary;
-      box-shadow:
-        0.25em 0 0 $primary, -0.25em 0 0 $primary;
+      background-color: $primary;
+      box-shadow: 0.25em 0 0 $primary, -0.25em 0 0 $primary;
+      color: #fff;
       margin-left: 0.25em;
       margin-right: 0.25em;
-      color: #fff;
+      text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.3em 0.4em rgba($base, 0.2);
     }
   }
 }

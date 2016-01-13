@@ -2,12 +2,20 @@
 // =======
 
 * {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
 
   @include leading;
 }
 
 body {
   @include leading(0);
+}
+
+style, link {
+  @include trailing(0);
+}
+
+iron-pages {
+  @include compact;
 }

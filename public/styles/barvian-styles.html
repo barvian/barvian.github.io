@@ -914,39 +914,44 @@
 html {
   color: #3b3e55;
   line-height: 1.618;
-  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "liga" 1, "kern" 1;
+  font-feature-settings: "liga" 1, "kern" 1;
   -webkit-font-kerning: normal;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
   text-size-adjust: none;
-  font-family: "Soleto", "San Francisco Display", "Avenir", sans-serif;
-  font-size: 100%; }
+  font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 15px; }
   html, html body {
     background: #fff; }
+  @media screen and (min-width: 780px) and (min-height: 740px) {
+    html {
+      font-size: 17px; } }
 
 code {
   color: red;
-  font-size: 12.944px;
+  font-size: 12.135px;
   font-size: 0.8090614887rem; }
 
 * {
-  margin-top: 0;
-  margin-bottom: 0; }
+  margin: 0;
+  padding: 0; }
   * + * {
-    margin-top: 24.443px;
+    margin-top: 22.915px;
     margin-top: 1.527696rem; }
 
 * + body {
   margin-top: 0; }
 
-.left {
-  float: left !important; }
+style + *, link + * {
+  margin-top: 0; }
 
-.right {
-  float: right !important; }
+iron-pages > * + * {
+  margin-top: 0; }
 
 * + .layout__unit.w1\/1, * + .layout__unit.w2\/2, * + .layout__unit.w3\/3, * + .layout__unit.w4\/4, * + .layout__unit.w5\/5, * + .layout__unit.w6\/6, * + .layout__unit.w1\/2, * + .layout__unit.w2\/4, * + .layout__unit.w3\/6, * + .layout__unit.w1\/3, * + .layout__unit.w2\/6, * + .layout__unit.w2\/3, * + .layout__unit.w4\/6, * + .layout__unit.w1\/4, * + .layout__unit.w3\/4, * + .layout__unit.w1\/5, * + .layout__unit.w2\/5, * + .layout__unit.w3\/5, * + .layout__unit.w4\/5, * + .layout__unit.w1\/6, * + .layout__unit.w5\/6 {
   margin-top: 0; }
@@ -1071,41 +1076,33 @@ code {
   .w5\/6\@charlie {
     width: 83.3333333333% !important; } }
 
-@media screen and (min-width: 780px) and (max-height: 740px) {
-  * + .layout__unit.w1\/1\@short, * + .layout__unit.w2\/2\@short, * + .layout__unit.w3\/3\@short, * + .layout__unit.w4\/4\@short, * + .layout__unit.w5\/5\@short, * + .layout__unit.w6\/6\@short, * + .layout__unit.w1\/2\@short, * + .layout__unit.w2\/4\@short, * + .layout__unit.w3\/6\@short, * + .layout__unit.w1\/3\@short, * + .layout__unit.w2\/6\@short, * + .layout__unit.w2\/3\@short, * + .layout__unit.w4\/6\@short, * + .layout__unit.w1\/4\@short, * + .layout__unit.w3\/4\@short, * + .layout__unit.w1\/5\@short, * + .layout__unit.w2\/5\@short, * + .layout__unit.w3\/5\@short, * + .layout__unit.w4\/5\@short, * + .layout__unit.w1\/6\@short, * + .layout__unit.w5\/6\@short {
+@media screen and (min-width: 780px) and (min-height: 740px) {
+  * + .layout__unit.w1\/1\@tall, * + .layout__unit.w2\/2\@tall, * + .layout__unit.w3\/3\@tall, * + .layout__unit.w4\/4\@tall, * + .layout__unit.w5\/5\@tall, * + .layout__unit.w6\/6\@tall, * + .layout__unit.w1\/2\@tall, * + .layout__unit.w2\/4\@tall, * + .layout__unit.w3\/6\@tall, * + .layout__unit.w1\/3\@tall, * + .layout__unit.w2\/6\@tall, * + .layout__unit.w2\/3\@tall, * + .layout__unit.w4\/6\@tall, * + .layout__unit.w1\/4\@tall, * + .layout__unit.w3\/4\@tall, * + .layout__unit.w1\/5\@tall, * + .layout__unit.w2\/5\@tall, * + .layout__unit.w3\/5\@tall, * + .layout__unit.w4\/5\@tall, * + .layout__unit.w1\/6\@tall, * + .layout__unit.w5\/6\@tall {
     margin-top: 0; }
-  .w1\/1\@short, .w2\/2\@short, .w3\/3\@short, .w4\/4\@short, .w5\/5\@short, .w6\/6\@short {
+  .w1\/1\@tall, .w2\/2\@tall, .w3\/3\@tall, .w4\/4\@tall, .w5\/5\@tall, .w6\/6\@tall {
     width: 100% !important; }
-  .w1\/2\@short, .w2\/4\@short, .w3\/6\@short {
+  .w1\/2\@tall, .w2\/4\@tall, .w3\/6\@tall {
     width: 50% !important; }
-  .w1\/3\@short, .w2\/6\@short {
+  .w1\/3\@tall, .w2\/6\@tall {
     width: 33.3333333333% !important; }
-  .w2\/3\@short, .w4\/6\@short {
+  .w2\/3\@tall, .w4\/6\@tall {
     width: 66.6666666667% !important; }
-  .w1\/4\@short {
+  .w1\/4\@tall {
     width: 25% !important; }
-  .w3\/4\@short {
+  .w3\/4\@tall {
     width: 75% !important; }
-  .w1\/5\@short {
+  .w1\/5\@tall {
     width: 20% !important; }
-  .w2\/5\@short {
+  .w2\/5\@tall {
     width: 40% !important; }
-  .w3\/5\@short {
+  .w3\/5\@tall {
     width: 60% !important; }
-  .w4\/5\@short {
+  .w4\/5\@tall {
     width: 80% !important; }
-  .w1\/6\@short {
+  .w1\/6\@tall {
     width: 16.6666666667% !important; }
-  .w5\/6\@short {
+  .w5\/6\@tall {
     width: 83.3333333333% !important; } }
-
-/**
- * Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
- */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both; }
 
 .hidden {
   display: none !important; }
@@ -1172,20 +1169,20 @@ code {
     .hidden\@charlie:first-child + * {
       margin-top: 0; } }
 
-@media screen and (max-width: 780px) and (min-height: 740px) {
-  .visible\@short {
+@media screen and (max-width: 780px) and (max-height: 740px) {
+  .visible\@tall {
     display: none !important; }
-    * + .visible\@short {
+    * + .visible\@tall {
       margin-top: 0; }
-    .visible\@short:first-child + * {
+    .visible\@tall:first-child + * {
       margin-top: 0; } }
 
-@media screen and (min-width: 780px) and (max-height: 740px) {
-  .hidden\@short {
+@media screen and (min-width: 780px) and (min-height: 740px) {
+  .hidden\@tall {
     display: none !important; }
-    * + .hidden\@short {
+    * + .hidden\@tall {
       margin-top: 0; }
-    .hidden\@short:first-child + * {
+    .hidden\@tall:first-child + * {
       margin-top: 0; } }
 
 </style>
