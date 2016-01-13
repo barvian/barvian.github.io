@@ -12,7 +12,7 @@ body {
   @include leading(0);
 }
 
-style, link {
+style, link, page-title {
   @include trailing(0);
 }
 
