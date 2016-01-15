@@ -8732,11 +8732,27 @@ Polymer.PageBehavior = {
   })
 
 })();
+'use strict'; // About page
+// ==========
+
+Polymer({ 
+  is: 'about-page', 
+
+  behaviors: [
+  Polymer.PageBehavior] });
 'use strict'; // Work page
 // =========
 
 Polymer({ 
   is: 'work-page', 
+
+  behaviors: [
+  Polymer.PageBehavior] });
+'use strict'; // Contact page
+// ============
+
+Polymer({ 
+  is: 'contact-page', 
 
   behaviors: [
   Polymer.PageBehavior] });
