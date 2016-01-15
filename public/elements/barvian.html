@@ -1932,6 +1932,20 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
+:host {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
 
 </style>
 </template>
@@ -3809,14 +3823,26 @@ a:host {
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   width: var(--logo-size);
-  -webkit-transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333);
-  transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333); }
+  -webkit-transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333);
+  transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333); }
+  @media screen and (min-width: 780px) and (min-height: 740px) {
+    :host {
+      -webkit-transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333);
+      transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333); } }
   :host:hover, :host:focus {
-    -webkit-transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125);
-    transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125); }
+    -webkit-transform: translateZ(1.5rem) translateY(0.4rem) scale(1.03125);
+    transform: translateZ(1.5rem) translateY(0.4rem) scale(1.03125); }
+    @media screen and (min-width: 780px) and (min-height: 740px) {
+      :host:hover, :host:focus {
+        -webkit-transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125);
+        transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125); } }
   :host:active {
-    -webkit-transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667);
-    transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667); }
+    -webkit-transform: translateZ(0.85rem) translateY(0.4rem) scale(0.9163541667);
+    transform: translateZ(0.85rem) translateY(0.4rem) scale(0.9163541667); }
+    @media screen and (min-width: 780px) and (min-height: 740px) {
+      :host:active {
+        -webkit-transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667);
+        transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667); } }
   :host span {
     color: #fff;
     font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -4775,7 +4801,8 @@ svg {
 :host {
   margin-left: auto;
   margin-right: auto;
-  max-width: 30em; }
+  max-width: 100%;
+  width: 30em; }
 
 :host {
   display: block;
@@ -4785,11 +4812,11 @@ svg {
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
   :host:hover, :host:focus {
-    -webkit-transform: translateZ(15px);
-    transform: translateZ(15px); }
+    -webkit-transform: translateZ(0.9rem);
+    transform: translateZ(0.9rem); }
   :host:active {
-    -webkit-transform: translateZ(-10px);
-    transform: translateZ(-10px); }
+    -webkit-transform: translateZ(-0.6rem);
+    transform: translateZ(-0.6rem); }
   :host > ::content > .content {
     display: inline; }
     :host > ::content > .content:hover a, :host > ::content > .content:focus a {

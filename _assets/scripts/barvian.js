@@ -13,15 +13,16 @@ const app = document.getElementById('app');
 app.baseUrl = config.baseurl || '/';
 
 Object.defineProperty(app, 'scroller', {
-  get: function() { return this.$.pages; }
+  get: function() {
+    return this.$.pages;
+  }
 });
 
 app.scroll = function(top, duration = 200) {
   if (duration > 0) {
-    // TODO(blasten): use CSS scroll-behavior once it ships in Chrome.
     const easingFn = function easeOutQuad(t, b, c, d) {
       t /= d;
-      return -c * t*(t-2) + b;
+      return -c * t * (t - 2) + b;
     };
     const animationId = Math.random();
     const startTime = Date.now();
@@ -36,14 +37,12 @@ app.scroll = function(top, duration = 200) {
 
       if (elapsedTime > duration) {
         this.scroller.scrollTop = top;
-
       } else if (this._currentAnimationId === animationId) {
-        this.scroller.scrollTop = easingFn(elapsedTime, currentScrollTop, deltaScrollTop, duration);
+        this.scroller.scrollTop = easingFn(elapsedTime, currentScrollTop,
+          deltaScrollTop, duration);
         requestAnimationFrame(updateFrame.bind(this));
       }
-
     }).call(this);
-
   } else {
     this.scroller.scrollTop = top;
   }

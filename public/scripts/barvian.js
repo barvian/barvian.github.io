@@ -1865,12 +1865,13 @@ var app = document.getElementById('app');
 // eslint-disable-line no-unused-vars
 app.baseUrl = config.baseurl || '/';
 Object.defineProperty(app, 'scroller', { 
-  get: function get() {return this.$.pages;} });
+  get: function get() {
+    return this.$.pages;} });
+
 
 
 app.scroll = function (top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 200 : arguments[1];
   if (duration > 0) {(function () {
-      // TODO(blasten): use CSS scroll-behavior once it ships in Chrome.
       var easingFn = function easeOutQuad(t, b, c, d) {
         t /= d;
         return -c * t * (t - 2) + b;};
@@ -1888,14 +1889,12 @@ app.scroll = function (top) {var _this = this;var duration = arguments.length <=
 
         if (elapsedTime > duration) {
           this.scroller.scrollTop = top;} else 
-
         if (this._currentAnimationId === animationId) {
-          this.scroller.scrollTop = easingFn(elapsedTime, currentScrollTop, deltaScrollTop, duration);
+          this.scroller.scrollTop = easingFn(elapsedTime, currentScrollTop, 
+          deltaScrollTop, duration);
           requestAnimationFrame(updateFrame.bind(this));}}).
 
-
       call(_this);})();} else 
-
   {
     this.scroller.scrollTop = top;}};
 

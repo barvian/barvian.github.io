@@ -18,9 +18,7 @@ html {
   text-size-adjust: none;
 
   @include font($sans, $size: 15px);
-  @include query(tall) {
-    font-size: 17px;
-  }
+  @include query(tall) { font-size: 17px; }
 }
 
 // Misc

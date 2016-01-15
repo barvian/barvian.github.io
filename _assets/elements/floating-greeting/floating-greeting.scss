@@ -9,10 +9,10 @@
   transition: transform 250ms $ease-out-back;
 
   @include attention {
-    transform: translateZ(15px);
+    transform: translateZ(0.9rem);
   }
   @include pressed {
-    transform: translateZ(-10px);
+    transform: translateZ(-0.6rem);
   }
 
   > ::content > .content {

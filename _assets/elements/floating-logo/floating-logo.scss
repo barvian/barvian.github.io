@@ -14,12 +14,15 @@
   transition: transform 250ms $ease-out-back;
   width: var(--logo-size);
 
-  @include level(1rem, $y: 0.75rem);
+  @include level(1rem, $y: 0.4rem);
+  @include query(tall) { @include level(1rem, $y: 0.75rem); }
   @include attention {
-    @include level(1.5rem, $y: 0.75rem, $scale: 1.1);
+    @include level(1.5rem, $y: 0.4rem, $scale: 1.1);
+    @include query(tall) { @include level(1.5rem, $y: 0.75rem, $scale: 1.1); }
   }
   @include pressed {
-    @include level(0.85rem, $y: 0.75rem, $scale: 0.95);
+    @include level(0.85rem, $y: 0.4rem, $scale: 0.95);
+    @include query(tall) { @include level(0.85rem, $y: 0.75rem, $scale: 0.95); }
   }
 
   span {
