@@ -31,7 +31,7 @@
     a {
       @extend %unstyled-link;
 
-      transition: all 200ms linear;
+      transition: opacity 200ms linear;
 
       @include attention {
         opacity: 1;

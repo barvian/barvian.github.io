@@ -4,18 +4,9 @@
 * {
   margin: 0;
   padding: 0;
-
-  @include leading;
+  border: 0;
 }
 
-body {
-  @include leading(0);
-}
-
-style, link, page-title {
-  @include trailing(0);
-}
-
-iron-pages {
-  @include compact;
+html, body {
+  height: 100%;
 }

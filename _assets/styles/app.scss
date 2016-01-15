@@ -4,7 +4,7 @@
 // ===
 
 :root {
-  padding-top: calc(var(--header-padding)*2 + var(--logo-size));
+  overflow: hidden;
 
   // Theme
   // ------
@@ -13,7 +13,6 @@
   --logo-color: $invert;
   --logo-size: size(giant);
 
-  @include surface;
 }
 
 // Nav
@@ -21,17 +20,23 @@
 
 #nav {
   align-items: center;
+  background: linear-gradient(to bottom, rgba($bg, 1) 0%, rgba($bg, 0.8) 35%, rgba($bg, 0.5) 65%, rgba($bg, 0));
   display: flex;
   justify-content: space-between;
   padding-bottom: var(--header-padding);
   padding-top: var(--header-padding);
+  pointer-events: none;
   position: fixed;
   top: 0;
   transform-style: preserve-3d;
   width: 100%;
+  z-index: 100;
 
-  @include compact;
-  @include trailing(0);
+  @include surface;
+
+  a {
+    pointer-events: auto;
+  }
 
   > ul {
     @extend %unstyled-list;
@@ -39,15 +44,38 @@
     align-items: baseline;
     display: flex;
     flex: 1;
-    justify-content: space-between;
+    justify-content: space-around;
+    transform-style: preserve-3d;
 
-    @include compact;
+    &:first-child {
+      padding-left: 5%;
+      @include query(alpha) { padding-left: 12% }
+      @include query(bravo) { padding-left: 27.5% }
+    }
+
+    &:last-child {
+      padding-right: 5%;
+      @include query(alpha) { padding-right: 12% }
+      @include query(bravo) { padding-right: 27.5% }
+    }
 
     > li {
       > a {
         @extend %unstyled-link;
 
+        display: block;
+        padding: 1em;
+        transition: transform 250ms $ease-out-back;
+
         @include font($ui);
+
+        @include level(0.25rem, $y: 0.5rem);
+        @include attention {
+          @include level(0.5rem, $y: 0.5rem, $scale: 1.1);
+        }
+        @include pressed {
+          @include level(0.1rem, $y: 0.5rem, $scale: 0.95);
+        }
       }
     }
   }
@@ -57,7 +85,22 @@
 // -----
 
 #pages {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: calc(var(--header-padding)*2 + var(--logo-size));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  @include surface;
+
   > * {
+    padding: 100vh 0;
     transform-style: preserve-3d;
   }
 }

@@ -12,7 +12,7 @@ layout: default
 <template is="dom-bind" id="app">
   <style is="custom-style" include="app-styles"></style>
 
-  <page-title title="[[selectedPage.title]]"></page-title>
+  <page-title title="[[selectedPage.pageTitle]]"></page-title>
 
   <nav id="nav" role="navigation">
     <ul>
@@ -29,10 +29,10 @@ layout: default
       {% endfor %}
     </ul>
   </nav>
-  <iron-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
+  <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in pages %}
-    <section data-route="{{ page.url }}" title="{% include title.html page=page %}">
+    <{{page.title | downcase}}-page data-route="{{ page.url }}" page-title="{% include title.html page=page %}">
       {% comment %}
         Jekyll doesn't like interpolating when rendering a page's
         content externally, so do all post-processing here.
@@ -40,9 +40,9 @@ layout: default
 
       {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}
       {{ page.content | replace: 'href="/', baseHref }}
-    </section>
+    </{{page.title | downcase}}-page>
     {% endfor %}
-  </iron-pages>
+  </neon-animated-pages>
 </template>
 
 <!-- Fallback -->
