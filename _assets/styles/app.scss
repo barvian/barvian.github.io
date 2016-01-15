@@ -89,7 +89,6 @@
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-top: calc(var(--header-padding)*2 + var(--logo-size));
   position: absolute;
   top: 0;
   left: 0;
@@ -100,7 +99,7 @@
   @include surface;
 
   > * {
-    padding: 100vh 0;
+    padding-top: calc(var(--header-padding)*2 + var(--logo-size));
     transform-style: preserve-3d;
   }
 }
