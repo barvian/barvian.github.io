@@ -1,12 +1,13 @@
 @import "../../styles/shared";
 
 :host {
-  @extend %line;
   @extend %callout;
 
   display: block;
+  max-width: 100%;
   text-align: center;
   transition: transform 250ms $ease-out-back;
+  width: $short-line;
 
   @include attention {
     transform: translateZ(0.9rem);

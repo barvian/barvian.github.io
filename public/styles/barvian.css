@@ -1,6 +1,3 @@
-<dom-module id="barvian-styles">
-<template>
-<style>
 /**
  * Checks whether `$functions` exist in global scope.
  *
@@ -908,8 +905,11 @@
  *
  * @return {List | Null}
  */
-*, *::before, *::after {
+:root {
   box-sizing: border-box; }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
 
 html {
   color: #3b3e55;
@@ -937,19 +937,7 @@ code {
   font-size: 12.135px;
   font-size: 0.8090614887rem; }
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+* {
   margin: 0;
   padding: 0;
   border: 0; }
@@ -1189,6 +1177,4 @@ html, body {
     .hidden\@tall:first-child + * {
       margin-top: 0; } }
 
-</style>
-</template>
-</dom-module>
+/*# sourceMappingURL=barvian.css.map */

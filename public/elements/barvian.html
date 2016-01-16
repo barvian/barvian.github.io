@@ -67,6 +67,256 @@ automatically, using Polymer bindings. Example:
 @demo demo/page-title.html
 -->
 <!-- Custom elements -->
+<!--
+`<cascaded-animation>` applies an animation on an array of elements with a delay between each.
+the delay defaults to 50ms.
+
+Configuration:
+```
+{
+  name: 'cascaded-animation',
+  animation: <animation-name>,
+  nodes: <array-of-nodes>,
+  nodedelay: <node-delay-in-ms>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<fade-in-animation>` animates the opacity of an element from 0 to 1.
+
+Configuration:
+```
+{
+  name: 'fade-in-animation',
+  node: <node>
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<fade-out-animation>` animates the opacity of an element from 1 to 0.
+
+Configuration:
+```
+{
+  name: 'fade-out-animation',
+  node: <node>
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<hero-animation>` is a shared element animation that scales and transform an element such that it
+appears to be shared between two pages. Use this in `<neon-animated-pages>`. The source page
+should use this animation in an 'exit' animation and set the `fromPage` configuration property to
+itself, and the destination page should use this animation in an `entry` animation and set the
+`toPage` configuration property to itself. They should also define the hero elements in the
+`sharedElements` property (not a configuration property, see
+`Polymer.NeonSharedElementAnimatableBehavior`).
+
+Configuration:
+```
+{
+  name: 'hero-animation',
+  id: <shared-element-id>,
+  timing: <animation-timing>,
+  toPage: <node>, /* define for the destination page */
+  fromPage: <node>, /* define for the source page */
+}
+```
+-->
+
+<!--
+`<ripple-animation>` scales and transform an element such that it appears to ripple from either
+a shared element, or from a screen position, to full screen.
+
+If using as a shared element animation in `<neon-animated-pages>`, use this animation in an `exit`
+animation in the source page and in an `entry` animation in the destination page. Also, define the
+hero elements in the `sharedElements` property (not a configuration property, see
+`Polymer.NeonSharedElementAnimatableBehavior`).
+
+If using a screen position, define the `gesture` property.
+
+Configuration:
+```
+{
+  name: 'ripple-animation`.
+  id: <shared-element-id>, /* set this or gesture */
+  gesture: {x: <page-x>, y: <page-y>}, /* set this or id */
+  timing: <animation-timing>,
+  toPage: <node>, /* define for the destination page */
+  fromPage: <node>, /* define for the source page */
+}
+```
+-->
+
+<!--
+`<reverse-ripple-animation>` scales and transform an element such that it appears to ripple down from this element, to either
+a shared element, or a screen position.
+
+If using as a shared element animation in `<neon-animated-pages>`, use this animation in an `exit`
+animation in the source page and in an `entry` animation in the destination page. Also, define the
+reverse-ripple elements in the `sharedElements` property (not a configuration property, see
+`Polymer.NeonSharedElementAnimatableBehavior`).
+If using a screen position, define the `gesture` property.
+Configuration:
+```
+{
+  name: 'reverse-ripple-animation`.
+  id: <shared-element-id>, /* set this or gesture */
+  gesture: {x: <page-x>, y: <page-y>}, /* set this or id */
+  timing: <animation-timing>,
+  toPage: <node>, /* define for the destination page */
+  fromPage: <node>, /* define for the source page */
+}
+```
+-->
+
+<!--
+`<scale-down-animation>` animates the scale transform of an element from 1 to 0. By default it
+scales in both the x and y axes.
+
+Configuration:
+```
+{
+  name: 'scale-down-animation',
+  node: <node>,
+  axis: 'x' | 'y' | '',
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<scale-up-animation>` animates the scale transform of an element from 0 to 1. By default it
+scales in both the x and y axes.
+
+Configuration:
+```
+{
+  name: 'scale-up-animation',
+  node: <node>,
+  axis: 'x' | 'y' | '',
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<slide-from-left-animation>` animates the transform of an element from
+`translateX(-100%)` to `none`.
+The `transformOrigin` defaults to `0 50%`.
+
+Configuration:
+```
+{
+  name: 'slide-from-left-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<slide-from-right-animation>` animates the transform of an element from
+`translateX(100%)` to `none`.
+The `transformOrigin` defaults to `0 50%`.
+
+Configuration:
+```
+{
+  name: 'slide-from-right-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<slide-left-animation>` animates the transform of an element from `none` to `translateX(-100%)`.
+The `transformOrigin` defaults to `0 50%`.
+
+Configuration:
+```
+{
+  name: 'slide-left-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<slide-right-animation>` animates the transform of an element from `none` to `translateX(100%)`.
+The `transformOrigin` defaults to `0 50%`.
+
+Configuration:
+```
+{
+  name: 'slide-right-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<slide-up-animation>` animates the transform of an element from `translateY(0)` to
+`translateY(-100%)`. The `transformOrigin` defaults to `50% 0`.
+
+Configuration:
+```
+{
+  name: 'slide-up-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<slide-down-animation>` animates the transform of an element from `translateY(-100%)` to `none`.
+The `transformOrigin` defaults to `50% 0`.
+
+Configuration:
+```
+{
+  name: 'slide-down-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  timing: <animation-timing>
+}
+```
+-->
+
+<!--
+`<transform-animation>` animates a custom transform on an element. Use this to animate multiple
+transform properties, or to apply a custom transform value.
+
+Configuration:
+```
+{
+  name: 'transform-animation',
+  node: <node>,
+  transformOrigin: <transform-origin>,
+  transformFrom: <transform-from-string>,
+  transformTo: <transform-to-string>,
+  timing: <animation-timing>
+}
+```
+-->
+
 </head><body><div hidden="" by-vulcanize=""><dom-module id="neon-animated-pages" assetpath="../bower_components/neon-animation/">
 
   <style>
@@ -1011,6 +1261,11 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
+article > p, article > ::content > p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 36em; }
 
 </style>
 </template>
@@ -1019,7 +1274,9 @@ automatically, using Polymer bindings. Example:
   <template>
     <style include="about-page-styles"></style>
 
-    <content></content>
+    <article>
+      <content></content>
+    </article>
   </template>
 
   </dom-module><dom-module id="work-page-styles" assetpath="pages/">
@@ -4799,18 +5056,14 @@ svg {
   font-style: normal; }
 
 :host {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  width: 30em; }
-
-:host {
   display: block;
+  max-width: 100%;
   text-align: center;
   -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  width: 30em; }
   :host:hover, :host:focus {
     -webkit-transform: translateZ(0.9rem);
     transform: translateZ(0.9rem); }

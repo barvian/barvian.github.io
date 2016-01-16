@@ -1,0 +1,18 @@
+// Articles
+// ========
+//
+// Represent (often user-entered) pieces of content with
+// minimal markup.
+//
+
+%article {
+  @mixin sel($sel) {
+    > #{$sel}, > ::content > #{$sel} {
+      @content;
+    }
+  }
+
+  @include sel(p) {
+    @extend %line;
+  }
+}

@@ -55,7 +55,7 @@ gulp.registry(new CommonRegistry({
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
     includePaths: [bower],
     dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],
-    modularize: true
+    modularize: 'app.css'
   },
 
   scripts: {
