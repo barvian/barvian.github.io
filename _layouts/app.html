@@ -32,18 +32,17 @@ layout: default
   <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in pages %}
-    <{{page.title | downcase}}-page data-route="{{ page.url }}" page-title="{% include title.html page=page %}">
+    <{{page.title | handleize}}-page data-route="{{ page.url }}" page-title="{% include _title.html page=page %}">
       {% comment %}
         Jekyll doesn't like interpolating when rendering a page's
         content externally, so do all post-processing here.
       {% endcomment %}
 
-      {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}
-      {{ page.content | replace: 'href="/', baseHref }}
-    </{{page.title | downcase}}-page>
+      {% include _content.html page=page %}
+    </{{page.title | handleize}}-page>
     {% endfor %}
   </neon-animated-pages>
 </template>
 
 <!-- Fallback -->
-{% include noscript.html %}
+{% include _noscript.html %}

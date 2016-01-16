@@ -1,0 +1,28 @@
+{% comment %}
+  Including the file preprocesses liquid tags.
+{% endcomment %}
+{% capture content %}{% include {{include.page.path}} %}{% endcapture %}
+
+{% assign debug = "" %}
+{% assign newContent = "" %}
+{% assign lines = content | newline_to_br | strip_newlines | split: '<br />' %}
+{% assign dashCount = 0 %}
+{% for l in lines %}
+  {% if l == '---' %}
+    {% assign dashCount = dashCount | plus: 1 %}
+  {% elsif dashCount >= 2 %}
+    {% assign newContent = newContent | append: l %}
+  {% endif %}
+{% endfor %}
+
+{% comment %}
+  Compile markdown
+{% endcomment %}
+{% assign newContent = newContent | markdownify %}
+
+{% comment %}
+  Correct relative urls
+{% endcomment %}
+{% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}
+{% assign newContent = newContent | replace: 'href="/', baseHref %}
+{{ newContent }}

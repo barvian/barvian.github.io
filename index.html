@@ -12,4 +12,8 @@ order: 1
   </a>
 </floating-greeting>
 
-But I wouldn't change it.
+<ul id="works">
+  {% for work in site.works %}
+    <li>{{ work.title }}</li>
+  {% endfor %}
+</ul>

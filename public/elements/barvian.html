@@ -2211,7 +2211,8 @@ article > p, article > ::content > p {
   <template>
     <style include="work-page-styles"></style>
 
-    <content></content>
+    <content select="#greeting"></content>
+    <content select="#works"></content>
   </template>
 
   </dom-module><dom-module id="contact-page-styles" assetpath="pages/">
@@ -3124,6 +3125,11 @@ article > p, article > ::content > p {
  *
  * @return {List | Null}
  */
+article > p, article > ::content > p {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 36em; }
 
 </style>
 </template>
@@ -3132,7 +3138,9 @@ article > p, article > ::content > p {
   <template>
     <style include="contact-page-styles"></style>
 
-    <content></content>
+    <article>
+      <content></content>
+    </article>
   </template>
 
   </dom-module><dom-module id="floating-logo-styles" assetpath="floating-logo/">
