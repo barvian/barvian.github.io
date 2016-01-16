@@ -48,8 +48,6 @@ gulp.registry(new CommonRegistry({
     includePaths: [bower]
   },
 
-  jekyll: true,
-
   styles: {
     src: `${src}/styles/{app,barvian}.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
