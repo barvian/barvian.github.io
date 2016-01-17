@@ -1,12 +1,12 @@
 {% comment %}
-  Including the file preprocesses liquid tags.
+  Including the file preprocesses liquid tags
 {% endcomment %}
 {% capture content %}{% include {{include.page.path}} %}{% endcapture %}
 
 {% assign newContent = "" %}
 
 {% comment %}
-  Strip frontmatter.
+  Strip frontmatter
 {% endcomment %}
 {% assign lines = content | newline_to_br | strip_newlines | split: '<br />' %}
 {% assign dashCount = 0 %}
@@ -24,7 +24,7 @@
 {% assign newContent = newContent | markdownify %}
 
 {% comment %}
-  Correct relative urls
+  Prefix relative urls
 {% endcomment %}
 {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}
 {% assign newContent = newContent | replace: 'href="/', baseHref %}
