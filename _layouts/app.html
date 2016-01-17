@@ -33,11 +33,6 @@ layout: default
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in pages %}
     <{{page.title | handleize}}-page data-route="{{ page.url }}" page-title="{% include _title.html page=page %}">
-      {% comment %}
-        Jekyll doesn't like interpolating when rendering a page's
-        content externally, so do all post-processing here.
-      {% endcomment %}
-
       {% include _content.html page=page %}
     </{{page.title | handleize}}-page>
     {% endfor %}

@@ -2189,20 +2189,22 @@ article > p, article > ::content > p {
  *
  * @return {List | Null}
  */
-:host {
+#greeting-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-padding)*2 - var(--logo-size) - var(--header-padding)*2 - var(--logo-size));
+  padding-bottom: 20vh;
+  padding-top: 10vh; }
 
 </style>
 </template>
@@ -2211,7 +2213,9 @@ article > p, article > ::content > p {
   <template>
     <style include="work-page-styles"></style>
 
-    <content select="#greeting"></content>
+    <div id="greeting-wrapper">
+      <content select="#greeting"></content>
+    </div>
     <content select="#works"></content>
   </template>
 
