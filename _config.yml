@@ -47,6 +47,7 @@ collections:
 
 exclude:
   - node_modules
+  - npm-debug*
   - gulpfile.*
   - package.json
   - CNAME

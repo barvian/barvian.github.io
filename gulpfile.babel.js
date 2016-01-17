@@ -79,7 +79,7 @@ gulp.registry(new CommonRegistry({
 
   sprites: {
     src: `${src}/sprites/**/*`,
-    dest: jekyll.includes_dir
+    dest: [dest, `${jekyll.destination}/${dest}`]
   }
 }));
 
