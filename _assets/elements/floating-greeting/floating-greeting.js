@@ -4,7 +4,7 @@
 Polymer({
   is: 'floating-greeting',
 
-  ready: function() {
+  ready() {
     this._splitCharacters(this);
 
     const sentences = this.innerHTML;

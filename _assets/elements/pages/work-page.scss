@@ -12,5 +12,6 @@ $header-size: unquote("var(--header-padding)*2 - var(--logo-size)");
   min-height: calc(100vh - #{$header-size} - #{$header-size});
   padding-bottom: 20vh;
   padding-top: 10vh;
+  transform-style: preserve-3d;
 }
 

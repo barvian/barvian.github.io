@@ -2204,7 +2204,9 @@ article > p, article > ::content > p {
   justify-content: center;
   min-height: calc(100vh - var(--header-padding)*2 - var(--logo-size) - var(--header-padding)*2 - var(--logo-size));
   padding-bottom: 20vh;
-  padding-top: 10vh; }
+  padding-top: 10vh;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
 
 </style>
 </template>
@@ -5086,12 +5088,20 @@ svg {
     display: inline; }
     :host > ::content > .content:hover a, :host > ::content > .content:focus a {
       opacity: 0.3; }
+      :host > ::content > .content:hover a.highlight, :host > ::content > .content:focus a.highlight {
+        -webkit-filter: saturate(75%);
+        filter: saturate(75%); }
+        :host > ::content > .content:hover a.highlight:hover, :host > ::content > .content:hover a.highlight:focus, :host > ::content > .content:focus a.highlight:hover, :host > ::content > .content:focus a.highlight:focus {
+          -webkit-filter: saturate(100%);
+          filter: saturate(100%); }
       :host > ::content > .content:hover a:not(:hover):not(:focus), :host > ::content > .content:focus a:not(:hover):not(:focus) {
         -webkit-transition-duration: 100ms;
         transition-duration: 100ms; }
     :host > ::content > .content a {
-      -webkit-transition: opacity 200ms linear;
-      transition: opacity 200ms linear; }
+      -webkit-transition: opacity 200ms linear, -webkit-filter 200ms linear;
+      transition: opacity 200ms linear, -webkit-filter 200ms linear;
+      transition: opacity 200ms linear, filter 200ms linear;
+      transition: opacity 200ms linear, filter 200ms linear, -webkit-filter 200ms linear; }
       :host > ::content > .content a:hover, :host > ::content > .content a:focus {
         opacity: 1; }
     :host > ::content > .content .sentence > * + * {
@@ -5099,8 +5109,8 @@ svg {
     :host > ::content > .content .sentence > .ch {
       position: relative; }
     :host > ::content > .content .highlight, :host > ::content > .content mark {
-      background-color: #4be8be;
-      box-shadow: 0.25em 0 0 #4be8be, -0.25em 0 0 #4be8be;
+      background-color: var(--floating-greeting-highlight-color);
+      box-shadow: 0.25em 0 0 var(--floating-greeting-highlight-color), -0.25em 0 0 var(--floating-greeting-highlight-color);
       color: #fff;
       margin-left: 0.25em;
       margin-right: 0.25em;

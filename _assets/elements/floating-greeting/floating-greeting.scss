@@ -23,6 +23,11 @@
       a {
         opacity: 0.3;
 
+        &.highlight {
+          filter: saturate(75%);
+          @include attention { filter: saturate(100%); }
+        }
+
         @include inattention {
           transition-duration: 100ms;
         }
@@ -32,7 +37,7 @@
     a {
       @extend %unstyled-link;
 
-      transition: opacity 200ms linear;
+      transition: opacity 200ms linear, filter 200ms linear;
 
       @include attention {
         opacity: 1;
@@ -48,8 +53,8 @@
     }
 
     .highlight, mark {
-      background-color: $primary;
-      box-shadow: 0.25em 0 0 $primary, -0.25em 0 0 $primary;
+      background-color: var(--floating-greeting-highlight-color);
+      box-shadow: 0.25em 0 0 var(--floating-greeting-highlight-color), -0.25em 0 0 var(--floating-greeting-highlight-color);
       color: #fff;
       margin-left: 0.25em;
       margin-right: 0.25em;
