@@ -33,7 +33,7 @@ layout: default
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in pages %}
     {% capture tag %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
-    <{{ tag }} data-route="{{ page.url }}" page-title="{% include _title.html page=page %}">
+    <{{ tag }} data-route="{{ page.url }}" page-title="{% include _title.html page=page %}" order="{{ page.order }}">
       {% include _content.html page=page %}
     </{{ tag }}>
     {% endfor %}

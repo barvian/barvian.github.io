@@ -9126,7 +9126,11 @@ Polymer.PageBehavior = {
   properties: { 
     pageTitle: { 
       type: String, 
-      value: null } } };
+      value: null }, 
+
+    order: { 
+      type: Number, 
+      value: 0 } } };
 (function() {
 
   Polymer({

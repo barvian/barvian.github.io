@@ -12,6 +12,10 @@ Polymer.PageBehavior = {
     pageTitle: {
       type: String,
       value: null
+    },
+    order: {
+      type: Number,
+      value: 0
     }
   }
 
