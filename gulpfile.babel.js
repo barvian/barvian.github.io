@@ -24,10 +24,9 @@ gulp.registry(new CommonRegistry({
       `!${jekyll.destination}/${dest}/elements/**/*`
     ],
     server: jekyll.destination,
-    scrollElementMapping: ['[role="main"]'],
     snippetOptions: {
       rule: {
-        match: /<\/html>/i,
+        match: /<\/body\>/i,
         fn: (snippet, match) => snippet + match
       }
     }
