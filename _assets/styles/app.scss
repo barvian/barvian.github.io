@@ -62,7 +62,7 @@
 
     > li {
       > a {
-        @extend %unstyled-link;
+        @extend %ui;
 
         display: block;
         padding: 1em;
