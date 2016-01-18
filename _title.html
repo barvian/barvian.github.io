@@ -1,5 +1,5 @@
 {% capture title %}
-  {% if include.page.layout == 'work' %}
+  {% if include.page.collection %}
     "{{ include.page.title }}", by {{ site.name }}
   {% elsif include.page.url == '/' %}
     {{ site.name }}, {{ site.title }}

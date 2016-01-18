@@ -8476,90 +8476,6 @@ Polymer({
     Polymer.NeonAnimationRunnerBehaviorImpl
   ];
 Polymer({
-    is: 'page-title',
-
-    properties: {
-      /**
-       * The base title of your webpage which never changes. Possibly the
-       * name of your application. Optional.
-       *
-       * @type String
-       * @default ''
-       */
-      baseTitle: {
-        type: String,
-        value: ''
-      },
-
-      /**
-       * The divider to be used between your base title and title, if a
-       * base title is supplied. Optional.
-       *
-       * @type String
-       * @default ' - '
-       */
-      divider: {
-        type: String,
-        value: '-'
-      },
-
-      /**
-       * The current title of your webpage.
-       *
-       * @type String
-       * @required
-       */
-      title: {
-        type: String
-      },
-
-      /**
-       * The direction your base title and title should be shown.
-       * Defaults to `standard`. Can be one of these values:
-       *
-       *  | Value | Meaning |
-       *  | standard | `baseTitle` comes first. |
-       *  | reversed | `title` comes first. |
-       *
-       * @type String
-       * @default 'standard'
-       */
-      direction: {
-        type: String,
-        value: 'standard'
-      },
-
-      /**
-       * The current title as computed by the element.
-       */
-      computedTitle: {
-        type: String,
-        readOnly: true,
-        notify: true
-      }
-    },
-
-    observers: [
-      '_updatePageTitle(baseTitle, divider, title, direction)'
-    ],
-
-    _updatePageTitle: function(baseTitle, divider, title, direction) {
-      var pieces;
-
-      if (direction == 'standard') {
-        pieces = (baseTitle) ? [baseTitle, title] : [title];
-      } else if (direction == 'reversed') {
-        pieces = (baseTitle) ? [title, baseTitle] : [title];
-      } else {
-        console.warn("page-title - Did not recognize `direction` property.");
-        return;
-      }
-
-      document.title = pieces.join(" " + divider + " ");
-      this._setComputedTitle(document.title);
-    }
-  });
-Polymer({
 
     is: 'cascaded-animation',
 
@@ -9113,7 +9029,91 @@ Polymer({
     }
 
   });
-"use strict"; // Page behavior
+Polymer({
+    is: 'page-title',
+
+    properties: {
+      /**
+       * The base title of your webpage which never changes. Possibly the
+       * name of your application. Optional.
+       *
+       * @type String
+       * @default ''
+       */
+      baseTitle: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * The divider to be used between your base title and title, if a
+       * base title is supplied. Optional.
+       *
+       * @type String
+       * @default ' - '
+       */
+      divider: {
+        type: String,
+        value: '-'
+      },
+
+      /**
+       * The current title of your webpage.
+       *
+       * @type String
+       * @required
+       */
+      title: {
+        type: String
+      },
+
+      /**
+       * The direction your base title and title should be shown.
+       * Defaults to `standard`. Can be one of these values:
+       *
+       *  | Value | Meaning |
+       *  | standard | `baseTitle` comes first. |
+       *  | reversed | `title` comes first. |
+       *
+       * @type String
+       * @default 'standard'
+       */
+      direction: {
+        type: String,
+        value: 'standard'
+      },
+
+      /**
+       * The current title as computed by the element.
+       */
+      computedTitle: {
+        type: String,
+        readOnly: true,
+        notify: true
+      }
+    },
+
+    observers: [
+      '_updatePageTitle(baseTitle, divider, title, direction)'
+    ],
+
+    _updatePageTitle: function(baseTitle, divider, title, direction) {
+      var pieces;
+
+      if (direction == 'standard') {
+        pieces = (baseTitle) ? [baseTitle, title] : [title];
+      } else if (direction == 'reversed') {
+        pieces = (baseTitle) ? [title, baseTitle] : [title];
+      } else {
+        console.warn("page-title - Did not recognize `direction` property.");
+        return;
+      }
+
+      document.title = pieces.join(" " + divider + " ");
+      this._setComputedTitle(document.title);
+    }
+  });
+'use strict'; // Page behavior
 // =============
 
 Polymer.PageBehavior = { 
@@ -9124,6 +9124,22 @@ Polymer.PageBehavior = {
 
 
   properties: { 
+    animationConfig: { 
+      value: function value() {
+        return { 
+          'entry': [{ 
+            name: 'cascaded-animation', 
+            animation: 'scale-up-animation', 
+            nodes: this.getEffectiveChildren() }], 
+
+          'exit': [{ 
+            name: 'cascaded-animation', 
+            animation: 'scale-down-animation', 
+            nodes: this.getEffectiveChildren() }] };} }, 
+
+
+
+
     pageTitle: { 
       type: String, 
       value: null }, 
@@ -9295,29 +9311,19 @@ Polymer.PageBehavior = {
   })
 
 })();
+'use strict'; // Home page
+// =========
+
+Polymer({ 
+  is: 'home-page', 
+
+  behaviors: [
+  Polymer.PageBehavior] });
 'use strict'; // About page
 // ==========
 
 Polymer({ 
   is: 'about-page', 
-
-  behaviors: [
-  Polymer.PageBehavior], 
-
-
-  properties: { 
-    animationConfig: { 
-      type: Object, 
-      value: function value() {
-        return { 
-          'entry': { 
-            name: 'slide-from-left-animation', 
-            node: this } };} } } });
-'use strict'; // Work page
-// =========
-
-Polymer({ 
-  is: 'work-page', 
 
   behaviors: [
   Polymer.PageBehavior] });
@@ -9326,6 +9332,14 @@ Polymer({
 
 Polymer({ 
   is: 'contact-page', 
+
+  behaviors: [
+  Polymer.PageBehavior] });
+'use strict'; // Work page
+// =========
+
+Polymer({ 
+  is: 'work-page', 
 
   behaviors: [
   Polymer.PageBehavior] });

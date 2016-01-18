@@ -62,9 +62,3 @@ defaults:
       path: '' # all files
     values:
       layout: 'app'
-  -
-    scope:
-      path: ''
-      type: 'works'
-    values:
-      layout: 'work'

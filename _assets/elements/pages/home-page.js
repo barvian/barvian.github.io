@@ -1,8 +1,8 @@
-// About page
-// ==========
+// Home page
+// =========
 
 Polymer({
-  is: 'about-page',
+  is: 'home-page',
 
   behaviors: [
     Polymer.PageBehavior

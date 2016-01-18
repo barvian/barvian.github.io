@@ -9,10 +9,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--logo-size);
+  height: calc(var(--logo-size) + 1px); // fix rounding in Chrome
   position: relative;
   transition: transform 250ms $ease-out-back;
-  width: var(--logo-size);
+  width: calc(var(--logo-size) + 1px); // fix rounding in Chrome
 
   @include level(1rem, $y: 0.4rem);
   @include query(tall) { @include level(1rem, $y: 0.75rem); }

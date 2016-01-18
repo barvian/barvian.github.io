@@ -32,10 +32,16 @@ layout: default
   <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in pages %}
-    {% capture tag %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
-    <{{ tag }} data-route="{{ page.url }}" page-title="{% include _title.html page=page %}" order="{{ page.order }}">
+    {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
+    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}">
       {% include _content.html page=page %}
-    </{{ tag }}>
+    </{{ elem }}>
+    {% endfor %}
+
+    {% for work in site.works %}
+    <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}'>
+      {% include _content.html page=work %}
+    </work-page>
     {% endfor %}
   </neon-animated-pages>
 </template>

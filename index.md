@@ -1,5 +1,5 @@
 ---
-title: Work
+title: Home
 order: 1
 ---
 
@@ -14,6 +14,6 @@ order: 1
 
 <ul id="works">
   {% for work in site.works %}
-    <li>{{ work.title }}</li>
+    <li><a href="{{work.url}}">{{ work.title }}</a></li>
   {% endfor %}
 </ul>

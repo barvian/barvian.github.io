@@ -1,57 +1,43 @@
 // Links
 // =====
 
-@mixin attention($self: false) {
-  @if $self {
-    &,
-    &:hover,
-    &:focus {
-      @content;
-    }
-  } @else {
-    &:hover,
-    &:focus {
+@mixin attention($self: false, $focus: false) {
+  $sel: '#{&}:hover';
+  @if $self { $sel: append($sel, &, comma); }
+  @if $focus { $sel: append($sel, '#{&}:focus', comma); }
+  @at-root {
+    #{$sel} {
       @content;
     }
   }
 }
 
-@mixin inattention($self: false) {
-  @if $self {
-    &,
-    &:not(:hover):not(:focus) {
-      @content;
-    }
-  } @else {
-    &:not(:hover):not(:focus) {
+@mixin inattention($self: false, $focus: false) {
+  $sel: '#{&}:not(:hover)';
+  @if $self { $sel: append($sel, &, comma); }
+  @if $focus { $sel: append($sel, '#{&}:not(:focus)', comma); }
+  @at-root {
+    #{$sel} {
       @content;
     }
   }
 }
 
 @mixin pressed($self: false) {
-  @if $self {
-    &,
-    &:active {
-      @content;
-    }
-  } @else {
-    &:active {
+  $sel: '#{&}:active';
+  @if $self { $sel: append($sel, &, comma); }
+  @at-root {
+    #{$sel} {
       @content;
     }
   }
 }
 
 @mixin disabled($self: false) {
-  @if $self {
-    &,
-    &[disabled],
-    &.is-disabled {
-      @content;
-    }
-  } @else {
-    &[disabled],
-    &.is-disabled {
+  $sel: ('#{&}[disabled]', '#{&}.is-disabled');
+  @if $self { $sel: append($sel, &, comma); }
+  @at-root {
+    #{$sel} {
       @content;
     }
   }

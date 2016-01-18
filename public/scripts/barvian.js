@@ -1927,20 +1927,23 @@ window.addEventListener('WebComponentsReady', function () {
   // Routes
   // ------
 
-  (0, _page2.default)('*', scrollToTop, function (ctx, next) {
-    next();});
-
+  (0, _page2.default)('*', scrollToTop, function (ctx, next) {return next();});
 
   // Static pages
   [app.baseUrl, '/about/', '/contact/'].forEach(function (url) {
     (0, _page2.default)(url, function () {return app.route = url;});});
 
 
+  // Works
+  (0, _page2.default)('/work/:name', function (data) {
+    app.route = '/work/' + data.params.name + '/';});
+
+
   (0, _page2.default)({ 
     hashbang: false });});
 
 },{"./../bower_components/page/page.js":1}],5:[function(require,module,exports){
-module.exports = {"name":"Maxwell Barvian","title":"Digital product designer","email":"max@barvian.me","url":"http://barvian.me","baseurl":"","keywords":["designer","web designer","web","developer","web developer","chicago web designer","chicago web developer","front-end development","web design"],"dribbble_username":"barvian","twitter_username":"mbarvian","github_username":"barvian","availability":"full","destination":"_site","plugins_dir":"_plugins","layouts_dir":"_layouts","data_dir":"_data","includes_dir":".","collections":{"works":{"output":true,"permalink":"/work/:path/"}},"exclude":["node_modules","npm-debug*","gulpfile.*","package.json","CNAME","bower.json","README.md"],"markdown":"kramdown","permalink":"pretty","defaults":[{"scope":{"path":""},"values":{"layout":"app"}},{"scope":{"path":"","type":"works"},"values":{"layout":"work"}}]}
+module.exports = {"name":"Maxwell Barvian","title":"Digital product designer","email":"max@barvian.me","url":"http://barvian.me","baseurl":"","keywords":["designer","web designer","web","developer","web developer","chicago web designer","chicago web developer","front-end development","web design"],"dribbble_username":"barvian","twitter_username":"mbarvian","github_username":"barvian","availability":"full","destination":"_site","plugins_dir":"_plugins","layouts_dir":"_layouts","data_dir":"_data","includes_dir":".","collections":{"works":{"output":true,"permalink":"/work/:path/"}},"exclude":["node_modules","npm-debug*","gulpfile.*","package.json","CNAME","bower.json","README.md"],"markdown":"kramdown","permalink":"pretty","defaults":[{"scope":{"path":""},"values":{"layout":"app"}}]}
 },{}],6:[function(require,module,exports){
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
