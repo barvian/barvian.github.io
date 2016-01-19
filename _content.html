@@ -19,6 +19,14 @@
 {% endfor %}
 
 {% comment %}
+   Compile markdown
+{% endcomment %}
+{% assign ext = include.page.path | split: '.' | last %}
+{% if ext == 'md' or ext == 'markdown' %}
+  {% assign newContent = newContent | markdownify %}
+{% endif %}
+
+{% comment %}
   Prefix relative urls
 {% endcomment %}
 {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}

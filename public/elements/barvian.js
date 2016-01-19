@@ -9398,13 +9398,7 @@ Polymer({
   is: 'home-page', 
 
   behaviors: [
-  Polymer.PageBehavior], 
-
-
-  properties: { 
-    gridIsFitWidth: { 
-      type: String, 
-      value: 'nope' } } });
+  Polymer.PageBehavior] });
 'use strict'; // About page
 // ==========
 
