@@ -1,0 +1,18 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="work-card-styles.html">
+
+<dom-module id="work-card">
+
+  <template>
+    <style include="work-card-styles"></style>
+
+    <hgroup>
+      <h1>[[title]]</h1>
+      <h2>[[blurb]]</h2>
+    </hgroup>
+    <img src$="[[hero]]" />
+  </template>
+
+  <script src="work-card.js"></script>
+
+</dom-module>

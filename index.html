@@ -12,13 +12,19 @@ order: 1
   </a>
 </floating-greeting>
 
-<mason-ry id="works" percent-position="true" column-width=".sizer" gutter=".gutter" item-selector="article" transition-duration="0.1s">
+<mason-ry id="works" percent-position="true"
+  column-width=".sizer" gutter=".gutter"
+  item-selector='[is="work-card"]' transition-duration="0.1s">
+
   <div class="sizer"></div>
+
   {% for work in site.works %}
-    <article>
-      <a href="{{ work.url }}">
-        <h1>{{ work.title }}</h1>
-      </a>
-    </article>
+  <article is="work-card" href="{{ work.url }}"
+    title='{{ work.title }}' blurb='{{ work.blurb }}'
+    bg="{{ work.bg }}" fg="{{ work.fg }}"
+    hero="{{ 'hero.png' | prepend: work.url }}"
+
+    ></article>
   {% endfor %}
+
 </mason-ry>

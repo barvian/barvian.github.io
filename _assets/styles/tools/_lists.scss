@@ -1,0 +1,10 @@
+// Lists
+// =====
+
+@function times($item, $times, $separator: comma) {
+  $list: (unquote("#{$item}"));
+  @for $t from 2 through $times {
+    $list: append($list, $item, $separator);
+  }
+  @return $list;
+}

@@ -1,0 +1,22 @@
+@import "../../styles/shared";
+
+:host {
+  background-color: var(--work-card-bg);
+  display: block;
+  padding: var(--work-card-spacing, 10px);
+
+  > a {
+    @extend %unstyled-link;
+  }
+}
+
+hgroup {
+  color: var(--work-card-fg);
+
+  h2 {
+  }
+}
+
+img {
+  max-width: 100%;
+}

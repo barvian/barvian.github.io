@@ -2,3 +2,8 @@
 
 :host {
 }
+
+
+article {
+  @extend %article;
+}

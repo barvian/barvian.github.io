@@ -14,7 +14,9 @@
   --logo-size: size(giant);
 
   --floating-greeting-highlight-color: $primary;
+
   --work-grid-size: 33.333%;
+  --work-card-spacing: size(spacing);
 }
 
 // Nav
@@ -67,6 +69,7 @@
 
         display: block;
         padding: 1em;
+        text-shadow: times(0 0 2em $bg, 15);
         transition: transform 250ms $ease-out-back;
 
         @include font($ui);

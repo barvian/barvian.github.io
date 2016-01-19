@@ -9467,3 +9467,31 @@ Polymer({
 
       if (node.nodeType === 1) {
         _this._splitCharacters(node);}});} });
+'use strict'; // Work card
+// =========
+
+Polymer({ 
+  is: 'work-card', 
+  extends: 'article', 
+
+  properties: { 
+    href: String, 
+    title: String, 
+    bg: String, 
+    fg: String }, 
+
+
+  ready: function ready() {
+    if (this.href) {
+      this.innerHTML = '<a href="' + 
+      this.href + '">\n          ' + 
+      this.innerHTML + '\n        </a>';}
+
+
+
+    this.customStyle['--work-card-bg'] = this.bg;
+    this.customStyle['--work-card-fg'] = this.fg;}, 
+
+
+  loaded: function loaded(event) {
+    this.classList.add('loaded');} });
