@@ -6,5 +6,12 @@ Polymer({
 
   behaviors: [
     Polymer.PageBehavior
-  ]
+  ],
+
+  properties: {
+    gridIsFitWidth: {
+      type: String,
+      value: 'nope'
+    }
+  }
 });

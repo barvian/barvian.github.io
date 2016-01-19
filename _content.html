@@ -19,11 +19,6 @@
 {% endfor %}
 
 {% comment %}
-  Compile markdown
-{% endcomment %}
-{% assign newContent = newContent | markdownify %}
-
-{% comment %}
   Prefix relative urls
 {% endcomment %}
 {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}

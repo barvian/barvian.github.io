@@ -351,6 +351,15 @@ automatically, using Polymer bindings. Example:
 
 </dom-module>
 
+<dom-module id="mason-ry" assetpath="../bower_components/mason-ry/">
+	<style>
+		:host { display: block; }
+	</style>
+	<template>
+		<content></content>
+	</template>
+</dom-module>
+
 <dom-module id="home-page-styles" assetpath="pages/">
 <template>
 <style>
@@ -1261,6 +1270,9 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
+:host ::content #works .sizer, :host ::content #works > article {
+  width: var(--work-grid-size); }
+
 #greeting-wrapper {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2209,6 +2221,12 @@ article > p, article > ::content > p {
   max-width: 100%;
   width: 36em; }
 
+article {
+  padding-left: 24.443px;
+  padding-left: 1.527696rem;
+  padding-right: 24.443px;
+  padding-right: 1.527696rem; }
+
 </style>
 </template>
 </dom-module><dom-module id="about-page" assetpath="pages/">
@@ -3136,6 +3154,12 @@ article > p, article > ::content > p {
   margin-right: auto;
   max-width: 100%;
   width: 36em; }
+
+article {
+  padding-left: 24.443px;
+  padding-left: 1.527696rem;
+  padding-right: 24.443px;
+  padding-right: 1.527696rem; }
 
 </style>
 </template>

@@ -12,8 +12,15 @@ order: 1
   </a>
 </floating-greeting>
 
-<ul id="works">
+<iron-media-query query="(min-width: 520px)" query-matches="{% raw %}{{gridIsFluid}}{% endraw %}"></iron-media-query>
+
+<mason-ry id="works" is-fit-width="[[!gridIsFluid]]" percent-position="[[gridIsFluid]]" column-width=".sizer" gutter=".gutter" item-selector="article" transition-duration="0.1s">
+  <div class="sizer"></div>
   {% for work in site.works %}
-    <li><a href="{{work.url}}">{{ work.title }}</a></li>
+    <article>
+      <a href="{{ work.url }}">
+        <h1>{{ work.title }}</h1>
+      </a>
+    </article>
   {% endfor %}
-</ul>
+</mason-ry>

@@ -1,6 +1,13 @@
 @import "../../styles/shared";
 
 :host {
+  ::content {
+    #works {
+      .sizer, > article {
+        width: var(--work-grid-size);
+      }
+    }
+  }
 }
 
 $header-size: unquote("var(--header-padding)*2 - var(--logo-size)");
