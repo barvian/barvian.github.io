@@ -5,6 +5,6 @@ Polymer({
   is: 'home-page',
 
   behaviors: [
-    Polymer.PageBehavior
+    Barvian.PageBehavior
   ]
 });

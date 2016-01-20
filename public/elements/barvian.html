@@ -1270,8 +1270,11 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
-:host ::content #works .sizer, :host ::content #works > article {
+:host ::content #works .sizer, :host ::content #works work-card {
   width: var(--work-grid-size); }
+
+:host ::content #works work-card.landscape {
+  width: calc(var(--work-grid-size) * 2); }
 
 #greeting-wrapper {
   display: -webkit-box;
@@ -6081,7 +6084,7 @@ svg {
   <template>
     <style include="floating-greeting-styles"></style>
 
-    <content></content>
+    <div class="content"><content id="content"></content></div>
   </template>
 
   </dom-module><dom-module id="work-card-styles" assetpath="work-card/">
@@ -6994,20 +6997,60 @@ svg {
  *
  * @return {List | Null}
  */
-:host > a {
+#wrapper, figure::before {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+#wrapper > a {
   color: inherit;
   text-decoration: none; }
 
 :host {
   background-color: var(--work-card-bg);
+  color: var(--work-card-fg);
   display: block;
+  overflow: hidden;
+  position: relative; }
+  :host::before {
+    display: block;
+    content: '';
+    padding-bottom: calc(var(--work-card-aspect) * 100%);
+    width: 100%; }
+
+#wrapper {
   padding: var(--work-card-spacing, 10px); }
 
-hgroup {
-  color: var(--work-card-fg); }
+header {
+  text-align: center; }
+  header h1 {
+    font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+    font-size: 19.776px;
+    font-size: 1.236rem;
+    font-weight: 700; }
+  header h2 {
+    opacity: 0.6;
+    font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 400; }
 
-img {
-  max-width: 100%; }
+figure {
+  display: inline-block;
+  position: relative; }
+  figure::before {
+    box-shadow: 0 0.4rem 1.333rem -0.25rem;
+    content: '';
+    opacity: 0.6; }
+  figure > img {
+    display: block;
+    max-width: 100%; }
+
+:host(.portrait) header {
+  padding: 2%;
+  margin-bottom: 7.5%; }
 
 </style>
 </template>
@@ -7016,11 +7059,15 @@ img {
   <template>
     <style include="work-card-styles"></style>
 
-    <hgroup>
-      <h1>[[title]]</h1>
-      <h2>[[blurb]]</h2>
-    </hgroup>
-    <img src$="[[hero]]">
+    <article id="wrapper">
+      <header>
+        <h1>[[title]]</h1>
+        <h2>[[blurb]]</h2>
+      </header>
+      <figure>
+        <img src$="[[hero]]" on-load="_imgLoaded">
+      </figure>
+    </article>
   </template>
 
   </dom-module></div></body></html>

@@ -9132,7 +9132,8 @@ Polymer({
 'use strict'; // Page behavior
 // =============
 
-Polymer.PageBehavior = { 
+window.Barvian = window.Barvian || {};
+Barvian.PageBehavior = { 
 
   behaviors: [
   Polymer.NeonAnimatableBehavior, 
@@ -9163,6 +9164,32 @@ Polymer.PageBehavior = {
     order: { 
       type: Number, 
       value: 0 } } };
+"use strict";var _extends = Object.assign || function (target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i];for (var key in source) {if (Object.prototype.hasOwnProperty.call(source, key)) {target[key] = source[key];}}}return target;}; // Style properties behavior
+// =========================
+
+window.Barvian = window.Barvian || {};
+Barvian.StylePropertiesBehavior = { 
+
+  beforeRegister: function beforeRegister() {var _this = this;
+    // Add observers to style properties then merge with regular properties
+    this.properties = _extends({}, 
+    this.properties, 
+    Object.keys(this.styleProperties).reduce(function (props, prop) {
+      var observer = "_" + prop + "Updated";
+
+      // Add observer function to element
+      _this[observer] = function (newValue, oldValue) {
+        this.customStyle["--" + this.is + "-" + prop] = newValue;};
+
+
+      // Add observer to property
+      props[prop] = _extends({}, 
+      _this.styleProperties[prop], { 
+        observer: observer });
+
+
+      return props;}, 
+    {}));} };
 (function() {
 
   Polymer({
@@ -9398,7 +9425,7 @@ Polymer({
   is: 'home-page', 
 
   behaviors: [
-  Polymer.PageBehavior] });
+  Barvian.PageBehavior] });
 'use strict'; // About page
 // ==========
 
@@ -9406,7 +9433,7 @@ Polymer({
   is: 'about-page', 
 
   behaviors: [
-  Polymer.PageBehavior] });
+  Barvian.PageBehavior] });
 'use strict'; // Contact page
 // ============
 
@@ -9414,7 +9441,7 @@ Polymer({
   is: 'contact-page', 
 
   behaviors: [
-  Polymer.PageBehavior] });
+  Barvian.PageBehavior] });
 'use strict'; // Work page
 // =========
 
@@ -9422,7 +9449,7 @@ Polymer({
   is: 'work-page', 
 
   behaviors: [
-  Polymer.PageBehavior] });
+  Barvian.PageBehavior] });
 'use strict'; // Floating logo
 // =============
 
@@ -9436,34 +9463,33 @@ Polymer({
   is: 'floating-greeting', 
 
   ready: function ready() {
-    this._splitCharacters(this);
-
-    var sentences = this.innerHTML;
-    this.innerHTML = '<div class="content">' + sentences + '</div>';}, 
+    this._splitCharacters(this.$.content, true);}, 
 
 
-  _splitCharacters: function _splitCharacters(parent) {var _this = this;
-    var $parent = Polymer.dom(parent);
-    $parent.childNodes.forEach(function (node) {
+  _splitCharacters: function _splitCharacters(parent) {var _this = this;var distributed = arguments.length <= 1 || arguments[1] === undefined ? false : arguments[1];
+    (distributed ? 
+    Polymer.dom(parent).getDistributedNodes() : 
+    Polymer.dom(parent).childNodes).
+    forEach(function (node) {
       if (node.nodeType === 3 && node.nodeValue.trim().length > 0) {(function () {
           var sentence = parent === _this ? document.createElement('span') : parent;
-          sentence.classList.add('sentence');
+          Polymer.dom(sentence).classList.add('sentence');
           node.nodeValue.split('').forEach(function (ch) {
             var chNode = document.createTextNode(ch);
             if (/\s/.test(ch)) {
-              sentence.appendChild(chNode);} else 
+              Polymer.dom(sentence).appendChild(chNode);} else 
             {
               var letter = document.createElement('span');
-              letter.classList.add('ch');
-              letter.appendChild(chNode);
-              sentence.appendChild(letter);}});
+              Polymer.dom(letter).classList.add('ch');
+              Polymer.dom(letter).appendChild(chNode);
+              Polymer.dom(sentence).appendChild(letter);}});
 
 
 
           if (parent === _this) {
-            $parent.replaceChild(sentence, node);} else 
+            Polymer.dom(parent).replaceChild(sentence, node);} else 
           {
-            node.remove();}})();} else 
+            Polymer.dom(node.parentNode).removeChild(node);}})();} else 
 
       if (node.nodeType === 1) {
         _this._splitCharacters(node);}});} });
@@ -9472,26 +9498,55 @@ Polymer({
 
 Polymer({ 
   is: 'work-card', 
-  extends: 'article', 
+
+  behaviors: [
+  Barvian.StylePropertiesBehavior], 
+
 
   properties: { 
     href: String, 
     title: String, 
+    orientation: { 
+      type: String, 
+      computed: '_computeOrientation(aspect)' } }, 
+
+
+
+  styleProperties: { 
     bg: String, 
-    fg: String }, 
+    fg: String, 
+    aspect: Number }, 
+
+
+  observers: [
+  'updateLink(href)', 
+  'updateOrientation(orientation)'], 
 
 
   ready: function ready() {
-    if (this.href) {
-      this.innerHTML = '<a href="' + 
-      this.href + '">\n          ' + 
-      this.innerHTML + '\n        </a>';}
+    this.updateLink(this.href);}, 
 
 
+  updateLink: function updateLink(href) {var _this = this;
+    if (!this.link) {
+      this.link = document.createElement('a');
+      Polymer.dom(this.$.wrapper).appendChild(this.link);
+      Polymer.dom(this.$.wrapper).childNodes.
+      filter(function (child) {return child !== _this.link;}).
+      forEach(function (child) {return Polymer.dom(_this.link).appendChild(child);});}
 
-    this.customStyle['--work-card-bg'] = this.bg;
-    this.customStyle['--work-card-fg'] = this.fg;}, 
+
+    Polymer.dom(this.link).setAttribute('href', href);}, 
 
 
-  loaded: function loaded(event) {
-    this.classList.add('loaded');} });
+  updateOrientation: function updateOrientation(orientation) {
+    this.classList.remove('portrait', 'landscape');
+    this.classList.add(orientation);}, 
+
+
+  _imgLoaded: function _imgLoaded(event) {
+    this.classList.add('loaded');}, 
+
+
+  _computeOrientation: function _computeOrientation(aspect) {
+    return aspect > 1 ? 'portrait' : 'landscape';} });

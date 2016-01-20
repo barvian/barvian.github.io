@@ -1,7 +1,8 @@
 // Page behavior
 // =============
 
-Polymer.PageBehavior = {
+window.Barvian = window.Barvian || {};
+Barvian.PageBehavior = {
 
   behaviors: [
     Polymer.NeonAnimatableBehavior,
