@@ -1,8 +1,26 @@
 @import "../../styles/shared";
 
+// Work card
+// =========
+
 :host {
   background-color: var(--work-card-bg);
+  color: var(--work-card-fg);
   display: block;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    display: block;
+    content: '';
+    padding-bottom: calc(var(--work-card-aspect) * 100%);
+    width: 100%;
+  }
+}
+
+#wrapper {
+  @extend %stretch;
+
   padding: var(--work-card-spacing, 10px);
 
   > a {
@@ -10,13 +28,51 @@
   }
 }
 
-hgroup {
-  color: var(--work-card-fg);
+header {
+  text-align: center;
+
+  h1 {
+    @include font($ui, $weight: bold, $size: medium);
+  }
 
   h2 {
+    opacity: 0.6;
+
+    @include font($sans, $weight: normal, $size: base);
   }
 }
 
-img {
-  max-width: 100%;
+figure {
+  display: inline-block;
+  position: relative;
+
+  &::before {
+    @extend %stretch;
+
+    box-shadow: 0 0.4rem 1.333rem -0.25rem;
+    content: '';
+    opacity: 0.6;
+  }
+
+  > img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+// Portrait
+// --------
+
+:host(.portrait) {
+  header {
+    padding: 2%;
+    margin-bottom: 7.5%;
+  }
+}
+
+
+// Landscape
+// ---------
+
+:host(.landscape) {
 }

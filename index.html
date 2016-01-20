@@ -14,17 +14,13 @@ order: 1
 
 <mason-ry id="works" percent-position="true"
   column-width=".sizer" gutter=".gutter"
-  item-selector='[is="work-card"]' transition-duration="0.1s">
-
+  item-selector='work-card' transition-duration="0.1s">
   <div class="sizer"></div>
-
   {% for work in site.works %}
-  <article is="work-card" href="{{ work.url }}"
+  <work-card href="{{ work.url }}"
     title='{{ work.title }}' blurb='{{ work.blurb }}'
     bg="{{ work.bg }}" fg="{{ work.fg }}"
-    hero="{{ 'hero.png' | prepend: work.url }}"
-
-    ></article>
+    hero="{{ work.hero | prepend: work.url }}"
+    aspect="{{ work.aspect }}"></work-card>
   {% endfor %}
-
 </mason-ry>

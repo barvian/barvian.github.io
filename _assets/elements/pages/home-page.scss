@@ -1,10 +1,17 @@
 @import "../../styles/shared";
 
+// Home page
+// =========
+
 :host {
   ::content {
     #works {
-      .sizer, > article {
+      .sizer, work-card {
         width: var(--work-grid-size);
+      }
+
+      work-card.landscape {
+        width: calc(var(--work-grid-size) * 2);
       }
     }
   }
