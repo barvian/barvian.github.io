@@ -16,6 +16,7 @@ order: 1
   column-width=".sizer" gutter=".gutter"
   item-selector='work-card' transition-duration="0.1s">
   <div class="sizer"></div>
+  <div class="gutter"></div>
   {% for work in site.works %}
   <work-card href="{{ work.url }}"
     title='{{ work.title }}' blurb='{{ work.blurb }}'

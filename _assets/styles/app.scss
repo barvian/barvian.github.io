@@ -10,7 +10,8 @@
   // ------
   --header-padding: 5vh;
 
-  --logo-color: $invert;
+  --logo-bg: $invert;
+  --logo-fg: $bg;
   --logo-size: size(giant);
 
   --floating-greeting-highlight-color: $primary;

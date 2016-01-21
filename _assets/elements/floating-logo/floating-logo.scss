@@ -6,7 +6,6 @@
 :host {
   @extend %ui;
 
-  background-color: var(--logo-color);
   border-radius: 90%;
   box-shadow: 0 10px 20px rgba($base, 0.4);
   display: flex;
@@ -27,20 +26,20 @@
     @include level(0.85rem, $y: 0.4rem, $scale: 0.95);
     @include query(tall) { @include level(0.85rem, $y: 0.75rem, $scale: 0.95); }
   }
-
-  span {
-    color: $bg;
-
-    @include font($ui, $weight: bold, $size: large);
-    position: relative;
-  }
 }
 
 svg {
-  fill: var(--logo-color);
   left: 0;
   height: 100%;
   top: 0;
   position: absolute;
   width: 100%;
+
+  #base {
+    fill: var(--logo-bg);
+  }
+
+  #text {
+    fill: var(--logo-fg);
+  }
 }
