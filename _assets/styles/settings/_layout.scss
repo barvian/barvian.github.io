@@ -1,7 +1,12 @@
 // Layout
 // ======
 
-$gutter: size(spacing);
-$layout: 52rem;
-$wide: 66rem;
-$columns: 6;
+$susy: (
+  container: 52rem,
+  columns: 6,
+  gutters: size(spacing),
+  math: fluid,
+  output: float,
+  gutter-position: inside-static,
+  global-box-sizing: border-box
+);

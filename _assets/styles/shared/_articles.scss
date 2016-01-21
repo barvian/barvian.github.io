@@ -6,9 +6,9 @@
 //
 
 %article {
-  padding-left: $gutter;
-  padding-right: $gutter;
-  
+  padding-left: susy-get(gutters);
+  padding-right: susy-get(gutters);
+
   @mixin sel($sel) {
     > #{$sel}, > ::content > #{$sel} {
       @content;
