@@ -1274,11 +1274,7 @@ automatically, using Polymer bindings. Example:
   max-width: 832px;
   max-width: 52rem;
   margin-left: auto;
-  margin-right: auto;
-  padding-left: 24.443px;
-  padding-left: 1.527696rem;
-  padding-right: 24.443px;
-  padding-right: 1.527696rem; }
+  margin-right: auto; }
   :host ::content #works:after {
     content: " ";
     display: block;
@@ -1286,8 +1282,9 @@ automatically, using Polymer bindings. Example:
   :host ::content #works .sizer, :host ::content #works work-card {
     width: var(--work-grid-size); }
   :host ::content #works .gutter {
-    width: 24.443px;
-    width: 1.527696rem; }
+    width: var(--work-grid-spacing); }
+  :host ::content #works work-card {
+    margin-bottom: var(--work-grid-spacing); }
   :host ::content #works work-card.landscape {
     width: calc(var(--work-grid-size) * 2); }
 
@@ -7080,6 +7077,8 @@ figure {
   left: 40%;
   position: absolute;
   top: calc(var(--work-card-spacing, 1.527696rem) * 1.5); }
+  :host(.landscape) figure > img {
+    max-width: 120%; }
 
 </style>
 </template>

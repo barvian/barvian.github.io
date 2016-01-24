@@ -7,15 +7,17 @@
   ::content {
     #works {
       @include container;
-      padding-left: susy-get(gutters);
-      padding-right: susy-get(gutters);
 
       .sizer, work-card {
         width: var(--work-grid-size);
       }
 
       .gutter {
-        width: susy-get(gutters);
+        width: var(--work-grid-spacing);
+      }
+
+      work-card {
+        margin-bottom: var(--work-grid-spacing);
       }
 
       work-card.landscape {

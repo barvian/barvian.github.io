@@ -69,10 +69,8 @@ figure {
     text-align: center;
   }
 
-  figure {
-    > img {
-      max-width: 100%;
-    }
+  figure > img {
+    max-width: 100%;
   }
 }
 
@@ -94,5 +92,9 @@ figure {
     left: 40%;
     position: absolute;
     top: calc(var(--work-card-spacing, #{size(spacing)}) * 1.5);
+
+    > img {
+      max-width: 120%;
+    }
   }
 }

@@ -1,7 +1,7 @@
 ---
 title: Naperville
 blurb: City of Naperville, IL redesign
-type: iOS
+type: web
 bg: '#307AB3'
 fg: '#fff'
 shadow: '#0d2232'
