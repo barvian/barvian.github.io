@@ -1,6 +1,6 @@
 ---
 title: Honors Thesis
-blurb: GAD self-help iPhone app
+blurb: Anxiety self-help iPhone app
 type: iOS
 bg: '#f0f5f7'
 fg: '#454f5e'

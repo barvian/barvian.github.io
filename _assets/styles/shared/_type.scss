@@ -21,7 +21,7 @@
   letter-spacing: 0;
   text-transform: none;
 
-  @include font($sans, $size: xxlarge, $style: normal, $weight: bold);
+  @include font($sans, $size: xxlarge, $style: normal, $weight: semibold);
 }
 
 %callout {

@@ -32,7 +32,7 @@ header {
   text-align: center;
 
   h1 {
-    @include font($ui, $weight: bold, $size: medium);
+    @include font($ui, $weight: normal, $size: medium);
   }
 
   h2 {
