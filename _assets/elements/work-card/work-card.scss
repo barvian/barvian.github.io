@@ -21,16 +21,16 @@
 #wrapper {
   @extend %stretch;
 
-  padding: var(--work-card-spacing, 10px);
+  padding: var(--work-card-spacing, #{size(spacing)});
 
   > a {
     @extend %unstyled-link;
+
+    display: block;
   }
 }
 
 header {
-  text-align: center;
-
   h1 {
     @include font($ui, $weight: normal, $size: medium);
   }
@@ -49,14 +49,13 @@ figure {
   &::before {
     @extend %stretch;
 
-    box-shadow: 0 0.4rem 1.333rem -0.25rem;
+    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
     content: '';
     opacity: 0.6;
   }
 
   > img {
     display: block;
-    max-width: 100%;
   }
 }
 
@@ -65,8 +64,15 @@ figure {
 
 :host(.portrait) {
   header {
-    padding: 2%;
+    padding: calc(var(--work-card-spacing, #{size(spacing)}) / 2);
     margin-bottom: 7.5%;
+    text-align: center;
+  }
+
+  figure {
+    > img {
+      max-width: 100%;
+    }
   }
 }
 
@@ -75,4 +81,18 @@ figure {
 // ---------
 
 :host(.landscape) {
+  header {
+    left: 0;
+    padding: calc(var(--work-card-spacing, #{size(spacing)}) * 2);
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 40%;
+  }
+
+  figure {
+    left: 40%;
+    position: absolute;
+    top: calc(var(--work-card-spacing, #{size(spacing)}) * 1.5);
+  }
 }

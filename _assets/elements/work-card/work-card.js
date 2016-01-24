@@ -11,6 +11,9 @@ Polymer({
   properties: {
     href: String,
     title: String,
+    blurb: String,
+    thumb: String,
+    thumb2x: String,
     orientation: {
       type: String,
       computed: '_computeOrientation(aspect)'
@@ -20,6 +23,7 @@ Polymer({
   styleProperties: {
     bg: String,
     fg: String,
+    shadow: String,
     aspect: Number
   },
 

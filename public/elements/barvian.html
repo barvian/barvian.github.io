@@ -7032,36 +7032,54 @@ svg {
     width: 100%; }
 
 #wrapper {
-  padding: var(--work-card-spacing, 10px); }
+  padding: var(--work-card-spacing, 24.443px);
+  padding: var(--work-card-spacing, 1.527696rem); }
+  #wrapper > a {
+    display: block; }
 
-header {
-  text-align: center; }
-  header h1 {
-    font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
-    font-size: 19.776px;
-    font-size: 1.236rem;
-    font-weight: 400; }
-  header h2 {
-    opacity: 0.6;
-    font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 16px;
-    font-size: 1rem;
-    font-weight: 400; }
+header h1 {
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 19.776px;
+  font-size: 1.236rem;
+  font-weight: 400; }
+
+header h2 {
+  opacity: 0.6;
+  font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 400; }
 
 figure {
   display: inline-block;
   position: relative; }
   figure::before {
-    box-shadow: 0 0.4rem 1.333rem -0.25rem;
+    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
     content: '';
     opacity: 0.6; }
   figure > img {
-    display: block;
-    max-width: 100%; }
+    display: block; }
 
 :host(.portrait) header {
-  padding: 2%;
-  margin-bottom: 7.5%; }
+  padding: calc(var(--work-card-spacing, 1.527696rem) / 2);
+  margin-bottom: 7.5%;
+  text-align: center; }
+
+:host(.portrait) figure > img {
+  max-width: 100%; }
+
+:host(.landscape) header {
+  left: 0;
+  padding: calc(var(--work-card-spacing, 1.527696rem) * 2);
+  position: absolute;
+  text-align: left;
+  top: 0;
+  width: 40%; }
+
+:host(.landscape) figure {
+  left: 40%;
+  position: absolute;
+  top: calc(var(--work-card-spacing, 1.527696rem) * 1.5); }
 
 </style>
 </template>
@@ -7076,7 +7094,7 @@ figure {
         <h2>[[blurb]]</h2>
       </header>
       <figure>
-        <img src$="[[hero]]" on-load="_imgLoaded">
+        <img srcset$="[[thumb]] 1x, [[thumb2x]] 2x" on-load="_imgLoaded">
       </figure>
     </article>
   </template>

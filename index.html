@@ -20,8 +20,8 @@ order: 1
   {% for work in site.works %}
   <work-card href="{{ work.url }}"
     title='{{ work.title }}' blurb='{{ work.blurb }}'
-    bg="{{ work.bg }}" fg="{{ work.fg }}"
-    hero="{{ work.hero | prepend: work.url }}"
+    bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+    thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"
     aspect="{{ work.aspect }}"></work-card>
   {% endfor %}
 </mason-ry>
