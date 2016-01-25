@@ -1042,8 +1042,11 @@
     transform-style: preserve-3d; }
     #pages > *::before, #pages > *::after {
       content: '';
-      display: block;
-      padding-bottom: calc(var(--nav-padding)*2 + var(--logo-size)); }
+      display: block; }
+    #pages > *::before {
+      height: calc((var(--nav-padding)*2 + var(--logo-size))); }
+    #pages > *::after {
+      height: calc((var(--nav-padding)*2 + var(--logo-size)) - var(--nav-padding)); }
 
 </style>
 </template>

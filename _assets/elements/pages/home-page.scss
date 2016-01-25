@@ -24,13 +24,14 @@ $nav-size: unquote("(var(--nav-padding)*2 + var(--logo-size))");
   column-gap: var(--work-grid-spacing);
   margin-left: auto;
   margin-right: auto;
+  margin-top: calc(-1 * var(--work-grid-spacing));
   max-width: $line;
 
   > ::content {
     .work {
       display: inline-block;
       width: 100%;
-      margin-bottom: var(--work-grid-spacing);
+      margin-top: var(--work-grid-spacing);
     }
 
     .work.landscape {

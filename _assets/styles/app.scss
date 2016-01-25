@@ -88,7 +88,7 @@
   }
 }
 
-$nav-size: unquote("calc(var(--nav-padding)*2 + var(--logo-size))");
+$nav-size: unquote("(var(--nav-padding)*2 + var(--logo-size))");
 
 // Pages
 // -----
@@ -108,7 +108,14 @@ $nav-size: unquote("calc(var(--nav-padding)*2 + var(--logo-size))");
     &::before, &::after {
       content: '';
       display: block;
-      padding-bottom: $nav-size;
+    }
+
+    &::before {
+      height: calc(#{$nav-size});
+    }
+
+    &::after {
+      height: calc(#{$nav-size} - var(--nav-padding));
     }
 
     transform-style: preserve-3d;
