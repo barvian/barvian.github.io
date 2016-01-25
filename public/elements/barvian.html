@@ -1278,13 +1278,14 @@ automatically, using Polymer bindings. Example:
   -ms-flex-pack: center;
   justify-content: center;
   min-height: calc(70vh - var(--page-padding-top) - var(--logo-size));
-  padding-bottom: 20vh;
-  padding-top: 10vh;
+  padding: 0 24.443px 10vh;
+  padding: 0 1.527696rem 10vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #greeting {
-      min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding)/2); } }
+      min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding)/2);
+      padding-bottom: 20vh; } }
 
 #works {
   -webkit-column-count: 2;
@@ -1293,16 +1294,18 @@ automatically, using Polymer bindings. Example:
   -webkit-column-gap: var(--work-grid-spacing);
   -moz-column-gap: var(--work-grid-spacing);
   column-gap: var(--work-grid-spacing);
+  padding-left: var(--work-grid-spacing);
+  padding-right: var(--work-grid-spacing);
   margin-left: auto;
   margin-right: auto;
   margin-top: calc(-1 * var(--work-grid-spacing));
   max-width: 36em;
-  -webkit-transform: translateZ(2rem) translateY(-4rem) scale(0.9166666667);
-  transform: translateZ(2rem) translateY(-4rem) scale(0.9166666667); }
+  -webkit-transform: translateZ(2rem) translateY(-3rem) scale(0.9166666667);
+  transform: translateZ(2rem) translateY(-3rem) scale(0.9166666667); }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #works {
-      -webkit-transform: translateZ(3.5rem) translateY(-7rem) scale(0.8541666667);
-      transform: translateZ(3.5rem) translateY(-7rem) scale(0.8541666667); } }
+      -webkit-transform: translateZ(3.5rem) translateY(-6.5rem) scale(0.8541666667);
+      transform: translateZ(3.5rem) translateY(-6.5rem) scale(0.8541666667); } }
   #works > ::content .work {
     display: inline-block;
     width: 100%;
