@@ -25,5 +25,5 @@ $perspective: 24rem !default;
 
 @mixin surface {
   perspective: $perspective;
-  perspective-origin: 50vw 50vh;
+  perspective-origin: 50% 50%;
 }

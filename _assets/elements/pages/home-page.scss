@@ -30,6 +30,7 @@
   margin-right: auto;
   margin-top: calc(-1 * var(--work-grid-spacing));
   max-width: $line;
+  transform-style: preserve-3d;
 
   @include level(2rem, $y: -3rem);
   @include query(tall) {

@@ -32,6 +32,16 @@
   }
 }
 
+  :host([href]) {
+    transform-style: preserve-3d;
+
+    @include surface;
+
+    figure {
+      transition: transform 250ms $ease-out-back;
+    }
+  }
+
 header {
   h1 {
     line-height: strip-units(size(medium));
@@ -88,6 +98,14 @@ figure {
   }
 }
 
+  :host(.portrait[href]) {
+    @include attention {
+      figure {
+        transform: translate3d(0, -2%, 1rem);
+      }
+    }
+  }
+
 
 // Landscape
 // ---------
@@ -116,3 +134,11 @@ figure {
     }
   }
 }
+
+  :host(.landscape[href]) {
+    @include attention {
+      figure {
+        transform: translate3d(-1.5%, -1%, 1rem);
+      }
+    }
+  }

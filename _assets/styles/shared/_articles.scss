@@ -15,6 +15,12 @@
     }
   }
 
+  @include sel(h1) {
+    @extend %callout;
+
+    text-align: center;
+  }
+
   @include sel(p) {
     @extend %line;
   }

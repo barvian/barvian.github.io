@@ -1300,6 +1300,8 @@ automatically, using Polymer bindings. Example:
   margin-right: auto;
   margin-top: calc(-1 * var(--work-grid-spacing));
   max-width: 36em;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   -webkit-transform: translateZ(2rem) translateY(-3rem) scale(0.9166666667);
   transform: translateZ(2rem) translateY(-3rem) scale(0.9166666667); }
   @media screen and (min-width: 780px) and (min-height: 740px) {
@@ -2241,6 +2243,18 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
+article > h1, article > ::content > h1 {
+  line-height: 1.236; }
+
+article > h1, article > ::content > h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 25.888px;
+  font-size: 1.618rem;
+  font-weight: 400;
+  font-style: normal; }
+
 article > p, article > ::content > p {
   margin-left: auto;
   margin-right: auto;
@@ -2252,6 +2266,8 @@ article {
   padding-left: 1.527696rem;
   padding-right: 24.443px;
   padding-right: 1.527696rem; }
+  article > h1, article > ::content > h1 {
+    text-align: center; }
 
 </style>
 </template>
@@ -3175,6 +3191,18 @@ article {
  *
  * @return {List | Null}
  */
+article > h1, article > ::content > h1 {
+  line-height: 1.236; }
+
+article > h1, article > ::content > h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 25.888px;
+  font-size: 1.618rem;
+  font-weight: 400;
+  font-style: normal; }
+
 article > p, article > ::content > p {
   margin-left: auto;
   margin-right: auto;
@@ -3186,6 +3214,8 @@ article {
   padding-left: 1.527696rem;
   padding-right: 24.443px;
   padding-right: 1.527696rem; }
+  article > h1, article > ::content > h1 {
+    text-align: center; }
 
 </style>
 </template>
@@ -4109,6 +4139,18 @@ article {
  *
  * @return {List | Null}
  */
+article > h1, article > ::content > h1 {
+  line-height: 1.236; }
+
+article > h1, article > ::content > h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 25.888px;
+  font-size: 1.618rem;
+  font-weight: 400;
+  font-style: normal; }
+
 article > p, article > ::content > p {
   margin-left: auto;
   margin-right: auto;
@@ -4120,6 +4162,8 @@ article {
   padding-left: 1.527696rem;
   padding-right: 24.443px;
   padding-right: 1.527696rem; }
+  article > h1, article > ::content > h1 {
+    text-align: center; }
 
 </style>
 </template>
@@ -7046,6 +7090,19 @@ svg {
   #wrapper > a {
     display: block; }
 
+:host([href]) {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-perspective: 24rem;
+  perspective: 24rem;
+  -webkit-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%; }
+  :host([href]) figure {
+    -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+
 header h1 {
   line-height: 1.236;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -7088,6 +7145,10 @@ figure {
 :host(.portrait) figure > img {
   max-width: 100%; }
 
+:host(.portrait[href]):hover figure {
+  -webkit-transform: translate3d(0, -2%, 1rem);
+  transform: translate3d(0, -2%, 1rem); }
+
 :host(.landscape)::before {
   padding-bottom: 57.5%; }
 
@@ -7105,6 +7166,10 @@ figure {
   top: calc(var(--work-card-spacing, 1.527696rem) * 1.5); }
   :host(.landscape) figure > img {
     max-width: 120%; }
+
+:host(.landscape[href]):hover figure {
+  -webkit-transform: translate3d(-1.5%, -1%, 1rem);
+  transform: translate3d(-1.5%, -1%, 1rem); }
 
 </style>
 </template>
