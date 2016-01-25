@@ -938,6 +938,8 @@
   --logo-fg: #fff;
   --logo-size: 70.509px;
   --logo-size: 4.406860421rem;
+  --page-padding-top: (var(--nav-padding)*2 + var(--logo-size));
+  --page-padding-bottom: (var(--nav-padding)*2 + var(--logo-size) - var(--nav-padding));
   --floating-greeting-highlight-color: #4be8be;
   --work-grid-size: 33.333%;
   --work-grid-spacing: 24.443px;
@@ -1012,7 +1014,7 @@
     #nav > ul > li > a {
       display: block;
       padding: 1em;
-      text-shadow: 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff, 0 0 2em #fff;
+      text-shadow: 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff;
       -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
       transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
       transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -1044,9 +1046,9 @@
       content: '';
       display: block; }
     #pages > *::before {
-      height: calc((var(--nav-padding)*2 + var(--logo-size))); }
+      height: calc(var(--page-padding-top)); }
     #pages > *::after {
-      height: calc((var(--nav-padding)*2 + var(--logo-size)) - var(--nav-padding)); }
+      height: calc(var(--page-padding-bottom)); }
 
 </style>
 </template>

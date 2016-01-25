@@ -17,7 +17,7 @@
   transform-style: preserve-3d;
 
   @include query(tall) {
-    min-height: calc(100vh - var(--page-padding-top) - var(--logo-size));
+    min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding)/2);
   }
 }
 
@@ -29,9 +29,9 @@
   margin-top: calc(-1 * var(--work-grid-spacing));
   max-width: $line;
 
-  @include level(2.5rem, $y: -5rem);
+  @include level(2rem, $y: -4rem);
   @include query(tall) {
-    @include level(5rem, $y: -10rem);
+    @include level(3.5rem, $y: -7rem);
   }
 
   > ::content {

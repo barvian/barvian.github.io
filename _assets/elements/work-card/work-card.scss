@@ -33,10 +33,14 @@
 
 header {
   h1 {
+    line-height: strip-units(size(medium));
+
     @include font($ui, $weight: normal, $size: medium);
+    @include trailing(0.25em);
   }
 
   h2 {
+    line-height: strip-units(size(medium));
     opacity: 0.6;
 
     @include font($sans, $weight: normal, $size: base);
