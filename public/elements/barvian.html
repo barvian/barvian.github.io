@@ -7013,7 +7013,7 @@ svg {
  *
  * @return {List | Null}
  */
-#wrapper, figure::before {
+#wrapper, #wrapper > a, figure::before {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -7072,6 +7072,10 @@ figure {
 
 :host(.portrait)::before {
   padding-bottom: 150%; }
+
+:host(.portrait) #wrapper > a {
+  padding: var(--work-card-spacing, 24.443px);
+  padding: var(--work-card-spacing, 1.527696rem); }
 
 :host(.portrait) header {
   padding: calc(var(--work-card-spacing, 1.527696rem) / 2);

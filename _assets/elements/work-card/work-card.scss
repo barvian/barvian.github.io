@@ -25,6 +25,7 @@
   padding: var(--work-card-spacing, #{size(spacing)});
 
   > a {
+    @extend %stretch;
     @extend %unstyled-link;
 
     display: block;
@@ -70,6 +71,10 @@ figure {
 :host(.portrait) {
   &::before {
     padding-bottom: 150%;
+  }
+
+  #wrapper > a {
+    padding: var(--work-card-spacing, #{size(spacing)});
   }
 
   header {
