@@ -14,6 +14,9 @@
   --logo-fg: $bg;
   --logo-size: size(giant);
 
+  --page-padding-top: (var(--nav-padding)*2 + var(--logo-size));
+  --page-padding-bottom: (var(--nav-padding)*2 + var(--logo-size) - var(--nav-padding));
+
   --floating-greeting-highlight-color: $primary;
 
   --work-grid-size: 33.333%;
@@ -88,7 +91,7 @@
   }
 }
 
-$nav-size: unquote("(var(--nav-padding)*2 + var(--logo-size))");
+$nav-size: unquote("");
 
 // Pages
 // -----
@@ -111,11 +114,11 @@ $nav-size: unquote("(var(--nav-padding)*2 + var(--logo-size))");
     }
 
     &::before {
-      height: calc(#{$nav-size});
+      height: calc(var(--page-padding-top));
     }
 
     &::after {
-      height: calc(#{$nav-size} - var(--nav-padding));
+      height: calc(var(--page-padding-bottom));
     }
 
     transform-style: preserve-3d;

@@ -8,7 +8,7 @@ layout: default
   based on the URL.
 {% endcomment %}
 
-{% assign pages = site.pages | sort: 'order' %}
+{% assign sortedPages = site.pages | sort: 'order' %}
 <template is="dom-bind" id="app">
   <style is="custom-style" include="app-styles"></style>
 
@@ -16,7 +16,7 @@ layout: default
 
   <nav id="nav" role="navigation">
     <ul>
-      {% for page in pages %}
+      {% for page in sortedPages %}
       {% if page.url == '/' %}
     </ul>
         <a is="floating-logo" href="{{ '/' | prepend: site.baseurl }}"></a>
@@ -31,7 +31,7 @@ layout: default
   </nav>
   <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
-    {% for page in pages %}
+    {% for page in site.pages %}
     {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
     <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}">
       {% include _content.html page=page %}

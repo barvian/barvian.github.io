@@ -1261,8 +1261,8 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
-:host {
-  padding-top: 0; }
+:host::after {
+  height: 1px !important; }
 
 #greeting {
   display: -webkit-box;
@@ -1277,11 +1277,14 @@ automatically, using Polymer bindings. Example:
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: calc(100vh - (var(--nav-padding)*2 + var(--logo-size)) - var(--logo-size));
+  min-height: calc(70vh - var(--page-padding-top) - var(--logo-size));
   padding-bottom: 20vh;
   padding-top: 10vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
+  @media screen and (min-width: 780px) and (min-height: 740px) {
+    #greeting {
+      min-height: calc(100vh - var(--page-padding-top) - var(--logo-size)); } }
 
 #works {
   -webkit-column-count: 2;
@@ -1293,7 +1296,13 @@ automatically, using Polymer bindings. Example:
   margin-left: auto;
   margin-right: auto;
   margin-top: calc(-1 * var(--work-grid-spacing));
-  max-width: 36em; }
+  max-width: 36em;
+  -webkit-transform: translateZ(2.5rem) translateY(-5rem) scale(0.8958333333);
+  transform: translateZ(2.5rem) translateY(-5rem) scale(0.8958333333); }
+  @media screen and (min-width: 780px) and (min-height: 740px) {
+    #works {
+      -webkit-transform: translateZ(5rem) translateY(-10rem) scale(0.7916666667);
+      transform: translateZ(5rem) translateY(-10rem) scale(0.7916666667); } }
   #works > ::content .work {
     display: inline-block;
     width: 100%;
@@ -7020,7 +7029,9 @@ svg {
   color: var(--work-card-fg);
   display: block;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  -webkit-transform: translateZ(0) translateY(0) scale(1);
+  transform: translateZ(0) translateY(0) scale(1); }
   :host::before {
     display: block;
     content: '';

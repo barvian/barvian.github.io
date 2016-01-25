@@ -4,19 +4,21 @@
 // =========
 
 :host {
-  padding-top: 0;
+  &::after { height: 1px !important; }
 }
-
-$nav-size: unquote("(var(--nav-padding)*2 + var(--logo-size))");
 
 #greeting {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - #{$nav-size} - var(--logo-size));
+  min-height: calc(70vh - var(--page-padding-top) - var(--logo-size));
   padding-bottom: 20vh;
   padding-top: 10vh;
   transform-style: preserve-3d;
+
+  @include query(tall) {
+    min-height: calc(100vh - var(--page-padding-top) - var(--logo-size));
+  }
 }
 
 #works {
@@ -26,6 +28,11 @@ $nav-size: unquote("(var(--nav-padding)*2 + var(--logo-size))");
   margin-right: auto;
   margin-top: calc(-1 * var(--work-grid-spacing));
   max-width: $line;
+
+  @include level(2.5rem, $y: -5rem);
+  @include query(tall) {
+    @include level(5rem, $y: -10rem);
+  }
 
   > ::content {
     .work {
