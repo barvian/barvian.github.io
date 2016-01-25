@@ -1,7 +1,7 @@
 ---
 order: 4
 title: Naperville
-blurb: City of Naperville, IL redesign
+blurb: City of Naperville, IL website redesign
 type: web
 bg: '#307AB3'
 fg: '#fff'

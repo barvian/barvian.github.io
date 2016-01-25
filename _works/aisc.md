@@ -4,7 +4,7 @@ title: AISC
 blurb: Component library
 type: web
 bg: '#F0824B'
-fg: '#6D2F10'
+fg: '#fff'
 shadow: '#6D2F10'
 hero: hero.png
 thumb: thumb.png
