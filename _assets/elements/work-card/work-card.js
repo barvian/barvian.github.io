@@ -14,17 +14,13 @@ Polymer({
     blurb: String,
     thumb: String,
     thumb2x: String,
-    orientation: {
-      type: String,
-      computed: '_computeOrientation(aspect)'
-    }
+    orientation: String
   },
 
   styleProperties: {
     bg: String,
     fg: String,
-    shadow: String,
-    aspect: Number
+    shadow: String
   },
 
   observers: [
@@ -33,7 +29,7 @@ Polymer({
   ],
 
   ready() {
-    this.updateLink(this.href);
+    // this.updateLink(this.href);
   },
 
   updateLink(href) {
@@ -55,9 +51,5 @@ Polymer({
 
   _imgLoaded(event) {
     this.classList.add('loaded');
-  },
-
-  _computeOrientation(aspect) {
-    return aspect > 1 ? 'portrait' : 'landscape';
   }
 });

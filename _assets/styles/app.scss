@@ -8,7 +8,7 @@
 
   // Theme
   // ------
-  --header-padding: 5vh;
+  --nav-padding: 5vh;
 
   --logo-bg: $invert;
   --logo-fg: $bg;
@@ -29,8 +29,8 @@
   background: linear-gradient(to bottom, rgba($bg, 1) 0%, rgba($bg, 0.8) 35%, rgba($bg, 0.5) 65%, rgba($bg, 0));
   display: flex;
   justify-content: space-between;
-  padding-bottom: var(--header-padding);
-  padding-top: var(--header-padding);
+  padding-bottom: var(--nav-padding);
+  padding-top: var(--nav-padding);
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -88,6 +88,8 @@
   }
 }
 
+$nav-size: unquote("calc(var(--nav-padding)*2 + var(--logo-size))");
+
 // Pages
 // -----
 
@@ -103,7 +105,12 @@
   @include surface;
 
   > * {
-    padding-top: calc(var(--header-padding)*2 + var(--logo-size));
+    &::before, &::after {
+      content: '';
+      display: block;
+      padding-bottom: $nav-size;
+    }
+
     transform-style: preserve-3d;
   }
 }

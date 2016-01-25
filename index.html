@@ -3,7 +3,7 @@ title: Home
 order: 1
 ---
 
-<floating-greeting id="greeting">
+<floating-greeting class="greeting">
   <a href="/about/">
     I'm a digital product designer who delights in creating thoughtful, selfless interfaces and codebases.
   </a>
@@ -12,16 +12,11 @@ order: 1
   </a>
 </floating-greeting>
 
-<mason-ry id="works" percent-position="true"
-  column-width=".sizer" gutter=".gutter"
-  item-selector='work-card' transition-duration="0.1s">
-  <div class="sizer"></div>
-  <div class="gutter"></div>
-  {% for work in site.works %}
-  <work-card href="{{ work.url }}"
-    title='{{ work.title }}' blurb='{{ work.blurb }}'
-    bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
-    thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"
-    aspect="{{ work.aspect }}"></work-card>
-  {% endfor %}
-</mason-ry>
+{% assign works = site.works | sort: 'order' %}
+{% for work in works %}
+<work-card class="work" href="{{ work.url }}"
+  title='{{ work.title }}' blurb='{{ work.blurb }}'
+  bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+  thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"
+  orientation="{{ work.orientation }}"></work-card>
+{% endfor %}

@@ -1,4 +1,5 @@
 ---
+order: 1
 title: Evanosky Foundation
 blurb: Nonprofit website redesign
 type: web
@@ -8,7 +9,7 @@ shadow: '#1c1f3e'
 hero: hero.png
 thumb: thumb.png
 thumb2x: thumb@2x.png
-aspect: 0.65
+orientation: landscape
 ---
 
 Evanosky stuff.

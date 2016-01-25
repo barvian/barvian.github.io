@@ -351,15 +351,6 @@ automatically, using Polymer bindings. Example:
 
 </dom-module>
 
-<dom-module id="mason-ry" assetpath="../bower_components/mason-ry/">
-	<style>
-		:host { display: block; }
-	</style>
-	<template>
-		<content></content>
-	</template>
-</dom-module>
-
 <dom-module id="home-page-styles" assetpath="pages/">
 <template>
 <style>
@@ -1270,25 +1261,10 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
-:host ::content #works {
-  max-width: 832px;
-  max-width: 52rem;
-  margin-left: auto;
-  margin-right: auto; }
-  :host ::content #works:after {
-    content: " ";
-    display: block;
-    clear: both; }
-  :host ::content #works .sizer, :host ::content #works work-card {
-    width: var(--work-grid-size); }
-  :host ::content #works .gutter {
-    width: var(--work-grid-spacing); }
-  :host ::content #works work-card {
-    margin-bottom: var(--work-grid-spacing); }
-  :host ::content #works work-card.landscape {
-    width: calc(var(--work-grid-size) * 2); }
+:host {
+  padding-top: 0; }
 
-#greeting-wrapper {
+#greeting {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1301,11 +1277,31 @@ automatically, using Polymer bindings. Example:
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: calc(100vh - var(--logo-size) - var(--header-padding)*2 - var(--logo-size));
+  min-height: calc(100vh - (var(--nav-padding)*2 + var(--logo-size)) - var(--logo-size));
   padding-bottom: 20vh;
   padding-top: 10vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
+
+#works {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  -webkit-column-gap: var(--work-grid-spacing);
+  -moz-column-gap: var(--work-grid-spacing);
+  column-gap: var(--work-grid-spacing);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36em; }
+  #works > ::content .work {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: var(--work-grid-spacing); }
+  #works > ::content .work.landscape {
+    -webkit-column-span: all;
+    -moz-column-span: all;
+    column-span: all;
+    display: block; }
 
 </style>
 </template>
@@ -1314,10 +1310,12 @@ automatically, using Polymer bindings. Example:
   <template>
     <style include="home-page-styles"></style>
 
-    <div id="greeting-wrapper">
-      <content select="#greeting"></content>
+    <div id="greeting">
+      <content select=".greeting"></content>
     </div>
-    <content select="#works"></content>
+    <div id="works">
+      <content select=".work"></content>
+    </div>
   </template>
 
   </dom-module><dom-module id="about-page-styles" assetpath="pages/">
@@ -5059,13 +5057,13 @@ a:host {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: calc(var(--logo-size) + 1px);
+  height: calc(var(--logo-size) + 2px);
   position: relative;
   -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  width: calc(var(--logo-size) + 1px);
+  width: calc(var(--logo-size) + 2px);
   -webkit-transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333);
   transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333); }
   @media screen and (min-width: 780px) and (min-height: 740px) {
@@ -7025,7 +7023,6 @@ svg {
   :host::before {
     display: block;
     content: '';
-    padding-bottom: calc(var(--work-card-aspect) * 100%);
     width: 100%; }
 
 #wrapper {
@@ -7057,6 +7054,9 @@ figure {
   figure > img {
     display: block; }
 
+:host(.portrait)::before {
+  padding-bottom: 150%; }
+
 :host(.portrait) header {
   padding: calc(var(--work-card-spacing, 1.527696rem) / 2);
   margin-bottom: 7.5%;
@@ -7064,6 +7064,9 @@ figure {
 
 :host(.portrait) figure > img {
   max-width: 100%; }
+
+:host(.landscape)::before {
+  padding-bottom: 57.5%; }
 
 :host(.landscape) header {
   left: 0;

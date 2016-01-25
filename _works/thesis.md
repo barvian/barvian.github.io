@@ -1,4 +1,5 @@
 ---
+order: 3
 title: Honors Thesis
 blurb: Anxiety self-help iPhone app
 type: iOS
@@ -8,7 +9,7 @@ shadow: '#454f5e'
 hero: hero.png
 thumb: hero.png
 thumb2x: hero.png
-aspect: 1.52
+orientation: portrait
 ---
 
 Thesis stuff.

@@ -1,4 +1,5 @@
 ---
+order: 4
 title: Naperville
 blurb: City of Naperville, IL redesign
 type: web
@@ -8,7 +9,7 @@ shadow: '#0d2232'
 hero: hero.png
 thumb: thumb.png
 thumb2x: thumb@2x.png
-aspect: 0.5
+orientation: landscape
 ---
 
 Naperville stuff.

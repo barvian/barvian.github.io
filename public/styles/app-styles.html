@@ -933,7 +933,7 @@
 
 :root {
   overflow: hidden;
-  --header-padding: 5vh;
+  --nav-padding: 5vh;
   --logo-bg: black;
   --logo-fg: #fff;
   --logo-size: 70.509px;
@@ -960,8 +960,8 @@
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding-bottom: var(--header-padding);
-  padding-top: var(--header-padding);
+  padding-bottom: var(--nav-padding);
+  padding-top: var(--nav-padding);
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -1038,9 +1038,12 @@
   -webkit-perspective-origin: 50vw 50vh;
   perspective-origin: 50vw 50vh; }
   #pages > * {
-    padding-top: calc(var(--header-padding)*2 + var(--logo-size));
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }
+    #pages > *::before, #pages > *::after {
+      content: '';
+      display: block;
+      padding-bottom: calc(var(--nav-padding)*2 + var(--logo-size)); }
 
 </style>
 </template>
