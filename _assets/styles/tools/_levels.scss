@@ -23,7 +23,7 @@ $perspective: 24rem !default;
   transform: level($z, $y, $scale);
 }
 
-@mixin surface {
+@mixin surface($relative: true) {
   perspective: $perspective;
-  perspective-origin: 50% 50%;
+  perspective-origin: if($relative, 50% 50%, 50vw 50vh);
 }

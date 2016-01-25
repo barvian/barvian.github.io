@@ -41,7 +41,7 @@
   width: 100%;
   z-index: 100;
 
-  @include surface;
+  @include surface(false);
 
   a {
     pointer-events: auto;
