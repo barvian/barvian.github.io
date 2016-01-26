@@ -108,7 +108,7 @@ figure {
   :host(.portrait[href]) {
     @include attention {
       figure img {
-        transform: translate3d(0, -3%, -1rem);
+        transform: translate3d(0, -3%, -2rem);
       }
     }
   }
@@ -145,7 +145,7 @@ figure {
   :host(.landscape[href]) {
     @include attention {
       figure img {
-        transform: translate3d(-2%, -2%, -1rem);
+        transform: translate3d(-2%, -2%, -1.5rem);
       }
     }
   }
