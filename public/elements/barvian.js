@@ -9425,7 +9425,7 @@ Polymer({
 
   properties: { 
     href: String, 
-    title: String, 
+    workTitle: String, 
     blurb: String, 
     thumb: String, 
     thumb2x: String, 
