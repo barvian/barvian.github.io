@@ -42,10 +42,6 @@
     @include surface;
     @include attention {
       transform: translateZ(0.75rem);
-
-      figure img {
-        transform: translate3d(0, -2%, -1rem);
-      }
     }
     @include pressed {
       transform: translateZ(-0.4rem);
@@ -109,6 +105,14 @@ figure {
   }
 }
 
+  :host(.portrait[href]) {
+    @include attention {
+      figure img {
+        transform: translate3d(0, -3%, -1rem);
+      }
+    }
+  }
+
 
 // Landscape
 // ---------
@@ -137,3 +141,11 @@ figure {
     }
   }
 }
+
+  :host(.landscape[href]) {
+    @include attention {
+      figure img {
+        transform: translate3d(-2%, -2%, -1rem);
+      }
+    }
+  }

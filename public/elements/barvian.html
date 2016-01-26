@@ -7101,9 +7101,6 @@ svg {
   :host([href]):hover {
     -webkit-transform: translateZ(0.75rem);
     transform: translateZ(0.75rem); }
-    :host([href]):hover figure img {
-      -webkit-transform: translate3d(0, -2%, -1rem);
-      transform: translate3d(0, -2%, -1rem); }
   :host([href]):active {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }
@@ -7153,6 +7150,10 @@ figure {
 :host(.portrait) figure > img {
   max-width: 100%; }
 
+:host(.portrait[href]):hover figure img {
+  -webkit-transform: translate3d(0, -3%, -1rem);
+  transform: translate3d(0, -3%, -1rem); }
+
 :host(.landscape)::before {
   padding-bottom: 57.5%; }
 
@@ -7170,6 +7171,10 @@ figure {
   top: calc(var(--work-card-spacing, 1.527696rem) * 1.5); }
   :host(.landscape) figure > img {
     max-width: 120%; }
+
+:host(.landscape[href]):hover figure img {
+  -webkit-transform: translate3d(-2%, -2%, -1rem);
+  transform: translate3d(-2%, -2%, -1rem); }
 
 </style>
 </template>
