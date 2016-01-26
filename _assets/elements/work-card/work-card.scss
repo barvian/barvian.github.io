@@ -33,7 +33,7 @@
 }
 
   :host([href]) {
-    &, header, figure {
+    &, figure {
       transition: transform 250ms $ease-out-back;
     }
 
@@ -43,8 +43,8 @@
     @include attention {
       transform: translateZ(0.75rem);
 
-      header, figure {
-        transform: translateZ(-0.8125rem);
+      figure {
+        transform: translate3d(0, -2%, -0.85rem);
       }
     }
     @include pressed {
@@ -72,15 +72,8 @@ figure {
   display: inline-block;
   position: relative;
 
-  &::before {
-    @extend %stretch;
-
-    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
-    content: '';
-    opacity: 0.6;
-  }
-
   > img {
+    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
     display: block;
   }
 }
