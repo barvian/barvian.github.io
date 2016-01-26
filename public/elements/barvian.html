@@ -1304,8 +1304,9 @@ automatically, using Polymer bindings. Example:
   transform: translateZ(2rem) translateY(-3rem) scale(0.9166666667); }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #works {
-      -webkit-transform: translateZ(3.5rem) translateY(-6.5rem) scale(0.8541666667);
-      transform: translateZ(3.5rem) translateY(-6.5rem) scale(0.8541666667); } }
+      margin-top: calc(-1 * var(--work-grid-spacing) - 10rem);
+      -webkit-transform: translateZ(7.5rem) translateY(-4rem) scale(0.6875);
+      transform: translateZ(7.5rem) translateY(-4rem) scale(0.6875); } }
   #works > ::content .work {
     float: left;
     margin-left: var(--work-grid-spacing);

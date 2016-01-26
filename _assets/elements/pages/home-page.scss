@@ -33,7 +33,9 @@
 
   @include level(2rem, $y: -3rem);
   @include query(tall) {
-    @include level(3.5rem, $y: -6.5rem);
+    margin-top: calc(-1 * var(--work-grid-spacing) - 10rem);
+
+    @include level(7.5rem, $y: -4rem);
   }
 
   > ::content {
