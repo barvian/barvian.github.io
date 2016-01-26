@@ -7107,6 +7107,12 @@ svg {
   :host([href]):active {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }
+  :host([href]) figure {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+    :host([href]) figure img {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0); }
 
 header h1 {
   line-height: 1.236;
@@ -7126,7 +7132,7 @@ header h2 {
   font-weight: 400; }
 
 figure {
-  display: inline-block;
+  display: block;
   position: relative; }
   figure > img {
     box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);

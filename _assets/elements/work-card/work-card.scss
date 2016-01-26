@@ -50,6 +50,14 @@
     @include pressed {
       transform: translateZ(-0.4rem);
     }
+
+    figure {
+      transform-style: preserve-3d;
+
+      img {
+        transform: translateZ(0);
+      }
+    }
   }
 
 header {
@@ -69,7 +77,7 @@ header {
 }
 
 figure {
-  display: inline-block;
+  display: block;
   position: relative;
 
   > img {
