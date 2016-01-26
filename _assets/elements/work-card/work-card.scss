@@ -33,12 +33,22 @@
 }
 
   :host([href]) {
+    &, header, figure {
+      transition: transform 250ms $ease-out-back;
+    }
+
     transform-style: preserve-3d;
 
     @include surface;
+    @include attention {
+      transform: translateZ(0.75rem);
 
-    figure {
-      transition: transform 250ms $ease-out-back;
+      header, figure {
+        transform: translateZ(-0.8125rem);
+      }
+    }
+    @include pressed {
+      transform: translateZ(-0.4rem);
     }
   }
 
@@ -98,14 +108,6 @@ figure {
   }
 }
 
-  :host(.portrait[href]) {
-    @include attention {
-      figure {
-        transform: translate3d(0, -2%, 1rem);
-      }
-    }
-  }
-
 
 // Landscape
 // ---------
@@ -134,11 +136,3 @@ figure {
     }
   }
 }
-
-  :host(.landscape[href]) {
-    @include attention {
-      figure {
-        transform: translate3d(-1.5%, -1%, 1rem);
-      }
-    }
-  }
