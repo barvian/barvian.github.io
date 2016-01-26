@@ -1261,6 +1261,11 @@ automatically, using Polymer bindings. Example:
  *
  * @return {List | Null}
  */
+#works::after {
+  content: '';
+  display: table;
+  clear: both; }
+
 :host::after {
   height: 1px !important; }
 
@@ -1288,13 +1293,6 @@ automatically, using Polymer bindings. Example:
       padding-bottom: 20vh; } }
 
 #works {
-  -webkit-column-count: 2;
-  -moz-column-count: 2;
-  column-count: 2;
-  -webkit-column-gap: var(--work-grid-spacing);
-  -moz-column-gap: var(--work-grid-spacing);
-  column-gap: var(--work-grid-spacing);
-  padding-left: var(--work-grid-spacing);
   padding-right: var(--work-grid-spacing);
   margin-left: auto;
   margin-right: auto;
@@ -1309,14 +1307,12 @@ automatically, using Polymer bindings. Example:
       -webkit-transform: translateZ(3.5rem) translateY(-6.5rem) scale(0.8541666667);
       transform: translateZ(3.5rem) translateY(-6.5rem) scale(0.8541666667); } }
   #works > ::content .work {
-    display: inline-block;
-    width: 100%;
-    margin-top: var(--work-grid-spacing); }
+    float: left;
+    margin-left: var(--work-grid-spacing);
+    margin-top: var(--work-grid-spacing);
+    width: calc(50% - var(--work-grid-spacing)); }
   #works > ::content .work.landscape {
-    -webkit-column-span: all;
-    -moz-column-span: all;
-    column-span: all;
-    display: block; }
+    width: calc(100% - var(--work-grid-spacing)); }
 
 </style>
 </template>
@@ -7097,7 +7093,7 @@ svg {
   perspective: 24rem;
   -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%; }
-  :host([href]), :host([href]) figure {
+  :host([href]), :host([href]) figure img {
     -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -7105,9 +7101,9 @@ svg {
   :host([href]):hover {
     -webkit-transform: translateZ(0.75rem);
     transform: translateZ(0.75rem); }
-    :host([href]):hover figure {
-      -webkit-transform: translate3d(0, -2%, -0.85rem);
-      transform: translate3d(0, -2%, -0.85rem); }
+    :host([href]):hover figure img {
+      -webkit-transform: translate3d(0, -2%, -1rem);
+      transform: translate3d(0, -2%, -1rem); }
   :host([href]):active {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }

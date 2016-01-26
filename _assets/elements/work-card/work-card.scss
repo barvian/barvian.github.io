@@ -33,7 +33,7 @@
 }
 
   :host([href]) {
-    &, figure {
+    &, figure img {
       transition: transform 250ms $ease-out-back;
     }
 
@@ -43,8 +43,8 @@
     @include attention {
       transform: translateZ(0.75rem);
 
-      figure {
-        transform: translate3d(0, -2%, -0.85rem);
+      figure img {
+        transform: translate3d(0, -2%, -1rem);
       }
     }
     @include pressed {

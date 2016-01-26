@@ -22,9 +22,8 @@
 }
 
 #works {
-  column-count: 2;
-  column-gap: var(--work-grid-spacing);
-  padding-left: var(--work-grid-spacing);
+  @extend %clearfix;
+
   padding-right: var(--work-grid-spacing);
   margin-left: auto;
   margin-right: auto;
@@ -39,14 +38,14 @@
 
   > ::content {
     .work {
-      display: inline-block;
-      width: 100%;
+      float: left;
+      margin-left: var(--work-grid-spacing);
       margin-top: var(--work-grid-spacing);
+      width: calc(50% - var(--work-grid-spacing));
     }
 
     .work.landscape {
-      column-span: all;
-      display: block;
+      width: calc(100% - var(--work-grid-spacing));
     }
   }
 }
