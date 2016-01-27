@@ -9120,34 +9120,35 @@ window.Barvian = window.Barvian || {};
 Barvian.PageBehavior = { 
 
   behaviors: [
-  Polymer.NeonAnimatableBehavior, 
-  Polymer.NeonAnimationRunnerBehavior], 
+  Polymer.NeonAnimatableBehavior], 
 
 
   properties: { 
-    animationConfig: { 
-      value: function value() {
-        return { 
-          'entry': [{ 
-            name: 'cascaded-animation', 
-            animation: 'scale-up-animation', 
-            nodes: this.getEffectiveChildren() }], 
-
-          'exit': [{ 
-            name: 'cascaded-animation', 
-            animation: 'scale-down-animation', 
-            nodes: this.getEffectiveChildren() }] };} }, 
-
-
-
-
     pageTitle: { 
       type: String, 
       value: null }, 
 
     order: { 
       type: Number, 
-      value: 0 } } };
+      value: 0 } }, 
+
+
+
+  exitAnimation: function exitAnimation() {
+    return { 
+      'entry': [{ 
+        node: this.$.content, 
+        name: 'slide-from-left-animation' }, 
+      { 
+        node: this.$.content, 
+        name: 'fade-in-animation' }], 
+
+      'exit': [{ 
+        node: this.$.content, 
+        name: 'slide-left-animation' }, 
+      { 
+        node: this.$.content, 
+        name: 'fade-out-animation' }] };} };
 /**
    * Use `Polymer.NeonSharedElementAnimatableBehavior` to implement elements containing shared element
    * animations.
@@ -9383,10 +9384,6 @@ Polymer({
           'exit': [{ 
             name: 'ripple-animation', 
             id: 'ripple', 
-            fromPage: this }, 
-          { 
-            name: 'hero-animation', 
-            id: 'hero', 
             fromPage: this }] };} } }, 
 
 
@@ -9422,7 +9419,14 @@ Polymer({
   is: 'about-page', 
 
   behaviors: [
-  Barvian.PageBehavior] });
+  Barvian.PageBehavior], 
+
+
+  properties: { 
+    animationConfig: { 
+      type: Object, 
+      value: function value() {
+        return {};} } } });
 'use strict'; // Contact page
 // ============
 

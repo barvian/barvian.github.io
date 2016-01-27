@@ -18,10 +18,6 @@ Polymer({
             name: 'ripple-animation',
             id: 'ripple',
             fromPage: this
-          }, {
-            name: 'hero-animation',
-            id: 'hero',
-            fromPage: this
           }]
         }
       }
