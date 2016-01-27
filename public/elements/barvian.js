@@ -9148,6 +9148,32 @@ Barvian.PageBehavior = {
     order: { 
       type: Number, 
       value: 0 } } };
+/**
+   * Use `Polymer.NeonSharedElementAnimatableBehavior` to implement elements containing shared element
+   * animations.
+   * @polymerBehavior Polymer.NeonSharedElementAnimatableBehavior
+   */
+  Polymer.NeonSharedElementAnimatableBehaviorImpl = {
+
+    properties: {
+
+      /**
+       * A map of shared element id to node.
+       */
+      sharedElements: {
+        type: Object,
+        value: {}
+      }
+
+    }
+
+  };
+
+  /** @polymerBehavior Polymer.NeonSharedElementAnimatableBehavior */
+  Polymer.NeonSharedElementAnimatableBehavior = [
+    Polymer.NeonAnimatableBehavior,
+    Polymer.NeonSharedElementAnimatableBehaviorImpl
+  ];
 "use strict";var _extends = Object.assign || function (target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i];for (var key in source) {if (Object.prototype.hasOwnProperty.call(source, key)) {target[key] = source[key];}}}return target;}; // Style properties behavior
 // =========================
 
@@ -9345,7 +9371,50 @@ Polymer({
   is: 'home-page', 
 
   behaviors: [
-  Barvian.PageBehavior] });
+  Barvian.PageBehavior, 
+  Polymer.NeonSharedElementAnimatableBehavior], 
+
+
+  properties: { 
+    animationConfig: { 
+      type: Object, 
+      value: function value() {
+        return { 
+          'exit': [{ 
+            name: 'ripple-animation', 
+            id: 'ripple', 
+            fromPage: this }, 
+          { 
+            name: 'hero-animation', 
+            id: 'hero', 
+            fromPage: this }] };} } }, 
+
+
+
+
+
+
+  listeners: { 
+    'works.click': '_onClick' }, 
+
+
+  _onClick: function _onClick(event) {
+    var work = event.target;
+    while (work.parentNode !== this.$.works) {
+      work = work.parentNode;}
+
+
+    // configure page animation
+    this.sharedElements = { 
+      hero: work.$.image, 
+      ripple: work };
+
+    this.animationConfig['exit'][0].gesture = { 
+      x: event.x, 
+      y: event.y };
+
+
+    this.fire('work-click', { work: work });} });
 'use strict'; // About page
 // ==========
 
@@ -9369,7 +9438,60 @@ Polymer({
   is: 'work-page', 
 
   behaviors: [
-  Barvian.PageBehavior] });
+  Barvian.StylePropertiesBehavior, 
+  Barvian.PageBehavior, 
+  Polymer.NeonSharedElementAnimatableBehavior], 
+
+
+  properties: { 
+    blurb: String, 
+    hero: String, 
+    hero2x: String, 
+
+    sharedElements: { 
+      type: Object, 
+      value: function value() {
+        return { 
+          'hero': this.$.hero, 
+          'ripple': this.$.header };} }, 
+
+
+
+
+    animationConfig: { 
+      type: Object, 
+      value: function value() {
+        return { 
+          'entry': [{ 
+            name: 'ripple-animation', 
+            id: 'ripple', 
+            toPage: this }, 
+          { 
+            name: 'hero-animation', 
+            id: 'hero', 
+            toPage: this, 
+            timing: { 
+              delay: 150 } }], 
+
+
+          'exit': [{ 
+            name: 'fade-out-animation', 
+            node: this.$.header }, 
+          { 
+            name: 'transform-animation', 
+            transformFrom: 'none', 
+            transformTo: 'translate(0px,-200vh) scale(0.9,1)', 
+            node: this }] };} } }, 
+
+
+
+
+
+
+  styleProperties: { 
+    bg: String, 
+    fg: String, 
+    shadow: String } });
 'use strict'; // Floating logo
 // =============
 

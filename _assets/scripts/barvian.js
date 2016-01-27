@@ -2,7 +2,7 @@ import * as config from '../../_config.yml';
 import pictureFill from 'picturefill'; // eslint-disable-line no-unused-vars
 import routing from './routing'; // eslint-disable-line no-unused-vars
 
-// Barvian.me
+// barvian.me
 // ==========
 
 // Grab a reference to our auto-binding template
@@ -51,4 +51,8 @@ app.scroll = function(top, duration = 200) {
 // Scroll page to top
 app.scrollPageToTop = function() {
   this.scroll(0);
+};
+
+app._onWorkClick = function(event) {
+  console.log(event.detail.work.bg);
 };

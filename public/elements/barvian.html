@@ -4136,10 +4136,10 @@ article {
  *
  * @return {List | Null}
  */
-article > h1, article > ::content > h1 {
+article #content > h1, article #content > ::content > h1 {
   line-height: 1.236; }
 
-article > h1, article > ::content > h1 {
+article #content > h1, article #content > ::content > h1 {
   letter-spacing: 0;
   text-transform: none;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -4148,19 +4148,26 @@ article > h1, article > ::content > h1 {
   font-weight: 400;
   font-style: normal; }
 
-article > p, article > ::content > p {
+article #content > p, article #content > ::content > p {
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
   width: 36em; }
 
-article {
+article #content {
   padding-left: 24.443px;
   padding-left: 1.527696rem;
   padding-right: 24.443px;
   padding-right: 1.527696rem; }
-  article > h1, article > ::content > h1 {
+  article #content > h1, article #content > ::content > h1 {
     text-align: center; }
+
+:host::before {
+  display: none !important; }
+
+#header {
+  background-color: var(--work-page-bg);
+  min-height: 100vh; }
 
 </style>
 </template>
@@ -4170,6 +4177,11 @@ article {
     <style include="work-page-styles"></style>
 
     <article>
+      <header id="header">
+        <figure>
+          <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
+        </figure>
+      </header>
       <content></content>
     </article>
   </template>
@@ -7190,7 +7202,7 @@ figure {
         <h2>[[blurb]]</h2>
       </header>
       <figure>
-        <img srcset$="[[thumb]] 1x, [[thumb2x]] 2x" on-load="_imgLoaded">
+        <img id="image" srcset$="[[thumb]] 1x, [[thumb2x]] 2x" on-load="_imgLoaded">
       </figure>
     </article>
   </template>

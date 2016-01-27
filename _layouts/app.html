@@ -33,13 +33,16 @@ layout: default
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in site.pages %}
     {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
-    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}">
+    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}"
+      on-work-click="_onWorkClick">
       {% include _content.html page=page %}
     </{{ elem }}>
     {% endfor %}
 
     {% for work in site.works %}
-    <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}'>
+    <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}'
+      blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+      hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}">
       {% include _content.html page=work %}
     </work-page>
     {% endfor %}

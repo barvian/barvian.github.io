@@ -1854,7 +1854,7 @@ window.matchMedia || (window.matchMedia = function() {
 
 // eslint-disable-line no-unused-vars
 
-// Barvian.me
+// barvian.me
 // ==========
 
 // Grab a reference to our auto-binding template
@@ -1903,6 +1903,10 @@ app.scroll = function (top) {var _this = this;var duration = arguments.length <=
 // Scroll page to top
 app.scrollPageToTop = function () {
   this.scroll(0);};
+
+
+app._onWorkClick = function (event) {
+  console.log(event.detail.work.bg);};
 
 },{"../../_config.yml":5,"./../bower_components/picturefill/dist/picturefill.js":2,"./routing":4}],4:[function(require,module,exports){
 'use strict';var _page = require("./../bower_components/page/page.js");var _page2 = _interopRequireDefault(_page);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
