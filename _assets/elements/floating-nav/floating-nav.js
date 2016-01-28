@@ -10,7 +10,7 @@ Polymer({
   },
 
   observers: [
-    'matchStyles(currentPage)'
+    'updateStyle(currentPage.navStyle)'
   ],
 
   attached() {
@@ -36,11 +36,9 @@ Polymer({
       });
   },
 
-  matchStyles(page) {
+  updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
-    if (page && page.navStyle) {
-      Polymer.dom(this).classList.add(page.navStyle);
-    }
+    Polymer.dom(this).classList.add(navStyle);
     Polymer.dom.flush();
     this.updateStyles();
   },

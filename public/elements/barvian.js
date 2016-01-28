@@ -10012,7 +10012,7 @@ Polymer({
 
 
   observers: [
-  'matchStyles(currentPage)'], 
+  'updateStyle(currentPage.navStyle)'], 
 
 
   attached: function attached() {
@@ -10038,11 +10038,9 @@ Polymer({
 
 
 
-  matchStyles: function matchStyles(page) {
+  updateStyle: function updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
-    if (page && page.navStyle) {
-      Polymer.dom(this).classList.add(page.navStyle);}
-
+    Polymer.dom(this).classList.add(navStyle);
     Polymer.dom.flush();
     this.updateStyles();}, 
 
