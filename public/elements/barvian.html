@@ -5144,6 +5144,32 @@ ul {
   perspective-origin: 50vw 50vh; }
   :host a, :host ::content a {
     pointer-events: auto; }
+    :host a, :host a *, :host ::content a, :host ::content a * {
+      -webkit-transition: fill 250ms linear, color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+      transition: fill 250ms linear, color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+      transition: fill 250ms linear, color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+      transition: fill 250ms linear, color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+  :host ::content [is$="logo"] {
+    -webkit-transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333);
+    transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333); }
+    @media screen and (min-width: 780px) and (min-height: 740px) {
+      :host ::content [is$="logo"] {
+        -webkit-transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333);
+        transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333); } }
+    :host ::content [is$="logo"]:hover {
+      -webkit-transform: translateZ(1.5rem) translateY(0.4rem) scale(1.03125);
+      transform: translateZ(1.5rem) translateY(0.4rem) scale(1.03125); }
+      @media screen and (min-width: 780px) and (min-height: 740px) {
+        :host ::content [is$="logo"]:hover {
+          -webkit-transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125);
+          transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125); } }
+    :host ::content [is$="logo"]:active {
+      -webkit-transform: translateZ(0.85rem) translateY(0.4rem) scale(0.9163541667);
+      transform: translateZ(0.85rem) translateY(0.4rem) scale(0.9163541667); }
+      @media screen and (min-width: 780px) and (min-height: 740px) {
+        :host ::content [is$="logo"]:active {
+          -webkit-transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667);
+          transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667); } }
 
 ul {
   -webkit-box-align: baseline;
@@ -5167,10 +5193,6 @@ ul {
     display: block;
     padding: 1em;
     text-shadow: 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff;
-    -webkit-transition: color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
     -webkit-transform: translateZ(0.25rem) translateY(0.5rem) scale(0.9895833333);
     transform: translateZ(0.25rem) translateY(0.5rem) scale(0.9895833333); }
@@ -5209,9 +5231,9 @@ ul {
     transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
-  :host(.invert) /deep/ [is='floating-logo'] #base {
+  :host(.invert) /deep/ [is$="logo"] #base {
     fill: #fff !important; }
-  :host(.invert) /deep/ [is='floating-logo'] #text {
+  :host(.invert) /deep/ [is$="logo"] #text {
     fill: black !important; }
 
 </style>
@@ -5222,13 +5244,13 @@ ul {
     <style include="floating-nav-styles"></style>
 
     <ul id="left"></ul>
-    <div id="home"><content select="#home"></content></div>
+    <content select="[is$=&quot;logo&quot;]"></content>
     <ul id="right"></ul>
     <content id="content" select=":not(#home)"></content>
   </template>
 
   </dom-module>
-<dom-module id="floating-logo-styles" assetpath="floating-logo/">
+<dom-module id="logo-styles" assetpath="logo/">
 <template>
 <style>
 /**
@@ -6167,31 +6189,7 @@ a:host {
   justify-content: center;
   height: calc(var(--logo-size) + 2px);
   position: relative;
-  -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  width: calc(var(--logo-size) + 2px);
-  -webkit-transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333);
-  transform: translateZ(1rem) translateY(0.4rem) scale(0.9583333333); }
-  @media screen and (min-width: 780px) and (min-height: 740px) {
-    :host {
-      -webkit-transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333);
-      transform: translateZ(1rem) translateY(0.75rem) scale(0.9583333333); } }
-  :host:hover {
-    -webkit-transform: translateZ(1.5rem) translateY(0.4rem) scale(1.03125);
-    transform: translateZ(1.5rem) translateY(0.4rem) scale(1.03125); }
-    @media screen and (min-width: 780px) and (min-height: 740px) {
-      :host:hover {
-        -webkit-transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125);
-        transform: translateZ(1.5rem) translateY(0.75rem) scale(1.03125); } }
-  :host:active {
-    -webkit-transform: translateZ(0.85rem) translateY(0.4rem) scale(0.9163541667);
-    transform: translateZ(0.85rem) translateY(0.4rem) scale(0.9163541667); }
-    @media screen and (min-width: 780px) and (min-height: 740px) {
-      :host:active {
-        -webkit-transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667);
-        transform: translateZ(0.85rem) translateY(0.75rem) scale(0.9163541667); } }
+  width: calc(var(--logo-size) + 2px); }
 
 svg {
   left: 0;
@@ -6210,10 +6208,10 @@ svg {
 
 </style>
 </template>
-</dom-module><dom-module id="floating-logo" assetpath="floating-logo/">
+</dom-module><dom-module id="barvian-logo" assetpath="logo/">
 
   <template>
-    <style include="floating-logo-styles"></style>
+    <style include="logo-styles"></style>
 
     <svg viewBox="0 0 78 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <path d="M39,78 C62.9405941,78 78,62.9405941 78,39 C78,15.0594059 62.9405941,0 39,0 C15.0594059,2.93187719e-15 1.4659386e-15,15.0594059 0,39 C0,62.9405941 15.0594059,78 39,78 L39,78 Z" id="base"></path>

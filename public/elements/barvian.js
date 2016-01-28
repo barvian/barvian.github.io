@@ -10051,7 +10051,7 @@ Polymer({
 // =============
 
 Polymer({ 
-  is: 'floating-logo', 
+  is: 'barvian-logo', 
   extends: 'a' });
 'use strict'; // Floating greeting
 // =================

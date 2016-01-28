@@ -15,7 +15,7 @@ layout: default
 
   <nav id="nav" is="floating-nav" role="navigation" current-page="[[selectedPage]]">
     {% for page in site.pages | sort: 'order' %}
-      <a{% if page.url == '/' %} id="home" is="floating-logo"{% endif %} href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      <a{% if page.url == '/' %} is="barvian-logo"{% endif %} href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
     {% endfor %}
   </nav>
   <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"

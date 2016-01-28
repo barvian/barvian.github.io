@@ -6,26 +6,14 @@
 :host {
   @extend %ui;
 
-  border-radius: 90%;
+  border-radius: 90%; // for shadow
   box-shadow: 0 0.58rem 1.17rem rgba($base, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   height: calc(var(--logo-size) + 2px); // fix rounding in Chrome
   position: relative;
-  transition: transform 250ms $ease-out-back;
   width: calc(var(--logo-size) + 2px); // fix rounding in Chrome
-
-  @include level(1rem, $y: 0.4rem);
-  @include query(tall) { @include level(1rem, $y: 0.75rem); }
-  @include attention {
-    @include level(1.5rem, $y: 0.4rem, $scale: 1.1);
-    @include query(tall) { @include level(1.5rem, $y: 0.75rem, $scale: 1.1); }
-  }
-  @include pressed {
-    @include level(0.85rem, $y: 0.4rem, $scale: 0.95);
-    @include query(tall) { @include level(0.85rem, $y: 0.75rem, $scale: 0.95); }
-  }
 }
 
 svg {

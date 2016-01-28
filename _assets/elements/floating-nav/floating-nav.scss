@@ -20,7 +20,24 @@
   @include surface(false);
 
   a, ::content a {
+    &, * {
+      transition: fill 250ms linear, color 250ms linear, transform 250ms $ease-out-back;
+    }
+
     pointer-events: auto;
+  }
+
+  ::content [is$="logo"] {
+    @include level(1rem, $y: 0.4rem);
+    @include query(tall) { @include level(1rem, $y: 0.75rem); }
+    @include attention {
+      @include level(1.5rem, $y: 0.4rem, $scale: 1.1);
+      @include query(tall) { @include level(1.5rem, $y: 0.75rem, $scale: 1.1); }
+    }
+    @include pressed {
+      @include level(0.85rem, $y: 0.4rem, $scale: 0.95);
+      @include query(tall) { @include level(0.85rem, $y: 0.75rem, $scale: 0.95); }
+    }
   }
 }
 
@@ -40,7 +57,6 @@ ul {
       display: block;
       padding: 1em;
       text-shadow: times(0 0 3em $bg, 15);
-      transition: color 250ms linear, transform 250ms $ease-out-back;
 
       @include font($ui);
 
@@ -80,7 +96,7 @@ ul {
   }
 
   // FIXME when custom properties work better
-  /deep/ [is='floating-logo'] {
+  /deep/ [is$="logo"] {
     #base { fill: $bg !important; }
     #text { fill: $invert !important; }
   }

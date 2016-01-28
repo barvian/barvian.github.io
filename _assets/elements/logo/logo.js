@@ -2,6 +2,6 @@
 // =============
 
 Polymer({
-  is: 'floating-logo',
+  is: 'barvian-logo',
   extends: 'a'
 });
