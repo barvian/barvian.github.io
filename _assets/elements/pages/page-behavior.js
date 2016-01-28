@@ -9,6 +9,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
   properties: {
     pageTitle: String,
     order: Number,
+    navStyle: String,
 
     // animationConfig: {
     //   type: Object,
