@@ -7,6 +7,7 @@ bg: '#307AB3'
 fg: '#fff'
 shadow: rgba(13, 34, 50, 0.6)
 hero: hero.png
+hero2x: hero.png
 thumb: thumb.png
 thumb2x: thumb@2x.png
 orientation: landscape

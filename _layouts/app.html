@@ -8,33 +8,21 @@ layout: default
   based on the URL.
 {% endcomment %}
 
-{% assign sortedPages = site.pages | sort: 'order' %}
 <template is="dom-bind" id="app">
   <style is="custom-style" include="app-styles"></style>
 
   <page-title title="[[selectedPage.pageTitle]]"></page-title>
 
-  <nav id="nav" role="navigation">
-    <ul>
-      {% for page in sortedPages %}
-      {% if page.url == '/' %}
-    </ul>
-        <a is="floating-logo" href="{{ '/' | prepend: site.baseurl }}"></a>
-    <ul>
-      {% else %}
-      <li>
-        <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
+  <nav id="nav" is="floating-nav" role="navigation" current-page="[[selectedPage]]">
+    {% for page in site.pages | sort: 'order' %}
+      <a{% if page.url == '/' %} id="home" is="floating-logo"{% endif %} href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+    {% endfor %}
   </nav>
   <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
     selected-item="{% raw %}{{selectedPage}}{% endraw %}">
     {% for page in site.pages %}
     {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
-    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}"
-      on-work-click="_onWorkClick">
+    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}">
       {% include _content.html page=page %}
     </{{ elem }}>
     {% endfor %}

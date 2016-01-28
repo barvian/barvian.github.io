@@ -6,16 +6,5 @@ Polymer({
 
   behaviors: [
     Barvian.PageBehavior
-  ],
-
-  properties: {
-    animationConfig: {
-      type: Object,
-      value: function() {
-        return {
-          
-        };
-      }
-    }
-  }
+  ]
 });

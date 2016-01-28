@@ -1,0 +1,17 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="floating-nav-styles.html">
+
+<dom-module id="floating-nav">
+
+  <template>
+    <style include="floating-nav-styles"></style>
+
+    <ul id="left"></ul>
+    <div id="home"><content select='#home'></content></div>
+    <ul id="right"></ul>
+    <content id="content" select=':not(#home)'></content>
+  </template>
+
+  <script src="floating-nav.js"></script>
+
+</dom-module>

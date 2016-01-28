@@ -15,6 +15,13 @@ Polymer({
     hero: String,
     hero2x: String,
 
+    navStyle: {
+      type: String,
+      value() {
+        return 'invert';
+      }
+    },
+
     sharedElements: {
       type: Object,
       value() {
@@ -59,5 +66,5 @@ Polymer({
     bg: String,
     fg: String,
     shadow: String
-  },
+  }
 });

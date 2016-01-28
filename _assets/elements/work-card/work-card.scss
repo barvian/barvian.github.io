@@ -4,19 +4,18 @@
 // =========
 
 :host {
-  background-color: var(--work-card-bg);
   color: var(--work-card-fg);
   display: block;
   overflow: hidden;
   position: relative;
 
-  &::before {
-    display: block;
-    content: '';
-    width: 100%;
-  }
-
   @include level(0);
+}
+
+#bg {
+  background-color: var(--work-card-bg);
+  display: block;
+  width: 100%;
 }
 
 #wrapper {
@@ -86,7 +85,7 @@ figure {
 // --------
 
 :host(.portrait) {
-  &::before {
+  #bg {
     padding-bottom: 150%;
   }
 
@@ -118,7 +117,7 @@ figure {
 // ---------
 
 :host(.landscape) {
-  &::before {
+  #bg {
     padding-bottom: 57.5%;
   }
 

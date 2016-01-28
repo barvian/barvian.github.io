@@ -1,41 +1,37 @@
+const {NeonAnimatableBehavior, NeonPageBehavior} = Polymer;
+
 // Page behavior
 // =============
 
 window.Barvian = window.Barvian || {};
-Barvian.PageBehavior = {
-
-  behaviors: [
-    Polymer.NeonAnimatableBehavior
-  ],
+Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
 
   properties: {
-    pageTitle: {
-      type: String,
-      value: null
-    },
-    order: {
-      type: Number,
-      value: 0
-    }
+    pageTitle: String,
+    order: Number,
+
+    // animationConfig: {
+    //   type: Object,
+    //   value() {
+    //     return {
+    //       'entry': [{
+    //         name: 'fade-in-animation',
+    //         node: this
+    //       }],
+    //       'exit': [{
+    //         name: 'fade-out-animation',
+    //         node: this
+    //       }]
+    //     }
+    //   }
+    // }
   },
 
-  exitAnimation() {
-    return {
-      'entry': [{
-        node: this.$.content,
-        name: 'slide-from-left-animation',
-      }, {
-        node: this.$.content,
-        name: 'fade-in-animation'
-      }],
-      'exit': [{
-        node: this.$.content,
-        name: 'slide-left-animation'
-      }, {
-        node: this.$.content,
-        name: 'fade-out-animation'
-      }]
-    };
+  listeners: {
+    'entry-animation-start': '_onEntryStart'
+  },
+
+  _onEntryStart(event) {
   }
 
-};
+}];

@@ -36,10 +36,12 @@ svg {
   width: 100%;
 
   #base {
-    fill: var(--logo-bg);
+    fill: var(--logo-bg, black);
+    transition: fill 1000ms linear;
   }
 
   #text {
-    fill: var(--logo-fg);
+    fill: var(--logo-fg, white);
+    transition: fill 250ms linear;
   }
 }

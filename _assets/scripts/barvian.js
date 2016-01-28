@@ -1,9 +1,13 @@
 import * as config from '../../_config.yml';
 import pictureFill from 'picturefill'; // eslint-disable-line no-unused-vars
 import routing from './routing'; // eslint-disable-line no-unused-vars
+import attachFastClick from 'fastclick';
 
 // barvian.me
 // ==========
+
+// Fast click for all
+attachFastClick(document.body);
 
 // Grab a reference to our auto-binding template
 // and give it some initial binding values
@@ -13,11 +17,12 @@ const app = document.getElementById('app');
 app.baseUrl = config.baseurl || '/';
 
 Object.defineProperty(app, 'scroller', {
-  get: function() {
+  get() {
     return this.$.pages;
   }
 });
 
+// Scroll scroller
 app.scroll = function(top, duration = 200) {
   if (duration > 0) {
     const easingFn = function easeOutQuad(t, b, c, d) {
@@ -48,11 +53,7 @@ app.scroll = function(top, duration = 200) {
   }
 };
 
-// Scroll page to top
+// Scroll scroller to top
 app.scrollPageToTop = function() {
   this.scroll(0);
-};
-
-app._onWorkClick = function(event) {
-  console.log(event.detail.work.bg);
 };

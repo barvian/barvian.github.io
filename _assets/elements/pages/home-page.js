@@ -5,8 +5,8 @@ Polymer({
   is: 'home-page',
 
   behaviors: [
-    Barvian.PageBehavior,
-    Polymer.NeonSharedElementAnimatableBehavior
+    Polymer.NeonSharedElementAnimatableBehavior,
+    Barvian.PageBehavior
   ],
 
   properties: {
@@ -17,6 +17,10 @@ Polymer({
           'exit': [{
             name: 'ripple-animation',
             id: 'ripple',
+            fromPage: this
+          }, {
+            name: 'hero-animation',
+            id: 'hero',
             fromPage: this
           }]
         }
@@ -37,7 +41,7 @@ Polymer({
     // configure page animation
     this.sharedElements = {
       hero: work.$.image,
-      ripple: work
+      ripple: work.$.bg
     };
     this.animationConfig['exit'][0].gesture = {
       x: event.x,

@@ -5,6 +5,8 @@
 
 :host {
   &::before { display: none !important; }
+
+  z-index: 50 !important;
 }
 
 
