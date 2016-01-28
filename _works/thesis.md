@@ -3,8 +3,8 @@ order: 3
 title: Honors Thesis
 blurb: Anxiety self-help iPhone app
 type: iOS
-bg: '#f0f5f7'
-fg: '#454f5e'
+bg: rgb(240, 245, 247)
+fg: rgb(69, 79, 94)
 shadow: rgba(69, 79, 94, 0.6)
 hero: hero.png
 hero2x: hero.png

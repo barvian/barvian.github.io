@@ -3,8 +3,8 @@ order: 2
 title: AISC
 blurb: Component library
 type: web
-bg: '#F0824B'
-fg: '#fff'
+bg: rgb(240, 130, 76)
+fg: rgb(255, 255, 255)
 shadow: rgba(109, 47, 16, 0.6)
 hero: hero.png
 hero2x: hero.png

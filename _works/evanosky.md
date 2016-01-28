@@ -3,8 +3,8 @@ order: 1
 title: Evanosky Foundation
 blurb: Nonprofit website redesign
 type: web
-bg: '#4c54a8'
-fg: '#fff'
+bg: rgb(76, 84, 168)
+fg: rgb(255, 255, 255)
 shadow: rgba(28, 31, 62, 0.6)
 hero: hero.png
 hero2x: hero.png

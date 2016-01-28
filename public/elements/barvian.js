@@ -9945,9 +9945,7 @@ Polymer({
 
     navStyle: { 
       type: String, 
-      value: function value() {
-        return 'invert';} }, 
-
+      computed: '_computeNavStyle(bg)' }, 
 
 
     sharedElements: { 
@@ -9993,7 +9991,14 @@ Polymer({
   styleProperties: { 
     bg: String, 
     fg: String, 
-    shadow: String } });
+    shadow: String }, 
+
+
+  _computeNavStyle: function _computeNavStyle(bg) {
+    var rgb = bg.match(/\d+/g).map(Number);
+    var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+
+    return yiq < 175 ? 'invert' : '';} });
 'use strict'; // Floating nav
 // ============
 

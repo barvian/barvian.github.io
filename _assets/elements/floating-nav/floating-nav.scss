@@ -71,14 +71,17 @@ ul {
 // ------
 
 :host(.invert) {
-  --logo-bg: $bg;
-  --logo-fg: $invert;
-
   background: linear-gradient(to bottom, rgba($bg, 0.15), rgba($bg, 0));
 
   ul > li > a {
     color: $bg;
     text-shadow: none;
     transition: transform 250ms $ease-out-back;
+  }
+
+  // FIXME when custom properties work better
+  /deep/ [is='floating-logo'] {
+    #base { fill: $bg !important; }
+    #text { fill: $invert !important; }
   }
 }
