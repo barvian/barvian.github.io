@@ -6,8 +6,7 @@
 :host {
   @extend %ui;
 
-  border-radius: 90%; // for shadow
-  box-shadow: 0 0.58rem 1.17rem rgba($base, 0.4);
+  border-radius: 95%; // for shadow
   display: flex;
   align-items: center;
   justify-content: center;

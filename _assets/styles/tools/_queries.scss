@@ -42,14 +42,14 @@ $queries: () !default;
 // ---------------
 
 @mixin supports($feature) {
-  // Links to Modernizr for the time being
+  // Uses Modernizr for the time being
   .#{$feature}%root & {
     @content;
   }
 }
 
 @mixin lacks($feature) {
-  // Links to Modernizr for the time being
+  // Uses Modernizr for the time being
   .no-#{$feature}%root & {
     @content;
   }

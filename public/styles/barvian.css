@@ -905,11 +905,8 @@
  *
  * @return {List | Null}
  */
-:root {
-  box-sizing: border-box; }
-
 *, *::before, *::after {
-  box-sizing: inherit; }
+  box-sizing: border-box; }
 
 :root {
   color: #3b3e55;

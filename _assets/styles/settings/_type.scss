@@ -1,9 +1,6 @@
 // Type
 // ====
 
-$short-line: 30em;
-$line: 36em;
-
 // Scale
 // -----
 
@@ -24,7 +21,7 @@ $fonts: (
   ),
   soleto: (
     stack: ("soleto", "San Francisco Display", "Avenir", sans-serif),
-    weights: (normal: 400, medium: 500),
-    styles: (normal: normal, bold: normal)
+    weights: (normal: 400),
+    styles: (normal: normal)
   )
 );

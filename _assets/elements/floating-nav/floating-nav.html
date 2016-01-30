@@ -6,9 +6,11 @@
   <template>
     <style include="floating-nav-styles"></style>
 
-    <ul id="left"></ul>
-    <content select='[is$="logo"]'></content>
-    <ul id="right"></ul>
+    <div id="wrap">
+      <ul id="left" class="menu"></ul>
+      <content select='[is$="logo"]'></content>
+      <ul id="right" class="menu"></ul>
+    </div>
     <content id="content" select=':not(#home)'></content>
   </template>
 

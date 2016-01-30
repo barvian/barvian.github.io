@@ -17,10 +17,12 @@ keywords:
   - front-end development
   - web design
 
+location: Plainfield, IL
+availability: full
+
 dribbble_username: barvian
 twitter_username: mbarvian
 github_username:  barvian
-availability: full
 
 
 # Sources
@@ -53,12 +55,19 @@ exclude:
   - CNAME
   - bower.json
   - README.md
-markdown: kramdown
-permalink: pretty
 
+permalink: pretty
 defaults:
   -
     scope:
       path: '' # all files
     values:
       layout: 'app'
+
+
+# Writing
+# -------
+
+markdown: kramdown
+kramdown:
+  auto_ids: false

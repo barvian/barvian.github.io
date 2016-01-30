@@ -33,5 +33,7 @@
 {% endcomment %}
 {% capture baseHref %}href="/{{ site.baseurl }}{% endcapture %}
 {% assign newContent = newContent | replace: 'href="/', baseHref %}
+{% capture baseSrc %}src="/{{ site.baseurl }}{% endcapture %}
+{% assign newContent = newContent | replace: 'src="/', baseSrc %}
 
 {{ newContent }}

@@ -1,0 +1,12 @@
+// Layouts
+// =======
+
+$padding: 10px !default;
+
+@mixin layout($args...) {
+  box-sizing: content-box;
+  padding-left: $padding;
+  padding-right: $padding;
+
+  @include container($args...);
+}

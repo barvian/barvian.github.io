@@ -7,6 +7,37 @@
 
 }
 
-article {
+#header {
+  @include layout(5);
+  @include trailing(large);
+
+  ::content > figure {
+    shape-outside: circle();
+
+    @include level(5rem, $x: 5vw, $y: 2.5vh);
+    @include span(2);
+    @include removed;
+
+    > img {
+      box-shadow: 0 0.82rem 1.64rem rgba($base, 0.25), 0 0.55rem 0.55rem rgba($base, 0.15);
+      border-radius: 100%;
+      max-width: 100%;
+    }
+  }
+
+  ::content > h1 {
+    @extend %callout;
+
+    padding-top: 6%;
+
+    @include level(1rem, $x: 1vw);
+
+    a {
+      @extend %highlight;
+    }
+  }
+}
+
+#content {
   @extend %article;
 }

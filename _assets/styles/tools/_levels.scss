@@ -15,15 +15,15 @@ $perspective: 24rem !default;
   @return (1 + ($z * -1) / $perspective) * $scale;
 }
 
-@function level($z, $y: 0, $scale: 1) {
-  @return unquote("translateZ(#{$z}) translateY(#{$y}) scale(#{opposing-scale($z, $scale)})");
+@function level($z, $x: 0, $y: 0, $scale: 1) {
+  @return unquote("translate3d(#{$x}, #{$y}, #{$z}) scale(#{opposing-scale($z, $scale)})");
 }
 
-@mixin level($z, $y: 0, $scale: 1) {
-  transform: level($z, $y, $scale);
+@mixin level($z, $x: 0, $y: 0, $scale: 1) {
+  transform: level($z, $x, $y, $scale);
 }
 
-@mixin surface($relative: true) {
+@mixin surface($relativeX: true, $relativeY: true) {
   perspective: $perspective;
-  perspective-origin: if($relative, 50% 50%, 50vw 50vh);
+  perspective-origin: if($relativeX, 50%, 50vw) if($relativeY, 50%, 50vh);
 }

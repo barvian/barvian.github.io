@@ -10058,6 +10058,7 @@ Polymer({
 
 Polymer({ 
   is: 'floating-greeting', 
+  extends: 'h1', 
 
   ready: function ready() {
     this._splitCharacters(this.$.content, true);}, 

@@ -8,7 +8,13 @@
     <style include="about-page-styles"></style>
 
     <article>
-      <content></content>
+      <header id="header">
+        <content select="figure"></content>
+        <content select="h1"></content>
+      </header>
+      <div id="content">
+        <content select=":not(figure), :not(h1)"></content>
+      </div>
     </article>
   </template>
 

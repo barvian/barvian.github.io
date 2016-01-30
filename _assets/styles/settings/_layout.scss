@@ -1,12 +1,15 @@
 // Layout
 // ======
 
+$line: 4; // columns
+$padding: size(spacing); // grid padding
+
 $susy: (
-  container: 52rem,
   columns: 6,
-  gutters: size(spacing),
+  gutters: size(spacing)/7.5rem,
   math: fluid,
   output: float,
-  gutter-position: inside-static,
+  column-width: 7.5rem,
+  gutter-position: after,
   global-box-sizing: border-box
 );

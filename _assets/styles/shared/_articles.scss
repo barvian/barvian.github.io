@@ -6,22 +6,23 @@
 //
 
 %article {
-  padding-left: susy-get(gutters);
-  padding-right: susy-get(gutters);
-
   @mixin sel($sel) {
-    > #{$sel}, > ::content > #{$sel} {
+    #{$sel}, ::content #{$sel} {
       @content;
     }
   }
 
-  @include sel(h1) {
-    @extend %callout;
-
-    text-align: center;
+  @include sel(unquote("*")) {
+    @include trailing;
   }
 
   @include sel(p) {
-    @extend %line;
+    @include layout($line center);
+  }
+
+  @include sel(a) {
+    color: currentColor;
+
+    @include underline;
   }
 }

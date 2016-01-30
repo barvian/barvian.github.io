@@ -4,13 +4,12 @@
 // =================
 
 :host {
-  @extend %callout;
+  @extend %title;
 
   display: block;
-  max-width: 100%;
   text-align: center;
   transition: transform 250ms $ease-out-back;
-  width: $short-line;
+  width: 100%;
 
   @include attention {
     transform: translateZ(0.9rem);
@@ -56,12 +55,7 @@
     }
 
     .highlight, mark {
-      background-color: var(--floating-greeting-highlight-color);
-      box-shadow: 0.25em 0 0 var(--floating-greeting-highlight-color), -0.25em 0 0 var(--floating-greeting-highlight-color);
-      color: #fff;
-      margin-left: 0.25em;
-      margin-right: 0.25em;
-      text-shadow: 0 0.0625em 0.0625em rgba($base, 0.1), 0 0.3em 0.4em rgba($base, 0.2);
+      @extend %highlight;
     }
   }
 }
