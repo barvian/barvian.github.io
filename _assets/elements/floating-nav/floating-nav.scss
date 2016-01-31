@@ -5,8 +5,8 @@
 
 :host {
   background: linear-gradient(to bottom, rgba($bg, 1) 0%, rgba($bg, 0.8) 35%, rgba($bg, 0.5) 65%, rgba($bg, 0));
-  padding-bottom: var(--nav-padding);
-  padding-top: var(--nav-padding);
+  padding-bottom: var(--nav-padding-bottom);
+  padding-top: var(--nav-padding-top);
   pointer-events: none;
   position: fixed;
   top: 0;

@@ -941,4 +941,7 @@ code {
 :root, body {
   height: 100%; }
 
+a {
+  color: currentColor; }
+
 /*# sourceMappingURL=barvian.css.map */

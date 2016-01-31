@@ -17,8 +17,8 @@
 
   @include container;
   @include query(tall) {
-    min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding)/2);
-    padding-bottom: 20vh;
+    min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding-bottom));
+    padding-bottom: 15vh;
   }
 }
 

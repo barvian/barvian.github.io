@@ -55,7 +55,7 @@
     }
 
     .highlight, mark {
-      @extend %highlight;
+      @include highlight;
     }
   }
 }

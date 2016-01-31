@@ -8,32 +8,57 @@
 }
 
 #header {
-  @include layout(5);
-  @include trailing(large);
+  @include layout;
+  @include trailing(var(--nav-padding-bottom));
+
+  text-align: center;
 
   ::content > figure {
-    shape-outside: circle();
+    position: relative;
 
-    @include level(5rem, $x: 5vw, $y: 2.5vh);
-    @include span(2);
-    @include removed;
+    &::before {
+      @extend %stretch;
+
+      border-radius: 100%;
+      box-shadow: 0 0.82rem 1.64rem rgba($base, 0.25), 0 0.55rem 0.55rem rgba($base, 0.15);
+      content: '';
+    }
 
     > img {
-      box-shadow: 0 0.82rem 1.64rem rgba($base, 0.25), 0 0.55rem 0.55rem rgba($base, 0.15);
-      border-radius: 100%;
+      display: block;
+      max-height: 100%;
       max-width: 100%;
+    }
+
+    @include query(bravo, true) {
+      display: inline-block;
+      min-height: 8rem;
+      max-height: 20vh;
+      max-width: 14rem;
+
+      @include trailing;
+    }
+    @include query(bravo) {
+      @include span(2);
+      margin-right: size(xxlarge);
+      shape-outside: circle();
+
+      @include level(5rem, $x: 6vw, $y: 2.5vh);
+      @include removed;
     }
   }
 
   ::content > h1 {
     @extend %callout;
 
-    padding-top: 6%;
 
-    @include level(1rem, $x: 1vw);
+    @include query(bravo) {
+      padding-top: 6%;
+      text-align: left;
+    }
 
     a {
-      @extend %highlight;
+      @include highlight;
     }
   }
 }

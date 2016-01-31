@@ -21,8 +21,6 @@
   }
 
   @include sel(a) {
-    color: currentColor;
-
-    @include underline;
+    @include highlight($invert);
   }
 }
