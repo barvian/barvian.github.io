@@ -9,10 +9,14 @@
   }
 }
 
+article {
+  @extend %article;
+}
+
 #header {
   @include layout;
-  @include trailing(var(--nav-padding-bottom));
 
+  @include trailing(var(--nav-padding-bottom));
   text-align: center;
   transform-style: preserve-3d;
 }
@@ -38,6 +42,8 @@
     display: block;
     max-height: 100%;
     max-width: 100%;
+
+    @include flush;
   }
 
   @include query(bravo, true) {
@@ -53,7 +59,7 @@
     margin-right: size(xxlarge);
     shape-outside: circle();
 
-    @include level(5rem, $x: 5vw, $y: 2.5vh);
+    @include level(5rem, $x: 22.5%, $y: 3.5vh);
     @include removed;
   }
 }
@@ -72,8 +78,4 @@
       @include highlight;
     }
   }
-}
-
-#content {
-  @extend %article;
 }

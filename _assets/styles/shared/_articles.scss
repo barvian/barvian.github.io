@@ -21,10 +21,14 @@
   }
 
   @include sel(a) {
-    // @include underline;
+    display: inline-block;
+    line-height: strip-units(ms(2));
+    transition: transform 250ms $ease-out-back;;
 
-    // @include attention {
-      @include highlight($invert);
-    // }
+    @include highlight($invert);
+    @include flush;
+    @include attention {
+      transform: translateZ(0.3rem) scale(1.1);
+    }
   }
 }
