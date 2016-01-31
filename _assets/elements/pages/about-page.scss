@@ -20,6 +20,10 @@
 #headshot {
   position: relative;
 
+  svg {
+    display: block;
+  }
+
   &::before {
     @extend %stretch;
 
