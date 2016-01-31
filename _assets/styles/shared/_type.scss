@@ -69,13 +69,21 @@ a%ui {
   @include font($sans, $style: italic);
 }
 
-@mixin highlight($bg: $primary-bg) {
-  @extend %unstyled-link;
+@mixin underline($color: currentColor, $bg: $bg, $shadows: null) {
+  background-image: linear-gradient(#{$color}, #{$color});
+  background-size: 0.059em 0.059em;
+  background-position: 0 1.13em;
+  background-repeat: repeat-x;
+  text-decoration: none;
+  text-shadow: 0.059em 0.059em 0 $bg, -0.059em -0.059em 0 $bg, 0.059em -0.059em 0 $bg, -0.059em 0.059em 0 $bg, 0 0.059em 0 $bg, 0.059em 0 0 $bg, 0 -0.059em 0 $bg, -0.059em 0 0 $bg;
+}
 
+@mixin highlight($bg: $primary-bg) {
   background-color: $bg;
   box-shadow: 0.25em 0 0 $bg, -0.25em 0 0 $bg;
   color: #fff;
   margin-left: 0.25em;
   margin-right: 0.25em;
+  text-decoration: none;
   text-shadow: 0 0.0625em 0.0625em rgba(darken($bg, 35%), 0.1), 0 0.3em 0.4em rgba(darken($bg, 35%), 0.2);
 }

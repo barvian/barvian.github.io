@@ -16,19 +16,19 @@
 }
 
 svg {
-  left: 0;
   height: 100%;
+  left: 0;
   top: 0;
   position: absolute;
   width: 100%;
+}
 
-  #base {
-    fill: var(--logo-bg, black);
-    transition: fill 250ms linear;
-  }
+#base {
+  fill: var(--logo-bg, black);
+  transition: fill 250ms linear;
+}
 
-  #text {
-    fill: var(--logo-fg, white);
-    transition: fill 250ms linear;
-  }
+#text {
+  fill: var(--logo-fg, white);
+  transition: fill 250ms linear;
 }

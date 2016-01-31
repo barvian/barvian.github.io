@@ -23,8 +23,13 @@
   }
 
   ::content [is$="logo"] {
-    svg {
-      filter: drop-shadow(0 0.58rem 1.17rem rgba($base, 0.4)) drop-shadow(0 0.35rem 0.35rem rgba($base, 0.125));
+    &::before {
+      @extend %stretch;
+
+      border-radius: 100%;
+      bottom: 1px; // rounding fix
+      box-shadow: 0 0.58rem 1.17rem rgba($base, 0.4), 0 0.35rem 0.35rem rgba($base, 0.125);
+      content: '';
     }
 
     @include level(1rem, $y: 0.4rem);
