@@ -36,4 +36,9 @@
 {% capture baseSrc %}src="/{{ site.baseurl }}{% endcapture %}
 {% assign newContent = newContent | replace: 'src="/', baseSrc %}
 
+{% comment %}
+  Document targets
+{% endcomment %}
+{% assign newContent = newContent | replace: '.pdf"', '.pdf" target="_blank"' %}
+
 {{ newContent }}

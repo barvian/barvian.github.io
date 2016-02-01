@@ -7,7 +7,7 @@
 
 %article {
   @mixin sel($sel) {
-    #{$sel}, ::content #{$sel} {
+    #{unquote($sel)}, ::content #{unquote($sel)} {
       @content;
     }
   }
@@ -16,11 +16,19 @@
     @include trailing;
   }
 
+  @include sel(h1) {
+    @extend %callout;
+
+    a:not([class]) {
+      @include highlight($primary-bg);
+    }
+  }
+
   @include sel(p) {
     @include layout($line center);
   }
 
-  @include sel(a) {
+  @include sel("a:not([class])") {
     display: inline-block;
     line-height: strip-units(ms(2));
     transition: transform 250ms $ease-out-back;;

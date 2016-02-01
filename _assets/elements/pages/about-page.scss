@@ -65,17 +65,8 @@ article {
 }
 
 #title {
-  > ::content h1 {
-    @extend %callout;
-
-
-    @include query(bravo) {
-      padding-top: 6%;
-      text-align: left;
-    }
-
-    a {
-      @include highlight;
-    }
+  @include query(bravo) {
+    padding-top: 6%;
+    text-align: left;
   }
 }

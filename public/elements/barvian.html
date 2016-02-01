@@ -2260,10 +2260,10 @@ automatically, using Polymer bindings. Example:
   right: 0;
   top: 0; }
 
-#title > ::content h1 {
+article h1, article ::content h1 {
   line-height: 1.236; }
 
-#title > ::content h1 {
+article h1, article ::content h1 {
   letter-spacing: 0;
   text-transform: none;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -2275,6 +2275,15 @@ automatically, using Polymer bindings. Example:
 article * + *, article ::content * + * {
   margin-top: 24.443px;
   margin-top: 1.527696rem; }
+
+article h1 a:not([class]), article ::content h1 a:not([class]) {
+  background-color: #4be8be;
+  box-shadow: 0.25em 0 0 #4be8be, -0.25em 0 0 #4be8be;
+  color: #fff;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  text-decoration: none;
+  text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
 article p, article ::content p {
   box-sizing: content-box;
@@ -2291,7 +2300,7 @@ article p, article ::content p {
     display: block;
     clear: both; }
 
-article a, article ::content a {
+article a:not([class]), article ::content a:not([class]) {
   display: inline-block;
   line-height: 1.527696;
   -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -2305,14 +2314,14 @@ article a, article ::content a {
   margin-right: 0.25em;
   text-decoration: none;
   text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  * + article a, * + article ::content a {
+  * + article a:not([class]), * + article ::content a:not([class]) {
     margin-top: 0; }
-  article a + *, article ::content a + * {
+  article a:not([class]) + *, article ::content a:not([class]) + * {
     margin-top: 0; }
-  article a, article ::content a:hover {
+  article a:not([class]), article ::content a:not([class]):hover {
     -webkit-transform: translateZ(0.3rem) scale(1.1);
     transform: translateZ(0.3rem) scale(1.1); }
-  article a, article ::content a:active {
+  article a:not([class]), article ::content a:not([class]):active {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95); }
 
@@ -2383,18 +2392,9 @@ article a, article ::content a {
         margin-top: 0; } }
 
 @media screen and (min-width: 780px) {
-  #title > ::content h1 {
+  #title {
     padding-top: 6%;
     text-align: left; } }
-
-#title > ::content h1 a {
-  background-color: #4be8be;
-  box-shadow: 0.25em 0 0 #4be8be, -0.25em 0 0 #4be8be;
-  color: #fff;
-  margin-left: 0.25em;
-  margin-right: 0.25em;
-  text-decoration: none;
-  text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
 </style>
 </template>
@@ -3331,9 +3331,30 @@ article a, article ::content a {
  *
  * @return {List | Null}
  */
+article h1, article ::content h1 {
+  line-height: 1.236; }
+
+article h1, article ::content h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 24.443px;
+  font-size: 1.527696rem;
+  font-weight: 400;
+  font-style: normal; }
+
 article * + *, article ::content * + * {
   margin-top: 24.443px;
   margin-top: 1.527696rem; }
+
+article h1 a:not([class]), article ::content h1 a:not([class]) {
+  background-color: #4be8be;
+  box-shadow: 0.25em 0 0 #4be8be, -0.25em 0 0 #4be8be;
+  color: #fff;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  text-decoration: none;
+  text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
 article p, article ::content p {
   box-sizing: content-box;
@@ -3350,7 +3371,7 @@ article p, article ::content p {
     display: block;
     clear: both; }
 
-article a, article ::content a {
+article a:not([class]), article ::content a:not([class]) {
   display: inline-block;
   line-height: 1.527696;
   -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -3364,14 +3385,14 @@ article a, article ::content a {
   margin-right: 0.25em;
   text-decoration: none;
   text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  * + article a, * + article ::content a {
+  * + article a:not([class]), * + article ::content a:not([class]) {
     margin-top: 0; }
-  article a + *, article ::content a + * {
+  article a:not([class]) + *, article ::content a:not([class]) + * {
     margin-top: 0; }
-  article a, article ::content a:hover {
+  article a:not([class]), article ::content a:not([class]):hover {
     -webkit-transform: translateZ(0.3rem) scale(1.1);
     transform: translateZ(0.3rem) scale(1.1); }
-  article a, article ::content a:active {
+  article a:not([class]), article ::content a:not([class]):active {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95); }
 
@@ -4297,9 +4318,30 @@ article a, article ::content a {
  *
  * @return {List | Null}
  */
+article #content h1 {
+  line-height: 1.236; }
+
+article #content h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 24.443px;
+  font-size: 1.527696rem;
+  font-weight: 400;
+  font-style: normal; }
+
 article #content * + *, article #content ::content * + * {
   margin-top: 24.443px;
   margin-top: 1.527696rem; }
+
+article #content h1 a:not([class]), article #content ::content h1 a:not([class]) {
+  background-color: #4be8be;
+  box-shadow: 0.25em 0 0 #4be8be, -0.25em 0 0 #4be8be;
+  color: #fff;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+  text-decoration: none;
+  text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
 article #content p, article #content ::content p {
   box-sizing: content-box;
@@ -4316,7 +4358,7 @@ article #content p, article #content ::content p {
     display: block;
     clear: both; }
 
-article #content a, article #content ::content a {
+article #content a:not([class]), article #content ::content a:not([class]) {
   display: inline-block;
   line-height: 1.527696;
   -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -4330,14 +4372,14 @@ article #content a, article #content ::content a {
   margin-right: 0.25em;
   text-decoration: none;
   text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  article * + #content a, article * + #content ::content a {
+  article * + #content a:not([class]), article * + #content ::content a:not([class]) {
     margin-top: 0; }
-  article #content a + *, article #content ::content a + * {
+  article #content a:not([class]) + *, article #content ::content a:not([class]) + * {
     margin-top: 0; }
-  article #content a, article #content ::content a:hover {
+  article #content a:not([class]), article #content ::content a:not([class]):hover {
     -webkit-transform: translateZ(0.3rem) scale(1.1);
     transform: translateZ(0.3rem) scale(1.1); }
-  article #content a, article #content ::content a:active {
+  article #content a:not([class]), article #content ::content a:not([class]):active {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95); }
 

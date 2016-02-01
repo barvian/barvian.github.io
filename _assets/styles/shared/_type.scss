@@ -69,10 +69,10 @@ a%ui {
   @include font($sans, $style: italic);
 }
 
-@mixin underline($color: currentColor, $bg: $bg, $shadows: null) {
+@mixin underline($color: currentColor, $bg: $bg, $y: 1.13em, $shadows: null) {
   background-image: linear-gradient(#{$color}, #{$color});
   background-size: 0.059em 0.059em;
-  background-position: 0 1.13em;
+  background-position: 0 $y;
   background-repeat: repeat-x;
   text-decoration: none;
   text-shadow: 0.059em 0.059em 0 $bg, -0.059em -0.059em 0 $bg, 0.059em -0.059em 0 $bg, -0.059em 0.059em 0 $bg, 0 0.059em 0 $bg, 0.059em 0 0 $bg, 0 -0.059em 0 $bg, -0.059em 0 0 $bg;

@@ -3,7 +3,6 @@
 
 name: Maxwell Barvian
 title: Digital product designer
-email: max@barvian.me
 url: http://barvian.me
 baseurl: ''
 keywords:
@@ -17,12 +16,14 @@ keywords:
   - front-end development
   - web design
 
+email: max@barvian.me
+social:
+  dribbble: barvian
+  twitter: mbarvian
+  github:  barvian
+
 location: Chicago, IL
 availability: full
-
-dribbble_username: barvian
-twitter_username: mbarvian
-github_username:  barvian
 
 
 # Sources
