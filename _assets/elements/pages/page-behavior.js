@@ -21,12 +21,26 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
       value() {
         return {
           'entry': [{
-            name: 'slide-from-left-animation',
-            node: this
+            name: 'transform-animation',
+            node: this,
+            transformFrom: 'translateX(-20%)',
+            transformTo: 'translateX(0)',
+            timing: { duration: 500, easing: 'ease-out' }
+          }, {
+            name: 'fade-in-animation',
+            node: this,
+            timing: { duration: 500 }
           }],
           'exit': [{
-            name: 'slide-right-animation',
-            node: this
+            name: 'transform-animation',
+            node: this,
+            transformFrom: 'translateX(0)',
+            transformTo: 'translateX(20%)',
+            timing: { duration: 500, easing: 'ease-in' }
+          }, {
+            name: 'fade-out-animation',
+            node: this,
+            timing: { duration: 500 }
           }]
         }
       }
@@ -37,12 +51,26 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
       value() {
         return {
           'entry': [{
-            name: 'slide-from-right-animation',
-            node: this
+            name: 'transform-animation',
+            node: this,
+            transformFrom: 'translateX(20%)',
+            transformTo: 'translateX(0)',
+            timing: { duration: 500, easing: 'ease-out' }
+          }, {
+            name: 'fade-in-animation',
+            node: this,
+            timing: { duration: 500 }
           }],
           'exit': [{
-            name: 'slide-left-animation',
-            node: this
+            name: 'transform-animation',
+            node: this,
+            transformFrom: 'translateX(0)',
+            transformTo: 'translateX(-20%)',
+            timing: { duration: 500, easing: 'ease-in' }
+          }, {
+            name: 'fade-out-animation',
+            node: this,
+            timing: { duration: 500 }
           }]
         }
       }
