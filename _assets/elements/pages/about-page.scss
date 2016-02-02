@@ -4,6 +4,8 @@
 // ==========
 
 :host {
+  &::before { height: calc(var(--page-padding-top) - 2vh) !important; }
+
   > * {
     transform-style: preserve-3d;
   }

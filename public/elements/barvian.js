@@ -9659,7 +9659,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
           { 
             name: 'fade-in-animation', 
             node: this, 
-            timing: { duration: 500 } }], 
+            timing: { duration: 400 } }], 
 
           'exit': [{ 
             name: 'transform-animation', 
@@ -9670,7 +9670,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
           { 
             name: 'fade-out-animation', 
             node: this, 
-            timing: { duration: 500 } }] };} }, 
+            timing: { duration: 400 } }] };} }, 
 
 
 
@@ -9689,7 +9689,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
           { 
             name: 'fade-in-animation', 
             node: this, 
-            timing: { duration: 500 } }], 
+            timing: { duration: 400 } }], 
 
           'exit': [{ 
             name: 'transform-animation', 
@@ -9700,7 +9700,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
           { 
             name: 'fade-out-animation', 
             node: this, 
-            timing: { duration: 500 } }] };} } }, 
+            timing: { duration: 400 } }] };} } }, 
 
 
 
@@ -9730,7 +9730,14 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
   _onPageChange: function _onPageChange(event) {var _event$detail = 
     event.detail;var fromPage = _event$detail.fromPage;var toPage = _event$detail.toPage;
 
-    if (fromPage) {
+    // Don't do anything unless we're animating from a previous page
+    if (!fromPage) {
+      return;}
+
+
+    if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
+      this.animationConfig = this.animationConfigWork;} else 
+    {
       this.animationConfig = fromPage.order < toPage.order ? 
       this.animationConfigRight : 
       this.animationConfigLeft;}}, 

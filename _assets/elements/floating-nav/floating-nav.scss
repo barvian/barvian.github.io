@@ -4,7 +4,7 @@
 // ============
 
 :host {
-  background: linear-gradient(to bottom, rgba($bg, 1) 0%, rgba($bg, 0.8) 35%, rgba($bg, 0.5) 65%, rgba($bg, 0));
+  background: linear-gradient(to bottom, rgba($bg, 1) 0%, rgba($bg, 0.85) 35%, rgba($bg, 0.575) 65%, rgba($bg, 0));
   padding-bottom: var(--nav-padding-bottom);
   padding-top: var(--nav-padding-top);
   pointer-events: none;
@@ -66,16 +66,29 @@
 
     display: block;
     padding: 1em;
+    position: relative;
     text-shadow: times(0 0 3em $bg, 15);
 
     @include font($ui);
-
     @include level(0.25rem, $y: -5%);
-    @include attention {
-      @include level(0.5rem, $y: -5%, $scale: 1.1);
+
+    // &::before {
+    //   @extend %stretch;
+    //
+    //   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iODJweCIgaGVpZ2h0PSI4MnB4IiB2aWV3Qm94PSIwIDAgODIgODIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+ICA8cGF0aCBkPSJNNDEsODAgQzY0Ljk0MDU5NDEsODAgODAsNjQuOTQwNTk0MSA4MCw0MSBDODAsMTcuMDU5NDA1OSA2NC45NDA1OTQxLDIgNDEsMiBDMTcuMDU5NDA1OSwyIDIsMTcuMDU5NDA1OSAyLDQxIEMyLDY0Ljk0MDU5NDEgMTcuMDU5NDA1OSw4MCA0MSw4MCBMNDEsODAgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTdFQkYwIiBzdHJva2Utd2lkdGg9IjMiIC8+PC9zdmc+) no-repeat center center;
+    //   background-size: contain;
+    //   content: '';
+    //   z-index: -1;
+    // }
+
+    &:not(.iron-selected) {
+      @include attention {
+        @include level(0.5rem, $y: -5%, $scale: 1.1);
+      }
     }
+
     @include pressed {
-      @include level(0.1rem, $y: -5%, $scale: 0.95);
+      @include level(0.1rem, $y: -5%, $scale: 0.95, $important: true);
     }
   }
 }

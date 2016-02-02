@@ -19,8 +19,8 @@ $perspective: 24rem !default;
   @return unquote("translate3d(#{$x}, #{$y}, #{$z}) scale(#{opposing-scale($z, $scale)})");
 }
 
-@mixin level($z, $x: 0, $y: 0, $scale: 1) {
-  transform: level($z, $x, $y, $scale);
+@mixin level($z, $x: 0, $y: 0, $scale: 1, $important: false) {
+  transform: level($z, $x, $y, $scale) if($important, unquote("!important"), null);
 }
 
 @mixin surface($relativeX: true, $relativeY: true) {

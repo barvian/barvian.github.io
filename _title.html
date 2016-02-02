@@ -2,7 +2,7 @@
   {% if include.page.collection %}
     "{{ include.page.title }}", by {{ site.name }}
   {% elsif include.page.url == '/' %}
-    {{ site.name }}, {{ site.title }}
+    {{ site.name }}, {{ site.title | downcase }}
   {% else %}
     {{ include.page.title }} {{ site.name }}
   {% endif %}
