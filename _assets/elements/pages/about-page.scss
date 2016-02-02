@@ -67,6 +67,9 @@ article {
 #title {
   transform-style: preserve-3d;
 
+  ::content [is="barvian-button"] {
+  }
+
   @include query(bravo) {
     padding-top: 4%;
     text-align: left;

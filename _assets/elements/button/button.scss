@@ -7,7 +7,7 @@
   @extend %ui;
 
   align-items: stretch;
-  border-radius: size(xxlarge) / 2;
+  border-radius: size(xxlarge)/2 - 0.1rem;
   border: 1.5px solid $invert;
   cursor: pointer;
   display: inline-flex;
