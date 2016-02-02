@@ -15,3 +15,10 @@ const app = document.getElementById('app');
 
 // Set app base URL to one specified in Jekyll config
 app.baseUrl = config.baseurl || '/';
+
+app.compressRoute = function(route) {
+  if (route.startsWith('/work/')) {
+    return '/';
+  }
+  return route;
+};

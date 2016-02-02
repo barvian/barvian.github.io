@@ -2711,6 +2711,12 @@ var app = document.getElementById('app');
 // Set app base URL to one specified in Jekyll config
 app.baseUrl = config.baseurl || '/';
 
+app.compressRoute = function (route) {
+  if (route.startsWith('/work/')) {
+    return '/';}
+
+  return route;};
+
 },{"../../_config.yml":6,"./../bower_components/fastclick/lib/fastclick.js":1,"./../bower_components/picturefill/dist/picturefill.js":3,"./routing":5}],5:[function(require,module,exports){
 'use strict';var _page = require("./../bower_components/page/page.js");var _page2 = _interopRequireDefault(_page);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 

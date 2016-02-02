@@ -13,7 +13,7 @@ layout: default
 
   <page-title title="[[selectedPage.pageTitle]]"></page-title>
 
-  <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[route]]" selectable=':not([href^="mailto:"])'>
+  <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selectable=':not([href^="mailto:"])'>
     {% for page in site.pages | sort: 'order' %}
     <a{% if page.url == '/' %} is="barvian-logo"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
     {% endfor %}
