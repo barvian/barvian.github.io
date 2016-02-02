@@ -1,0 +1,150 @@
+@import "../../styles/shared";
+
+// Work card
+// =========
+
+:host {
+  color: var(--work-card-fg);
+  display: block;
+  overflow: hidden;
+  position: relative;
+
+  @include level(0);
+}
+
+#bg {
+  background-color: var(--work-card-bg);
+  display: block;
+  width: 100%;
+}
+
+#wrapper {
+  @extend %stretch;
+
+  padding: var(--work-card-spacing, #{size(spacing)});
+
+  > a {
+    @extend %stretch;
+    @extend %unstyled-link;
+
+    display: block;
+  }
+}
+
+  :host([href]) {
+    &, figure img {
+      transition: transform 250ms $ease-out-back;
+    }
+
+    transform-style: preserve-3d;
+
+    @include surface;
+    @include attention {
+      transform: translateZ(0.75rem);
+    }
+    @include pressed {
+      transform: translateZ(-0.4rem);
+    }
+
+    figure {
+      transform-style: preserve-3d;
+
+      img {
+        transform: translateZ(0);
+      }
+    }
+  }
+
+header {
+  h1 {
+    line-height: strip-units(size(medium));
+
+    @include font($ui, $weight: normal, $size: medium);
+    @include trailing(0.25em);
+  }
+
+  h2 {
+    line-height: strip-units(size(medium));
+    opacity: 0.6;
+
+    @include font($sans, $weight: normal, $size: base);
+  }
+}
+
+figure {
+  display: block;
+  position: relative;
+
+  > img {
+    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+    display: block;
+  }
+}
+
+// Portrait
+// --------
+
+:host(.portrait) {
+  #bg {
+    padding-bottom: 150%;
+  }
+
+  #wrapper > a {
+    padding: var(--work-card-spacing, #{size(spacing)});
+  }
+
+  header {
+    padding: calc(var(--work-card-spacing, #{size(spacing)}) / 2);
+    margin-bottom: 7.5%;
+    text-align: center;
+  }
+
+  figure > img {
+    max-width: 100%;
+  }
+}
+
+  :host(.portrait[href]) {
+    @include attention {
+      figure img {
+        transform: translate3d(0, -3%, -2rem);
+      }
+    }
+  }
+
+
+// Landscape
+// ---------
+
+:host(.landscape) {
+  #bg {
+    padding-bottom: 57.5%;
+  }
+
+  header {
+    left: 0;
+    padding: calc(var(--work-card-spacing, #{size(spacing)}) * 2);
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 40%;
+  }
+
+  figure {
+    left: 40%;
+    position: absolute;
+    top: calc(var(--work-card-spacing, #{size(spacing)}) * 1.5);
+
+    > img {
+      max-width: 120%;
+    }
+  }
+}
+
+  :host(.landscape[href]) {
+    @include attention {
+      figure img {
+        transform: translate3d(-2%, -2%, -1.5rem);
+      }
+    }
+  }

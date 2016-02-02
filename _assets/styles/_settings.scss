@@ -1,5 +1,10 @@
 // Settings
 // ========
+//
+// Any helper variables that are Sass-specific (and/or not appropriate for the
+// package manager).  Examples:
+//  * Media query lists
+//
 
 @import "../variables.json";
 @import "settings/queries";

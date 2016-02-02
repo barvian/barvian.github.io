@@ -1,0 +1,23 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-menu-behavior/iron-menu-behavior.html">
+<link rel="import" href="floating-nav-styles.html">
+
+<dom-module id="floating-nav">
+
+  <template>
+    <style include="floating-nav-styles"></style>
+
+    <div id="wrap">
+      <div id="left" class="menu">
+        <content select="*:nth-child(odd)"></content>
+      </div>
+      <content select='[is$="logo"]'></content>
+      <div id="right" class="menu">
+        <content></content>
+      </ul>
+    </div>
+  </template>
+
+  <script src="floating-nav.js"></script>
+
+</dom-module>

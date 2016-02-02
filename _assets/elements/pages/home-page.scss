@@ -1,0 +1,52 @@
+@import "../../styles/shared";
+
+// Home page
+// =========
+
+:host {
+  &::after { height: 1px !important; }
+}
+
+#greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(70vh - var(--page-padding-top) - var(--logo-size));
+  padding: 0 $padding 10vh;
+  transform-style: preserve-3d;
+
+  @include container;
+  @include query(tall) {
+    min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding-bottom));
+    padding-bottom: 15vh;
+  }
+}
+
+#works {
+  @extend %clearfix;
+  @include container(4 center);
+
+  padding-right: var(--work-grid-spacing);
+  margin-top: calc(-1 * var(--work-grid-spacing));
+  transform-style: preserve-3d;
+
+  @include level(2rem, $y: -3rem);
+  @include query(tall) {
+    margin-top: calc(-1 * var(--work-grid-spacing) - 10rem);
+
+    @include level(7.5rem, $y: -4rem);
+  }
+
+  > ::content {
+    .work {
+      float: left;
+      margin-left: var(--work-grid-spacing);
+      margin-top: var(--work-grid-spacing);
+      width: calc(50% - var(--work-grid-spacing));
+    }
+
+    .work.landscape {
+      width: calc(100% - var(--work-grid-spacing));
+    }
+  }
+}

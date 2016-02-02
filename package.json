@@ -4,9 +4,9 @@
   "description": "Personal portfolio.",
   "private": "true",
   "scripts": {
-    "gulp": "gulp --env production",
-    "build": "gulp build --env production",
-    "watch": "gulp watch --env production",
+    "gulp": "gulp",
+    "build": "gulp build",
+    "watch": "gulp watch",
     "clean": "gulp clean",
     "test": "gulp test",
     "lint": "gulp lint",

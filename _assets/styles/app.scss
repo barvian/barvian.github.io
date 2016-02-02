@@ -1,0 +1,58 @@
+@import "shared";
+
+// App
+// ===
+
+:root {
+  overflow: hidden;
+
+  // Theme
+  // ------
+  --nav-padding-top: 7vh;
+  --nav-padding-bottom: var(--nav-padding-top);
+
+  --logo-bg: $invert;
+  --logo-fg: $bg;
+  --logo-size: size(giant);
+
+  --page-padding-top: unquote("(var(--nav-padding-top) + var(--logo-size) + var(--nav-padding-bottom))");
+  --page-padding-bottom: unquote("(var(--nav-padding-top) + var(--logo-size))");
+
+  --work-grid-size: 33.333%;
+  --work-grid-spacing: size(spacing);
+  --work-card-spacing: size(spacing);
+}
+
+// Pages
+// -----
+
+#pages {
+  @extend %stretch;
+
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transform-style: flat;
+
+  @include surface;
+
+  > * {
+    transform-style: preserve-3d;
+    z-index: 1;
+
+    &::before, &::after {
+      content: '';
+      display: block;
+    }
+
+    &::before {
+      height: calc(var(--page-padding-top));
+    }
+
+    &::after {
+      height: calc(var(--page-padding-bottom));
+    }
+  }
+}
+

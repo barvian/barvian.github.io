@@ -1,12 +1,14 @@
 // Spacing
 // =======
 
+$sizes: () !default;
+
 // Child-level
 // -----------
 
 @mixin leading($space: spacing, $horizontal: false) {
   $parent: selector-parse(&);
-  @if type-of($space) == string { $space: size($space); }
+  @if map-has-key($sizes, $space) { $space: size($space); }
   @if length($parent) > 1 or length(nth($parent, 1)) <= 1 {
     * + & {
       @if $horizontal { margin-left: $space; margin-top: 0; } @else { margin-top: $space; }
@@ -21,7 +23,7 @@
 }
 
 @mixin trailing($space: spacing, $horizontal: false) {
-  @if type-of($space) == string { $space: size($space); }
+  @if map-has-key($sizes, $space) { $space: size($space); }
   & + * {
     @if $horizontal { margin-left: $space; margin-top: 0; } @else { margin-top: $space; }
   }

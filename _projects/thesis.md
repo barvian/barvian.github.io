@@ -1,4 +1,0 @@
----
-title: Thesis
-type: iOS
----

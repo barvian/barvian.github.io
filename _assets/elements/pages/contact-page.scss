@@ -1,0 +1,12 @@
+@import "../../styles/shared";
+
+// Contact page
+// ============
+
+:host {
+
+}
+
+article {
+  @extend %article;
+}

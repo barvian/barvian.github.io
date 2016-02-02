@@ -1,11 +1,18 @@
 // Colors
 // ======
 
-$blue: #4274ad;
-$purple: #4c54a8;
-$gold: #e9af3f;
-$red: #a94c4c;
-
 $bg: #fff;
-$base: #1c3654;
-$light: #738195;
+$invert: invert($bg);
+$base: #414353;
+$light: #e7ebf0;
+
+$primary-bg: #4be8be;
+$primary-fg: #22a784;
+
+$brands: (
+  naperville: #307AB3,
+  wsol: #F79B48,
+  github: #999999,
+  twitter: #55acee,
+  dribbble: #ea4c89
+);

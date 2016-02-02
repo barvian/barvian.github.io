@@ -1,10 +1,10 @@
 # Barvian.me
 # ==========
 
-title: Maxwell Barvian
-email: max@barvian.me
+name: Maxwell Barvian
+title: Digital product designer
 url: http://barvian.me
-description: Web designer, front-end developer
+baseurl: ''
 keywords:
   - designer
   - web designer
@@ -16,9 +16,14 @@ keywords:
   - front-end development
   - web design
 
-dribbble_username: barvian
-twitter_username: mbarvian
-github_username:  barvian
+email: max@barvian.me
+social:
+  dribbble: barvian
+  twitter: mbarvian
+  github:  barvian
+
+location: Chicago, IL
+availability: full
 
 
 # Sources
@@ -28,42 +33,42 @@ destination:  _site
 plugins_dir:  _plugins
 layouts_dir:  _layouts
 data_dir:     _data
-includes_dir: _includes
+includes_dir: .
 
 
 # Collections
 # -----------
 
 collections:
-  projects:
+  works:
     output: true
-    permalink: /:path/
+    permalink: /work/:path/
 
 
 # Build settings
 # --------------
 
-exclude: [
-  'node_modules',
-  'gulpfile.*',
-  'package.json',
-  'CNAME',
-  'bower.json',
-  'README.md'
-]
-markdown: kramdown
-permalink: pretty
+exclude:
+  - node_modules
+  - npm-debug*
+  - gulpfile.*
+  - package.json
+  - CNAME
+  - bower.json
+  - README.md
 
+permalink: pretty
 defaults:
   -
     scope:
       path: '' # all files
     values:
-      layout: 'page'
-  -
-    scope:
-      path: ''
-      type: 'projects'
-    values:
-      layout: 'project'
-      author: 'Maxwell Barvian'
+      layout: 'app'
+
+
+# Writing
+# -------
+
+markdown: kramdown
+kramdown:
+  auto_ids: false

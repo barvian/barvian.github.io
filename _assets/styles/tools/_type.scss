@@ -1,6 +1,7 @@
 // Type
 // ====
 
+$bg: #fff !default;
 $fonts: () !default;
 
 @mixin font($family, $weight: null, $style: null, $size: null) {

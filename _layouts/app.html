@@ -1,0 +1,42 @@
+---
+layout: default
+---
+
+{% comment %}
+  For deep-linking we need every page to be exactly the same,
+  so no {{ content }}. JavaScript will configure the route
+  based on the URL.
+{% endcomment %}
+
+<template is="dom-bind" id="app">
+  <style is="custom-style" include="app-styles"></style>
+
+  <page-title title="[[selectedPage.pageTitle]]"></page-title>
+
+  <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selectable=':not([href^="mailto:"])'>
+    {% for page in site.pages | sort: 'order' %}
+    <a{% if page.url == '/' %} is="barvian-logo"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+    {% endfor %}
+    <a href="mailto:{{ site.email }}">Contact</a>
+  </nav>
+  <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
+    selected-item="{% raw %}{{selectedPage}}{% endraw %}">
+    {% for page in site.pages %}
+    {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
+    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}">
+      {% include _content.html page=page %}
+    </{{ elem }}>
+    {% endfor %}
+
+    {% for work in site.works %}
+    <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}'
+      blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+      hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}">
+      {% include _content.html page=work %}
+    </work-page>
+    {% endfor %}
+  </neon-animated-pages>
+</template>
+
+<!-- Fallback -->
+{% include _noscript.html %}

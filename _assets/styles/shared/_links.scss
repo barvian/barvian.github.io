@@ -1,0 +1,44 @@
+// Links
+// =====
+
+@mixin attention($self: false, $focus: false) {
+  $sel: '#{&}:hover';
+  @if $self { $sel: append($sel, &, comma); }
+  @if $focus { $sel: append($sel, '#{&}:focus', comma); }
+  @at-root {
+    #{$sel} {
+      @content;
+    }
+  }
+}
+
+@mixin inattention($self: false, $focus: false) {
+  $sel: '#{&}:not(:hover)';
+  @if $self { $sel: append($sel, &, comma); }
+  @if $focus { $sel: append($sel, '#{&}:not(:focus)', comma); }
+  @at-root {
+    #{$sel} {
+      @content;
+    }
+  }
+}
+
+@mixin pressed($self: false) {
+  $sel: ('#{&}:active', '#{&}[pressed]');
+  @if $self { $sel: append($sel, &, comma); }
+  @at-root {
+    #{$sel} {
+      @content;
+    }
+  }
+}
+
+@mixin disabled($self: false) {
+  $sel: ('#{&}[disabled]', '#{&}.is-disabled');
+  @if $self { $sel: append($sel, &, comma); }
+  @at-root {
+    #{$sel} {
+      @content;
+    }
+  }
+}

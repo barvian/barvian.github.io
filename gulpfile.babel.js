@@ -24,26 +24,35 @@ gulp.registry(new CommonRegistry({
       `!${jekyll.destination}/${dest}/elements/**/*`
     ],
     server: jekyll.destination,
-    scrollElementMapping: ['[role="main"]'],
     snippetOptions: {
       rule: {
-        match: /<\/html>/i,
+        match: /<\/body\>/i,
         fn: (snippet, match) => snippet + match
       }
     }
   },
 
+  copy: {
+    src: [
+      `${bower}/webcomponentsjs/webcomponents-lite.min.js`,
+      `${src}/${vendor}/modernizr*.js`
+    ],
+    dest: [`${dest}/${vendor}`, `${jekyll.destination}/${dest}/${vendor}`]
+  },
+
   elements: {
     base: `${src}/elements`,
     entry: 'barvian.html',
-    dest: [`${dest}/elements`, `${jekyll.destination}/${dest}/elements`]
+    dest: [`${dest}/elements`, `${jekyll.destination}/${dest}/elements`],
+    includePaths: [bower]
   },
 
   styles: {
-    src: `${src}/styles/barvian.scss`,
+    src: `${src}/styles/{app,barvian}.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
     includePaths: [bower],
-    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`]
+    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],
+    modularize: 'app.css'
   },
 
   scripts: {
@@ -57,14 +66,6 @@ gulp.registry(new CommonRegistry({
     dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`]
   },
 
-  copy: {
-    base: src,
-    src: [
-      `${vendor}/modernizr*.js`
-    ],
-    dest: [dest, `${jekyll.destination}/${dest}`]
-  },
-
   fonts: {
     src: `${src}/fonts/**/*`,
     dest: [`${dest}/fonts`, `${jekyll.destination}/${dest}/fonts`]
@@ -73,25 +74,8 @@ gulp.registry(new CommonRegistry({
   images: {
     src: `${src}/images/**/*`,
     dest: [`${dest}/images`, `${jekyll.destination}/${dest}/images`]
-  },
-
-  sprites: {
-    src: `${src}/sprites/**/*`,
-    dest: jekyll.includes_dir
   }
 }));
-
-gulp.task('components:build', () => {
-  return gulp.src([
-    `${bower}/webcomponentsjs/webcomponents-lite.min.js`
-  ]).pipe(gulp.dest(`${dest}/${vendor}`));
-});
-
-gulp.task('components:clean', () => {
-  return del([
-    `${dest}/${vendor}/webcomponents-lite.min.js`
-  ]);
-});
 
 gulp.task('jekyll', done => {
   cp.spawn('jekyll', ['build', '-I', '--no-watch', '--config', config],

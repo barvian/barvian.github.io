@@ -1,0 +1,8 @@
+{% capture description %}
+  {% if page.excerpt %}
+    {{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}
+  {% else %}
+    Portfolio of {{ site.name }}, {{ site.title | downcase }}
+  {% endif %}
+{% endcapture %}
+<meta name="description" content="{{ description | strip }}" />

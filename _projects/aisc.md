@@ -1,4 +1,0 @@
----
-title: AISC
-type: web
----

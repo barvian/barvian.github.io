@@ -1,144 +1,29 @@
 // Type
 // ====
 
-$hr-color: lighten($light, 33.333%) !default;
-$hr-style: solid !default;
-$hr-size: 1px !default;
-
 // Base
 // ----
 
-html {
+:root {
+  &, body {
+    background: $bg;
+  }
   color: $base;
-  line-height: strip-units(ms(3));
-  text-rendering: optimizeLegibility;
+  line-height: strip-units(size(big));
+  font-feature-settings: "liga" 1, "kern" 1;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   text-size-adjust: none;
 
-  @include font($serif, $size: percentage(13/16), $weight: normal);
-  @include query(alpha) {
-    font-size: percentage(15/16);
-  }
-  @include query(short) {
-    font-size: percentage(13/16);
-  }
+  @include font($sans, $size: 15px);
+  @include query(tall) { font-size: 17px; }
 }
-
-code {
-  font-size: size(small);
-}
-
-// Headings
-// --------
-//
-// Limit properties to the same in each heading style, and add extra embellishments
-// elsewhere.  This way, styles can be interchanged and overriden easily
-// regardless of HTML tag.
-//
-
-// This hidden class can be used to target all
-// headings in an element
-%heading {
-  line-height: strip-units(size(medium));
-}
-
-%title {
-  @extend %heading;
-
-  letter-spacing: 0;
-  text-transform: none;
-
-  @include font($serif, $size: xxlarge, $style: normal, $weight: bold);
-}
-
-%section-divider {
-  @extend %heading;
-
-  letter-spacing: 0;
-  text-transform: none;
-
-  @include font($serif, $size: big, $style: normal, $weight: bold);
-}
-
-%sidekick {
-  @extend %heading;
-
-  @include font($sans, $size: ms(2), $style: normal, $weight: medium);
-}
-
-%shrimp {
-  @extend %heading;
-
-  letter-spacing: 0;
-  text-transform: none;
-
-  @include font($serif, $size: medium, $style: normal, $weight: bold);
-}
-
-%label {
-  @extend %heading;
-  @extend %uppercase;
-
-  @include font($sans, $size: base, $style: normal, $weight: semibold);
-}
-
-
-h1 { @extend %title; }
-h2 { @extend %section-divider; }
-h3 { @extend %sidekick; }
-h4 { @extend %shrimp; }
-h5 { @extend %label; }
 
 // Misc
 // ----
 
-hr {
-  border: none;
-  border-top: $hr-size $hr-style $hr-color;
-}
-
-%uppercase {
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-}
-
-%small {
+code {
   font-size: size(small);
-}
-
-%caption {
-  @extend %small;
-
-  @include font($serif, $style: italic);
-}
-
-blockquote {
-  @extend .landmark;
-
-  color: $light;
-  margin-left: 0;
-  margin-right: 0;
-  @include font($serif, $style: italic);
-  @include query(bravo) {
-    margin-left: size(spacing)*2;
-    margin-right: size(spacing)*2;
-  }
-
-  > footer {
-    @include leading(0.75em);
-
-    &::before {
-      content: '–';
-      display: inline-block;
-      margin-right: 0.15em;
-    }
-  }
-}
-
-figcaption {
-  @extend %caption;
-
-  @include leading(small);
 }

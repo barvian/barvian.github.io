@@ -1,0 +1,78 @@
+@import "../../styles/shared";
+
+// About page
+// ==========
+
+:host {
+  &::before { height: calc(var(--page-padding-top) - 2vh) !important; }
+
+  > * {
+    transform-style: preserve-3d;
+  }
+}
+
+article {
+  @extend %article;
+}
+
+#header {
+  @include layout;
+
+  @include trailing(var(--nav-padding-bottom));
+  text-align: center;
+  transform-style: preserve-3d;
+}
+
+#headshot {
+  position: relative;
+
+  svg {
+    display: block;
+  }
+
+  &::before {
+    @extend %stretch;
+
+    content: '';
+    border-radius: 100%;
+    box-shadow: 0 0.82rem 1.64rem rgba($base, 0.25), 0 0.55rem 0.55rem rgba($base, 0.15);
+    z-index: -1;
+  }
+
+  > ::content img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+
+    @include flush;
+  }
+
+  @include query(bravo, true) {
+    display: inline-block;
+    min-height: 8rem;
+    max-height: 20vh;
+    max-width: 14rem;
+
+    @include trailing;
+  }
+  @include query(bravo) {
+    @include span(2);
+    margin-right: size(xxlarge);
+    shape-outside: circle();
+
+    @include level(5rem, $x: 22.5%, $y: 3.5vh);
+    @include removed;
+  }
+}
+
+#title {
+  transform-style: preserve-3d;
+
+  ::content [is="barvian-button"] {
+  }
+
+  @include query(bravo) {
+    padding-top: 4%;
+    text-align: left;
+  }
+}
