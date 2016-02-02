@@ -11,7 +11,7 @@
     "SassyLists": "~2.2.4",
     "page-title": "^1.0.0",
     "susy": "~2.2.11",
-    "neon-page-behavior": "^1.1.1",
+    "neon-page-behavior": "barvian/neon-page-behavior#patch-1",
     "fastclick": "^1.0.6",
     "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.12"
   },

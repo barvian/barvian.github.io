@@ -23,7 +23,7 @@ Object.defineProperty(app, 'scroller', {
 });
 
 // Scroll scroller
-app.scroll = function(top, duration = 200) {
+app.scroll = function(top, duration = 500) {
   if (duration > 0) {
     const easingFn = function easeOutQuad(t, b, c, d) {
       t /= d;

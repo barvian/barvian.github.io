@@ -2718,7 +2718,7 @@ Object.defineProperty(app, 'scroller', {
 
 
 // Scroll scroller
-app.scroll = function (top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 200 : arguments[1];
+app.scroll = function (top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];
   if (duration > 0) {(function () {
       var easingFn = function easeOutQuad(t, b, c, d) {
         t /= d;

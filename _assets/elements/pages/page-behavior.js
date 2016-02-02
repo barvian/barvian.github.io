@@ -11,28 +11,52 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     order: Number,
     navStyle: String,
 
-    // animationConfig: {
-    //   type: Object,
-    //   value() {
-    //     return {
-    //       'entry': [{
-    //         name: 'fade-in-animation',
-    //         node: this
-    //       }],
-    //       'exit': [{
-    //         name: 'fade-out-animation',
-    //         node: this
-    //       }]
-    //     }
-    //   }
-    // }
+    animationConfigLeft: {
+      type: Object,
+      value() {
+        return {
+          'entry': [{
+            name: 'slide-from-left-animation',
+            node: this
+          }],
+          'exit': [{
+            name: 'slide-right-animation',
+            node: this
+          }]
+        }
+      }
+    },
+
+    animationConfigRight: {
+      type: Object,
+      value() {
+        return {
+          'entry': [{
+            name: 'slide-from-right-animation',
+            node: this
+          }],
+          'exit': [{
+            name: 'slide-left-animation',
+            node: this
+          }]
+        }
+      }
+    }
   },
 
   listeners: {
-    'entry-animation-start': '_onEntryStart'
+    'entry-animation-start': '_onPageChange',
+    'exit-animation-start': '_onPageChange'
   },
 
-  _onEntryStart(event) {
+  _onPageChange(event) {
+    const {fromPage, toPage} = event.detail;
+
+    if (fromPage) {
+      this.animationConfig = (fromPage.order < toPage.order) ?
+        this.animationConfigRight :
+        this.animationConfigLeft;
+    }
   }
 
 }];
