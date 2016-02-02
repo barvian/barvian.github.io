@@ -20,7 +20,9 @@
     @extend %callout;
 
     a:not([class]):not([is]) {
-      @include highlight($primary-bg);
+      @include font($ui, $weight: medium);
+      @include attention(true) { @include highlight; }
+      @include pressed { @include highlight; }
     }
   }
 
@@ -33,18 +35,21 @@
     line-height: strip-units(ms(2));
     transition:
       box-shadow 100ms linear,
-      color 100ms linear,
+      color 50ms linear,
       background-color 100ms linear,
       text-shadow 150ms linear,
       transform 250ms $ease-out-back;
 
-    @include highlight($invert);
+    @include font($sans, $weight: semibold);
+    @include highlight($light, false);
     @include flush;
     @include attention {
       transform: translateZ(0.3rem) scale(1.1);
+      @include highlight($invert);
     }
     @include pressed {
       transform: translateZ(0.075rem) scale(0.95);
+      @include highlight($invert);
     }
 
     // Brand colors

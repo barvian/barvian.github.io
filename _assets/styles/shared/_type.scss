@@ -78,12 +78,15 @@ a%ui {
   text-shadow: 0.059em 0.059em 0 $bg, -0.059em -0.059em 0 $bg, 0.059em -0.059em 0 $bg, -0.059em 0.059em 0 $bg, 0 0.059em 0 $bg, 0.059em 0 0 $bg, 0 -0.059em 0 $bg, -0.059em 0 0 $bg;
 }
 
-@mixin highlight($bg: $primary-bg) {
+@mixin highlight($bg: $primary-bg, $invert: true) {
   background-color: $bg;
-  box-shadow: 0.25em 0 0 $bg, -0.25em 0 0 $bg;
-  color: #fff;
-  margin-left: 0.25em;
-  margin-right: 0.25em;
+  box-shadow: 0.35em 0 0 $bg, -0.35em 0 0 $bg;
+  margin-left: 0.35em;
+  margin-right: 0.35em;
   text-decoration: none;
-  text-shadow: 0 0.0625em 0.0625em rgba(darken($bg, 35%), 0.1), 0 0.3em 0.4em rgba(darken($bg, 35%), 0.2);
+
+  @if $invert {
+    color: #fff;
+    text-shadow: 0 0.0625em 0.0625em rgba(darken($bg, 35%), 0.1), 0 0.3em 0.4em rgba(darken($bg, 35%), 0.2);
+  }
 }
