@@ -65,8 +65,10 @@ article {
 }
 
 #title {
+  transform-style: preserve-3d;
+
   @include query(bravo) {
-    padding-top: 6%;
+    padding-top: 4%;
     text-align: left;
   }
 }

@@ -29,7 +29,6 @@ Polymer({
   ],
 
   ready() {
-    // this.updateLink(this.href);
   },
 
   updateLink(href) {

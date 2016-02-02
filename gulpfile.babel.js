@@ -74,6 +74,11 @@ gulp.registry(new CommonRegistry({
   images: {
     src: `${src}/images/**/*`,
     dest: [`${dest}/images`, `${jekyll.destination}/${dest}/images`]
+  },
+
+  sprites: {
+    src: `${src}/sprites/**/*`,
+    dest: [`${dest}`, `${jekyll.destination}/${dest}`]
   }
 }));
 

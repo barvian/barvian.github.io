@@ -24,7 +24,7 @@
 }
 
 @mixin pressed($self: false) {
-  $sel: '#{&}:active';
+  $sel: ('#{&}:active', '#{&}[pressed]');
   @if $self { $sel: append($sel, &, comma); }
   @at-root {
     #{$sel} {

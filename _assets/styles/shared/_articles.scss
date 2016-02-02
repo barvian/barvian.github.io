@@ -19,7 +19,7 @@
   @include sel(h1) {
     @extend %callout;
 
-    a:not([class]) {
+    a:not([class]):not([is]) {
       @include highlight($primary-bg);
     }
   }
@@ -28,7 +28,7 @@
     @include layout($line center);
   }
 
-  @include sel("a:not([class])") {
+  @include sel("a:not([class]):not([is])") {
     display: inline-block;
     line-height: strip-units(ms(2));
     transition: transform 250ms $ease-out-back;;

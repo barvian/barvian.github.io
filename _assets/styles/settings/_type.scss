@@ -21,7 +21,7 @@ $fonts: (
   ),
   soleto: (
     stack: ("soleto", "San Francisco Display", "Avenir", sans-serif),
-    weights: (normal: 400),
-    styles: (normal: normal)
+    weights: (normal: 400, medium: 500),
+    styles: (normal: normal, medium: normal)
   )
 );

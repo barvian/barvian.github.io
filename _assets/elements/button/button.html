@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-behaviors/iron-button-state.html">
+<link rel="import" href="button-styles.html">
+
+<dom-module id="barvian-button">
+
+  <template>
+    <style include="button-styles"></style>
+
+    <!-- <svg viewBox="0 0 10 20" id="left">
+      <defs>
+        <path id="leftPath" d="M10,0 C3.86138614,7.51763381e-16 3.75881691e-16,3.86138614 0,10 C0,16.1386139 3.86138614,20 10,20" />
+        <clipPath id="leftPathMask"><use xlink:href="#leftPath" /></clipPath>
+      </defs>
+      <g clip-path="url(#leftPathMask)"><use xlink:href="#leftPath" /></g>
+    </svg> -->
+    <span><content></content></span>
+    <!-- <svg viewBox="0 0 10 20" id="left">
+      <defs>
+        <path id="rightPath" d="M0,0 C6.13861386,7.51763381e-16 10,3.86138614 10,10 C10,16.1386139 6.13861386,20 0,20" />
+        <clipPath id="rightPathMask"><use xlink:href="#rightPath" /></clipPath>
+      </defs>
+      <g clip-path="url(#rightPathMask)"><use xlink:href="#rightPath" /></g>
+    </svg> -->
+  </template>
+
+  <script src="button.js"></script>
+
+</dom-module>

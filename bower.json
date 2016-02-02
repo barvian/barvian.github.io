@@ -10,10 +10,10 @@
     "quantity-queries": "~0.4.0",
     "SassyLists": "~2.2.4",
     "page-title": "^1.0.0",
-    "iron-media-query": "PolymerElements/iron-media-query#~1.0.8",
     "susy": "~2.2.11",
     "neon-page-behavior": "^1.1.1",
-    "fastclick": "^1.0.6"
+    "fastclick": "^1.0.6",
+    "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.12"
   },
   "devDependencies": {
     "web-component-tester": "~4.0.3"
