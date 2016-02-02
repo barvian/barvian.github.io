@@ -2420,7 +2420,7 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
         </figure>
         <div id="title"><content select="h1, h1 + [is='barvian-button']"></content></div>
       </header>
-      <div id="content"><content select=":not(figure), :not(h1)"></content></div>
+      <div id="content"><content></content></div>
     </article>
   </template>
 
@@ -5329,12 +5329,12 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   right: 0;
   top: 0; }
 
-.menu > li > a {
+.menu ::content a {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none; }
-  .menu > li > a:not(a):not(input):not(button) {
+  .menu ::content a:not(a):not(input):not(button) {
     cursor: default; }
 
 .menu {
@@ -5351,9 +5351,10 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   top: 0;
   width: 100%;
   z-index: 100; }
-  :host a, :host ::content a {
+  :host ::content a {
+    outline: none;
     pointer-events: auto; }
-    :host a, :host a *, :host ::content a, :host ::content a * {
+    :host ::content a, :host ::content a * {
       -webkit-transition: fill 250ms linear, color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
       transition: fill 250ms linear, color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
       transition: fill 250ms linear, color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -5423,17 +5424,17 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   justify-content: center;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
-  .menu > li > a {
+  .menu ::content a {
     display: block;
     padding: 1em;
     text-shadow: 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff;
     font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
     -webkit-transform: translate3d(0, -5%, 0.25rem) scale(0.9895833333);
     transform: translate3d(0, -5%, 0.25rem) scale(0.9895833333); }
-    .menu > li > a:hover {
+    .menu ::content a:hover {
       -webkit-transform: translate3d(0, -5%, 0.5rem) scale(1.0770833333);
       transform: translate3d(0, -5%, 0.5rem) scale(1.0770833333); }
-    .menu > li > a:active, .menu > li > a[pressed] {
+    .menu ::content a:active, .menu ::content a[pressed] {
       -webkit-transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667);
       transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667); }
 
@@ -5468,12 +5469,15 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     <style include="floating-nav-styles"></style>
 
     <div id="wrap">
-      <ul id="left" class="menu"></ul>
+      <div id="left" class="menu">
+        <content select="*:nth-child(odd)"></content>
+      </div>
       <content select="[is$=&quot;logo&quot;]"></content>
-      <ul id="right" class="menu"></ul>
+      <div id="right" class="menu">
+        <content select="*:nth-child(even)"></content>
+      
     </div>
-    <content id="content" select=":not(#home)"></content>
-  </template>
+  </div></template>
 
   </dom-module>
 <dom-module id="logo-styles" assetpath="logo/">

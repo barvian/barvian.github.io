@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-menu-behavior/iron-menu-behavior.html">
 <link rel="import" href="floating-nav-styles.html">
 
 <dom-module id="floating-nav">
@@ -7,11 +8,14 @@
     <style include="floating-nav-styles"></style>
 
     <div id="wrap">
-      <ul id="left" class="menu"></ul>
+      <div id="left" class="menu">
+        <content select="*:nth-child(odd)"></content>
+      </div>
       <content select='[is$="logo"]'></content>
-      <ul id="right" class="menu"></ul>
+      <div id="right" class="menu">
+        <content select="*:nth-child(even)"></content>
+      </ul>
     </div>
-    <content id="content" select=':not(#home)'></content>
   </template>
 
   <script src="floating-nav.js"></script>

@@ -14,11 +14,12 @@
   z-index: 100;
 
 
-  a, ::content a {
+  ::content a {
     &, * {
       transition: fill 250ms linear, color 250ms linear, transform 250ms $ease-out-back;
     }
 
+    outline: none;
     pointer-events: auto;
   }
 
@@ -60,23 +61,21 @@
   justify-content: center;
   transform-style: preserve-3d;
 
-  > li {
-    > a {
-      @extend %ui;
+  ::content a {
+    @extend %ui;
 
-      display: block;
-      padding: 1em;
-      text-shadow: times(0 0 3em $bg, 15);
+    display: block;
+    padding: 1em;
+    text-shadow: times(0 0 3em $bg, 15);
 
-      @include font($ui);
+    @include font($ui);
 
-      @include level(0.25rem, $y: -5%);
-      @include attention {
-        @include level(0.5rem, $y: -5%, $scale: 1.1);
-      }
-      @include pressed {
-        @include level(0.1rem, $y: -5%, $scale: 0.95);
-      }
+    @include level(0.25rem, $y: -5%);
+    @include attention {
+      @include level(0.5rem, $y: -5%, $scale: 1.1);
+    }
+    @include pressed {
+      @include level(0.1rem, $y: -5%, $scale: 0.95);
     }
   }
 }
