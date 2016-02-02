@@ -21,3 +21,5 @@ I spent the last 4 years of my career learning from and working alongside great 
 I love making the most out of a project's constraints. Beyond that, I worked within the creative team where we designed wireframes, developed prototypes, and thought long and hard about where to place search fields for clients ranging from local businesses to Fortune 500 companies.
 
 Besides web design, my interests lie mostly in health and social issues.
+
+You can read my micro-opinions on [Twitter](http://twitter.com/{{ site.social.twitter }}) and see my works-in-progress on [Dribbble](http://dribbble.com/{{ site.social.dribbble }}).  I host any code I can on [Github](http://github.com/{{ site.social.github }}), including this website.

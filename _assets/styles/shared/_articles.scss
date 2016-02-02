@@ -31,7 +31,12 @@
   @include sel("a:not([class]):not([is])") {
     display: inline-block;
     line-height: strip-units(ms(2));
-    transition: transform 250ms $ease-out-back;;
+    transition:
+      box-shadow 100ms linear,
+      color 100ms linear,
+      background-color 100ms linear,
+      text-shadow 150ms linear,
+      transform 250ms $ease-out-back;
 
     @include highlight($invert);
     @include flush;
@@ -40,6 +45,20 @@
     }
     @include pressed {
       transform: translateZ(0.075rem) scale(0.95);
+    }
+
+    // Brand colors
+    &[href*="github.com"] {
+      @include attention { @include highlight(#999999); }
+      @include pressed { @include highlight(#999999); }
+    }
+    &[href*="twitter.com"] {
+      @include attention { @include highlight(#55acee); }
+      @include pressed { @include highlight(#55acee); }
+    }
+    &[href*="dribbble.com"] {
+      @include attention { @include highlight(#ea4c89); }
+      @include pressed { @include highlight(#ea4c89); }
     }
   }
 }

@@ -2303,10 +2303,10 @@ article p, article ::content p {
 article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   display: inline-block;
   line-height: 1.527696;
-  -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -webkit-transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   background-color: black;
   box-shadow: 0.25em 0 0 black, -0.25em 0 0 black;
   color: #fff;
@@ -2324,6 +2324,54 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   article a:not([class]):not([is]), article ::content a:not([class]):not([is]):active, article a:not([class]):not([is]), article ::content a:not([class]):not([is])[pressed] {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95); }
+  article a:not([class]):not([is])[href*="github.com"], article ::content a:not([class]):not([is])[href*="github.com"]:hover {
+    background-color: #999999;
+    box-shadow: 0.25em 0 0 #999999, -0.25em 0 0 #999999;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
+  article a:not([class]):not([is])[href*="github.com"], article ::content a:not([class]):not([is])[href*="github.com"]:active, article a:not([class]):not([is])[href*="github.com"], article ::content a:not([class]):not([is])[href*="github.com"][pressed] {
+    background-color: #999999;
+    box-shadow: 0.25em 0 0 #999999, -0.25em 0 0 #999999;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
+  article a:not([class]):not([is])[href*="twitter.com"], article ::content a:not([class]):not([is])[href*="twitter.com"]:hover {
+    background-color: #55acee;
+    box-shadow: 0.25em 0 0 #55acee, -0.25em 0 0 #55acee;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+  article a:not([class]):not([is])[href*="twitter.com"], article ::content a:not([class]):not([is])[href*="twitter.com"]:active, article a:not([class]):not([is])[href*="twitter.com"], article ::content a:not([class]):not([is])[href*="twitter.com"][pressed] {
+    background-color: #55acee;
+    box-shadow: 0.25em 0 0 #55acee, -0.25em 0 0 #55acee;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+  article a:not([class]):not([is])[href*="dribbble.com"], article ::content a:not([class]):not([is])[href*="dribbble.com"]:hover {
+    background-color: #ea4c89;
+    box-shadow: 0.25em 0 0 #ea4c89, -0.25em 0 0 #ea4c89;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
+  article a:not([class]):not([is])[href*="dribbble.com"], article ::content a:not([class]):not([is])[href*="dribbble.com"]:active, article a:not([class]):not([is])[href*="dribbble.com"], article ::content a:not([class]):not([is])[href*="dribbble.com"][pressed] {
+    background-color: #ea4c89;
+    box-shadow: 0.25em 0 0 #ea4c89, -0.25em 0 0 #ea4c89;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
 
 :host > * {
   -webkit-transform-style: preserve-3d;
@@ -3377,10 +3425,10 @@ article p, article ::content p {
 article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   display: inline-block;
   line-height: 1.527696;
-  -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -webkit-transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   background-color: black;
   box-shadow: 0.25em 0 0 black, -0.25em 0 0 black;
   color: #fff;
@@ -3398,6 +3446,54 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   article a:not([class]):not([is]), article ::content a:not([class]):not([is]):active, article a:not([class]):not([is]), article ::content a:not([class]):not([is])[pressed] {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95); }
+  article a:not([class]):not([is])[href*="github.com"], article ::content a:not([class]):not([is])[href*="github.com"]:hover {
+    background-color: #999999;
+    box-shadow: 0.25em 0 0 #999999, -0.25em 0 0 #999999;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
+  article a:not([class]):not([is])[href*="github.com"], article ::content a:not([class]):not([is])[href*="github.com"]:active, article a:not([class]):not([is])[href*="github.com"], article ::content a:not([class]):not([is])[href*="github.com"][pressed] {
+    background-color: #999999;
+    box-shadow: 0.25em 0 0 #999999, -0.25em 0 0 #999999;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
+  article a:not([class]):not([is])[href*="twitter.com"], article ::content a:not([class]):not([is])[href*="twitter.com"]:hover {
+    background-color: #55acee;
+    box-shadow: 0.25em 0 0 #55acee, -0.25em 0 0 #55acee;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+  article a:not([class]):not([is])[href*="twitter.com"], article ::content a:not([class]):not([is])[href*="twitter.com"]:active, article a:not([class]):not([is])[href*="twitter.com"], article ::content a:not([class]):not([is])[href*="twitter.com"][pressed] {
+    background-color: #55acee;
+    box-shadow: 0.25em 0 0 #55acee, -0.25em 0 0 #55acee;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+  article a:not([class]):not([is])[href*="dribbble.com"], article ::content a:not([class]):not([is])[href*="dribbble.com"]:hover {
+    background-color: #ea4c89;
+    box-shadow: 0.25em 0 0 #ea4c89, -0.25em 0 0 #ea4c89;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
+  article a:not([class]):not([is])[href*="dribbble.com"], article ::content a:not([class]):not([is])[href*="dribbble.com"]:active, article a:not([class]):not([is])[href*="dribbble.com"], article ::content a:not([class]):not([is])[href*="dribbble.com"][pressed] {
+    background-color: #ea4c89;
+    box-shadow: 0.25em 0 0 #ea4c89, -0.25em 0 0 #ea4c89;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
 
 </style>
 </template>
@@ -4364,10 +4460,10 @@ article #content p, article #content ::content p {
 article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]) {
   display: inline-block;
   line-height: 1.527696;
-  -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -webkit-transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: box-shadow 100ms linear, color 100ms linear, background-color 100ms linear, text-shadow 150ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   background-color: black;
   box-shadow: 0.25em 0 0 black, -0.25em 0 0 black;
   color: #fff;
@@ -4385,6 +4481,54 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]):active, article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is])[pressed] {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95); }
+  article #content a:not([class]):not([is])[href*="github.com"], article #content ::content a:not([class]):not([is])[href*="github.com"]:hover {
+    background-color: #999999;
+    box-shadow: 0.25em 0 0 #999999, -0.25em 0 0 #999999;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
+  article #content a:not([class]):not([is])[href*="github.com"], article #content ::content a:not([class]):not([is])[href*="github.com"]:active, article #content a:not([class]):not([is])[href*="github.com"], article #content ::content a:not([class]):not([is])[href*="github.com"][pressed] {
+    background-color: #999999;
+    box-shadow: 0.25em 0 0 #999999, -0.25em 0 0 #999999;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
+  article #content a:not([class]):not([is])[href*="twitter.com"], article #content ::content a:not([class]):not([is])[href*="twitter.com"]:hover {
+    background-color: #55acee;
+    box-shadow: 0.25em 0 0 #55acee, -0.25em 0 0 #55acee;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+  article #content a:not([class]):not([is])[href*="twitter.com"], article #content ::content a:not([class]):not([is])[href*="twitter.com"]:active, article #content a:not([class]):not([is])[href*="twitter.com"], article #content ::content a:not([class]):not([is])[href*="twitter.com"][pressed] {
+    background-color: #55acee;
+    box-shadow: 0.25em 0 0 #55acee, -0.25em 0 0 #55acee;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+  article #content a:not([class]):not([is])[href*="dribbble.com"], article #content ::content a:not([class]):not([is])[href*="dribbble.com"]:hover {
+    background-color: #ea4c89;
+    box-shadow: 0.25em 0 0 #ea4c89, -0.25em 0 0 #ea4c89;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
+  article #content a:not([class]):not([is])[href*="dribbble.com"], article #content ::content a:not([class]):not([is])[href*="dribbble.com"]:active, article #content a:not([class]):not([is])[href*="dribbble.com"], article #content ::content a:not([class]):not([is])[href*="dribbble.com"][pressed] {
+    background-color: #ea4c89;
+    box-shadow: 0.25em 0 0 #ea4c89, -0.25em 0 0 #ea4c89;
+    color: #fff;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    text-decoration: none;
+    text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
 
 :host {
   z-index: 50 !important; }
