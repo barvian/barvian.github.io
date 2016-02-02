@@ -2711,47 +2711,6 @@ var app = document.getElementById('app');
 // Set app base URL to one specified in Jekyll config
 app.baseUrl = config.baseurl || '/';
 
-Object.defineProperty(app, 'scroller', { 
-  get: function get() {
-    return this.$.pages;} });
-
-
-
-// Scroll scroller
-app.scroll = function (top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];
-  if (duration > 0) {(function () {
-      var easingFn = function easeOutQuad(t, b, c, d) {
-        t /= d;
-        return -c * t * (t - 2) + b;};
-
-      var animationId = Math.random();
-      var startTime = Date.now();
-      var currentScrollTop = _this.scroller.scrollTop;
-      var deltaScrollTop = top - currentScrollTop;
-
-      _this._currentAnimationId = animationId;
-
-      (function updateFrame() {
-        var now = Date.now();
-        var elapsedTime = now - startTime;
-
-        if (elapsedTime > duration) {
-          this.scroller.scrollTop = top;} else 
-        if (this._currentAnimationId === animationId) {
-          this.scroller.scrollTop = easingFn(elapsedTime, currentScrollTop, 
-          deltaScrollTop, duration);
-          requestAnimationFrame(updateFrame.bind(this));}}).
-
-      call(_this);})();} else 
-  {
-    this.scroller.scrollTop = top;}};
-
-
-
-// Scroll scroller to top
-app.scrollPageToTop = function () {
-  this.scroll(0);};
-
 },{"../../_config.yml":6,"./../bower_components/fastclick/lib/fastclick.js":1,"./../bower_components/picturefill/dist/picturefill.js":3,"./routing":5}],5:[function(require,module,exports){
 'use strict';var _page = require("./../bower_components/page/page.js");var _page2 = _interopRequireDefault(_page);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
@@ -2764,18 +2723,8 @@ window.addEventListener('WebComponentsReady', function () {
     _page2.default.base(app.baseUrl.replace(/\/$/, ''));}
 
 
-  // Middleware
-  // ----------
-
-  function scrollToTop(ctx, next) {
-    app.scrollPageToTop();
-    next();}
-
-
   // Routes
   // ------
-
-  (0, _page2.default)('*', scrollToTop, function (ctx, next) {return next();});
 
   // Static pages
   [app.baseUrl, '/about/', '/contact/'].forEach(function (url) {

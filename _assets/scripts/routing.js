@@ -9,18 +9,8 @@ window.addEventListener('WebComponentsReady', () => {
     page.base(app.baseUrl.replace(/\/$/, ''));
   }
 
-  // Middleware
-  // ----------
-
-  function scrollToTop(ctx, next) {
-    app.scrollPageToTop();
-    next();
-  }
-
   // Routes
   // ------
-
-  page('*', scrollToTop, (ctx, next) => next());
 
   // Static pages
   [app.baseUrl, '/about/', '/contact/'].forEach(url => {

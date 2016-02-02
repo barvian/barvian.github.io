@@ -16,7 +16,7 @@ order: 0
 </a>
 {:/nomarkdown}
 
-I spent the last 4 years of my career learning from and working alongside great people at [WSOL](http://wsol.com). I had the opportunity to lead some projects while I was there, including a [redesigned website](/work/naperville) for the city of [Naperville, IL](http://naperville.il.us), and some responsive redesigns for university websites.  Beyond that, I worked within the creative team, where we designed wireframes, developed prototypes, and thought long and hard about where to place search fields for clients ranging from local businesses to Fortune 500 companies.
+I spent the last 4 years of my career learning from and working alongside great people at [WSOL](http://wsol.com). I had the opportunity to lead some projects while I was there, including a [redesigned website](/work/naperville) for the city of [Naperville, IL,](http://naperville.il.us) and some responsive redesigns for university websites.  Beyond that, I worked within the creative team, where we designed wireframes, developed prototypes, and thought long and hard about where to place search fields for clients ranging from local businesses to Fortune 500 companies.
 
 I love making the most out of a project's constraints. Beyond that, I worked within the creative team where we designed wireframes, developed prototypes, and thought long and hard about where to place search fields for clients ranging from local businesses to Fortune 500 companies.
 

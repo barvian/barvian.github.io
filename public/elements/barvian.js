@@ -9641,6 +9641,11 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     order: Number, 
     navStyle: String, 
 
+    _boundPageChange: { 
+      type: Object, 
+      value: function value() {return this._onPageChange.bind(this);} }, 
+
+
     animationConfigLeft: { 
       type: Object, 
       value: function value() {
@@ -9675,8 +9680,23 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
 
 
   listeners: { 
-    'entry-animation-start': '_onPageChange', 
-    'exit-animation-start': '_onPageChange' }, 
+    'entry-animation-start': '_onEntryAnimation' }, 
+
+
+  attached: function attached() {
+    this.addEventListener('entry-animation-start', this._boundPageChange);
+    this.addEventListener('exit-animation-start', this._boundPageChange);}, 
+
+
+  detached: function detached() {
+    this.removeEventListener('entry-animation-start', this._boundPageChange);
+    this.removeEventListener('exit-animation-start', this._boundPageChange);}, 
+
+
+  _onEntryAnimation: function _onEntryAnimation(event) {
+    if (event.detail.fromPage) {
+      this.scrollToTop();}}, 
+
 
 
   _onPageChange: function _onPageChange(event) {var _event$detail = 
@@ -9685,7 +9705,42 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     if (fromPage) {
       this.animationConfig = fromPage.order < toPage.order ? 
       this.animationConfigRight : 
-      this.animationConfigLeft;}} }];
+      this.animationConfigLeft;}}, 
+
+
+
+  scroll: function scroll(top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];
+    if (duration > 0) {(function () {
+        var easingFn = function easeOutQuad(t, b, c, d) {
+          t /= d;
+          return -c * t * (t - 2) + b;};
+
+        var animationId = Math.random();
+        var startTime = Date.now();
+        var currentScrollTop = _this.parentElement.scrollTop;
+        var deltaScrollTop = top - currentScrollTop;
+
+        _this._currentAnimationId = animationId;
+
+        (function updateFrame() {
+          var now = Date.now();
+          var elapsedTime = now - startTime;
+
+          if (elapsedTime > duration) {
+            this.parentElement.scrollTop = top;} else 
+          if (this._currentAnimationId === animationId) {
+            this.parentElement.scrollTop = easingFn(elapsedTime, currentScrollTop, 
+            deltaScrollTop, duration);
+            requestAnimationFrame(updateFrame.bind(this));}}).
+
+        call(_this);})();} else 
+    {
+      this.parentElement.scrollTop = top;}}, 
+
+
+
+  scrollToTop: function scrollToTop() {var animated = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+    this.scroll(0, animated ? undefined : 0);} }];
 /**
    * Use `Polymer.NeonSharedElementAnimatableBehavior` to implement elements containing shared element
    * animations.
