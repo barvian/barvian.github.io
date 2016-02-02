@@ -4,14 +4,14 @@ order: 0
 ---
 
 {::nomarkdown}
-<img src="/public/images/me.jpg" alt="Me" />
+<img src="/public/images/me.png" alt="Me" />
 {:/nomarkdown}
 
 # Hi, I'm Max Barvian, a digital product designer from [{{ site.location }}](https://maps.google.com?q={{ site.location | url_param_escape }}). I enjoy thoughtful code, simple design, and making products that combine both. {% if site.availability == 'full' %}I'm looking for a remote position where I can work with like-minded people.{% endif %}
 
 {::nomarkdown}
 <a is="barvian-button" href="/public/CV.pdf">
-  <svg viewBox="0 0 20 20"><use xlink:href="#doc" /></svg>
+  {% include /public/images/doc.svg %}
   Download my résumé
 </a>
 {:/nomarkdown}

@@ -10946,8 +10946,35 @@ Polymer({
 Polymer({ 
   is: 'about-page', 
 
+  properties: { 
+    _boundObserver: { 
+      type: Object, 
+      value: function value() {return this._childrenChanged.bind(this);} } }, 
+
+
+
   behaviors: [
-  Barvian.PageBehavior] });
+  Barvian.PageBehavior], 
+
+
+  attached: function attached() {
+    console.log(Polymer.dom(this.$.img).getDistributedNodes());
+    this._observer = Polymer.dom(this.$.img).
+    observeNodes(this._boundObserver);}, 
+
+
+  _childrenChanged: function _childrenChanged(info) {var _this = this;
+    var distributedNodes = Polymer.dom(this.$.img).getDistributedNodes();
+    distributedNodes
+    // Append to correct ul
+    .forEach(function (node) {
+      Polymer.dom(_this.$.svgImg).appendChild(node);
+      console.log(node);});}, 
+
+
+
+  detached: function detached() {
+    Polymer.dom(this.$.img).unobserveNodes(this._boundObserver);} });
 'use strict'; // Contact page
 // ============
 

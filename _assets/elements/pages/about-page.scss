@@ -38,7 +38,6 @@ article {
   }
 
   > ::content img {
-    clip-path: url("#mask");
     display: block;
     max-height: 100%;
     max-width: 100%;
