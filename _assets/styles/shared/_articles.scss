@@ -48,17 +48,11 @@
     }
 
     // Brand colors
-    &[href*="github.com"] {
-      @include attention { @include highlight(#999999); }
-      @include pressed { @include highlight(#999999); }
-    }
-    &[href*="twitter.com"] {
-      @include attention { @include highlight(#55acee); }
-      @include pressed { @include highlight(#55acee); }
-    }
-    &[href*="dribbble.com"] {
-      @include attention { @include highlight(#ea4c89); }
-      @include pressed { @include highlight(#ea4c89); }
+    @each $url, $color in $brands {
+      &[href*="#{$url}"] {
+        @include attention { @include highlight($color); }
+        @include pressed { @include highlight($color); }
+      }
     }
   }
 }
