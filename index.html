@@ -14,7 +14,7 @@ order: 1
 
 {% assign works = site.works | sort: 'order' %}
 {% for work in works %}
-<work-card class="work"
+<work-card class="work" href="{{ work.url }}"
   work-title='{{ work.title }}' blurb='{{ work.blurb }}'
   bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
   thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"

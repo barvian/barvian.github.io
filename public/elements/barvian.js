@@ -11082,11 +11082,11 @@ Polymer({
 
 
   properties: { 
-    currentPage: Object }, 
+    selectedPage: Object }, 
 
 
   observers: [
-  'updateStyle(selectedItem.navStyle)'], 
+  'updateStyle(selectedPage.navStyle)'], 
 
 
   updateStyle: function updateStyle(navStyle) {
