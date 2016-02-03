@@ -17,6 +17,9 @@
   @include pressed {
     transform: translateZ(-0.6rem);
   }
+  @include query(tall, true) {
+    font-size: size(big);
+  }
 
   > ::content > .content {
     display: inline;
