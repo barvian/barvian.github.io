@@ -24,9 +24,9 @@ import attachFastClick from 'fastclick';
       if (target.nodeType !== Node.TEXT_NODE &&
         target.tagName === 'A' &&
         !target.getAttribute('href').startsWith('mailto:')) {
-        return app.shouldAnimate = true; // eslint-disable-line no-return-assign
+        return app.shouldAnimate = true;
       }
-    } while (target = target.parentNode); // eslint-disable-line no-cond-assign
+    } while (target = target.parentNode);
   };
   ['click', 'touchend', 'mouseup', 'keyup'].forEach(event => {
     document.addEventListener(event, handleAction);
