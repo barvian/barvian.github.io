@@ -922,12 +922,9 @@
   -ms-text-size-adjust: none;
   text-size-adjust: none;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 15px; }
+  font-size: 17px; }
   :root, :root body {
     background: #fff; }
-  @media screen and (min-width: 780px) and (min-height: 740px) {
-    :root {
-      font-size: 17px; } }
 
 code {
   font-size: 0.8090614887rem; }
@@ -939,6 +936,9 @@ code {
 
 :root, body {
   height: 100%; }
+
+* {
+  -webkit-tap-highlight-color: transparent !important; }
 
 a {
   color: currentColor;

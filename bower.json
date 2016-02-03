@@ -11,10 +11,10 @@
     "SassyLists": "~2.2.4",
     "page-title": "^1.0.0",
     "susy": "~2.2.11",
-    "neon-page-behavior": "barvian/neon-page-behavior#patch-1",
     "fastclick": "^1.0.6",
     "iron-behaviors": "PolymerElements/iron-behaviors#^1.0.12",
-    "iron-menu-behavior": "PolymerElements/iron-menu-behavior#^1.1.0"
+    "iron-menu-behavior": "PolymerElements/iron-menu-behavior#^1.1.0",
+    "neon-page-behavior": "vguillou/neon-page-behavior#master"
   },
   "devDependencies": {
     "web-component-tester": "~4.0.3"

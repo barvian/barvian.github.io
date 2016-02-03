@@ -17,8 +17,7 @@
   text-rendering: optimizeLegibility;
   text-size-adjust: none;
 
-  @include font($sans, $size: 15px);
-  @include query(tall) { font-size: 17px; }
+  @include font($sans, $size: 17px);
 }
 
 // Misc
