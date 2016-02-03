@@ -9641,9 +9641,28 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     order: Number, 
     navStyle: String, 
 
-    _boundPageChange: { 
+    shouldAnimate: { 
+      type: Boolean, 
+      value: false, 
+      notify: true }, 
+
+
+    animationConfig: { 
       type: Object, 
-      value: function value() {return this._onPageChange.bind(this);} }, 
+      value: function value() {
+        return { 
+          'entry': [{ 
+            name: 'fade-in-animation', 
+            node: this, 
+            timing: { duration: 10 } }], 
+
+          'exit': [{ 
+            name: 'fade-out-animation', 
+            node: this, 
+            timing: { duration: 10 } }] };} }, 
+
+
+
 
 
     animationConfigLeft: { 
@@ -9708,43 +9727,45 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
 
 
   listeners: { 
-    'entry-animation-start': '_onEntryAnimation' }, 
+    'entry-animation-start': '_beforePageChange', 
+    'exit-animation-start': '_beforePageChange', 
+    'entry-animation-finish': '_afterPageChange', 
+    'exit-animation-finish': '_afterPageChange' }, 
 
 
-  attached: function attached() {
-    this.addEventListener('entry-animation-start', this._boundPageChange);
-    this.addEventListener('exit-animation-start', this._boundPageChange);}, 
-
-
-  detached: function detached() {
-    this.removeEventListener('entry-animation-start', this._boundPageChange);
-    this.removeEventListener('exit-animation-start', this._boundPageChange);}, 
-
-
-  _onEntryAnimation: function _onEntryAnimation(event) {
-    if (event.detail.fromPage) {
-      this.scrollToTop();}}, 
-
-
-
-  _onPageChange: function _onPageChange(event) {var _event$detail = 
+  _beforePageChange: function _beforePageChange(event) {var _event$detail = 
     event.detail;var fromPage = _event$detail.fromPage;var toPage = _event$detail.toPage;
 
+    if (event.type === 'entry-animation-start' && fromPage) {
+      this.scrollTo(
+      this.shouldAnimate ? 0 : this._lastScrollTop, 
+      this.shouldAnimate ? undefined : 0);}
+
+
+
+    if (event.type === 'exit-animation-start') {
+      this._lastScrollTop = this.parentElement.scrollTop;}
+
+
     // Don't do anything unless we're animating from a previous page
-    if (!fromPage) {
+    if (!this.shouldAnimate) {
       return;}
 
 
     if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
       this.animationConfig = this.animationConfigWork;} else 
-    {
+    if (fromPage) {
       this.animationConfig = fromPage.order < toPage.order ? 
       this.animationConfigRight : 
       this.animationConfigLeft;}}, 
 
 
 
-  scroll: function scroll(top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];
+  _afterPageChange: function _afterPageChange(event) {
+    this.shouldAnimate = false;}, 
+
+
+  scrollTo: function scrollTo(top) {var _this = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];
     if (duration > 0) {(function () {
         var easingFn = function easeOutQuad(t, b, c, d) {
           t /= d;
@@ -9775,7 +9796,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
 
 
   scrollToTop: function scrollToTop() {var animated = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
-    this.scroll(0, animated ? undefined : 0);} }];
+    this.scrollTo(0, animated ? undefined : 0);} }];
 /**
    * Use `Polymer.NeonSharedElementAnimatableBehavior` to implement elements containing shared element
    * animations.
@@ -10935,25 +10956,6 @@ Polymer({
   Barvian.PageBehavior], 
 
 
-  properties: { 
-    animationConfig: { 
-      type: Object, 
-      value: function value() {
-        return { 
-          'exit': [{ 
-            name: 'ripple-animation', 
-            id: 'ripple', 
-            fromPage: this }, 
-          { 
-            name: 'hero-animation', 
-            id: 'hero', 
-            fromPage: this }] };} } }, 
-
-
-
-
-
-
   listeners: { 
     'works.click': '_onClick' }, 
 
@@ -10981,35 +10983,8 @@ Polymer({
 Polymer({ 
   is: 'about-page', 
 
-  properties: { 
-    _boundObserver: { 
-      type: Object, 
-      value: function value() {return this._childrenChanged.bind(this);} } }, 
-
-
-
   behaviors: [
-  Barvian.PageBehavior], 
-
-
-  attached: function attached() {
-    console.log(Polymer.dom(this.$.img).getDistributedNodes());
-    this._observer = Polymer.dom(this.$.img).
-    observeNodes(this._boundObserver);}, 
-
-
-  _childrenChanged: function _childrenChanged(info) {var _this = this;
-    var distributedNodes = Polymer.dom(this.$.img).getDistributedNodes();
-    distributedNodes
-    // Append to correct ul
-    .forEach(function (node) {
-      Polymer.dom(_this.$.svgImg).appendChild(node);
-      console.log(node);});}, 
-
-
-
-  detached: function detached() {
-    Polymer.dom(this.$.img).unobserveNodes(this._boundObserver);} });
+  Barvian.PageBehavior] });
 'use strict'; // Contact page
 // ============
 

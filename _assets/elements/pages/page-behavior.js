@@ -11,9 +11,28 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     order: Number,
     navStyle: String,
 
-    _boundPageChange: {
+    shouldAnimate: {
+      type: Boolean,
+      value: false,
+      notify: true
+    },
+
+    animationConfig: {
       type: Object,
-      value() { return this._onPageChange.bind(this) }
+      value() {
+        return {
+          'entry': [{
+            name: 'fade-in-animation',
+            node: this,
+            timing: { duration: 10 }
+          }],
+          'exit': [{
+            name: 'fade-out-animation',
+            node: this,
+            timing: { duration: 10 }
+          }]
+        }
+      }
     },
 
     animationConfigLeft: {
@@ -78,43 +97,45 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
   },
 
   listeners: {
-    'entry-animation-start': '_onEntryAnimation'
+    'entry-animation-start': '_beforePageChange',
+    'exit-animation-start': '_beforePageChange',
+    'entry-animation-finish': '_afterPageChange',
+    'exit-animation-finish': '_afterPageChange'
   },
 
-  attached() {
-    this.addEventListener('entry-animation-start', this._boundPageChange);
-    this.addEventListener('exit-animation-start', this._boundPageChange);
-  },
-
-  detached() {
-    this.removeEventListener('entry-animation-start', this._boundPageChange);
-    this.removeEventListener('exit-animation-start', this._boundPageChange);
-  },
-
-  _onEntryAnimation(event) {
-    if (event.detail.fromPage) {
-      this.scrollToTop();
-    }
-  },
-
-  _onPageChange(event) {
+  _beforePageChange(event) {
     const {fromPage, toPage} = event.detail;
 
+    if (event.type === 'entry-animation-start' && fromPage) {
+      this.scrollTo(
+        this.shouldAnimate ? 0 : this._lastScrollTop,
+        this.shouldAnimate ? undefined: 0
+      );
+    }
+
+    if (event.type === 'exit-animation-start') {
+      this._lastScrollTop = this.parentElement.scrollTop;
+    }
+
     // Don't do anything unless we're animating from a previous page
-    if (!fromPage) {
+    if (!this.shouldAnimate) {
       return;
     }
 
     if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
       this.animationConfig = this.animationConfigWork;
-    } else {
+    } else if (fromPage) {
       this.animationConfig = (fromPage.order < toPage.order) ?
         this.animationConfigRight :
         this.animationConfigLeft;
     }
   },
 
-  scroll(top, duration = 500) {
+  _afterPageChange(event) {
+    this.shouldAnimate = false;
+  },
+
+  scrollTo(top, duration = 500) {
     if (duration > 0) {
       const easingFn = function easeOutQuad(t, b, c, d) {
         t /= d;
@@ -145,7 +166,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
   },
 
   scrollToTop(animated = true) {
-    this.scroll(0, animated ? undefined : 0);
+    this.scrollTo(0, animated ? undefined : 0);
   }
 
 }];
