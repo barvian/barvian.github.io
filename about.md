@@ -7,7 +7,7 @@ order: 0
 <img src="/public/images/me.png" alt="Me" />
 {:/nomarkdown}
 
-# Hi, I'm Max Barvian, a digital product designer from [{{ site.location }}](https://maps.google.com?q={{ site.location | url_param_escape }}). I enjoy thoughtful code, simple design, and making products that combine both. {% if site.availability == 'full' %}I'm looking for a remote, mid-level front-end position where I can work with like-minded people.{% endif %}
+# Hi, I'm Max Barvian, a digital product designer from [{{ site.location }}](https://maps.google.com?q={{ site.location | url_param_escape }}). I enjoy thoughtful code, simple design, and making products that combine both. {% if site.availability == 'full' %}I'm looking for a remote mid-level position where I can work with like-minded people.{% endif %}
 
 {::nomarkdown}
 <a is="barvian-button" href="/public/CV.pdf">

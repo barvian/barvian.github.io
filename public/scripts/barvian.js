@@ -2700,23 +2700,41 @@ window.matchMedia || (window.matchMedia = function() {
 
 // barvian.me
 // ==========
-
-// Fast click for all
 // eslint-disable-line no-unused-vars
-(0, _fastclick2.default)(document.body);
-// Grab a reference to our auto-binding template
-// and give it some initial binding values
-// eslint-disable-line no-unused-vars
-var app = document.getElementById('app');
-// Set app base URL to one specified in Jekyll config
-app.baseUrl = config.baseurl || '/';
+(function (document) {
+  // Fast click for all
+  (0, _fastclick2.default)(document.body);
 
-// This keeps the nav functioning on work pages
-app.compressRoute = function (route) {
-  if (route.startsWith('/work/')) {
-    return '/';}
+  // Grab a reference to our auto-binding template
+  // and give it some initial binding values
+  var app = document.getElementById('app');
 
-  return route;};
+  // Set app base URL to one specified in Jekyll config
+  app.baseUrl = config.baseurl || '/';
+
+  // Only animate when clicking
+  var handleAction = function handleAction(event) {var 
+    target = event.target;
+    do {
+      if (target.nodeType !== Node.TEXT_NODE && 
+      target.tagName === 'A' && 
+      !target.getAttribute('href').startsWith('mailto:')) {
+        return app.shouldAnimate = true; // eslint-disable-line no-return-assign
+      }} while (
+    target = target.parentNode); // eslint-disable-line no-cond-assign
+  };
+  ['click', 'touchend', 'mouseup', 'keyup'].forEach(function (event) {
+    document.addEventListener(event, handleAction);});
+
+
+  // This keeps the nav functioning on work pages
+  app.compressRoute = function (route) {
+    if (route.startsWith('/work/')) {
+      return '/';}
+
+    return route;};})(
+
+document); // eslint-disable-line no-unused-vars
 
 },{"../../_config.yml":6,"./../bower_components/fastclick/lib/fastclick.js":1,"./../bower_components/picturefill/dist/picturefill.js":3,"./routing":5}],5:[function(require,module,exports){
 'use strict';var _page = require("./../bower_components/page/page.js");var _page2 = _interopRequireDefault(_page);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}

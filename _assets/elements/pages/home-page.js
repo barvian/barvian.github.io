@@ -9,25 +9,6 @@ Polymer({
     Barvian.PageBehavior
   ],
 
-  properties: {
-    animationConfig: {
-      type: Object,
-      value() {
-        return {
-          'exit': [{
-            name: 'ripple-animation',
-            id: 'ripple',
-            fromPage: this
-          }, {
-            name: 'hero-animation',
-            id: 'hero',
-            fromPage: this
-          }]
-        }
-      }
-    }
-  },
-
   listeners: {
     'works.click': '_onClick'
   },
