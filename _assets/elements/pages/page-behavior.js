@@ -24,12 +24,12 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
           'entry': [{
             name: 'fade-in-animation',
             node: this,
-            timing: { duration: 10 }
+            timing: { duration: 200 }
           }],
           'exit': [{
             name: 'fade-out-animation',
             node: this,
-            timing: { duration: 10 }
+            timing: { duration: 200 }
           }]
         }
       }
@@ -109,7 +109,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     if (event.type === 'entry-animation-start' && fromPage) {
       this.scrollTo(
         this.shouldAnimate ? 0 : this._lastScrollTop,
-        this.shouldAnimate ? undefined: 0
+        this.shouldAnimate ? undefined : 200
       );
     }
 
