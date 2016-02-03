@@ -34,11 +34,11 @@
     display: inline-block;
     line-height: strip-units(ms(2));
     transition:
-      box-shadow 100ms linear,
+      box-shadow 50ms linear,
       color 50ms linear,
-      background-color 100ms linear,
+      background-color 50ms linear,
       text-shadow 150ms linear,
-      transform 250ms $ease-out-back;
+      transform 225ms $ease-out-back;
 
     @include font($sans, $weight: semibold);
     @include highlight($light, false);
