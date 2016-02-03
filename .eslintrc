@@ -10,6 +10,8 @@
     "new-cap": [2, {
       "capIsNewExceptions": ["Polymer"]
     }],
-    "require-jsdoc": 0
+    "require-jsdoc": 0,
+    "no-cond-assign": 0,
+    "no-return-assign": 0
   }
 }
