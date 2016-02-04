@@ -9786,18 +9786,23 @@ Barvian.StylePropertiesBehavior = {
       this.properties = {};}
 
 
+    Object.keys(this.properties).
+    filter(function (prop) {return _this.properties[prop].reflectToStyle;})
     // For each style property...
-    Object.keys(this.styleProperties).forEach(function (prop) {
+    .forEach(function (prop) {
       var observerName = "_" + prop + "Updated";
+
+      // ... set to String if unspecified
+      if (!_this.properties[prop].type) {
+        _this.properties[prop].type = String;}
+
 
       // ...add an observer function to the element
       _this[observerName] = function (newValue) {
-        this.customStyle["--" + this.is + "-" + prop] = newValue;};
+        this.customStyle["--" + this.is + "-" + prop] = newValue;
+        this.updateStyles();};
 
-      _this.observers.push(observerName + "(" + prop + ")");
-
-      // ...add the style property to the normal properties
-      _this.properties[prop] = _this.styleProperties[prop];});} };
+      _this.observers.push(observerName + "(" + prop + ")");});} };
 /** @polymerBehavior Polymer.IronMultiSelectableBehavior */
   Polymer.IronMultiSelectableBehaviorImpl = {
     properties: {
@@ -10985,6 +10990,10 @@ Polymer({
 
 
   properties: { 
+    bg: { reflectToStyle: true }, 
+    fg: { reflectToStyle: true }, 
+    shadow: { reflectToStyle: true }, 
+
     workTitle: String, 
     blurb: String, 
     hero: String, 
@@ -10992,7 +11001,7 @@ Polymer({
 
     navStyle: { 
       type: String, 
-      computed: '_computeNavStyle(bg)' }, 
+      computed: '_computeNavStyle(bg, shadow)' }, 
 
 
     sharedElements: { 
@@ -11035,19 +11044,13 @@ Polymer({
 
 
 
-  styleProperties: { 
-    bg: String, 
-    fg: String, 
-    shadow: String }, 
-
-
-  _computeNavStyle: function _computeNavStyle(bg) {
+  _computeNavStyle: function _computeNavStyle(bg, shadow) {
     var rgb = bg.match(/\d+/g).map(Number);
     var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
     return yiq < 175 ? { 
       invert: true, 
-      shadow: this.shadow } : 
+      shadow: shadow } : 
     {};} });
 'use strict'; // Floating nav
 // ============
@@ -11066,11 +11069,9 @@ Polymer({
 
 
   properties: { 
+    shadow: { reflectToStyle: true, type: String }, 
+
     selectedPage: Object }, 
-
-
-  styleProperties: { 
-    shadow: String }, 
 
 
   observers: [
@@ -11086,10 +11087,8 @@ Polymer({
     if (navStyle.invert) {
       Polymer.dom(this).classList.add('invert');}
 
-    this.shadow = navStyle.shadow;
-
-    Polymer.dom.flush();
-    this.updateStyles();} });
+    console.log(navStyle.shadow);
+    this.shadow = navStyle.shadow;} });
 'use strict'; // Floating logo
 // =============
 
@@ -11154,6 +11153,10 @@ Polymer({
 
 
   properties: { 
+    bg: { reflectToStyle: true }, 
+    fg: { reflectToStyle: true }, 
+    shadow: { reflectToStyle: true }, 
+
     href: String, 
     workTitle: String, 
     blurb: String, 
@@ -11165,12 +11168,6 @@ Polymer({
       type: Boolean, 
       computed: '_computeInverted(bg)' } }, 
 
-
-
-  styleProperties: { 
-    bg: String, 
-    fg: String, 
-    shadow: String }, 
 
 
   observers: [

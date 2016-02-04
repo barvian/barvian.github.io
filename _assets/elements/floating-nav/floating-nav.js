@@ -15,11 +15,9 @@ Polymer({
   },
 
   properties: {
-    selectedPage: Object
-  },
+    shadow: {reflectToStyle: true, type: String},
 
-  styleProperties: {
-    shadow: String
+    selectedPage: Object
   },
 
   observers: [
@@ -35,9 +33,7 @@ Polymer({
     if (navStyle.invert) {
       Polymer.dom(this).classList.add('invert');
     }
+    console.log(navStyle.shadow)
     this.shadow = navStyle.shadow;
-
-    Polymer.dom.flush();
-    this.updateStyles();
   }
 });

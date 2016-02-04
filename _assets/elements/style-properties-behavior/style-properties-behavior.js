@@ -12,19 +12,24 @@ Barvian.StylePropertiesBehavior = {
       this.properties = {};
     }
 
-    // For each style property...
-    Object.keys(this.styleProperties).forEach(prop => {
-      const observerName = `_${prop}Updated`;
+    Object.keys(this.properties)
+      .filter(prop => this.properties[prop].reflectToStyle)
+      // For each style property...
+      .forEach(prop => {
+        const observerName = `_${prop}Updated`;
 
-      // ...add an observer function to the element
-      this[observerName] = function(newValue) {
-        this.customStyle[`--${this.is}-${prop}`] = newValue;
-      };
-      this.observers.push(`${observerName}(${prop})`);
+        // ... set to String if unspecified
+        if (!this.properties[prop].type) {
+          this.properties[prop].type = String;
+        }
 
-      // ...add the style property to the normal properties
-      this.properties[prop] = this.styleProperties[prop];
-    });
+        // ...add an observer function to the element
+        this[observerName] = function(newValue) {
+          this.customStyle[`--${this.is}-${prop}`] = newValue;
+          this.updateStyles();
+        };
+        this.observers.push(`${observerName}(${prop})`);
+      });
   }
 
 };

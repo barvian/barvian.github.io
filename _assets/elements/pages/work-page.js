@@ -11,6 +11,10 @@ Polymer({
   ],
 
   properties: {
+    bg: {reflectToStyle: true},
+    fg: {reflectToStyle: true},
+    shadow: {reflectToStyle: true},
+
     workTitle: String,
     blurb: String,
     hero: String,
@@ -18,7 +22,7 @@ Polymer({
 
     navStyle: {
       type: String,
-      computed: '_computeNavStyle(bg)'
+      computed: '_computeNavStyle(bg, shadow)'
     },
 
     sharedElements: {
@@ -61,19 +65,13 @@ Polymer({
     }
   },
 
-  styleProperties: {
-    bg: String,
-    fg: String,
-    shadow: String
-  },
-
-  _computeNavStyle(bg) {
+  _computeNavStyle(bg, shadow) {
     const rgb = bg.match(/\d+/g).map(Number);
     const yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
     return yiq < 175 ? {
       invert: true,
-      shadow: this.shadow
+      shadow
     } : {};
   }
 });

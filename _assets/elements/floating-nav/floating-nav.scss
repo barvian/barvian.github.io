@@ -107,7 +107,7 @@
   .menu ::content a {
     color: $bg;
     text-shadow:
-      0 0.3em 0.4em var(--floating-nav-shadow, #{rgba(darken($base, 35%), 0.2)}); //,
+      0 0.125em 0.25em var(--floating-nav-shadow, #{rgba(darken($base, 20%), 0.2)}); //,
       // 0 0.0625em 0.0625em var(--floating-nav-shadow, #{rgba(darken($base, 35%), 0.1)}); // polyfill can't handle two vars with defaults
     transition: transform 250ms $ease-out-back;
   }

@@ -9,6 +9,10 @@ Polymer({
   ],
 
   properties: {
+    bg: {reflectToStyle: true},
+    fg: {reflectToStyle: true},
+    shadow: {reflectToStyle: true},
+
     href: String,
     workTitle: String,
     blurb: String,
@@ -20,12 +24,6 @@ Polymer({
       type: Boolean,
       computed: '_computeInverted(bg)'
     }
-  },
-
-  styleProperties: {
-    bg: String,
-    fg: String,
-    shadow: String
   },
 
   observers: [
