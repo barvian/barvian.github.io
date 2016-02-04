@@ -9742,10 +9742,10 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
 
     if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
       this.animationConfig = this.animationConfigWork;} else 
-    if (fromPage) {
-      this.animationConfig = fromPage.order < toPage.order ? 
-      this.animationConfigRight : 
-      this.animationConfigLeft;}} }];
+    if (fromPage.order < toPage.order) {
+      this.animationConfig = this.animationConfigRight;} else 
+    if (fromPage.order > toPage.order) {
+      this.animationConfig = this.animationConfigLeft;}} }];
 /**
    * Use `Polymer.NeonSharedElementAnimatableBehavior` to implement elements containing shared element
    * animations.
@@ -9772,6 +9772,32 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     Polymer.NeonAnimatableBehavior,
     Polymer.NeonSharedElementAnimatableBehaviorImpl
   ];
+"use strict";var _extends = Object.assign || function (target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i];for (var key in source) {if (Object.prototype.hasOwnProperty.call(source, key)) {target[key] = source[key];}}}return target;}; // Style properties behavior
+// =========================
+
+window.Barvian = window.Barvian || {};
+Barvian.StylePropertiesBehavior = { 
+
+  beforeRegister: function beforeRegister() {var _this = this;
+    // Add observers to style properties then merge with regular properties
+    this.properties = _extends({}, 
+    this.properties, 
+    Object.keys(this.styleProperties).reduce(function (props, prop) {
+      var observer = "_" + prop + "Updated";
+
+      // Add observer function to element
+      _this[observer] = function (newValue, oldValue) {
+        this.customStyle["--" + this.is + "-" + prop] = newValue;};
+
+
+      // Add observer to property
+      props[prop] = _extends({}, 
+      _this.styleProperties[prop], { 
+        observer: observer });
+
+
+      return props;}, 
+    {}));} };
 /** @polymerBehavior Polymer.IronMultiSelectableBehavior */
   Polymer.IronMultiSelectableBehaviorImpl = {
     properties: {
@@ -10704,32 +10730,6 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     }
 
   };
-"use strict";var _extends = Object.assign || function (target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i];for (var key in source) {if (Object.prototype.hasOwnProperty.call(source, key)) {target[key] = source[key];}}}return target;}; // Style properties behavior
-// =========================
-
-window.Barvian = window.Barvian || {};
-Barvian.StylePropertiesBehavior = { 
-
-  beforeRegister: function beforeRegister() {var _this = this;
-    // Add observers to style properties then merge with regular properties
-    this.properties = _extends({}, 
-    this.properties, 
-    Object.keys(this.styleProperties).reduce(function (props, prop) {
-      var observer = "_" + prop + "Updated";
-
-      // Add observer function to element
-      _this[observer] = function (newValue, oldValue) {
-        this.customStyle["--" + this.is + "-" + prop] = newValue;};
-
-
-      // Add observer to property
-      props[prop] = _extends({}, 
-      _this.styleProperties[prop], { 
-        observer: observer });
-
-
-      return props;}, 
-    {}));} };
 (function() {
 
   Polymer({
@@ -10985,6 +10985,7 @@ Polymer({
 
 
   properties: { 
+    workTitle: String, 
     blurb: String, 
     hero: String, 
     hero2x: String, 
@@ -10998,8 +10999,8 @@ Polymer({
       type: Object, 
       value: function value() {
         return { 
-          'hero': this.$.hero, 
-          'bg': this.$.header };} }, 
+          hero: this.$.hero, 
+          bg: this.$.header };} }, 
 
 
 
@@ -11035,16 +11036,19 @@ Polymer({
 
 
   styleProperties: { 
-    bg: String, 
-    fg: String, 
-    shadow: String }, 
+    bg: { type: String }, 
+    fg: { type: String }, 
+    shadow: { type: String } }, 
 
 
   _computeNavStyle: function _computeNavStyle(bg) {
     var rgb = bg.match(/\d+/g).map(Number);
     var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
-    return yiq < 175 ? 'invert' : '';} });
+    return yiq < 175 ? { 
+      invert: true, 
+      shadow: this.shadow } : 
+    {};} });
 'use strict'; // Floating nav
 // ============
 
@@ -11053,6 +11057,7 @@ Polymer({
   extends: 'nav', 
 
   behaviors: [
+  Barvian.StylePropertiesBehavior, 
   Polymer.IronMenuBehavior], 
 
 
@@ -11064,13 +11069,25 @@ Polymer({
     selectedPage: Object }, 
 
 
+  styleProperties: { 
+    shadow: { type: String } }, 
+
+
   observers: [
   'updateStyle(selectedPage.navStyle)'], 
 
 
   updateStyle: function updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
-    Polymer.dom(this).classList.add(navStyle);
+    if (!navStyle) {
+      return;}
+
+
+    if (navStyle.invert) {
+      Polymer.dom(this).classList.add('invert');}
+
+    this.shadow = navStyle.shadow;
+
     Polymer.dom.flush();
     this.updateStyles();} });
 'use strict'; // Floating logo
@@ -11142,16 +11159,22 @@ Polymer({
     blurb: String, 
     thumb: String, 
     thumb2x: String, 
-    orientation: String }, 
+    orientation: String, 
+
+    invert: { 
+      type: Boolean, 
+      computed: '_computeInverted(bg)' } }, 
+
 
 
   styleProperties: { 
-    bg: String, 
-    fg: String, 
-    shadow: String }, 
+    bg: { type: String }, 
+    fg: { type: String }, 
+    shadow: { type: String } }, 
 
 
   observers: [
+  'updateInverted(invert)', 
   'updateLink(href)', 
   'updateOrientation(orientation)'], 
 
@@ -11171,10 +11194,21 @@ Polymer({
     Polymer.dom(this.link).setAttribute('href', href);}, 
 
 
+  updateInverted: function updateInverted(invert) {
+    this.classList[invert ? 'add' : 'remove']('invert');}, 
+
+
   updateOrientation: function updateOrientation(orientation) {
     this.classList.remove('portrait', 'landscape');
     this.classList.add(orientation);}, 
 
 
   _imgLoaded: function _imgLoaded(event) {
-    this.classList.add('loaded');} });
+    this.classList.add('loaded');}, 
+
+
+  _computeInverted: function _computeInverted(bg) {
+    var rgb = bg.match(/\d+/g).map(Number);
+    var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+
+    return yiq < 175 ? 'invert' : '';} });

@@ -36,7 +36,7 @@ layout: default
 
       {% for work in site.works %}
       <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}' should-animate="[[shouldAnimate]]"
-        blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+        work-title="{{ work.title }}" blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
         hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}">
         {% include _content.html page=work %}
       </work-page>

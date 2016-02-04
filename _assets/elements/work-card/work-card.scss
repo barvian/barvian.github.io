@@ -4,7 +4,6 @@
 // =========
 
 :host {
-  color: var(--work-card-fg);
   display: block;
   overflow: hidden;
   position: relative;
@@ -13,7 +12,7 @@
 }
 
 #bg {
-  background-color: var(--work-card-bg);
+  background-color: lighten($light, 3.5%);
   display: block;
   width: 100%;
 }
@@ -31,18 +30,44 @@
   }
 }
 
+  :host(.invert) {
+    header h1 {
+      color: var(--work-card-bg);
+    }
+  }
+
   :host([href]) {
     &, figure img {
-      transition: transform 250ms $ease-out-back;
+      transition: box-shadow 125ms linear, transform 250ms $ease-out-back;
+    }
+
+    #bg {
+      transition: background-color 100ms linear;
+    }
+
+    header h1, header h2 {
+      transition: color 100ms linear;
     }
 
     transform-style: preserve-3d;
 
     @include surface;
     @include attention {
+      #bg {
+        background-color: var(--work-card-bg);
+      }
+      figure img {
+        box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+      }
       transform: translateZ(0.75rem);
     }
     @include pressed {
+      #bg {
+        background-color: var(--work-card-bg);
+      }
+      figure img {
+        box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+      }
       transform: translateZ(-0.4rem);
     }
 
@@ -55,8 +80,22 @@
     }
   }
 
+  :host([href].invert) {
+    @include attention {
+      header h1, header h2 {
+        color: var(--work-card-fg);
+      }
+    }
+    @include pressed {
+      header h1, header h2 {
+        color: var(--work-card-fg);
+      }
+    }
+  }
+
 header {
   h1 {
+    color: var(--work-card-fg);
     line-height: strip-units(size(medium));
 
     @include font($ui, $weight: normal, $size: medium);
@@ -76,7 +115,7 @@ figure {
   position: relative;
 
   > img {
-    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+    box-shadow: 0 0.4rem 1.333rem -0.25rem rgba($base, 0.4);
     display: block;
   }
 }

@@ -24,7 +24,7 @@ import attachFastClick from 'fastclick';
         app._afterPageEnter.bind(this));
       child.addEventListener('exit-animation-start',
         app._beforePageLeave.bind(this));
-    })
+    });
   });
 
   // Only animate when clicking
@@ -60,12 +60,14 @@ import attachFastClick from 'fastclick';
     }
   };
 
-  app._afterPageEnter = function(event) {
+  app._afterPageEnter = function() {
     app.shouldAnimate = false;
   };
 
   app._beforePageLeave = function(event) {
-    event.detail.fromPage._lastScrollTop = app.$.pages.scrollTop;
+    const {fromPage} = event.detail;
+
+    fromPage._lastScrollTop = app.$.pages.scrollTop;
   };
 
   app.scrollTo = function(top, duration = 500) {

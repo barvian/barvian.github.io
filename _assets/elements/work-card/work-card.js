@@ -14,16 +14,22 @@ Polymer({
     blurb: String,
     thumb: String,
     thumb2x: String,
-    orientation: String
+    orientation: String,
+
+    invert: {
+      type: Boolean,
+      computed: '_computeInverted(bg)'
+    }
   },
 
   styleProperties: {
-    bg: String,
-    fg: String,
-    shadow: String
+    bg: {type: String},
+    fg: {type: String},
+    shadow: {type: String}
   },
 
   observers: [
+    'updateInverted(invert)',
     'updateLink(href)',
     'updateOrientation(orientation)'
   ],
@@ -43,6 +49,10 @@ Polymer({
     Polymer.dom(this.link).setAttribute('href', href);
   },
 
+  updateInverted(invert) {
+    this.classList[invert ? 'add' : 'remove']('invert');
+  },
+
   updateOrientation(orientation) {
     this.classList.remove('portrait', 'landscape');
     this.classList.add(orientation);
@@ -50,5 +60,12 @@ Polymer({
 
   _imgLoaded(event) {
     this.classList.add('loaded');
+  },
+
+  _computeInverted(bg) {
+    const rgb = bg.match(/\d+/g).map(Number);
+    const yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+
+    return yiq < 175 ? 'invert' : '';
   }
 });

@@ -5844,7 +5844,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     :host ::content [is$="logo"]::before {
       border-radius: 100%;
       bottom: 1px;
-      box-shadow: 0 0.58rem 1.17rem rgba(65, 67, 83, 0.4), 0 0.35rem 0.35rem rgba(65, 67, 83, 0.125);
+      box-shadow: 0 0.58rem 1.17rem var(--floating-nav-shadow, rgba(65, 67, 83, 0.4));
       content: ''; }
     :host ::content [is$="logo"]:hover {
       -webkit-transform: translate3d(0, 0.4rem, 1.5rem) scale(1.03125);
@@ -5924,11 +5924,11 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     padding-right: 10%; } }
 
 :host(.invert) {
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); }
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); }
   :host(.invert) .menu ::content a {
     color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0.3em 0.4em var(--floating-nav-shadow, rgba(0, 0, 0, 0.2));
     -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
     transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -9827,7 +9827,6 @@ span {
   top: 0; }
 
 :host {
-  color: var(--work-card-fg);
   display: block;
   overflow: hidden;
   position: relative;
@@ -9835,7 +9834,7 @@ span {
   transform: translate3d(0, 0, 0) scale(1); }
 
 #bg {
-  background-color: var(--work-card-bg);
+  background-color: #f2f4f7;
   display: block;
   width: 100%; }
 
@@ -9843,6 +9842,9 @@ span {
   padding: var(--work-card-spacing, 1.527696rem); }
   #wrapper > a {
     display: block; }
+
+:host(.invert) header h1 {
+  color: var(--work-card-bg); }
 
 :host([href]) {
   -webkit-transform-style: preserve-3d;
@@ -9852,16 +9854,30 @@ span {
   -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%; }
   :host([href]), :host([href]) figure img {
-    -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+    -webkit-transition: box-shadow 125ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: box-shadow 125ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: box-shadow 125ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: box-shadow 125ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+  :host([href]) #bg {
+    -webkit-transition: background-color 100ms linear;
+    transition: background-color 100ms linear; }
+  :host([href]) header h1, :host([href]) header h2 {
+    -webkit-transition: color 100ms linear;
+    transition: color 100ms linear; }
   :host([href]):hover {
     -webkit-transform: translateZ(0.75rem);
     transform: translateZ(0.75rem); }
+    :host([href]):hover #bg {
+      background-color: var(--work-card-bg); }
+    :host([href]):hover figure img {
+      box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow); }
   :host([href]):active, :host([href])[pressed] {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }
+    :host([href]):active #bg, :host([href])[pressed] #bg {
+      background-color: var(--work-card-bg); }
+    :host([href]):active figure img, :host([href])[pressed] figure img {
+      box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow); }
   :host([href]) figure {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }
@@ -9869,7 +9885,14 @@ span {
       -webkit-transform: translateZ(0);
       transform: translateZ(0); }
 
+:host([href].invert):hover header h1, :host([href].invert):hover header h2 {
+  color: var(--work-card-fg); }
+
+:host([href].invert):active header h1, :host([href].invert):active header h2, :host([href].invert)[pressed] header h1, :host([href].invert)[pressed] header h2 {
+  color: var(--work-card-fg); }
+
 header h1 {
+  color: var(--work-card-fg);
   line-height: 1.236;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
   font-size: 1.236rem;
@@ -9888,7 +9911,7 @@ figure {
   display: block;
   position: relative; }
   figure > img {
-    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+    box-shadow: 0 0.4rem 1.333rem -0.25rem rgba(65, 67, 83, 0.4);
     display: block; }
 
 :host(.portrait) #bg {

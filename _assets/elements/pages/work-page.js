@@ -11,6 +11,7 @@ Polymer({
   ],
 
   properties: {
+    workTitle: String,
     blurb: String,
     hero: String,
     hero2x: String,
@@ -24,8 +25,8 @@ Polymer({
       type: Object,
       value() {
         return {
-          'hero': this.$.hero,
-          'bg': this.$.header
+          hero: this.$.hero,
+          bg: this.$.header
         }
       }
     },
@@ -61,15 +62,18 @@ Polymer({
   },
 
   styleProperties: {
-    bg: String,
-    fg: String,
-    shadow: String
+    bg: {type: String},
+    fg: {type: String},
+    shadow: {type: String}
   },
 
   _computeNavStyle(bg) {
     const rgb = bg.match(/\d+/g).map(Number);
     const yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
-    return yiq < 175 ? 'invert' : '';
+    return yiq < 175 ? {
+      invert: true,
+      shadow: this.shadow
+    } : {};
   }
 });

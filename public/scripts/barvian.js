@@ -2017,12 +2017,14 @@ module.exports = Array.isArray || function (arr) {
 
 
 
-  app._afterPageEnter = function (event) {
+  app._afterPageEnter = function () {
     app.shouldAnimate = false;};
 
 
-  app._beforePageLeave = function (event) {
-    event.detail.fromPage._lastScrollTop = app.$.pages.scrollTop;};
+  app._beforePageLeave = function (event) {var 
+    fromPage = event.detail.fromPage;
+
+    fromPage._lastScrollTop = app.$.pages.scrollTop;};
 
 
   app.scrollTo = function (top) {var _this2 = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];

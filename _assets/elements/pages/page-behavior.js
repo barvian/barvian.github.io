@@ -112,10 +112,11 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
 
     if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
       this.animationConfig = this.animationConfigWork;
-    } else if (fromPage) {
-      this.animationConfig = (fromPage.order < toPage.order) ?
-        this.animationConfigRight :
-        this.animationConfigLeft;
+    } else if (fromPage.order < toPage.order) {
+      this.animationConfig = this.animationConfigRight;
+    } else if (fromPage.order > toPage.order) {
+      this.animationConfig = this.animationConfigLeft;
+
     }
   }
 

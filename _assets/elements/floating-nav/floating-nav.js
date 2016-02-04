@@ -6,6 +6,7 @@ Polymer({
   extends: 'nav',
 
   behaviors: [
+    Barvian.StylePropertiesBehavior,
     Polymer.IronMenuBehavior
   ],
 
@@ -17,13 +18,25 @@ Polymer({
     selectedPage: Object
   },
 
+  styleProperties: {
+    shadow: {type: String}
+  },
+
   observers: [
     'updateStyle(selectedPage.navStyle)'
   ],
 
   updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
-    Polymer.dom(this).classList.add(navStyle);
+    if (!navStyle) {
+      return;
+    }
+
+    if (navStyle.invert) {
+      Polymer.dom(this).classList.add('invert');
+    }
+    this.shadow = navStyle.shadow;
+
     Polymer.dom.flush();
     this.updateStyles();
   }

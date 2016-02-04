@@ -29,7 +29,9 @@
 
       border-radius: 100%;
       bottom: 1px; // rounding fix
-      box-shadow: 0 0.58rem 1.17rem rgba($base, 0.4), 0 0.35rem 0.35rem rgba($base, 0.125);
+      box-shadow:
+        0 0.58rem 1.17rem var(--floating-nav-shadow, #{rgba($base, 0.4)}); //,
+        // 0 0.25rem 0.35rem var(--floating-nav-shadow, #{rgba($base, 0.15)}); // polyfill can't handle two vars with defaults
       content: '';
     }
 
@@ -72,15 +74,6 @@
     @include font($ui);
     @include level(0.25rem, $y: -5%);
 
-    // &::before {
-    //   @extend %stretch;
-    //
-    //   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyB3aWR0aD0iODJweCIgaGVpZ2h0PSI4MnB4IiB2aWV3Qm94PSIwIDAgODIgODIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+ICA8cGF0aCBkPSJNNDEsODAgQzY0Ljk0MDU5NDEsODAgODAsNjQuOTQwNTk0MSA4MCw0MSBDODAsMTcuMDU5NDA1OSA2NC45NDA1OTQxLDIgNDEsMiBDMTcuMDU5NDA1OSwyIDIsMTcuMDU5NDA1OSAyLDQxIEMyLDY0Ljk0MDU5NDEgMTcuMDU5NDA1OSw4MCA0MSw4MCBMNDEsODAgWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRTdFQkYwIiBzdHJva2Utd2lkdGg9IjMiIC8+PC9zdmc+) no-repeat center center;
-    //   background-size: contain;
-    //   content: '';
-    //   z-index: -1;
-    // }
-
     &:not(.iron-selected) {
       @include attention {
         @include level(0.5rem, $y: -5%, $scale: 1.1);
@@ -109,11 +102,13 @@
 // ------
 
 :host(.invert) {
-  background: linear-gradient(to bottom, rgba($bg, 0.15), rgba($bg, 0));
+  background: linear-gradient(to bottom, rgba($bg, 0.1), rgba($bg, 0));
 
   .menu ::content a {
     color: $bg;
-    text-shadow: 0 0.0625em 0.0625em rgba(darken($base, 35%), 0.1), 0 0.3em 0.4em rgba(darken($base, 35%), 0.2);
+    text-shadow:
+      0 0.3em 0.4em var(--floating-nav-shadow, #{rgba(darken($base, 35%), 0.2)}); //,
+      // 0 0.0625em 0.0625em var(--floating-nav-shadow, #{rgba(darken($base, 35%), 0.1)}); // polyfill can't handle two vars with defaults
     transition: transform 250ms $ease-out-back;
   }
 
