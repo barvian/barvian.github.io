@@ -17,16 +17,16 @@ layout: default
   <template is="dom-bind" id="app">
     <style is="custom-style" include="app-styles"></style>
 
-    <page-title title="[[selectedPage.pageTitle]]"></page-title>
+    <page-title title="[[currentPage.pageTitle]]"></page-title>
 
-    <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[selectedPage]]" selectable=':not([href^="mailto:"])'>
+    <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[currentPage]]" selectable=':not([href^="mailto:"])'>
       {% for page in site.pages | sort: 'order' %}
       <a{% if page.url == '/' %} is="barvian-logo"{% elsif forloop.index < forloop.length | divided_by: 2 %} class="left"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
       {% endfor %}
       <a href="mailto:{{ site.email }}">Contact</a>
     </nav>
     <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
-      selected-item="{% raw %}{{selectedPage}}{% endraw %}">
+      selected-item="{% raw %}{{currentPage}}{% endraw %}">
       {% for page in site.pages %}
       {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
       <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}" should-animate="[[shouldAnimate]]">
@@ -35,7 +35,7 @@ layout: default
       {% endfor %}
 
       {% for work in site.works %}
-      <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}' should-animate="[[shouldAnimate]]">
+      <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}' should-animate="[[shouldAnimate]]"
         blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
         hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}">
         {% include _content.html page=work %}
