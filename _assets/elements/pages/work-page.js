@@ -25,18 +25,18 @@ Polymer({
       value() {
         return {
           'hero': this.$.hero,
-          'ripple': this.$.header
+          'bg': this.$.header
         }
       }
     },
 
-    animationConfig: {
+    animationConfigWork: {
       type: Object,
       value() {
         return {
           'entry': [{
-            name: 'ripple-animation',
-            id: 'ripple',
+            name: 'hero-animation',
+            id: 'bg',
             toPage: this,
           }, {
             name: 'hero-animation',
@@ -48,12 +48,12 @@ Polymer({
           }],
           'exit': [{
             name: 'fade-out-animation',
-            node: this.$.header
+            node: this
           }, {
             name: 'transform-animation',
             transformFrom: 'none',
-            transformTo: 'translate(0px,-200vh) scale(0.9,1)',
-            node: this
+            transformTo: 'translate(0px,100vh) scale(0.75)',
+            node: this.$.hero
           }]
         }
       }

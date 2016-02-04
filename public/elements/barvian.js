@@ -9348,7 +9348,7 @@ Polymer({
    *   * [sharedElements](#shared_elements)
    *
    * <a name="lifecycle"></a>
-   * ## Page lifecycle 
+   * ## Page lifecycle
    *
    * Elements having the `NeonPageBehavior` and being a child of a [`<neon-animated-pages>`](https://github.com/PolymerElements/neon-animation#page-transitions)
    * element can listen to 4 new events:
@@ -9386,7 +9386,7 @@ Polymer({
    * * `toPage`:
    *      The reference to the destination page of the transition.
    *
-   * 
+   *
    * <a name="animation"></a>
    * ## Declaring different animation  configurations
    *
@@ -9409,18 +9409,18 @@ Polymer({
    * If your element also have the [`NeonSharedElementAnimatableBehavior`](https://elements.polymer-project.org/elements/neon-animation?active=Polymer.NeonSharedElementAnimatableBehavior), you can similarly
    * declare different `sharedElements` properties for each different page to transition
    * from/to. The naming convention is the following:
-   * 
+   *
    * `sharedElements` + value representing the page to transition from/to, all normalized to become a valid javascript variable name.
    * (ie if `pageValue`='home-alone', the `sharedElementsHomeAlone` property will be used if it is defined, and `sharedElements` if not).
-   * 
+   *
    * You can also differentiate the
    * `sharedElements` for the transition FROM a given page (entering this element)
    * from the `sharedElements` for the transition TO a given page (exiting this element)
    * by following this naming convention:
-   * 
+   *
    * `sharedElements` + value representing the page to transition from/to + `Entry` or `Exit`, all normalized to become a valid javascript variable name.
    * (ie if `pageValue`='home-alone' and entering this page from the page 'home-alone', the `sharedElementsHomeAloneEntry` property will be used if it is defined, `sharedElementsHomeAlone` otherwise and `sharedElements` if none of the 2 aforementioned properties are defined).
-   * 
+   *
    * @blurb Make the most of Polymer's 'neon-animated-pages' effortlessly. NeonPageBehavior fires events allowing more control over a page's lifecycle, and allows your page element to use a different animation-configuration when transitioning to each different page.
    * @homepage https://github.com/vguillou/neon-page-behavior
    * @demo demo/index.html
@@ -9477,7 +9477,7 @@ Polymer({
      * (ie if `pageValue`='home-alone', the default implementation of this method
      * will return the `animationConfigHomeAlone` property if it is defined, and
      * `animationConfig` if not).
-     * 
+     *
      * The page may override this method if necessary. If you do, the method
      * MUST return `this._defaultAnimationConfig` as the fallback.
      *
@@ -9506,7 +9506,7 @@ Polymer({
      * the default implementation of this method will return the `sharedElementsHomeAloneEntry`
      * property if it is defined, `sharedElementsHomeAlone` otherwise and `sharedElements` if none
      * of the 2 aforementioned properties are defined).
-     * 
+     *
      * The page may override this method if necessary. If you do, the method
      * MUST return `this._defaultSharedElements` as the fallback.
      *
@@ -9561,7 +9561,7 @@ Polymer({
           eventToFire = 'entry-animation-start';
           transitionPageValue = lastPageValue;
           new Polymer.IronMeta({key: 'neon-page-behavior-last-selected', value: thisPageValue});
-          
+
           // Fire events for the very first page shown when animateInitialSelection is not set
           if (!lastPageValue && !this.parentElement.animateInitialSelection) {
             this._fireNeonPageEvent('entry-animation-finish', undefined, undefined, thisPageValue, this);
@@ -9574,7 +9574,7 @@ Polymer({
 
         if (transitionPageValue || typeof transitionPageValue === 'undefined') {
           this.animationConfig = this._getAnimationConfigForPage(transitionPageValue);
-          this.sharedElements = this._getSharedElementsForPage(transitionPageValue, this.selectedPage);
+          // this.sharedElements = this._getSharedElementsForPage(transitionPageValue, this.selectedPage);
         }
 
         if (eventToFire) {
@@ -10904,6 +10904,30 @@ Polymer({
   Barvian.PageBehavior], 
 
 
+  properties: { 
+    animationConfigWork: { 
+      type: Object, 
+      value: function value() {
+        return { 
+          'entry': [{ 
+            name: 'fade-in-animation', 
+            node: this, 
+            timing: { duration: 100 } }], 
+
+          'exit': [{ 
+            name: 'hero-animation', 
+            id: 'bg', 
+            fromPage: this }, 
+          { 
+            name: 'hero-animation', 
+            id: 'hero', 
+            fromPage: this }] };} } }, 
+
+
+
+
+
+
   listeners: { 
     'works.click': '_onClick' }, 
 
@@ -10917,9 +10941,9 @@ Polymer({
     // configure page animation
     this.sharedElements = { 
       hero: work.$.image, 
-      ripple: work.$.bg };
+      bg: work.$.bg };
 
-    this.animationConfig['exit'][0].gesture = { 
+    this.animationConfigWork['exit'][0].gesture = { 
       x: event.x, 
       y: event.y };
 
@@ -10968,18 +10992,18 @@ Polymer({
       value: function value() {
         return { 
           'hero': this.$.hero, 
-          'ripple': this.$.header };} }, 
+          'bg': this.$.header };} }, 
 
 
 
 
-    animationConfig: { 
+    animationConfigWork: { 
       type: Object, 
       value: function value() {
         return { 
           'entry': [{ 
-            name: 'ripple-animation', 
-            id: 'ripple', 
+            name: 'hero-animation', 
+            id: 'bg', 
             toPage: this }, 
           { 
             name: 'hero-animation', 
@@ -10991,12 +11015,12 @@ Polymer({
 
           'exit': [{ 
             name: 'fade-out-animation', 
-            node: this.$.header }, 
+            node: this }, 
           { 
             name: 'transform-animation', 
             transformFrom: 'none', 
-            transformTo: 'translate(0px,-200vh) scale(0.9,1)', 
-            node: this }] };} } }, 
+            transformTo: 'translate(0px,100vh) scale(0.75)', 
+            node: this.$.hero }] };} } }, 
 
 
 
