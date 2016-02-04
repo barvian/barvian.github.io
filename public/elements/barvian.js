@@ -9574,7 +9574,7 @@ Polymer({
 
         if (transitionPageValue || typeof transitionPageValue === 'undefined') {
           this.animationConfig = this._getAnimationConfigForPage(transitionPageValue);
-          // this.sharedElements = this._getSharedElementsForPage(transitionPageValue, this.selectedPage);
+          this.sharedElements = this._getSharedElementsForPage(transitionPageValue, this.selectedPage);
         }
 
         if (eventToFire) {
@@ -10921,7 +10921,11 @@ Polymer({
           { 
             name: 'hero-animation', 
             id: 'hero', 
-            fromPage: this }] };} } }, 
+            fromPage: this }, 
+          { 
+            name: 'fade-out-animation', 
+            node: this.$.works, 
+            timing: { duration: 150 } }] };} } }, 
 
 
 
@@ -10938,6 +10942,8 @@ Polymer({
       work = work.parentNode;}
 
 
+    // trick neon-page-behavior so it defaults to these elements & config
+    this._neonPageBehaviorInitialized = false;
     // configure page animation
     this.sharedElements = { 
       hero: work.$.image, 

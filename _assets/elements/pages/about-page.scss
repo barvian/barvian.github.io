@@ -4,10 +4,12 @@
 // ==========
 
 :host {
-  &::before { height: calc(#{$page-padding-top} - 2vh) !important; }
-
   > * {
     transform-style: preserve-3d;
+  }
+
+  @include query(bravo) {
+    &::before { height: calc(#{$page-padding-top} - 2vh) !important; }
   }
 }
 
