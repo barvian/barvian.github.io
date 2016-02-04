@@ -9646,6 +9646,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
       notify: true }, 
 
 
+    // This will be used as a backup (mostly with history)
     animationConfig: { 
       type: Object, 
       value: function value() {
