@@ -4,10 +4,11 @@
 // Base
 // ----
 
+:root, body {
+  background: $bg;
+}
+
 :root {
-  &, body {
-    background: $bg;
-  }
   color: $base;
   line-height: strip-units(size(big));
   font-feature-settings: "liga" 1, "kern" 1;

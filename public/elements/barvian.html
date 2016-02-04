@@ -1282,7 +1282,7 @@ automatically, using Polymer bindings. Example:
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: calc(70vh - var(--page-padding-top) - var(--logo-size));
+  min-height: calc(70vh - (7vh + 4.406860421rem + 7vh) - 4.406860421rem);
   padding: 0 1.527696rem 10vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -1295,15 +1295,15 @@ automatically, using Polymer bindings. Example:
     clear: both; }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #greeting {
-      min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding-bottom));
+      min-height: calc(100vh - (7vh + 4.406860421rem + 7vh) - 4.406860421rem - 7vh);
       padding-bottom: 15vh; } }
 
 #works {
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto;
-  padding-right: var(--work-grid-spacing);
-  margin-top: calc(-1 * var(--work-grid-spacing));
+  padding-right: 1.527696rem;
+  margin-top: -1.527696rem;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transform: translate3d(0, -3rem, 2rem) scale(0.9166666667);
@@ -1314,16 +1314,16 @@ automatically, using Polymer bindings. Example:
     clear: both; }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #works {
-      margin-top: calc(-1 * var(--work-grid-spacing) - 10rem);
+      margin-top: calc(-1 * 1.527696rem - 10rem);
       -webkit-transform: translate3d(0, -4rem, 7.5rem) scale(0.6875);
       transform: translate3d(0, -4rem, 7.5rem) scale(0.6875); } }
   #works > ::content .work {
     float: left;
-    margin-left: var(--work-grid-spacing);
-    margin-top: var(--work-grid-spacing);
-    width: calc(50% - var(--work-grid-spacing)); }
+    margin-left: 1.527696rem;
+    margin-top: 1.527696rem;
+    width: calc(50% - 1.527696rem); }
   #works > ::content .work.landscape {
-    width: calc(100% - var(--work-grid-spacing)); }
+    width: calc(100% - 1.527696rem); }
 
 </style>
 </template>
@@ -2487,7 +2487,7 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     text-shadow: 0 0.0625em 0.0625em rgba(33, 58, 21, 0.1), 0 0.3em 0.4em rgba(33, 58, 21, 0.2); }
 
 :host::before {
-  height: calc(var(--page-padding-top) - 2vh) !important; }
+  height: calc((7vh + 4.406860421rem + 7vh) - 2vh) !important; }
 
 :host > * {
   -webkit-transform-style: preserve-3d;
@@ -2508,7 +2508,7 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     display: block;
     clear: both; }
   #header + * {
-    margin-top: var(--nav-padding-bottom); }
+    margin-top: 7vh; }
 
 #headshot {
   position: relative; }
@@ -5824,8 +5824,8 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
 :host {
   background: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.575) 65%, rgba(255, 255, 255, 0));
   background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.575) 65%, rgba(255, 255, 255, 0));
-  padding-bottom: var(--nav-padding-bottom);
-  padding-top: var(--nav-padding-top);
+  padding-bottom: 7vh;
+  padding-top: 7vh;
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -6890,9 +6890,9 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: calc(var(--logo-size) + 2px);
+  height: calc(4.406860421rem + 2px);
   position: relative;
-  width: calc(var(--logo-size) + 2px); }
+  width: calc(4.406860421rem + 2px); }
 
 svg {
   height: 100%;
@@ -6902,12 +6902,12 @@ svg {
   width: 100%; }
 
 #base {
-  fill: var(--logo-bg, black);
+  fill: black;
   -webkit-transition: fill 250ms linear;
   transition: fill 250ms linear; }
 
 #text {
-  fill: var(--logo-fg, white);
+  fill: #fff;
   -webkit-transition: fill 250ms linear;
   transition: fill 250ms linear; }
 

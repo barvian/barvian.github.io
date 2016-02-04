@@ -915,18 +915,11 @@
   right: 0;
   top: 0; }
 
+:root, body {
+  height: 100%; }
+
 :root {
-  overflow: hidden;
-  --nav-padding-top: 7vh;
-  --nav-padding-bottom: var(--nav-padding-top);
-  --logo-bg: black;
-  --logo-fg: #fff;
-  --logo-size: 4.406860421rem;
-  --page-padding-top: (var(--nav-padding-top) + var(--logo-size) + var(--nav-padding-bottom));
-  --page-padding-bottom: (var(--nav-padding-top) + var(--logo-size));
-  --work-grid-size: 33.333%;
-  --work-grid-spacing: 1.527696rem;
-  --work-card-spacing: 1.527696rem; }
+  overflow: hidden; }
 
 #pages {
   height: 100%;
@@ -947,9 +940,9 @@
       content: '';
       display: block; }
     #pages > *::before {
-      height: calc(var(--page-padding-top)); }
+      height: calc((7vh + 4.406860421rem + 7vh)); }
     #pages > *::after {
-      height: calc(var(--page-padding-bottom)); }
+      height: calc((7vh + 4.406860421rem)); }
 
 </style>
 </template>

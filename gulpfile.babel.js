@@ -26,7 +26,7 @@ gulp.registry(new CommonRegistry({
     server: jekyll.destination,
     snippetOptions: {
       rule: {
-        match: /<\/body\>/i,
+        match: /<\/html\>/i,
         fn: (snippet, match) => snippet + match
       }
     }
@@ -35,7 +35,7 @@ gulp.registry(new CommonRegistry({
   copy: {
     src: [
       `${bower}/webcomponentsjs/webcomponents-lite.min.js`,
-      `${src}/${vendor}/modernizr*.js`
+      `${bower}/picturefill/dist/picturefill.min.js`
     ],
     dest: [`${dest}/${vendor}`, `${jekyll.destination}/${dest}/${vendor}`]
   },
