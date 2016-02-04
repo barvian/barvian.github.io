@@ -19,7 +19,7 @@ Polymer({
   },
 
   styleProperties: {
-    shadow: {type: String}
+    shadow: String
   },
 
   observers: [

@@ -9772,32 +9772,32 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     Polymer.NeonAnimatableBehavior,
     Polymer.NeonSharedElementAnimatableBehaviorImpl
   ];
-"use strict";var _extends = Object.assign || function (target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i];for (var key in source) {if (Object.prototype.hasOwnProperty.call(source, key)) {target[key] = source[key];}}}return target;}; // Style properties behavior
+"use strict"; // Style properties behavior
 // =========================
 
 window.Barvian = window.Barvian || {};
 Barvian.StylePropertiesBehavior = { 
 
   beforeRegister: function beforeRegister() {var _this = this;
-    // Add observers to style properties then merge with regular properties
-    this.properties = _extends({}, 
-    this.properties, 
-    Object.keys(this.styleProperties).reduce(function (props, prop) {
-      var observer = "_" + prop + "Updated";
+    if (!this.observers) {
+      this.observers = [];}
 
-      // Add observer function to element
-      _this[observer] = function (newValue, oldValue) {
+    if (!this.properties) {
+      this.properties = {};}
+
+
+    // For each style property...
+    Object.keys(this.styleProperties).forEach(function (prop) {
+      var observerName = "_" + prop + "Updated";
+
+      // ...add an observer function to the element
+      _this[observerName] = function (newValue) {
         this.customStyle["--" + this.is + "-" + prop] = newValue;};
 
+      _this.observers.push(observerName + "(" + prop + ")");
 
-      // Add observer to property
-      props[prop] = _extends({}, 
-      _this.styleProperties[prop], { 
-        observer: observer });
-
-
-      return props;}, 
-    {}));} };
+      // ...add the style property to the normal properties
+      _this.properties[prop] = _this.styleProperties[prop];});} };
 /** @polymerBehavior Polymer.IronMultiSelectableBehavior */
   Polymer.IronMultiSelectableBehaviorImpl = {
     properties: {
@@ -11036,9 +11036,9 @@ Polymer({
 
 
   styleProperties: { 
-    bg: { type: String }, 
-    fg: { type: String }, 
-    shadow: { type: String } }, 
+    bg: String, 
+    fg: String, 
+    shadow: String }, 
 
 
   _computeNavStyle: function _computeNavStyle(bg) {
@@ -11070,7 +11070,7 @@ Polymer({
 
 
   styleProperties: { 
-    shadow: { type: String } }, 
+    shadow: String }, 
 
 
   observers: [
@@ -11168,9 +11168,9 @@ Polymer({
 
 
   styleProperties: { 
-    bg: { type: String }, 
-    fg: { type: String }, 
-    shadow: { type: String } }, 
+    bg: String, 
+    fg: String, 
+    shadow: String }, 
 
 
   observers: [

@@ -5,26 +5,26 @@ window.Barvian = window.Barvian || {};
 Barvian.StylePropertiesBehavior = {
 
   beforeRegister() {
-    // Add observers to style properties then merge with regular properties
-    this.properties = {
-      ...this.properties,
-      ...Object.keys(this.styleProperties).reduce((props, prop) => {
-        const observer = `_${prop}Updated`;
+    if (!this.observers) {
+      this.observers = [];
+    }
+    if (!this.properties) {
+      this.properties = {};
+    }
 
-        // Add observer function to element
-        this[observer] = function(newValue, oldValue) {
-          this.customStyle[`--${this.is}-${prop}`] = newValue;
-        };
+    // For each style property...
+    Object.keys(this.styleProperties).forEach(prop => {
+      const observerName = `_${prop}Updated`;
 
-        // Add observer to property
-        props[prop] = {
-          ...this.styleProperties[prop],
-          observer: observer
-        };
+      // ...add an observer function to the element
+      this[observerName] = function(newValue) {
+        this.customStyle[`--${this.is}-${prop}`] = newValue;
+      };
+      this.observers.push(`${observerName}(${prop})`);
 
-        return props;
-      }, {})
-    };
+      // ...add the style property to the normal properties
+      this.properties[prop] = this.styleProperties[prop];
+    });
   }
 
 };

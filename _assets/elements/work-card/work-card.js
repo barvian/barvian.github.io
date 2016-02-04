@@ -23,9 +23,9 @@ Polymer({
   },
 
   styleProperties: {
-    bg: {type: String},
-    fg: {type: String},
-    shadow: {type: String}
+    bg: String,
+    fg: String,
+    shadow: String
   },
 
   observers: [
