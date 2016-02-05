@@ -5834,10 +5834,10 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     outline: none;
     pointer-events: auto; }
     :host ::content a, :host ::content a * {
-      -webkit-transition: fill 175ms linear, color 175ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
-      transition: fill 175ms linear, color 175ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
-      transition: fill 175ms linear, color 175ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
-      transition: fill 175ms linear, color 175ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important; }
+      -webkit-transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important; }
   :host ::content [is$="logo"] {
     -webkit-transform: translate3d(0, 0.4rem, 1rem) scale(0.9583333333);
     transform: translate3d(0, 0.4rem, 1rem) scale(0.9583333333); }
@@ -5914,6 +5914,8 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     .menu ::content a:active, .menu ::content a[pressed] {
       -webkit-transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667) !important;
       transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667) !important; }
+    .menu ::content a.iron-selected {
+      opacity: 0.4; }
 
 @media screen and (min-width: 780px) {
   #left {
@@ -9834,7 +9836,7 @@ span {
   transform: translate3d(0, 0, 0) scale(1); }
 
 #bg {
-  background-color: #f2f4f7;
+  background-color: #f4f5f8;
   display: block;
   width: 100%; }
 

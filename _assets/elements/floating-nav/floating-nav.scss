@@ -16,7 +16,7 @@
 
   ::content a {
     &, * {
-      transition: fill 175ms linear, color 175ms linear, transform 250ms $ease-out-back !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms $ease-out-back !important;
     }
 
     outline: none;
@@ -82,6 +82,10 @@
 
     @include pressed {
       @include level(0.1rem, $y: -5%, $scale: 0.95, $important: true);
+    }
+
+    &.iron-selected {
+      opacity: 0.4;
     }
   }
 }
