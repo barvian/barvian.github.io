@@ -5,7 +5,7 @@ Polymer({
   is: 'work-page',
 
   behaviors: [
-    Barvian.StylePropertiesBehavior,
+    Barvian.StyleReflectionBehavior,
     Barvian.PageBehavior,
     Polymer.NeonSharedElementAnimatableBehavior
   ],

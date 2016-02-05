@@ -6,7 +6,7 @@ Polymer({
   extends: 'nav',
 
   behaviors: [
-    Barvian.StylePropertiesBehavior,
+    Barvian.StyleReflectionBehavior,
     Polymer.IronMenuBehavior
   ],
 

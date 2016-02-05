@@ -9772,37 +9772,44 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     Polymer.NeonAnimatableBehavior,
     Polymer.NeonSharedElementAnimatableBehaviorImpl
   ];
-"use strict"; // Style properties behavior
-// =========================
-
 window.Barvian = window.Barvian || {};
-Barvian.StylePropertiesBehavior = { 
 
-  beforeRegister: function beforeRegister() {var _this = this;
-    if (!this.observers) {
-      this.observers = [];}
+  /**
+   * Reflect Polymer properties to CSS style properties.
+   *
+   * @blurb Make the most of Polymer's 'neon-animated-pages' effortlessly
+   * @homepage https://github.com/barvian/style-reflection-behavior
+   * @demo demo/index.html
+   * @polymerBehavior
+   */
+  Barvian.StyleReflectionBehavior = {
 
-    if (!this.properties) {
-      this.properties = {};}
+    beforeRegister: function() {
+      if (!this.observers) {
+        this.observers = [];
+      }
 
+      Object.keys(this.properties)
+        .filter(function(prop) { return this.properties[prop].reflectToStyle; }, this)
+        // For each style property...
+        .forEach(function(prop) {
+          var observerName = '_' + prop + 'Updated';
 
-    Object.keys(this.properties).
-    filter(function (prop) {return _this.properties[prop].reflectToStyle;})
-    // For each style property...
-    .forEach(function (prop) {
-      var observerName = "_" + prop + "Updated";
+          // ... set to String if unspecified
+          if (!this.properties[prop].type) {
+            this.properties[prop].type = String;
+          }
 
-      // ... set to String if unspecified
-      if (!_this.properties[prop].type) {
-        _this.properties[prop].type = String;}
+          // ...add an observer function to the element
+          this[observerName] = function(newValue) {
+            this.customStyle['--' + this.is + '-' + prop] = newValue;
+            this.updateStyles();
+          };
+          this.observers.push(observerName + '(' + prop + ')');
+        }, this);
+    }
 
-
-      // ...add an observer function to the element
-      _this[observerName] = function (newValue) {
-        this.customStyle["--" + this.is + "-" + prop] = newValue;
-        this.updateStyles();};
-
-      _this.observers.push(observerName + "(" + prop + ")");});} };
+  };
 /** @polymerBehavior Polymer.IronMultiSelectableBehavior */
   Polymer.IronMultiSelectableBehaviorImpl = {
     properties: {
@@ -10984,7 +10991,7 @@ Polymer({
   is: 'work-page', 
 
   behaviors: [
-  Barvian.StylePropertiesBehavior, 
+  Barvian.StyleReflectionBehavior, 
   Barvian.PageBehavior, 
   Polymer.NeonSharedElementAnimatableBehavior], 
 
@@ -11060,7 +11067,7 @@ Polymer({
   extends: 'nav', 
 
   behaviors: [
-  Barvian.StylePropertiesBehavior, 
+  Barvian.StyleReflectionBehavior, 
   Polymer.IronMenuBehavior], 
 
 
@@ -11150,7 +11157,7 @@ Polymer({
   is: 'work-card', 
 
   behaviors: [
-  Barvian.StylePropertiesBehavior], 
+  Barvian.StyleReflectionBehavior], 
 
 
   properties: { 

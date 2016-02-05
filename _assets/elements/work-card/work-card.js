@@ -5,7 +5,7 @@ Polymer({
   is: 'work-card',
 
   behaviors: [
-    Barvian.StylePropertiesBehavior
+    Barvian.StyleReflectionBehavior
   ],
 
   properties: {
