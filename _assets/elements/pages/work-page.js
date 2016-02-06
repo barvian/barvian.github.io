@@ -6,6 +6,7 @@ Polymer({
 
   behaviors: [
     Barvian.StyleReflectionBehavior,
+    Barvian.InvertibleBehavior('bg'),
     Barvian.PageBehavior,
     Polymer.NeonSharedElementAnimatableBehavior
   ],

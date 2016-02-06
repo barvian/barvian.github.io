@@ -7,10 +7,18 @@
   &::before { display: none !important; }
 }
 
+  :host(.invert) {
+    
+  }
 
 #header {
   background-color: var(--work-page-bg);
   min-height: 100vh;
+  padding-top: calc(#{$page-padding-top});
+
+  h1 {
+    @extend %title;
+  }
 }
 
 article {

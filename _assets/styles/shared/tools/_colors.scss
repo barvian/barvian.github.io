@@ -1,6 +1,10 @@
 // Colors
 // ======
 
+@function yiq($c) {
+  @return (red($c) * 299 + blue($c) * 587 + green($c) * 114) / 1000;
+}
+
 @function hsb($h, $s, $b) {
   @if $b == 0 {
     @return hsl(0, 0, 0);

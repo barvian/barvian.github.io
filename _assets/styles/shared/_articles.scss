@@ -41,7 +41,7 @@
       transform 225ms $ease-out-back;
 
     @include font($sans, $weight: semibold);
-    @include highlight($light, false);
+    @include highlight($light);
     @include flush;
     @include attention {
       transform: translateZ(0.3rem) scale(1.1);

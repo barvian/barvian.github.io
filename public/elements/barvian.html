@@ -2394,17 +2394,13 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
@@ -3624,17 +3620,13 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
@@ -4638,8 +4630,16 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
  *
  * @return {List | Null}
  */
-article h1, article ::content h1 {
+#header h1, article h1, article ::content h1 {
   line-height: 1.236; }
+
+#header h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 1.888232256rem;
+  font-weight: 400;
+  font-style: normal; }
 
 article h1, article ::content h1 {
   letter-spacing: 0;
@@ -4775,17 +4775,13 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
@@ -4872,7 +4868,8 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
 
 #header {
   background-color: var(--work-page-bg);
-  min-height: 100vh; }
+  min-height: 100vh;
+  padding-top: calc((7vh + 4.406860421rem + 7vh)); }
 
 </style>
 </template>

@@ -79,6 +79,9 @@ a%ui {
 }
 
 @mixin highlight($bg: $primary-bg, $invert: true) {
+  $bgIsColor: type-of($bg) == color;
+  $invert: if($bgIsColor, yiq($bg) < 175, true);
+
   background-color: $bg;
   box-shadow: 0.35em 0 0 $bg, -0.35em 0 0 $bg;
   margin-left: 0.35em;
@@ -87,6 +90,8 @@ a%ui {
 
   @if $invert {
     color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(darken($bg, 35%), 0.1), 0 0.3em 0.4em rgba(darken($bg, 35%), 0.2);
+    text-shadow:
+      0 0.0625em 0.0625em if($bgIsColor, rgba(darken($bg, 35%), 0.1), $bg),
+      0 0.3em 0.4em if($bgIsColor, rgba(darken($bg, 35%), 0.2), $bg);
   }
 }

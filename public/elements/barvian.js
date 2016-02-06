@@ -10742,6 +10742,34 @@ window.Barvian = window.Barvian || {};
     }
 
   };
+'use strict'; // Invertible behavior
+// ===================
+
+window.Barvian = window.Barvian || {};
+Barvian.InvertibleBehavior = function (invertibleProp) {var reflectToClass = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+  return { 
+
+    properties: { 
+      invert: { 
+        type: Boolean, 
+        computed: '_computeInverted(' + invertibleProp + ')' } }, 
+
+
+
+    observers: [
+    '_updateInverted(invert)'], 
+
+
+    _computeInverted: function _computeInverted(prop) {
+      var rgb = prop.match(/\d+/g).map(Number);
+      var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+
+      return yiq < 175;}, 
+
+
+    _updateInverted: function _updateInverted(invert) {
+      if (reflectToClass) {
+        this.classList[invert ? 'add' : 'remove']('invert');}} };};
 (function() {
 
   Polymer({
@@ -10992,6 +11020,7 @@ Polymer({
 
   behaviors: [
   Barvian.StyleReflectionBehavior, 
+  Barvian.InvertibleBehavior('bg'), 
   Barvian.PageBehavior, 
   Polymer.NeonSharedElementAnimatableBehavior], 
 
@@ -11157,7 +11186,8 @@ Polymer({
   is: 'work-card', 
 
   behaviors: [
-  Barvian.StyleReflectionBehavior], 
+  Barvian.StyleReflectionBehavior, 
+  Barvian.InvertibleBehavior('bg')], 
 
 
   properties: { 
@@ -11170,21 +11200,12 @@ Polymer({
     blurb: String, 
     thumb: String, 
     thumb2x: String, 
-    orientation: String, 
-
-    invert: { 
-      type: Boolean, 
-      computed: '_computeInverted(bg)' } }, 
-
+    orientation: String }, 
 
 
   observers: [
-  'updateInverted(invert)', 
   'updateLink(href)', 
   'updateOrientation(orientation)'], 
-
-
-  ready: function ready() {}, 
 
 
   updateLink: function updateLink(href) {var _this = this;
@@ -11199,21 +11220,10 @@ Polymer({
     Polymer.dom(this.link).setAttribute('href', href);}, 
 
 
-  updateInverted: function updateInverted(invert) {
-    this.classList[invert ? 'add' : 'remove']('invert');}, 
-
-
   updateOrientation: function updateOrientation(orientation) {
     this.classList.remove('portrait', 'landscape');
     this.classList.add(orientation);}, 
 
 
   _imgLoaded: function _imgLoaded(event) {
-    this.classList.add('loaded');}, 
-
-
-  _computeInverted: function _computeInverted(bg) {
-    var rgb = bg.match(/\d+/g).map(Number);
-    var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
-
-    return yiq < 175 ? 'invert' : '';} });
+    this.classList.add('loaded');} });
