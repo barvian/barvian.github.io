@@ -19,9 +19,10 @@ layout: default
 
     <page-title title="[[currentPage.pageTitle]]"></page-title>
 
+    {% assign homePageOrder = 0 %}
     <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[currentPage]]" selectable=':not([href^="mailto:"])'>
       {% for page in site.pages | sort: 'order' %}
-      <a{% if page.url == '/' %} is="barvian-logo"{% elsif forloop.index < forloop.length | divided_by: 2 %} class="left"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      <a{% if page.url == '/' %}{% assign homePageOrder = page.order %} is="barvian-logo"{% elsif forloop.index < forloop.length | divided_by: 2 %} class="left"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
       {% endfor %}
       <a href="mailto:{{ site.email }}">Contact</a>
     </nav>
@@ -37,7 +38,7 @@ layout: default
       {% for work in site.works %}
       <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}' should-animate="[[shouldAnimate]]"
         work-title="{{ work.title }}" blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
-        hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}">
+        hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}" order="{{ homePageOrder }}">
         {% include _content.html page=work %}
       </work-page>
       {% endfor %}

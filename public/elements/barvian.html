@@ -4638,10 +4638,10 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
  *
  * @return {List | Null}
  */
-article #content h1 {
+article h1, article ::content h1 {
   line-height: 1.236; }
 
-article #content h1 {
+article h1, article ::content h1 {
   letter-spacing: 0;
   text-transform: none;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -4649,13 +4649,13 @@ article #content h1 {
   font-weight: 400;
   font-style: normal; }
 
-article #content * + *, article #content ::content * + * {
+article * + *, article ::content * + * {
   margin-top: 1.527696rem; }
 
-article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]) {
+article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]) {
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
   font-weight: 500; }
-  article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]):hover, article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]) {
+  article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]):hover, article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]) {
     background-color: #4be8be;
     box-shadow: 0.35em 0 0 #4be8be, -0.35em 0 0 #4be8be;
     margin-left: 0.35em;
@@ -4663,7 +4663,7 @@ article #content h1 a:not([class]):not([is]), article #content ::content h1 a:no
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
-  article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]):active, article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is])[pressed] {
+  article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]):active, article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is])[pressed] {
     background-color: #4be8be;
     box-shadow: 0.35em 0 0 #4be8be, -0.35em 0 0 #4be8be;
     margin-left: 0.35em;
@@ -4672,19 +4672,19 @@ article #content h1 a:not([class]):not([is]), article #content ::content h1 a:no
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
-article #content p, article #content ::content p {
+article p, article ::content p {
   box-sizing: content-box;
   padding-left: 1.527696rem;
   padding-right: 1.527696rem;
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto; }
-  article #content p:after, article #content ::content p:after {
+  article p:after, article ::content p:after {
     content: " ";
     display: block;
     clear: both; }
 
-article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]) {
+article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   display: inline-block;
   line-height: 1.527696;
   -webkit-transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
@@ -4698,11 +4698,11 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   margin-left: 0.35em;
   margin-right: 0.35em;
   text-decoration: none; }
-  article * + #content a:not([class]):not([is]), article * + #content ::content a:not([class]):not([is]) {
+  * + article a:not([class]):not([is]), * + article ::content a:not([class]):not([is]) {
     margin-top: 0; }
-  article #content a:not([class]):not([is]) + *, article #content ::content a:not([class]):not([is]) + * {
+  article a:not([class]):not([is]) + *, article ::content a:not([class]):not([is]) + * {
     margin-top: 0; }
-  article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]):hover {
+  article a:not([class]):not([is]), article ::content a:not([class]):not([is]):hover {
     -webkit-transform: translateZ(0.3rem) scale(1.1);
     transform: translateZ(0.3rem) scale(1.1);
     background-color: black;
@@ -4712,7 +4712,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]):active, article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is])[pressed] {
+  article a:not([class]):not([is]), article ::content a:not([class]):not([is]):active, article a:not([class]):not([is]), article ::content a:not([class]):not([is])[pressed] {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95);
     background-color: black;
@@ -4722,7 +4722,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  article #content a:not([class]):not([is])[href*="naperville"], article #content ::content a:not([class]):not([is])[href*="naperville"]:hover {
+  article a:not([class]):not([is])[href*="naperville"], article ::content a:not([class]):not([is])[href*="naperville"]:hover {
     background-color: #307AB3;
     box-shadow: 0.35em 0 0 #307AB3, -0.35em 0 0 #307AB3;
     margin-left: 0.35em;
@@ -4730,7 +4730,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(10, 26, 38, 0.1), 0 0.3em 0.4em rgba(10, 26, 38, 0.2); }
-  article #content a:not([class]):not([is])[href*="naperville"], article #content ::content a:not([class]):not([is])[href*="naperville"]:active, article #content a:not([class]):not([is])[href*="naperville"], article #content ::content a:not([class]):not([is])[href*="naperville"][pressed] {
+  article a:not([class]):not([is])[href*="naperville"], article ::content a:not([class]):not([is])[href*="naperville"]:active, article a:not([class]):not([is])[href*="naperville"], article ::content a:not([class]):not([is])[href*="naperville"][pressed] {
     background-color: #307AB3;
     box-shadow: 0.35em 0 0 #307AB3, -0.35em 0 0 #307AB3;
     margin-left: 0.35em;
@@ -4738,7 +4738,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(10, 26, 38, 0.1), 0 0.3em 0.4em rgba(10, 26, 38, 0.2); }
-  article #content a:not([class]):not([is])[href*="wsol"], article #content ::content a:not([class]):not([is])[href*="wsol"]:hover {
+  article a:not([class]):not([is])[href*="wsol"], article ::content a:not([class]):not([is])[href*="wsol"]:hover {
     background-color: #F79B48;
     box-shadow: 0.35em 0 0 #F79B48, -0.35em 0 0 #F79B48;
     margin-left: 0.35em;
@@ -4746,7 +4746,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(135, 67, 6, 0.1), 0 0.3em 0.4em rgba(135, 67, 6, 0.2); }
-  article #content a:not([class]):not([is])[href*="wsol"], article #content ::content a:not([class]):not([is])[href*="wsol"]:active, article #content a:not([class]):not([is])[href*="wsol"], article #content ::content a:not([class]):not([is])[href*="wsol"][pressed] {
+  article a:not([class]):not([is])[href*="wsol"], article ::content a:not([class]):not([is])[href*="wsol"]:active, article a:not([class]):not([is])[href*="wsol"], article ::content a:not([class]):not([is])[href*="wsol"][pressed] {
     background-color: #F79B48;
     box-shadow: 0.35em 0 0 #F79B48, -0.35em 0 0 #F79B48;
     margin-left: 0.35em;
@@ -4754,7 +4754,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(135, 67, 6, 0.1), 0 0.3em 0.4em rgba(135, 67, 6, 0.2); }
-  article #content a:not([class]):not([is])[href*="github"], article #content ::content a:not([class]):not([is])[href*="github"]:hover {
+  article a:not([class]):not([is])[href*="github"], article ::content a:not([class]):not([is])[href*="github"]:hover {
     background-color: #999999;
     box-shadow: 0.35em 0 0 #999999, -0.35em 0 0 #999999;
     margin-left: 0.35em;
@@ -4762,7 +4762,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
-  article #content a:not([class]):not([is])[href*="github"], article #content ::content a:not([class]):not([is])[href*="github"]:active, article #content a:not([class]):not([is])[href*="github"], article #content ::content a:not([class]):not([is])[href*="github"][pressed] {
+  article a:not([class]):not([is])[href*="github"], article ::content a:not([class]):not([is])[href*="github"]:active, article a:not([class]):not([is])[href*="github"], article ::content a:not([class]):not([is])[href*="github"][pressed] {
     background-color: #999999;
     box-shadow: 0.35em 0 0 #999999, -0.35em 0 0 #999999;
     margin-left: 0.35em;
@@ -4770,7 +4770,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
-  article #content a:not([class]):not([is])[href*="twitter"], article #content ::content a:not([class]):not([is])[href*="twitter"]:hover {
+  article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:hover {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
@@ -4778,7 +4778,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
-  article #content a:not([class]):not([is])[href*="twitter"], article #content ::content a:not([class]):not([is])[href*="twitter"]:active, article #content a:not([class]):not([is])[href*="twitter"], article #content ::content a:not([class]):not([is])[href*="twitter"][pressed] {
+  article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
@@ -4786,7 +4786,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
-  article #content a:not([class]):not([is])[href*="dribbble"], article #content ::content a:not([class]):not([is])[href*="dribbble"]:hover {
+  article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
     margin-left: 0.35em;
@@ -4794,7 +4794,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
-  article #content a:not([class]):not([is])[href*="dribbble"], article #content ::content a:not([class]):not([is])[href*="dribbble"]:active, article #content a:not([class]):not([is])[href*="dribbble"], article #content ::content a:not([class]):not([is])[href*="dribbble"][pressed] {
+  article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:active, article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"][pressed] {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
     margin-left: 0.35em;
@@ -4802,7 +4802,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
-  article #content a:not([class]):not([is])[href*="spotify"], article #content ::content a:not([class]):not([is])[href*="spotify"]:hover {
+  article a:not([class]):not([is])[href*="spotify"], article ::content a:not([class]):not([is])[href*="spotify"]:hover {
     background-color: #2ebd59;
     box-shadow: 0.35em 0 0 #2ebd59, -0.35em 0 0 #2ebd59;
     margin-left: 0.35em;
@@ -4810,7 +4810,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(11, 45, 21, 0.1), 0 0.3em 0.4em rgba(11, 45, 21, 0.2); }
-  article #content a:not([class]):not([is])[href*="spotify"], article #content ::content a:not([class]):not([is])[href*="spotify"]:active, article #content a:not([class]):not([is])[href*="spotify"], article #content ::content a:not([class]):not([is])[href*="spotify"][pressed] {
+  article a:not([class]):not([is])[href*="spotify"], article ::content a:not([class]):not([is])[href*="spotify"]:active, article a:not([class]):not([is])[href*="spotify"], article ::content a:not([class]):not([is])[href*="spotify"][pressed] {
     background-color: #2ebd59;
     box-shadow: 0.35em 0 0 #2ebd59, -0.35em 0 0 #2ebd59;
     margin-left: 0.35em;
@@ -4818,7 +4818,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(11, 45, 21, 0.1), 0 0.3em 0.4em rgba(11, 45, 21, 0.2); }
-  article #content a:not([class]):not([is])[href*="polymer"], article #content ::content a:not([class]):not([is])[href*="polymer"]:hover {
+  article a:not([class]):not([is])[href*="polymer"], article ::content a:not([class]):not([is])[href*="polymer"]:hover {
     background-color: #E23D75;
     box-shadow: 0.35em 0 0 #E23D75, -0.35em 0 0 #E23D75;
     margin-left: 0.35em;
@@ -4826,7 +4826,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(94, 14, 41, 0.1), 0 0.3em 0.4em rgba(94, 14, 41, 0.2); }
-  article #content a:not([class]):not([is])[href*="polymer"], article #content ::content a:not([class]):not([is])[href*="polymer"]:active, article #content a:not([class]):not([is])[href*="polymer"], article #content ::content a:not([class]):not([is])[href*="polymer"][pressed] {
+  article a:not([class]):not([is])[href*="polymer"], article ::content a:not([class]):not([is])[href*="polymer"]:active, article a:not([class]):not([is])[href*="polymer"], article ::content a:not([class]):not([is])[href*="polymer"][pressed] {
     background-color: #E23D75;
     box-shadow: 0.35em 0 0 #E23D75, -0.35em 0 0 #E23D75;
     margin-left: 0.35em;
@@ -4834,7 +4834,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(94, 14, 41, 0.1), 0 0.3em 0.4em rgba(94, 14, 41, 0.2); }
-  article #content a:not([class]):not([is])[href*="redux"], article #content ::content a:not([class]):not([is])[href*="redux"]:hover {
+  article a:not([class]):not([is])[href*="redux"], article ::content a:not([class]):not([is])[href*="redux"]:hover {
     background-color: #4183c4;
     box-shadow: 0.35em 0 0 #4183c4, -0.35em 0 0 #4183c4;
     margin-left: 0.35em;
@@ -4842,7 +4842,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(20, 41, 63, 0.1), 0 0.3em 0.4em rgba(20, 41, 63, 0.2); }
-  article #content a:not([class]):not([is])[href*="redux"], article #content ::content a:not([class]):not([is])[href*="redux"]:active, article #content a:not([class]):not([is])[href*="redux"], article #content ::content a:not([class]):not([is])[href*="redux"][pressed] {
+  article a:not([class]):not([is])[href*="redux"], article ::content a:not([class]):not([is])[href*="redux"]:active, article a:not([class]):not([is])[href*="redux"], article ::content a:not([class]):not([is])[href*="redux"][pressed] {
     background-color: #4183c4;
     box-shadow: 0.35em 0 0 #4183c4, -0.35em 0 0 #4183c4;
     margin-left: 0.35em;
@@ -4850,7 +4850,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(20, 41, 63, 0.1), 0 0.3em 0.4em rgba(20, 41, 63, 0.2); }
-  article #content a:not([class]):not([is])[href*="letterboxd"], article #content ::content a:not([class]):not([is])[href*="letterboxd"]:hover {
+  article a:not([class]):not([is])[href*="letterboxd"], article ::content a:not([class]):not([is])[href*="letterboxd"]:hover {
     background-color: #6DBC45;
     box-shadow: 0.35em 0 0 #6DBC45, -0.35em 0 0 #6DBC45;
     margin-left: 0.35em;
@@ -4858,7 +4858,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(33, 58, 21, 0.1), 0 0.3em 0.4em rgba(33, 58, 21, 0.2); }
-  article #content a:not([class]):not([is])[href*="letterboxd"], article #content ::content a:not([class]):not([is])[href*="letterboxd"]:active, article #content a:not([class]):not([is])[href*="letterboxd"], article #content ::content a:not([class]):not([is])[href*="letterboxd"][pressed] {
+  article a:not([class]):not([is])[href*="letterboxd"], article ::content a:not([class]):not([is])[href*="letterboxd"]:active, article a:not([class]):not([is])[href*="letterboxd"], article ::content a:not([class]):not([is])[href*="letterboxd"][pressed] {
     background-color: #6DBC45;
     box-shadow: 0.35em 0 0 #6DBC45, -0.35em 0 0 #6DBC45;
     margin-left: 0.35em;
@@ -4883,6 +4883,9 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
 
     <article>
       <header id="header">
+        <hgroup>
+          <h1>[[workTitle]]</h1>
+        </hgroup>
         <figure>
           <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
         </figure>
@@ -9836,7 +9839,7 @@ span {
   transform: translate3d(0, 0, 0) scale(1); }
 
 #bg {
-  background-color: #f4f5f8;
+  background-color: #f2f4f7;
   display: block;
   width: 100%; }
 
