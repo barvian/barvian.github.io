@@ -4630,10 +4630,10 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
  *
  * @return {List | Null}
  */
-#header h1, article h1, article ::content h1 {
+#header hgroup h1, article h1, article ::content h1 {
   line-height: 1.236; }
 
-#header h1 {
+#header hgroup h1 {
   letter-spacing: 0;
   text-transform: none;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -4866,10 +4866,46 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
 :host::before {
   display: none !important; }
 
+:host > * {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
 #header {
   background-color: var(--work-page-bg);
-  min-height: 100vh;
-  padding-top: calc((7vh + 4.406860421rem + 7vh)); }
+  max-height: 90vh;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  #header hgroup {
+    padding-top: calc((7vh + 4.406860421rem + 7vh)); }
+  @media screen and (min-width: 780px) {
+    #header figure {
+      width: 65.699252714%;
+      float: right;
+      margin-right: 0;
+      -webkit-transform: translate3d(0, 7.5%, 10rem) scale(0.5833333333);
+      transform: translate3d(0, 7.5%, 10rem) scale(0.5833333333); }
+      #header * + figure {
+        margin-top: 0; }
+      #header figure:first-child + * {
+        margin-top: 0; }
+      #header figure img {
+        box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 100vh; } }
+
+.wrap {
+  box-sizing: content-box;
+  padding-left: 1.527696rem;
+  padding-right: 1.527696rem;
+  max-width: 52.63848rem;
+  margin-left: auto;
+  margin-right: auto; }
+  .wrap:after {
+    content: " ";
+    display: block;
+    clear: both; }
 
 </style>
 </template>
@@ -4880,12 +4916,14 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
 
     <article>
       <header id="header">
-        <hgroup>
-          <h1>[[workTitle]]</h1>
-        </hgroup>
-        <figure>
-          <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
-        </figure>
+        <div class="wrap">
+          <figure>
+            <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
+          </figure>
+          <hgroup>
+            <h1>[[workTitle]]</h1>
+          </hgroup>
+        </div>
       </header>
       <content></content>
     </article>
@@ -5826,7 +5864,7 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   padding-bottom: 7vh;
   padding-top: 7vh;
   pointer-events: none;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 100; }
