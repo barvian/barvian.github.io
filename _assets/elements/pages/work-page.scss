@@ -28,13 +28,15 @@
 
     h1 {
       @extend %title;
+
+      color: var(--work-page-fg);
     }
   }
 
   figure {
     @include query(bravo) {
       @include span(last 4);
-      @include level(10rem, $y: 7.5%);
+      @include level(10rem, $y: 5vh);
       @include removed;
 
       img {

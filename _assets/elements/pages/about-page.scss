@@ -73,6 +73,10 @@ article {
   ::content [is="barvian-button"] {
   }
 
+  ::content h1 {
+    @include level(1rem);
+  }
+
   @include query(bravo) {
     padding-top: 2%;
     text-align: left;

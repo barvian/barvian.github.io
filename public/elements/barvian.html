@@ -2550,6 +2550,9 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
 #title {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
+  #title ::content h1 {
+    -webkit-transform: translate3d(0, 0, 1rem) scale(0.9583333333);
+    transform: translate3d(0, 0, 1rem) scale(0.9583333333); }
   @media screen and (min-width: 780px) {
     #title {
       padding-top: 2%;
@@ -4877,13 +4880,15 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   transform-style: preserve-3d; }
   #header hgroup {
     padding-top: calc((7vh + 4.406860421rem + 7vh)); }
+    #header hgroup h1 {
+      color: var(--work-page-fg); }
   @media screen and (min-width: 780px) {
     #header figure {
       width: 65.699252714%;
       float: right;
       margin-right: 0;
-      -webkit-transform: translate3d(0, 7.5%, 10rem) scale(0.5833333333);
-      transform: translate3d(0, 7.5%, 10rem) scale(0.5833333333); }
+      -webkit-transform: translate3d(0, 5vh, 10rem) scale(0.5833333333);
+      transform: translate3d(0, 5vh, 10rem) scale(0.5833333333); }
       #header * + figure {
         margin-top: 0; }
       #header figure:first-child + * {
