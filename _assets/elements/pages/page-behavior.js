@@ -10,11 +10,6 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     pageTitle: String,
     order: Number,
     navStyle: String,
-    shouldAnimate: {
-      type: Boolean,
-      value: false,
-      notify: true
-    },
 
     // This will be used as a backup (mostly with history)
     animationConfig: {
@@ -93,30 +88,6 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
           }]
         }
       }
-    }
-  },
-
-  listeners: {
-    'entry-animation-start': '_onAnimationStart',
-    'exit-animation-start': '_onAnimationStart'
-  },
-
-  // Setup appropriate animationConfig
-  _onAnimationStart(event) {
-    const {fromPage, toPage} = event.detail;
-
-    // Don't do anything unless we're animating from a previous page
-    if (!this.shouldAnimate || !fromPage) {
-      return;
-    }
-
-    if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
-      this.animationConfig = this.animationConfigWork;
-    } else if (fromPage.order < toPage.order) {
-      this.animationConfig = this.animationConfigRight;
-    } else if (fromPage.order > toPage.order) {
-      this.animationConfig = this.animationConfigLeft;
-
     }
   }
 

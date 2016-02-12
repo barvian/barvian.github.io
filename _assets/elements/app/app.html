@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/page-title/page-title.html" />
+<link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html" />
+<link rel="import" href="../floating-nav/floating-nav.html" />
+<link rel="import" href="app-styles.html">
+
+<dom-module id="barvian-app">
+
+  <template>
+    <style include="app-styles"></style>
+
+    <page-title title="[[currentPage.pageTitle]]"></page-title>
+
+    <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[currentPage]]" selectable=':not([href^="mailto:"])'>
+      <content select="a"></content>
+    </nav>
+    <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
+      selected-item="{{currentPage}}">
+      <content select=".page"></content>
+    </neon-animated-pages>
+  </template>
+
+  <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+  <script src="../../bower_components/page/page.js"></script>
+  <script src="app.js"></script>
+
+</dom-module>

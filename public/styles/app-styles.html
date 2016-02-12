@@ -908,7 +908,7 @@
  *
  * @return {List | Null}
  */
-#pages {
+:host {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -921,28 +921,27 @@
 :root {
   overflow: hidden; }
 
-#pages {
+:host {
+  bottom: auto;
   height: 100%;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-transform-style: flat;
-  transform-style: flat;
   -webkit-perspective: 24rem;
   perspective: 24rem;
   -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%; }
-  #pages > * {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    z-index: 1; }
-    #pages > *::before, #pages > *::after {
-      content: '';
-      display: block; }
-    #pages > *::before {
-      height: calc((7vh + 4.406860421rem + 7vh)); }
-    #pages > *::after {
-      height: calc((7vh + 4.406860421rem)); }
+
+#pages ::content > .page {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  #pages ::content > .page::before, #pages ::content > .page::after {
+    content: '';
+    display: block; }
+  #pages ::content > .page::before {
+    height: calc((7vh + 4.406860421rem + 7vh)); }
+  #pages ::content > .page::after {
+    height: calc((7vh + 4.406860421rem)); }
 
 </style>
 </template>

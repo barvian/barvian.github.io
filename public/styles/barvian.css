@@ -909,7 +909,14 @@
   box-sizing: border-box; }
 
 :root, body {
-  background: #fff; }
+  background: #fff;
+  height: 100%; }
+
+:root {
+  overflow: hidden; }
+
+body {
+  position: relative; }
 
 :root {
   color: #414353;

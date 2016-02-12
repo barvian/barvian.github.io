@@ -4,7 +4,7 @@
 // =========
 
 :host {
-  &::before { display: none !important; }
+  padding-top: 0 !important;
 
   > * {
     transform-style: preserve-3d;

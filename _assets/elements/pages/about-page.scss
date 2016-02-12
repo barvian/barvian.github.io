@@ -9,7 +9,7 @@
   }
 
   @include query(bravo) {
-    &::before { height: calc(#{$page-padding-top} - 2vh) !important; }
+    padding-top: calc(#{$page-padding-top} - 2vh) !important;
   }
 }
 
@@ -43,19 +43,21 @@ article {
 
   > ::content img {
     display: block;
-    max-height: 100%;
     max-width: 100%;
 
     @include flush;
+    @include query(bravo, true) {
+      min-height: 8rem;
+      max-height: 20vh;
+      max-width: 14rem;
+    }
   }
 
   @include query(bravo, true) {
     display: inline-block;
-    min-height: 8rem;
-    max-height: 20vh;
-    max-width: 14rem;
 
     @include trailing;
+
   }
   @include query(bravo) {
     @include span(2);

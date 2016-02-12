@@ -4,7 +4,7 @@
 // =========
 
 :host {
-  &::after { height: 1px !important; }
+  padding-bottom: 0 !important;
 }
 
 #greeting {

@@ -1,14 +1,12 @@
-@import "shared";
+@import "../../styles/shared";
 
 // App
 // ===
 
-:root, body {
+:host {
+  display: block;
   height: 100%;
-}
-
-:root {
-  overflow: hidden;
+  position: relative;
 }
 
 // Pages
@@ -19,27 +17,22 @@
 
   height: 100%;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
   overflow-y: auto;
-  transform-style: flat;
 
   @include surface;
 
-  > * {
+  ::content > .page {
+    bottom: auto;
+    height: auto;
+    padding-bottom: calc(#{$page-padding-bottom});
+    padding-top: calc(#{$page-padding-top});
     transform-style: preserve-3d;
     z-index: $page-z-index;
 
     &::before, &::after {
       content: '';
       display: block;
-    }
-
-    &::before {
-      height: calc(#{$page-padding-top});
-    }
-
-    &::after {
-      height: calc(#{$page-padding-bottom});
+      pointer-events: none;
     }
   }
 }
