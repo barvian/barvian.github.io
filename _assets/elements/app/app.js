@@ -47,8 +47,6 @@ Polymer({
   },
 
   attached() {
-    FastClick.attach(document.body);
-
     this.$.pages.queryAllEffectiveChildren('.page').forEach(page => {
       page.addEventListener('entry-animation-start',
         this._boundOnAnimationStart);

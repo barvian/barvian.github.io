@@ -1276,6 +1276,10 @@ animations to be run when switching to or switching out of the page.
   .menu ::content a:not(a):not(input):not(button) {
     cursor: default; }
 
+.menu ::content a {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
+
 .menu {
   list-style-type: none;
   padding-left: 0; }
@@ -4339,6 +4343,8 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   background-color: #e7ebf0;
@@ -5569,6 +5575,8 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   background-color: #e7ebf0;
@@ -6724,6 +6732,8 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   background-color: #e7ebf0;
@@ -7881,6 +7891,10 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   :not(a):not(input):not(button):host {
     cursor: default; }
 
+a:host {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
+
 :host {
   border-radius: 95%;
   display: -webkit-box;
@@ -8843,6 +8857,10 @@ svg {
   user-select: none; }
   :not(a):not(input):not(button):host {
     cursor: default; }
+
+a:host {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
 
 span {
   letter-spacing: 0.07em;
@@ -10836,6 +10854,8 @@ span {
   display: block;
   overflow: hidden;
   position: relative;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   -webkit-transform: translate3d(0, 0, 0) scale(1);
   transform: translate3d(0, 0, 0) scale(1); }
 
