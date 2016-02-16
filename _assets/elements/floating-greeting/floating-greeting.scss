@@ -28,11 +28,6 @@
       a {
         opacity: 0.3;
 
-        &.highlight {
-          filter: saturate(75%);
-          @include attention { filter: saturate(100%); }
-        }
-
         @include inattention {
           transition-duration: 100ms;
         }
@@ -42,7 +37,7 @@
     a {
       @extend %unstyled-link;
 
-      transition: opacity 200ms linear, filter 200ms linear;
+      transition: opacity 200ms linear;
 
       @include attention {
         opacity: 1;

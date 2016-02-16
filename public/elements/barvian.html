@@ -9894,20 +9894,12 @@ span {
     display: inline; }
     :host > ::content > .content:hover a {
       opacity: 0.3; }
-      :host > ::content > .content:hover a.highlight {
-        -webkit-filter: saturate(75%);
-        filter: saturate(75%); }
-        :host > ::content > .content:hover a.highlight:hover {
-          -webkit-filter: saturate(100%);
-          filter: saturate(100%); }
       :host > ::content > .content:hover a:not(:hover) {
         -webkit-transition-duration: 100ms;
         transition-duration: 100ms; }
     :host > ::content > .content a {
-      -webkit-transition: opacity 200ms linear, -webkit-filter 200ms linear;
-      transition: opacity 200ms linear, -webkit-filter 200ms linear;
-      transition: opacity 200ms linear, filter 200ms linear;
-      transition: opacity 200ms linear, filter 200ms linear, -webkit-filter 200ms linear; }
+      -webkit-transition: opacity 200ms linear;
+      transition: opacity 200ms linear; }
       :host > ::content > .content a:hover {
         opacity: 1; }
     :host > ::content > .content .sentence > * + * {
