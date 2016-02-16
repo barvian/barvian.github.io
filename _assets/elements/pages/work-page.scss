@@ -4,19 +4,56 @@
 // =========
 
 :host {
-  &::before { display: none !important; }
+  padding-top: 0 !important;
 
-  z-index: 50 !important;
+  > * {
+    transform-style: preserve-3d;
+  }
 }
 
+  :host(.invert) {
+    #header {
+      hgroup h1 {
+      }
+    }
+  }
 
 #header {
   background-color: var(--work-page-bg);
-  min-height: 100vh;
+  max-height: 90vh;
+  transform-style: preserve-3d;
+
+  hgroup {
+    padding-top: calc(#{$page-padding-top});
+
+    h1 {
+      @extend %title;
+
+      color: var(--work-page-fg);
+    }
+  }
+
+  figure {
+    @include query(bravo) {
+      @include span(last 4);
+      @include level(10rem, $y: 5vh);
+      @include removed;
+
+      img {
+        box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 100vh;
+      }
+    }
+  }
+}
+
+.wrap {
+  @include layout;
 }
 
 article {
-  #content {
-    @extend %article;
-  }
+  @extend %article;
 }

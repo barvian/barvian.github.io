@@ -11,12 +11,7 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
     order: Number,
     navStyle: String,
 
-    shouldAnimate: {
-      type: Boolean,
-      value: false,
-      notify: true
-    },
-
+    // This will be used as a backup (mostly with history)
     animationConfig: {
       type: Object,
       value() {
@@ -94,79 +89,6 @@ Barvian.PageBehavior = [NeonAnimatableBehavior, NeonPageBehavior, {
         }
       }
     }
-  },
-
-  listeners: {
-    'entry-animation-start': '_beforePageChange',
-    'exit-animation-start': '_beforePageChange',
-    'entry-animation-finish': '_afterPageChange',
-    'exit-animation-finish': '_afterPageChange'
-  },
-
-  _beforePageChange(event) {
-    const {fromPage, toPage} = event.detail;
-
-    if (event.type === 'entry-animation-start' && fromPage) {
-      this.scrollTo(
-        this.shouldAnimate ? 0 : this._lastScrollTop,
-        this.shouldAnimate ? undefined : 150
-      );
-    }
-
-    if (event.type === 'exit-animation-start') {
-      this._lastScrollTop = this.parentElement.scrollTop;
-    }
-
-    // Don't do anything unless we're animating from a previous page
-    if (!this.shouldAnimate) {
-      return;
-    }
-
-    if (fromPage.is === 'work-page' || toPage.is === 'work-page') {
-      this.animationConfig = this.animationConfigWork;
-    } else if (fromPage) {
-      this.animationConfig = (fromPage.order < toPage.order) ?
-        this.animationConfigRight :
-        this.animationConfigLeft;
-    }
-  },
-
-  _afterPageChange(event) {
-    this.shouldAnimate = false;
-  },
-
-  scrollTo(top, duration = 500) {
-    if (duration > 0) {
-      const easingFn = function easeOutQuad(t, b, c, d) {
-        t /= d;
-        return -c * t * (t - 2) + b;
-      };
-      const animationId = Math.random();
-      const startTime = Date.now();
-      const currentScrollTop = this.parentElement.scrollTop;
-      const deltaScrollTop = top - currentScrollTop;
-
-      this._currentAnimationId = animationId;
-
-      (function updateFrame() {
-        const now = Date.now();
-        const elapsedTime = now - startTime;
-
-        if (elapsedTime > duration) {
-          this.parentElement.scrollTop = top;
-        } else if (this._currentAnimationId === animationId) {
-          this.parentElement.scrollTop = easingFn(elapsedTime, currentScrollTop,
-            deltaScrollTop, duration);
-          requestAnimationFrame(updateFrame.bind(this));
-        }
-      }).call(this);
-    } else {
-      this.parentElement.scrollTop = top;
-    }
-  },
-
-  scrollToTop(animated = true) {
-    this.scrollTo(0, animated ? undefined : 0);
   }
 
 }];

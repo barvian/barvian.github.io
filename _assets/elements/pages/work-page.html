@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="page-behavior.html">
 <link rel="import" href="../../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="../../bower_components/style-reflection-behavior/style-reflection-behavior.html">
+<link rel="import" href="page-behavior.html">
 <link rel="import" href="work-page-styles.html">
 
 <dom-module id="work-page">
@@ -10,9 +11,14 @@
 
     <article>
       <header id="header">
-        <figure>
-          <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]" />
-        </figure>
+        <div class="wrap">
+          <figure>
+            <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]" />
+          </figure>
+          <hgroup>
+            <h1>[[workTitle]]</h1>
+          </hgroup>
+        </div>
       </header>
       <content></content>
     </article>

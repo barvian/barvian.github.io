@@ -908,48 +908,40 @@
  *
  * @return {List | Null}
  */
-#pages {
+:host {
   bottom: 0;
   left: 0;
   position: absolute;
   right: 0;
   top: 0; }
 
-:root {
-  overflow: hidden;
-  --nav-padding-top: 7vh;
-  --nav-padding-bottom: var(--nav-padding-top);
-  --logo-bg: black;
-  --logo-fg: #fff;
-  --logo-size: 4.406860421rem;
-  --page-padding-top: (var(--nav-padding-top) + var(--logo-size) + var(--nav-padding-bottom));
-  --page-padding-bottom: (var(--nav-padding-top) + var(--logo-size));
-  --work-grid-size: 33.333%;
-  --work-grid-spacing: 1.527696rem;
-  --work-card-spacing: 1.527696rem; }
+:root, body {
+  height: 100%; }
 
-#pages {
+:root {
+  overflow: hidden; }
+
+:host {
+  bottom: auto;
   height: 100%;
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-transform-style: flat;
-  transform-style: flat;
   -webkit-perspective: 24rem;
   perspective: 24rem;
   -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%; }
-  #pages > * {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    z-index: 1; }
-    #pages > *::before, #pages > *::after {
-      content: '';
-      display: block; }
-    #pages > *::before {
-      height: calc(var(--page-padding-top)); }
-    #pages > *::after {
-      height: calc(var(--page-padding-bottom)); }
+
+#pages ::content > .page {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  #pages ::content > .page::before, #pages ::content > .page::after {
+    content: '';
+    display: block; }
+  #pages ::content > .page::before {
+    height: calc((7vh + 4.406860421rem + 7vh)); }
+  #pages ::content > .page::after {
+    height: calc((7vh + 4.406860421rem)); }
 
 </style>
 </template>

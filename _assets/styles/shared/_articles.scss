@@ -39,9 +39,10 @@
       background-color 50ms linear,
       text-shadow 150ms linear,
       transform 225ms $ease-out-back;
+    touch-action: manipulation;
 
     @include font($sans, $weight: semibold);
-    @include highlight($light, false);
+    @include highlight($light);
     @include flush;
     @include attention {
       transform: translateZ(0.3rem) scale(1.1);

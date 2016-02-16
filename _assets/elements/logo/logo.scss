@@ -10,9 +10,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(var(--logo-size) + 2px); // fix rounding in Chrome
+  height: calc(#{$logo-size} + 2px); // fix rounding in Chrome
   position: relative;
-  width: calc(var(--logo-size) + 2px); // fix rounding in Chrome
+  width: calc(#{$logo-size} + 2px); // fix rounding in Chrome
 }
 
 svg {
@@ -24,11 +24,9 @@ svg {
 }
 
 #base {
-  fill: var(--logo-bg, black);
-  transition: fill 250ms linear;
+  fill: $logo-bg;
 }
 
 #text {
-  fill: var(--logo-fg, white);
-  transition: fill 250ms linear;
+  fill: $logo-fg;
 }

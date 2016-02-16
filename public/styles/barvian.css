@@ -908,6 +908,16 @@
 *, *::before, *::after {
   box-sizing: border-box; }
 
+:root, body {
+  background: #fff;
+  height: 100%; }
+
+:root {
+  overflow: hidden; }
+
+body {
+  position: relative; }
+
 :root {
   color: #414353;
   line-height: 1.618;
@@ -923,8 +933,6 @@
   text-size-adjust: none;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 17px; }
-  :root, :root body {
-    background: #fff; }
 
 code {
   font-size: 0.8090614887rem; }
@@ -933,9 +941,6 @@ code {
   margin: 0;
   padding: 0;
   border: 0; }
-
-:root, body {
-  height: 100%; }
 
 * {
   -webkit-tap-highlight-color: transparent !important; }

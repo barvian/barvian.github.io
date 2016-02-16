@@ -1,0 +1,8 @@
+// Visibility
+// ==========
+
+@mixin hidden {
+  display: none !important;
+
+  @include removed;
+}

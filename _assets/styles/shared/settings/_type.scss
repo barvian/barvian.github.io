@@ -1,0 +1,27 @@
+// Type
+// ====
+
+// Scale
+// -----
+
+$ms-base: 1rem;
+$ms-ratio: 1.618, 1.236;
+
+// Stack
+// -----
+
+$sans: source;
+$ui: soleto;
+
+$fonts: (
+  source: (
+    stack: ("source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif),
+    weights: (normal: 400, semibold: 600),
+    styles: (normal: normal italic, semibold: normal italic)
+  ),
+  soleto: (
+    stack: ("soleto", "San Francisco Display", "Avenir", sans-serif),
+    weights: (normal: 400, medium: 500),
+    styles: (normal: normal, medium: normal)
+  )
+);

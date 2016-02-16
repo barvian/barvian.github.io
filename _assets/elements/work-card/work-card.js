@@ -5,10 +5,15 @@ Polymer({
   is: 'work-card',
 
   behaviors: [
-    Barvian.StylePropertiesBehavior
+    Barvian.StyleReflectionBehavior,
+    Barvian.InvertibleBehavior('bg')
   ],
 
   properties: {
+    bg: {reflectToStyle: true},
+    fg: {reflectToStyle: true},
+    shadow: {reflectToStyle: true},
+
     href: String,
     workTitle: String,
     blurb: String,
@@ -17,19 +22,10 @@ Polymer({
     orientation: String
   },
 
-  styleProperties: {
-    bg: String,
-    fg: String,
-    shadow: String
-  },
-
   observers: [
     'updateLink(href)',
     'updateOrientation(orientation)'
   ],
-
-  ready() {
-  },
 
   updateLink(href) {
     if (!this.link) {

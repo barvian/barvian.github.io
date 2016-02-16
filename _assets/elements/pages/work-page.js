@@ -5,38 +5,44 @@ Polymer({
   is: 'work-page',
 
   behaviors: [
-    Barvian.StylePropertiesBehavior,
+    Barvian.StyleReflectionBehavior,
+    Barvian.InvertibleBehavior('bg'),
     Barvian.PageBehavior,
     Polymer.NeonSharedElementAnimatableBehavior
   ],
 
   properties: {
+    bg: {reflectToStyle: true},
+    fg: {reflectToStyle: true},
+    shadow: {reflectToStyle: true},
+
+    workTitle: String,
     blurb: String,
     hero: String,
     hero2x: String,
 
     navStyle: {
       type: String,
-      computed: '_computeNavStyle(bg)'
+      computed: '_computeNavStyle(bg, shadow)'
     },
 
     sharedElements: {
       type: Object,
       value() {
         return {
-          'hero': this.$.hero,
-          'ripple': this.$.header
+          hero: this.$.hero,
+          bg: this.$.header
         }
       }
     },
 
-    animationConfig: {
+    animationConfigWork: {
       type: Object,
       value() {
         return {
           'entry': [{
-            name: 'ripple-animation',
-            id: 'ripple',
+            name: 'hero-animation',
+            id: 'bg',
             toPage: this,
           }, {
             name: 'hero-animation',
@@ -48,28 +54,25 @@ Polymer({
           }],
           'exit': [{
             name: 'fade-out-animation',
-            node: this.$.header
+            node: this
           }, {
             name: 'transform-animation',
             transformFrom: 'none',
-            transformTo: 'translate(0px,-200vh) scale(0.9,1)',
-            node: this
+            transformTo: 'translate(0px,100vh) scale(0.75)',
+            node: this.$.hero
           }]
         }
       }
     }
   },
 
-  styleProperties: {
-    bg: String,
-    fg: String,
-    shadow: String
-  },
-
-  _computeNavStyle(bg) {
+  _computeNavStyle(bg, shadow) {
     const rgb = bg.match(/\d+/g).map(Number);
     const yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
-    return yiq < 175 ? 'invert' : '';
+    return yiq < 175 ? {
+      invert: true,
+      shadow
+    } : {};
   }
 });

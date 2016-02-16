@@ -1,0 +1,18 @@
+// App
+// ===
+
+$nav-padding-top: 7vh;
+$nav-padding-bottom: $nav-padding-top;
+$nav-z-index: 100;
+
+$logo-bg: $invert;
+$logo-fg: $bg;
+$logo-size: size(giant);
+
+$page-z-index: 1;
+$page-padding-top: unquote("(#{$nav-padding-top} + #{$logo-size} + #{$nav-padding-bottom})");
+$page-padding-bottom: unquote("(#{$nav-padding-top} + #{$logo-size})");
+
+$work-grid-size: 33.333%;
+$work-grid-spacing: size(spacing);
+$work-card-spacing: size(spacing);

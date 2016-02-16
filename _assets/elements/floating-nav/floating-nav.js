@@ -6,6 +6,7 @@ Polymer({
   extends: 'nav',
 
   behaviors: [
+    Barvian.StyleReflectionBehavior,
     Polymer.IronMenuBehavior
   ],
 
@@ -14,17 +15,26 @@ Polymer({
   },
 
   properties: {
-    currentPage: Object
+    shadow: {reflectToStyle: true},
+
+    selectedPage: Object
   },
 
   observers: [
-    'updateStyle(selectedItem.navStyle)'
+    'updateStyle(selectedPage.navStyle)'
   ],
 
   updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
-    Polymer.dom(this).classList.add(navStyle);
-    Polymer.dom.flush();
-    this.updateStyles();
+    this.shadow = '';
+
+    if (!navStyle) {
+      return;
+    }
+
+    if (navStyle.invert) {
+      Polymer.dom(this).classList.add('invert');
+    }
+    this.shadow = navStyle.shadow || '';
   }
 });

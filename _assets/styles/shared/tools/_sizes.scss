@@ -1,0 +1,14 @@
+// Sizes
+// =====
+
+$sizes: () !default;
+
+@function size($size) {
+  $s: map-get($sizes, $size);
+  @if $s {
+    @return ms($s);
+  } @else {
+    @warn "Oops! Size `#{$size}` does not exist.";
+    @return 0;
+  }
+}

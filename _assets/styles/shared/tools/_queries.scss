@@ -1,0 +1,39 @@
+// Queries
+// =======
+
+$queries: () !default;
+
+@mixin query($query, $reverse: false) {
+  $q: map-get($queries, $query);
+  @if $q {
+    @if $reverse {
+      $q: str-replace($q, 'min-', 'oldmin-');
+      $q: str-replace($q, 'max-', 'min-');
+      $q: str-replace($q, 'oldmin-', 'max-');
+    }
+    @media #{$q} {
+      @content;
+    }
+  } @else {
+    @warn "Oops! Query `#{$query}` does not exist.";
+  }
+}
+
+// Retina assets
+// -------------
+
+@mixin retina-background($url, $size, $position: center center, $repeat: no-repeat, $retina-url: null) {
+  background-image: url($url);
+  background-size: $size;
+  background-position: $position;
+  background-repeat: $repeat;
+
+  @include query(retina) {
+    @if not $retina-url {
+      $retina-url: str-replace($url, '.png', '@2x.png');
+      $retina-url: str-replace($retina-url, '.jpg', '@2x.jpg');
+      $retina-url: str-replace($retina-url, '.gif', '@2x.gif');
+    }
+    background-image: url($retina-url);
+  }
+}

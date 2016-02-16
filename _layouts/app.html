@@ -2,41 +2,47 @@
 layout: default
 ---
 
+<!-- Elements -->
+<script src="{{ '/public/scripts/vendor/webcomponents-lite.min.js' | prepend: site.baseurl }}"></script>
+<link rel="import" href="{{ '/public/elements/barvian.html' | prepend: site.baseurl }}" />
+
 {% comment %}
   For deep-linking we need every page to be exactly the same,
   so no {{ content }}. JavaScript will configure the route
   based on the URL.
 {% endcomment %}
 
-<template is="dom-bind" id="app">
-  <style is="custom-style" include="app-styles"></style>
+<body unresolved>
+  {% assign routes = site.pages | map: 'url' | join: ',' %}
+  {% if site.works.size > 0 %}
+    {% assign works = site.works | map: 'url' | join: ',' %}
+    {% assign routes = routes | append: ',' | append: works %}
+  {% endif %}
+  <barvian-app base-url="{{ site.baseurl }}" routes='["{{ routes | replace: ',', '","'}}"]'>
 
-  <page-title title="[[selectedPage.pageTitle]]"></page-title>
-
-  <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selectable=':not([href^="mailto:"])'>
+    {% assign homePageOrder = 0 %}
     {% for page in site.pages | sort: 'order' %}
-    <a{% if page.url == '/' %} is="barvian-logo"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+    <a{% if page.url == '/' %}{% assign homePageOrder = page.order %} is="barvian-logo"{% elsif forloop.index < forloop.length | divided_by: 2 %} class="left"{% endif %} data-route="{{ page.url }}" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
     {% endfor %}
     <a href="mailto:{{ site.email }}">Contact</a>
-  </nav>
-  <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
-    selected-item="{% raw %}{{selectedPage}}{% endraw %}">
+
     {% for page in site.pages %}
     {% capture elem %}{{ page.title | downcase | replace: ' ', '-'}}-page{% endcapture %}
-    <{{ elem }} data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}" should-animate="{% raw %}{{shouldAnimate}}{% endraw %}">
+    <{{ elem }} class="page" data-route="{{ page.url }}" page-title='{% include _title.html page=page %}' order="{{ page.order }}">
       {% include _content.html page=page %}
     </{{ elem }}>
     {% endfor %}
 
     {% for work in site.works %}
-    <work-page data-route="{{ work.url }}" page-title='{% include _title.html page=work %}' should-animate="{% raw %}{{shouldAnimate}}{% endraw %}"
-      blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
-      hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}">
+    <work-page class="page" data-route="{{ work.url }}" page-title='{% include _title.html page=work %}'
+      work-title="{{ work.title }}" blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+      hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}" order="{{ homePageOrder }}">
       {% include _content.html page=work %}
     </work-page>
     {% endfor %}
-  </neon-animated-pages>
-</template>
 
-<!-- Fallback -->
-{% include _noscript.html %}
+  </barvian-app>
+
+  <!-- Fallback -->
+  {% include _noscript.html %}
+</body>

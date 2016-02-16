@@ -40,23 +40,6 @@ Or, in a Polymer element, you can include a meta in your template:
 -->
 
 <!--
-`<opaque-animation>` makes an element `opacity:1` for the duration of the animation. Used to prevent
-webkit/safari from drawing a frame before an animation for elements that animate from display:none.
--->
-
-<!--
-Material design: [Meaningful transitions](https://www.google.com/design/spec/animation/meaningful-transitions.html)
-
-`neon-animated-pages` manages a set of pages and runs an animation when switching between them. Its
-children pages should implement `Polymer.NeonAnimatableBehavior` and define `entry` and `exit`
-animations to be run when switching to or switching out of the page.
-
-@group Neon Elements
-@element neon-animated-pages
-@demo demo/index.html
--->
-
-<!--
 `<cascaded-animation>` applies an animation on an array of elements with a delay between each.
 the delay defaults to 50ms.
 
@@ -117,6 +100,11 @@ Configuration:
   fromPage: <node>, /* define for the source page */
 }
 ```
+-->
+
+<!--
+`<opaque-animation>` makes an element `opacity:1` for the duration of the animation. Used to prevent
+webkit/safari from drawing a frame before an animation for elements that animate from display:none.
 -->
 
 <!--
@@ -306,6 +294,7 @@ Configuration:
 ```
 -->
 
+<!-- Custom elements -->
 <!--
 A headless element for updating the title of a webpage declaratively, possibly
 automatically, using Polymer bindings. Example:
@@ -316,7 +305,18 @@ automatically, using Polymer bindings. Example:
 @element page-title
 @demo demo/page-title.html
 -->
-<!-- Custom elements -->
+<!--
+Material design: [Meaningful transitions](https://www.google.com/design/spec/animation/meaningful-transitions.html)
+
+`neon-animated-pages` manages a set of pages and runs an animation when switching between them. Its
+children pages should implement `Polymer.NeonAnimatableBehavior` and define `entry` and `exit`
+animations to be run when switching to or switching out of the page.
+
+@group Neon Elements
+@element neon-animated-pages
+@demo demo/index.html
+-->
+
 </head><body><div hidden="" by-vulcanize=""><dom-module id="neon-animated-pages" assetpath="../bower_components/neon-animation/">
 
   <style>
@@ -351,6 +351,2039 @@ automatically, using Polymer bindings. Example:
 
 </dom-module>
 
+<dom-module id="floating-nav-styles" assetpath="floating-nav/">
+<template>
+<style>
+/**
+ * Checks whether `$functions` exist in global scope.
+ *
+ * @access private
+ *
+ * @param {ArgList} $functions - list of functions to check for
+ *
+ * @return {Bool} Whether or not there are missing dependencies
+ */
+/**
+ * Compares `$a` and `$b` based on `$order`.
+ *
+ * @access private
+ *
+ * @param {*}       $a      - first value
+ * @param {*}       $b      - second value
+ * @param {List}    $matrix - alphabetical order
+ *
+ * @return {Bool}
+ */
+/**
+ * Returns truthiness of `$value`.
+ *
+ * @access private
+ *
+ * @param {*} $value - value to check
+ *
+ * @return {Bool}
+ */
+/**
+ * Check whether value is a number
+ *
+ * @access private
+ *
+ * @param {*} $value - value to run test against
+ *
+ * @return {Bool}
+ */
+/**
+ * Chunks `$list` into `$size` large lists.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
+ *
+ * @param {List}   $list  - list to chunk
+ * @param {Number} $size  - length of lists
+ *
+ * @throws $size is not a number for `sl-chunk`.
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-chunk(a b c d e, 2)
+ * // a b, c d, e
+ *
+ * @return {List | Null}
+ */
+/**
+ * Initialize an empty comma-separated list.
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
+ *
+ * @example
+ * sl-comma-list()
+ * // ()
+ *
+ * @return {List}
+ */
+/**
+ * Returns whether `$list` contains `$value`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-contain
+ *
+ * @param {List}    $list  - list to check
+ * @param {*}       $value - value to look for
+ *
+ * @example
+ * sl-contain(a b c, a)
+ * // true
+ *
+ * @example
+ * sl-contain(a b c, z)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-contain
+ * @alias sl-contain
+ */
+/**
+ * Counts the number of occurrences of each value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-count-values
+ *
+ * @param {List} $list - list to count values from
+ *
+ * @example
+ * sl-count-values(a b c a)
+ * // (a: 2, b: 1, c: 1) 
+ *
+ * @return {Map} Values mapped to their count
+ */
+/**
+ * Returns `$list` as a string, prettified if `$pre` is set to true.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
+ *
+ * @param {List}   $list          - list to debug
+ * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+ * @param {Number} $level (1)     - internal variable for recursion
+ *
+ * @requires sl-is-empty
+ * @requires sl-is-single
+ * @requires sl-has-multiple-values
+ * 
+ * @example
+ * sl-debug(a b c)
+ * // '("a", "b", "c")'
+ *
+ * @return {String}
+ */
+/**
+ * Mixin displaying clean debug
+ *
+ * @param {List} $list - list
+ *
+ * @requires sl-debug
+ */
+/**
+ * Tests whether all items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-every
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-every(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-every(1 2 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Explodes `$string` into a list using `$delimiter` as a delimiter.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
+ *
+ * @param {String} $string              - string to explode
+ * @param {String} $delimiter ('')      - string to use as a delimiter
+ * @param {String} $separator ('space') - list separator
+ *
+ * @throws $string is not a string for `sl-explode`.
+ * @throws $delimiter is not a string for `sl-explode`.
+ *
+ * @example
+ * sl-explode(abc)
+ * // a b c
+ *
+ * @example
+ * sl-explode(abc, b)
+ * // a c
+ * 
+ * @return {List | Null}
+ */
+/** Returns first element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-first
+ *
+ * @param {List} $list - list to retrieve first item from
+ *
+ * @throws Cannot find first item of empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-first(a b c)
+ * // a
+ *
+ * @example
+ * sl-first(a)
+ * // a
+ *
+ * @example
+ * sl-first(())
+ * // null
+ * 
+ * @return {*}
+ */
+/**
+ * @requires sl-first
+ * @alias sl-first
+ */
+/**
+ * Turns multidimensional `$list` into a one-level list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#flatten
+ *
+ * @param {List} $list - list to flatten
+ * 
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-flatten(a b c, d e f, g h i)
+ * // a b c d e f g h i
+ *
+ * @return {List}
+ */
+/** 
+ * @requires sl-flatten
+ * @alias sl-flatten
+ */
+/** Tests whether `$list` is not empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-values(a)
+ * // true
+ *
+ * @example 
+ * sl-has-values(())
+ * // false
+ * 
+ * @return {Bool}
+ */
+/**
+ * Tests whether `$list` has at least 2 values.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-multiple-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-multiple-values(a)
+ * // false
+ *
+ * @example 
+ * sl-has-multiple-values(a b)
+ * // true
+ * 
+ * @return {Bool}
+ */
+/** Adds `$value` at `$index` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
+ *
+ * @requires sl-is-true
+ *
+ * @param {List}    $list  - list to update
+ * @param {Number}  $index - index to add
+ * @param {*}       $value - value to add
+ *
+ * @throws List index $index is not a number for `sl-insert-nth`.
+ * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
+ *
+ * @example
+ * sl-insert-nth(a b c, 2, z)
+ * // a z b c
+ *
+ * @example
+ * sl-insert-nth(a b c, 42, z)
+ * // a b c z
+ *
+ * @example 
+ * sl-insert-nth(a b c, -42, z)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+/**
+ * Returns a list of shared value from `$list` and `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
+ *
+ * @requires sl-remove-duplicates
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - first list
+ * @param {ArgList} $lists - other lists
+ *
+ * @example
+ * sl-intersection(a b c, b e d, a c b)
+ * // b
+ * 
+ * @return {List}
+ */
+/** 
+ * Tests whether `$list` is empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-empty(())
+ * // true
+ *
+ * @example
+ * sl-is-empty(a)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-is-empty
+ * @alias sl-is-empty
+ */
+/**
+ * Tests whether `$list` has a single item.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-single(())
+ * // false
+ *
+ * @example
+ * sl-is-single(a)
+ * // true
+ *
+ * @example
+ * sl-is-single(a b)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Checks whether `$list` is symmetrical.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-symmetrical
+ *
+ * @requires sl-reverse
+ *
+ * @param {List} $list - list to check
+ *
+ * @example
+ * sl-is-symmetrical(a b c)
+ * // false
+ *
+ * 
+ * @example
+ * sl-is-symmetrical(a b a)
+ * // true
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-is-symmetrical
+ * @alias sl-is-symmetrical
+ */
+/**
+ * Returns last element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last
+ *
+ * @param {List} $list - list to retrieve last value from
+ *
+ * @throws Cannot find last item of empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-last(a b c)
+ * // c
+ * 
+ * @example
+ * sl-last(a)
+ * // a
+ *
+ * @example
+ * sl-last(())
+ * // null
+ * 
+ * @return {*}
+ */
+/**
+ * Returns last index of `$value` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last-index
+ *
+ * @param {List} $list  - list to search
+ * @param {*}    $value - value to be searched for
+ *
+ * @example
+ * sl-last-index(a b a, a)
+ * // 3
+ *
+ * @example
+ * sl-last-index(a b a, z)
+ * // null
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Shift indexes from `$list` of `$value`.
+ *
+ * @author Ana Tudor
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
+ *
+ * @param {List}   $list      - list to update
+ * @param {Number} $value (1) - number of position between old and new indexes
+ *
+ * @throws $value is not a number for `loop`.
+ *
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-loop(a b c)
+ * // c a b
+ * 
+ * @example
+ * sl-loop(a b c, 2)
+ * // b c a
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-loop
+ * @alias sl-loop
+ */
+/**
+ * Adds `$value` as first index of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to preprend value to
+ * @param {*}    $value - value to prepend to the list
+ *
+ * @example
+ * sl-prepend(a b c, z)
+ * // z a b c
+ * 
+ * @return {List}
+ */
+/** Removes all false and null values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#purge
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list - list to purge
+ *
+ * @example
+ * sl-purge(null a false b)
+ * // a b
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-purge
+ * @alias sl-purge
+ */
+/**
+ * Returns a random value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#random-value
+ *
+ * @param {List} $list - list to random value from
+ *
+ * @throws Cannot find a random value in an empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-random-value(a b c)
+ * // a
+ * 
+ * @return {*}
+ */
+/**
+ * @requires sl-random-value
+ * @alias sl-random-value
+ */
+/**
+ * @requires sl-random-value
+ * @alias sl-random-value
+ */
+/**
+ * Build a list of values from 1 through `$n`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-range
+ *
+ * @param {Number} $n - maximum value
+ *
+ * @throws `$n` is not a number for `sl-range`.
+ * @throws `$n` is not unitless for `sl-range`.
+ * @throws `$n` is not greater than 0 for `sl-range`.
+ *
+ * @example
+ * sl-range(5)
+ * // 1 2 3 4 5
+ *
+ * @example
+ * sl-range(1)
+ * // 1
+ *
+ * @example
+ * sl-range(-42)
+ * // null
+ *
+ * @return {List | Number | Null}
+ */
+/**
+ * Removes value(s) `$value` from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove
+ *
+ * @requires sl-replace
+ *
+ * @param {List}    $list      - list to update
+ * @param {*}       $value     - value to remove
+ *
+ * @example
+ * sl-remove(a b c, a)
+ * // b c
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-remove
+ * @alias sl-remove
+ */
+/**
+ * Removes duplicate values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-duplicates
+ *
+ * @param {List} $list - list to remove duplicates from
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-remove-duplicates(a b a b)
+ * // a b
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-remove-duplicates
+ * @alias sl-remove-duplicates
+ */
+/**
+ * Removes value from `$list` at index `$index`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-nth
+ *
+ * @requires sl-replace-nth
+ *
+ * @param {List}   $list  - list to remove value from
+ * @param {Number} $index - index to remove
+ *
+ * @example
+ * sl-remove-nth(a b c, 2)
+ * // a c
+ *
+ * @example
+ * sl-remove-nth(a b c, 42)
+ * // null
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-remove-nth
+ * @alias sl-remove-nth
+ */
+/**
+ * Replaces `$old` by `$new` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#replace
+ *
+ * @requires sl-is-true
+ * @requires sl-purge
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - list to update
+ * @param {*}       $old   - value to replace
+ * @param {*}       $value - new value for $old
+ *
+ * @example
+ * sl-replace(a b c, b, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace(a b c, y, z)
+ * // a b c
+ * 
+ * @return {List}
+ */
+/**
+ * Replaces value at `$index` from `$list` by `$value`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-replace-nth
+ *
+ * @requires sl-purge
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List}   $list  - list to update
+ * @param {Number} $index - index to update
+ * @param {*}      $value - new value for index
+ *
+ * @throws Invalid index $index for `sl-replace-nth`.
+ *
+ * @example
+ * sl-replace-nth(a b c, 2, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace-nth(a b c, 100, z)
+ * // null
+ *
+ * @return {List | Null}
+ */
+/**
+ * Reverses the order of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-reverse
+ *
+ * @param {List} $list - list to reverse
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-reverse(a b c)
+ * // c b a
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-reverse
+ * @alias sl-reverse
+ */
+/**
+ * Shuffle `$list` using Fisher-Yates method.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-shuffle
+ *
+ * @param {List} $list - list to shuffle
+ *
+ * @requires sl-to-list
+ * 
+ * @example
+ * sl-shuffle(a b c)
+ * // b a c
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-shuffle
+ * @alias sl-shuffle
+ */
+/**
+ * Slices `$list` between `$start` and `$end`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-slice
+ *
+ * @param {List}   $list                  - list to slice
+ * @param {Number} $start (1)             - start index
+ * @param {Number} $end   (length($list)) - end index
+ *
+ * @throws List indexes $start and $end must be numbers for `sl-slice`.
+ * @throws Start index has to be lesser than or equals to the end index for `sl-slice`.
+ * @throws List indexes must be non-zero integers for `sl-slice`.
+ * @throws Start index has to be lesser than or equal to list length for `sl-slice`.
+ * @throws End index has to be lesser than or equal to list length for `sl-slice`.
+ * 
+ * @example
+ * sl-slice(a b c d e, 2, 4)
+ * // b c d
+ *
+ * @example
+ * sl-slice(a b c d e, 2, 2)
+ * // b
+ *
+ * @example
+ * sl-slice(a b c d e, 4, 2)
+ * // null
+ *
+ * @example
+ * sl-slice(a b c d e, -1, 6)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+/**
+ * Sorts values of `$list` using quick-sort algorithm using `$order`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-sort
+ *
+ * @requires sl-str-compare
+ * @requires sl-has-multiple-values
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to sort
+ * @param {List} $order - order to respect
+ *
+ * @example
+ * sl-sort(b a c)
+ * // a b c
+ *
+ * @example
+ * sl-sort(3 5 1)
+ * // 1 3 5 
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-sort
+ * @alias sl-sort
+ */
+/**
+ * Tests whether some items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-some
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-some(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-some(1 2 3px, unitless)
+ * // true
+ *
+ * @example
+ * sl-some(1px 2px 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Sums up all numeric values in `$list`, stripping unit if `$force` set to `true`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
+ *
+ * @param {List} $list          - list
+ * @param {Bool} $force (false) - enable/disable parseInt
+ *
+ * @requires sl-every
+ * @requires sl-is-number
+ *
+ * @throws All items from list are not numbers for `sl-sum`.
+ *
+ * @example
+ * sl-sum(1 2 3)
+ * // 6
+ *
+ * @example
+ * sl-sum(a b 1)
+ * null
+ *
+ * @example
+ * sl-sum(1 2 3px, true)
+ * // 6
+ * 
+ * @return {Number}
+ */
+/**
+ * Returns the tail of `$list`: all items except the first (head).
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
+ *
+ * @requires sl-slice
+ *
+ * @param {List} $list - list to retrieve tail from
+ *
+ * @example
+ * sl-tail(a b c)
+ * // b c 
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-tail
+ * @alias sl-tail
+ */
+/**
+ * Casts `$value` into a list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
+ *
+ * @param {*} $value - value to cast to list
+ * @param {String} $separator (space) - separator to use
+ *
+ * @example
+ * sl-to-list(a b c, comma)
+ * // a, b, c
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-to-list
+ * @alias sl-to-list
+ */
+/**
+ * Casts `$list` into a map, using indexes as keys (starting with `$start`).
+ * Useful for iterating through a list with an index variable.
+ * e.g. `@each $index, $value in to-map($list)`
+ *
+ * @author Andrey "Lolmaus" Mikhaylov
+ * @author Chris Eppstein
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
+ * 
+ * @param {List} $list - list to turn into map
+ *
+ * @requires sl-range
+ * @requires sl-is-empty
+ * 
+ * @throws List cannot be empty for `sl-to-map`.
+ *
+ * @example
+ * sl-to-map(a b c)
+ * // 1 a, 2 b, 3 c
+ * 
+ * @return {Map | Null}
+ */
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+/**
+ * Joins all elements of `$list` with `$glue`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-string
+ *
+ * @param {List}   $list      - list to cast
+ * @param {String} $glue ('') - value to use as a join string
+ *
+ * @requires sl-has-multiple-values
+ * @requires sl-last
+ * 
+ * @example
+ * sl-to-string(a b c)
+ * // abc
+ *
+ * @example
+ * sl-to-string(a b c, '-')
+ * // a-b-c
+ * 
+ * @return {String}
+ */
+/**
+ * @requires sl-to-string
+ * @alias sl-to-string
+ */
+/**
+ * Returns a list of values from `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-union
+ *
+ * @requires sl-flatten
+ * @requires sl-remove-duplicates
+ *
+ * @param {ArgList} $lists - lists to unify
+ *
+ * @example
+ * sl-union(a b c, b e d, a c b)
+ * // a b c e d
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-union
+ * @alias sl-union
+ */
+/**
+ * Apply `$function` to every item from `$list` passing $args as parameters.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-walk
+ *
+ * @param {List}    $list     - list to update
+ * @param {String}  $function - function to call on each value
+ * @param {ArgList} $args     - optional function arguments
+ *
+ * @throws There is no `$function` function for `sl-walk`.
+ *
+ * @requires sl-to-map
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-walk(a b c, to-upper-case)
+ * // A B C
+ *
+ * @return {List | Null}
+ */
+:host ::content [is$="logo"]::before {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.menu ::content a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+  .menu ::content a:not(a):not(input):not(button) {
+    cursor: default; }
+
+.menu ::content a {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
+
+.menu {
+  list-style-type: none;
+  padding-left: 0; }
+
+:host {
+  background: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.575) 65%, rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.575) 65%, rgba(255, 255, 255, 0));
+  padding-bottom: 7vh;
+  padding-top: 7vh;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100; }
+  :host ::content a {
+    outline: none;
+    pointer-events: auto; }
+    :host ::content a, :host ::content a * {
+      -webkit-transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important; }
+  :host ::content [is$="logo"] {
+    -webkit-transform: translate3d(0, 0.4rem, 1rem) scale(0.9583333333);
+    transform: translate3d(0, 0.4rem, 1rem) scale(0.9583333333); }
+    :host ::content [is$="logo"]::before {
+      border-radius: 100%;
+      bottom: 1px;
+      box-shadow: 0 0.58rem 1.17rem var(--floating-nav-shadow, rgba(65, 67, 83, 0.5));
+      content: ''; }
+    :host ::content [is$="logo"]:hover {
+      -webkit-transform: translate3d(0, 0.4rem, 1.5rem) scale(1.03125);
+      transform: translate3d(0, 0.4rem, 1.5rem) scale(1.03125); }
+    :host ::content [is$="logo"]:active, :host ::content [is$="logo"][pressed] {
+      -webkit-transform: translate3d(0, 0.4rem, 0.85rem) scale(0.9163541667);
+      transform: translate3d(0, 0.4rem, 0.85rem) scale(0.9163541667); }
+
+#wrap {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  box-sizing: content-box;
+  padding-left: 1.527696rem;
+  padding-right: 1.527696rem;
+  max-width: 52.63848rem;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-perspective: 24rem;
+  perspective: 24rem;
+  -webkit-perspective-origin: 50% 50vh;
+  perspective-origin: 50% 50vh; }
+  #wrap:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
+.menu {
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  .menu ::content a {
+    display: block;
+    padding: 1em;
+    position: relative;
+    text-shadow: 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff;
+    font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+    -webkit-transform: translate3d(0, -5%, 0.25rem) scale(0.9895833333);
+    transform: translate3d(0, -5%, 0.25rem) scale(0.9895833333); }
+    .menu ::content a:not(.iron-selected):hover {
+      -webkit-transform: translate3d(0, -5%, 0.5rem) scale(1.0770833333);
+      transform: translate3d(0, -5%, 0.5rem) scale(1.0770833333); }
+    .menu ::content a:active, .menu ::content a[pressed] {
+      -webkit-transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667) !important;
+      transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667) !important; }
+    .menu ::content a.iron-selected {
+      opacity: 0.4; }
+
+@media screen and (min-width: 780px) {
+  #left {
+    padding-left: 10%; } }
+
+@media screen and (min-width: 780px) {
+  #right {
+    padding-right: 10%; } }
+
+:host(.invert) {
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); }
+  :host(.invert) .menu ::content a {
+    color: #fff;
+    text-shadow: 0 0.125em 0.25em var(--floating-nav-shadow, rgba(20, 21, 26, 0.2));
+    -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+  :host(.invert) /deep/ [is$="logo"] #base {
+    fill: #fff; }
+  :host(.invert) /deep/ [is$="logo"] #text {
+    fill: black; }
+
+</style>
+</template>
+</dom-module><dom-module id="floating-nav" assetpath="floating-nav/">
+
+  <template>
+    <style include="floating-nav-styles"></style>
+
+    <div id="wrap">
+      <div id="left" class="menu">
+        <content select=".left"></content>
+      </div>
+      <content select="[is$=&quot;logo&quot;]"></content>
+      <div id="right" class="menu">
+        <content></content>
+      
+    </div>
+  </div></template>
+
+  </dom-module>
+<dom-module id="app-styles" assetpath="app/">
+<template>
+<style>
+/**
+ * Checks whether `$functions` exist in global scope.
+ *
+ * @access private
+ *
+ * @param {ArgList} $functions - list of functions to check for
+ *
+ * @return {Bool} Whether or not there are missing dependencies
+ */
+/**
+ * Compares `$a` and `$b` based on `$order`.
+ *
+ * @access private
+ *
+ * @param {*}       $a      - first value
+ * @param {*}       $b      - second value
+ * @param {List}    $matrix - alphabetical order
+ *
+ * @return {Bool}
+ */
+/**
+ * Returns truthiness of `$value`.
+ *
+ * @access private
+ *
+ * @param {*} $value - value to check
+ *
+ * @return {Bool}
+ */
+/**
+ * Check whether value is a number
+ *
+ * @access private
+ *
+ * @param {*} $value - value to run test against
+ *
+ * @return {Bool}
+ */
+/**
+ * Chunks `$list` into `$size` large lists.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
+ *
+ * @param {List}   $list  - list to chunk
+ * @param {Number} $size  - length of lists
+ *
+ * @throws $size is not a number for `sl-chunk`.
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-chunk(a b c d e, 2)
+ * // a b, c d, e
+ *
+ * @return {List | Null}
+ */
+/**
+ * Initialize an empty comma-separated list.
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
+ *
+ * @example
+ * sl-comma-list()
+ * // ()
+ *
+ * @return {List}
+ */
+/**
+ * Returns whether `$list` contains `$value`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-contain
+ *
+ * @param {List}    $list  - list to check
+ * @param {*}       $value - value to look for
+ *
+ * @example
+ * sl-contain(a b c, a)
+ * // true
+ *
+ * @example
+ * sl-contain(a b c, z)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-contain
+ * @alias sl-contain
+ */
+/**
+ * Counts the number of occurrences of each value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-count-values
+ *
+ * @param {List} $list - list to count values from
+ *
+ * @example
+ * sl-count-values(a b c a)
+ * // (a: 2, b: 1, c: 1) 
+ *
+ * @return {Map} Values mapped to their count
+ */
+/**
+ * Returns `$list` as a string, prettified if `$pre` is set to true.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
+ *
+ * @param {List}   $list          - list to debug
+ * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+ * @param {Number} $level (1)     - internal variable for recursion
+ *
+ * @requires sl-is-empty
+ * @requires sl-is-single
+ * @requires sl-has-multiple-values
+ * 
+ * @example
+ * sl-debug(a b c)
+ * // '("a", "b", "c")'
+ *
+ * @return {String}
+ */
+/**
+ * Mixin displaying clean debug
+ *
+ * @param {List} $list - list
+ *
+ * @requires sl-debug
+ */
+/**
+ * Tests whether all items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-every
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-every(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-every(1 2 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Explodes `$string` into a list using `$delimiter` as a delimiter.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
+ *
+ * @param {String} $string              - string to explode
+ * @param {String} $delimiter ('')      - string to use as a delimiter
+ * @param {String} $separator ('space') - list separator
+ *
+ * @throws $string is not a string for `sl-explode`.
+ * @throws $delimiter is not a string for `sl-explode`.
+ *
+ * @example
+ * sl-explode(abc)
+ * // a b c
+ *
+ * @example
+ * sl-explode(abc, b)
+ * // a c
+ * 
+ * @return {List | Null}
+ */
+/** Returns first element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-first
+ *
+ * @param {List} $list - list to retrieve first item from
+ *
+ * @throws Cannot find first item of empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-first(a b c)
+ * // a
+ *
+ * @example
+ * sl-first(a)
+ * // a
+ *
+ * @example
+ * sl-first(())
+ * // null
+ * 
+ * @return {*}
+ */
+/**
+ * @requires sl-first
+ * @alias sl-first
+ */
+/**
+ * Turns multidimensional `$list` into a one-level list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#flatten
+ *
+ * @param {List} $list - list to flatten
+ * 
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-flatten(a b c, d e f, g h i)
+ * // a b c d e f g h i
+ *
+ * @return {List}
+ */
+/** 
+ * @requires sl-flatten
+ * @alias sl-flatten
+ */
+/** Tests whether `$list` is not empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-values(a)
+ * // true
+ *
+ * @example 
+ * sl-has-values(())
+ * // false
+ * 
+ * @return {Bool}
+ */
+/**
+ * Tests whether `$list` has at least 2 values.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-multiple-values
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example 
+ * sl-has-multiple-values(a)
+ * // false
+ *
+ * @example 
+ * sl-has-multiple-values(a b)
+ * // true
+ * 
+ * @return {Bool}
+ */
+/** Adds `$value` at `$index` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
+ *
+ * @requires sl-is-true
+ *
+ * @param {List}    $list  - list to update
+ * @param {Number}  $index - index to add
+ * @param {*}       $value - value to add
+ *
+ * @throws List index $index is not a number for `sl-insert-nth`.
+ * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
+ *
+ * @example
+ * sl-insert-nth(a b c, 2, z)
+ * // a z b c
+ *
+ * @example
+ * sl-insert-nth(a b c, 42, z)
+ * // a b c z
+ *
+ * @example 
+ * sl-insert-nth(a b c, -42, z)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+/**
+ * Returns a list of shared value from `$list` and `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
+ *
+ * @requires sl-remove-duplicates
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - first list
+ * @param {ArgList} $lists - other lists
+ *
+ * @example
+ * sl-intersection(a b c, b e d, a c b)
+ * // b
+ * 
+ * @return {List}
+ */
+/** 
+ * Tests whether `$list` is empty.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-empty(())
+ * // true
+ *
+ * @example
+ * sl-is-empty(a)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-is-empty
+ * @alias sl-is-empty
+ */
+/**
+ * Tests whether `$list` has a single item.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
+ *
+ * @param {List} $list - list to run test against
+ *
+ * @example
+ * sl-is-single(())
+ * // false
+ *
+ * @example
+ * sl-is-single(a)
+ * // true
+ *
+ * @example
+ * sl-is-single(a b)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Checks whether `$list` is symmetrical.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-symmetrical
+ *
+ * @requires sl-reverse
+ *
+ * @param {List} $list - list to check
+ *
+ * @example
+ * sl-is-symmetrical(a b c)
+ * // false
+ *
+ * 
+ * @example
+ * sl-is-symmetrical(a b a)
+ * // true
+ *
+ * @return {Bool}
+ */
+/**
+ * @requires sl-is-symmetrical
+ * @alias sl-is-symmetrical
+ */
+/**
+ * Returns last element of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last
+ *
+ * @param {List} $list - list to retrieve last value from
+ *
+ * @throws Cannot find last item of empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-last(a b c)
+ * // c
+ * 
+ * @example
+ * sl-last(a)
+ * // a
+ *
+ * @example
+ * sl-last(())
+ * // null
+ * 
+ * @return {*}
+ */
+/**
+ * Returns last index of `$value` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-last-index
+ *
+ * @param {List} $list  - list to search
+ * @param {*}    $value - value to be searched for
+ *
+ * @example
+ * sl-last-index(a b a, a)
+ * // 3
+ *
+ * @example
+ * sl-last-index(a b a, z)
+ * // null
+ *
+ * @return {Number | Null}
+ */
+/**
+ * Shift indexes from `$list` of `$value`.
+ *
+ * @author Ana Tudor
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
+ *
+ * @param {List}   $list      - list to update
+ * @param {Number} $value (1) - number of position between old and new indexes
+ *
+ * @throws $value is not a number for `loop`.
+ *
+ * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-loop(a b c)
+ * // c a b
+ * 
+ * @example
+ * sl-loop(a b c, 2)
+ * // b c a
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-loop
+ * @alias sl-loop
+ */
+/**
+ * Adds `$value` as first index of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to preprend value to
+ * @param {*}    $value - value to prepend to the list
+ *
+ * @example
+ * sl-prepend(a b c, z)
+ * // z a b c
+ * 
+ * @return {List}
+ */
+/** Removes all false and null values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#purge
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list - list to purge
+ *
+ * @example
+ * sl-purge(null a false b)
+ * // a b
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-purge
+ * @alias sl-purge
+ */
+/**
+ * Returns a random value of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#random-value
+ *
+ * @param {List} $list - list to random value from
+ *
+ * @throws Cannot find a random value in an empty list.
+ *
+ * @requires sl-is-empty
+ *
+ * @example
+ * sl-random-value(a b c)
+ * // a
+ * 
+ * @return {*}
+ */
+/**
+ * @requires sl-random-value
+ * @alias sl-random-value
+ */
+/**
+ * @requires sl-random-value
+ * @alias sl-random-value
+ */
+/**
+ * Build a list of values from 1 through `$n`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-range
+ *
+ * @param {Number} $n - maximum value
+ *
+ * @throws `$n` is not a number for `sl-range`.
+ * @throws `$n` is not unitless for `sl-range`.
+ * @throws `$n` is not greater than 0 for `sl-range`.
+ *
+ * @example
+ * sl-range(5)
+ * // 1 2 3 4 5
+ *
+ * @example
+ * sl-range(1)
+ * // 1
+ *
+ * @example
+ * sl-range(-42)
+ * // null
+ *
+ * @return {List | Number | Null}
+ */
+/**
+ * Removes value(s) `$value` from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove
+ *
+ * @requires sl-replace
+ *
+ * @param {List}    $list      - list to update
+ * @param {*}       $value     - value to remove
+ *
+ * @example
+ * sl-remove(a b c, a)
+ * // b c
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-remove
+ * @alias sl-remove
+ */
+/**
+ * Removes duplicate values from `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-duplicates
+ *
+ * @param {List} $list - list to remove duplicates from
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-remove-duplicates(a b a b)
+ * // a b
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-remove-duplicates
+ * @alias sl-remove-duplicates
+ */
+/**
+ * Removes value from `$list` at index `$index`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-nth
+ *
+ * @requires sl-replace-nth
+ *
+ * @param {List}   $list  - list to remove value from
+ * @param {Number} $index - index to remove
+ *
+ * @example
+ * sl-remove-nth(a b c, 2)
+ * // a c
+ *
+ * @example
+ * sl-remove-nth(a b c, 42)
+ * // null
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-remove-nth
+ * @alias sl-remove-nth
+ */
+/**
+ * Replaces `$old` by `$new` in `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#replace
+ *
+ * @requires sl-is-true
+ * @requires sl-purge
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - list to update
+ * @param {*}       $old   - value to replace
+ * @param {*}       $value - new value for $old
+ *
+ * @example
+ * sl-replace(a b c, b, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace(a b c, y, z)
+ * // a b c
+ * 
+ * @return {List}
+ */
+/**
+ * Replaces value at `$index` from `$list` by `$value`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-replace-nth
+ *
+ * @requires sl-purge
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List}   $list  - list to update
+ * @param {Number} $index - index to update
+ * @param {*}      $value - new value for index
+ *
+ * @throws Invalid index $index for `sl-replace-nth`.
+ *
+ * @example
+ * sl-replace-nth(a b c, 2, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace-nth(a b c, 100, z)
+ * // null
+ *
+ * @return {List | Null}
+ */
+/**
+ * Reverses the order of `$list`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-reverse
+ *
+ * @param {List} $list - list to reverse
+ *
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-reverse(a b c)
+ * // c b a
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-reverse
+ * @alias sl-reverse
+ */
+/**
+ * Shuffle `$list` using Fisher-Yates method.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-shuffle
+ *
+ * @param {List} $list - list to shuffle
+ *
+ * @requires sl-to-list
+ * 
+ * @example
+ * sl-shuffle(a b c)
+ * // b a c
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-shuffle
+ * @alias sl-shuffle
+ */
+/**
+ * Slices `$list` between `$start` and `$end`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-slice
+ *
+ * @param {List}   $list                  - list to slice
+ * @param {Number} $start (1)             - start index
+ * @param {Number} $end   (length($list)) - end index
+ *
+ * @throws List indexes $start and $end must be numbers for `sl-slice`.
+ * @throws Start index has to be lesser than or equals to the end index for `sl-slice`.
+ * @throws List indexes must be non-zero integers for `sl-slice`.
+ * @throws Start index has to be lesser than or equal to list length for `sl-slice`.
+ * @throws End index has to be lesser than or equal to list length for `sl-slice`.
+ * 
+ * @example
+ * sl-slice(a b c d e, 2, 4)
+ * // b c d
+ *
+ * @example
+ * sl-slice(a b c d e, 2, 2)
+ * // b
+ *
+ * @example
+ * sl-slice(a b c d e, 4, 2)
+ * // null
+ *
+ * @example
+ * sl-slice(a b c d e, -1, 6)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+/**
+ * Sorts values of `$list` using quick-sort algorithm using `$order`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-sort
+ *
+ * @requires sl-str-compare
+ * @requires sl-has-multiple-values
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to sort
+ * @param {List} $order - order to respect
+ *
+ * @example
+ * sl-sort(b a c)
+ * // a b c
+ *
+ * @example
+ * sl-sort(3 5 1)
+ * // 1 3 5 
+ *
+ * @return {List}
+ */
+/**
+ * @requires sl-sort
+ * @alias sl-sort
+ */
+/**
+ * Tests whether some items from `$list` pass the test implemented by `$function`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-some
+ *
+ * @param {List}    $list     - list to run test against
+ * @param {String}  $function - function to run against every item from list
+ * @param {ArgList} $args     - extra arguments to pass to the function
+ *
+ * @example
+ * sl-some(1 2 3, unitless)
+ * // true
+ *
+ * @example
+ * sl-some(1 2 3px, unitless)
+ * // true
+ *
+ * @example
+ * sl-some(1px 2px 3px, unitless)
+ * // false
+ *
+ * @return {Bool}
+ */
+/**
+ * Sums up all numeric values in `$list`, stripping unit if `$force` set to `true`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
+ *
+ * @param {List} $list          - list
+ * @param {Bool} $force (false) - enable/disable parseInt
+ *
+ * @requires sl-every
+ * @requires sl-is-number
+ *
+ * @throws All items from list are not numbers for `sl-sum`.
+ *
+ * @example
+ * sl-sum(1 2 3)
+ * // 6
+ *
+ * @example
+ * sl-sum(a b 1)
+ * null
+ *
+ * @example
+ * sl-sum(1 2 3px, true)
+ * // 6
+ * 
+ * @return {Number}
+ */
+/**
+ * Returns the tail of `$list`: all items except the first (head).
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
+ *
+ * @requires sl-slice
+ *
+ * @param {List} $list - list to retrieve tail from
+ *
+ * @example
+ * sl-tail(a b c)
+ * // b c 
+ *
+ * @return {List | Null}
+ */
+/**
+ * @requires sl-tail
+ * @alias sl-tail
+ */
+/**
+ * Casts `$value` into a list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
+ *
+ * @param {*} $value - value to cast to list
+ * @param {String} $separator (space) - separator to use
+ *
+ * @example
+ * sl-to-list(a b c, comma)
+ * // a, b, c
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-to-list
+ * @alias sl-to-list
+ */
+/**
+ * Casts `$list` into a map, using indexes as keys (starting with `$start`).
+ * Useful for iterating through a list with an index variable.
+ * e.g. `@each $index, $value in to-map($list)`
+ *
+ * @author Andrey "Lolmaus" Mikhaylov
+ * @author Chris Eppstein
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
+ * 
+ * @param {List} $list - list to turn into map
+ *
+ * @requires sl-range
+ * @requires sl-is-empty
+ * 
+ * @throws List cannot be empty for `sl-to-map`.
+ *
+ * @example
+ * sl-to-map(a b c)
+ * // 1 a, 2 b, 3 c
+ * 
+ * @return {Map | Null}
+ */
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+/**
+ * @requires sl-to-map
+ * @alias sl-to-map
+ */
+/**
+ * Joins all elements of `$list` with `$glue`.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-string
+ *
+ * @param {List}   $list      - list to cast
+ * @param {String} $glue ('') - value to use as a join string
+ *
+ * @requires sl-has-multiple-values
+ * @requires sl-last
+ * 
+ * @example
+ * sl-to-string(a b c)
+ * // abc
+ *
+ * @example
+ * sl-to-string(a b c, '-')
+ * // a-b-c
+ * 
+ * @return {String}
+ */
+/**
+ * @requires sl-to-string
+ * @alias sl-to-string
+ */
+/**
+ * Returns a list of values from `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-union
+ *
+ * @requires sl-flatten
+ * @requires sl-remove-duplicates
+ *
+ * @param {ArgList} $lists - lists to unify
+ *
+ * @example
+ * sl-union(a b c, b e d, a c b)
+ * // a b c e d
+ * 
+ * @return {List}
+ */
+/**
+ * @requires sl-union
+ * @alias sl-union
+ */
+/**
+ * Apply `$function` to every item from `$list` passing $args as parameters.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-walk
+ *
+ * @param {List}    $list     - list to update
+ * @param {String}  $function - function to call on each value
+ * @param {ArgList} $args     - optional function arguments
+ *
+ * @throws There is no `$function` function for `sl-walk`.
+ *
+ * @requires sl-to-map
+ * @requires sl-to-list
+ *
+ * @example
+ * sl-walk(a b c, to-upper-case)
+ * // A B C
+ *
+ * @return {List | Null}
+ */
+#pages {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+:host {
+  display: block;
+  height: 100%;
+  position: relative; }
+
+#pages {
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  -webkit-perspective: 24rem;
+  perspective: 24rem;
+  -webkit-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%; }
+  #pages ::content > .page {
+    bottom: auto;
+    height: auto;
+    padding-bottom: calc((7vh + 4.406860421rem));
+    padding-top: calc((7vh + 4.406860421rem + 7vh));
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    z-index: 1; }
+    #pages ::content > .page::before, #pages ::content > .page::after {
+      content: '';
+      display: block;
+      pointer-events: none; }
+
+</style>
+</template>
+</dom-module><dom-module id="barvian-app" assetpath="app/">
+
+  <template>
+    <style include="app-styles"></style>
+
+    <page-title title="[[currentPage.pageTitle]]"></page-title>
+
+    <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[currentPage]]" selectable=":not([href^=&quot;mailto:&quot;])">
+      <content select="a"></content>
+    </nav>
+    <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]" selected-item="{{currentPage}}">
+      <content select=".page"></content>
+    </neon-animated-pages>
+  </template>
+
+  </dom-module>
 <dom-module id="home-page-styles" assetpath="pages/">
 <template>
 <style>
@@ -1266,8 +3299,8 @@ automatically, using Polymer bindings. Example:
   display: table;
   clear: both; }
 
-:host::after {
-  height: 1px !important; }
+:host {
+  padding-bottom: 0 !important; }
 
 #greeting {
   display: -webkit-box;
@@ -1282,7 +3315,7 @@ automatically, using Polymer bindings. Example:
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  min-height: calc(70vh - var(--page-padding-top) - var(--logo-size));
+  min-height: calc(70vh - (7vh + 4.406860421rem + 7vh) - 4.406860421rem);
   padding: 0 1.527696rem 10vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
@@ -1295,15 +3328,15 @@ automatically, using Polymer bindings. Example:
     clear: both; }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #greeting {
-      min-height: calc(100vh - var(--page-padding-top) - var(--logo-size) - var(--nav-padding-bottom));
+      min-height: calc(100vh - (7vh + 4.406860421rem + 7vh) - 4.406860421rem - 7vh);
       padding-bottom: 15vh; } }
 
 #works {
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto;
-  padding-right: var(--work-grid-spacing);
-  margin-top: calc(-1 * var(--work-grid-spacing));
+  padding-right: 1.527696rem;
+  margin-top: -1.527696rem;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transform: translate3d(0, -3rem, 2rem) scale(0.9166666667);
@@ -1314,16 +3347,16 @@ automatically, using Polymer bindings. Example:
     clear: both; }
   @media screen and (min-width: 780px) and (min-height: 740px) {
     #works {
-      margin-top: calc(-1 * var(--work-grid-spacing) - 10rem);
+      margin-top: calc(-1 * 1.527696rem - 10rem);
       -webkit-transform: translate3d(0, -4rem, 7.5rem) scale(0.6875);
       transform: translate3d(0, -4rem, 7.5rem) scale(0.6875); } }
   #works > ::content .work {
     float: left;
-    margin-left: var(--work-grid-spacing);
-    margin-top: var(--work-grid-spacing);
-    width: calc(50% - var(--work-grid-spacing)); }
+    margin-left: 1.527696rem;
+    margin-top: 1.527696rem;
+    width: calc(50% - 1.527696rem); }
   #works > ::content .work.landscape {
-    width: calc(100% - var(--work-grid-spacing)); }
+    width: calc(100% - 1.527696rem); }
 
 </style>
 </template>
@@ -2310,6 +4343,8 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   background-color: #e7ebf0;
@@ -2394,17 +4429,13 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
@@ -2486,12 +4517,13 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(33, 58, 21, 0.1), 0 0.3em 0.4em rgba(33, 58, 21, 0.2); }
 
-:host::before {
-  height: calc(var(--page-padding-top) - 2vh) !important; }
-
 :host > * {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
+
+@media screen and (min-width: 780px) {
+  :host {
+    padding-top: calc((7vh + 4.406860421rem + 7vh) - 2vh) !important; } }
 
 #header {
   box-sizing: content-box;
@@ -2508,7 +4540,7 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     display: block;
     clear: both; }
   #header + * {
-    margin-top: var(--nav-padding-bottom); }
+    margin-top: 7vh; }
 
 #headshot {
   position: relative; }
@@ -2521,18 +4553,19 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     z-index: -1; }
   #headshot > ::content img {
     display: block;
-    max-height: 100%;
     max-width: 100%; }
     #headshot > ::content * + img {
       margin-top: 0; }
     #headshot > ::content img + * {
       margin-top: 0; }
+    @media screen and (max-width: 780px) {
+      #headshot > ::content img {
+        min-height: 8rem;
+        max-height: 20vh;
+        max-width: 14rem; } }
   @media screen and (max-width: 780px) {
     #headshot {
-      display: inline-block;
-      min-height: 8rem;
-      max-height: 20vh;
-      max-width: 14rem; }
+      display: inline-block; }
       #headshot + * {
         margin-top: 1.527696rem; } }
   @media screen and (min-width: 780px) {
@@ -2553,6 +4586,9 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
 #title {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
+  #title ::content h1 {
+    -webkit-transform: translate3d(0, 0, 1rem) scale(0.9583333333);
+    transform: translate3d(0, 0, 1rem) scale(0.9583333333); }
   @media screen and (min-width: 780px) {
     #title {
       padding-top: 2%;
@@ -3539,6 +5575,8 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   background-color: #e7ebf0;
@@ -3623,17 +5661,13 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
+    text-decoration: none; }
   article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
@@ -4637,10 +6671,18 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
  *
  * @return {List | Null}
  */
-article #content h1 {
+#header hgroup h1, article h1, article ::content h1 {
   line-height: 1.236; }
 
-article #content h1 {
+#header hgroup h1 {
+  letter-spacing: 0;
+  text-transform: none;
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 1.888232256rem;
+  font-weight: 400;
+  font-style: normal; }
+
+article h1, article ::content h1 {
   letter-spacing: 0;
   text-transform: none;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -4648,13 +6690,13 @@ article #content h1 {
   font-weight: 400;
   font-style: normal; }
 
-article #content * + *, article #content ::content * + * {
+article * + *, article ::content * + * {
   margin-top: 1.527696rem; }
 
-article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]) {
+article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]) {
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
   font-weight: 500; }
-  article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]):hover, article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]) {
+  article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]):hover, article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]) {
     background-color: #4be8be;
     box-shadow: 0.35em 0 0 #4be8be, -0.35em 0 0 #4be8be;
     margin-left: 0.35em;
@@ -4662,7 +6704,7 @@ article #content h1 a:not([class]):not([is]), article #content ::content h1 a:no
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
-  article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is]):active, article #content h1 a:not([class]):not([is]), article #content ::content h1 a:not([class]):not([is])[pressed] {
+  article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is]):active, article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is])[pressed] {
     background-color: #4be8be;
     box-shadow: 0.35em 0 0 #4be8be, -0.35em 0 0 #4be8be;
     margin-left: 0.35em;
@@ -4671,25 +6713,27 @@ article #content h1 a:not([class]):not([is]), article #content ::content h1 a:no
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
-article #content p, article #content ::content p {
+article p, article ::content p {
   box-sizing: content-box;
   padding-left: 1.527696rem;
   padding-right: 1.527696rem;
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto; }
-  article #content p:after, article #content ::content p:after {
+  article p:after, article ::content p:after {
     content: " ";
     display: block;
     clear: both; }
 
-article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]) {
+article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   display: inline-block;
   line-height: 1.527696;
   -webkit-transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: box-shadow 50ms linear, color 50ms linear, background-color 50ms linear, text-shadow 150ms linear, transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 225ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-weight: 600;
   background-color: #e7ebf0;
@@ -4697,11 +6741,11 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   margin-left: 0.35em;
   margin-right: 0.35em;
   text-decoration: none; }
-  article * + #content a:not([class]):not([is]), article * + #content ::content a:not([class]):not([is]) {
+  * + article a:not([class]):not([is]), * + article ::content a:not([class]):not([is]) {
     margin-top: 0; }
-  article #content a:not([class]):not([is]) + *, article #content ::content a:not([class]):not([is]) + * {
+  article a:not([class]):not([is]) + *, article ::content a:not([class]):not([is]) + * {
     margin-top: 0; }
-  article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]):hover {
+  article a:not([class]):not([is]), article ::content a:not([class]):not([is]):hover {
     -webkit-transform: translateZ(0.3rem) scale(1.1);
     transform: translateZ(0.3rem) scale(1.1);
     background-color: black;
@@ -4711,7 +6755,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is]):active, article #content a:not([class]):not([is]), article #content ::content a:not([class]):not([is])[pressed] {
+  article a:not([class]):not([is]), article ::content a:not([class]):not([is]):active, article a:not([class]):not([is]), article ::content a:not([class]):not([is])[pressed] {
     -webkit-transform: translateZ(0.075rem) scale(0.95);
     transform: translateZ(0.075rem) scale(0.95);
     background-color: black;
@@ -4721,7 +6765,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(0, 0, 0, 0.1), 0 0.3em 0.4em rgba(0, 0, 0, 0.2); }
-  article #content a:not([class]):not([is])[href*="naperville"], article #content ::content a:not([class]):not([is])[href*="naperville"]:hover {
+  article a:not([class]):not([is])[href*="naperville"], article ::content a:not([class]):not([is])[href*="naperville"]:hover {
     background-color: #307AB3;
     box-shadow: 0.35em 0 0 #307AB3, -0.35em 0 0 #307AB3;
     margin-left: 0.35em;
@@ -4729,7 +6773,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(10, 26, 38, 0.1), 0 0.3em 0.4em rgba(10, 26, 38, 0.2); }
-  article #content a:not([class]):not([is])[href*="naperville"], article #content ::content a:not([class]):not([is])[href*="naperville"]:active, article #content a:not([class]):not([is])[href*="naperville"], article #content ::content a:not([class]):not([is])[href*="naperville"][pressed] {
+  article a:not([class]):not([is])[href*="naperville"], article ::content a:not([class]):not([is])[href*="naperville"]:active, article a:not([class]):not([is])[href*="naperville"], article ::content a:not([class]):not([is])[href*="naperville"][pressed] {
     background-color: #307AB3;
     box-shadow: 0.35em 0 0 #307AB3, -0.35em 0 0 #307AB3;
     margin-left: 0.35em;
@@ -4737,7 +6781,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(10, 26, 38, 0.1), 0 0.3em 0.4em rgba(10, 26, 38, 0.2); }
-  article #content a:not([class]):not([is])[href*="wsol"], article #content ::content a:not([class]):not([is])[href*="wsol"]:hover {
+  article a:not([class]):not([is])[href*="wsol"], article ::content a:not([class]):not([is])[href*="wsol"]:hover {
     background-color: #F79B48;
     box-shadow: 0.35em 0 0 #F79B48, -0.35em 0 0 #F79B48;
     margin-left: 0.35em;
@@ -4745,7 +6789,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(135, 67, 6, 0.1), 0 0.3em 0.4em rgba(135, 67, 6, 0.2); }
-  article #content a:not([class]):not([is])[href*="wsol"], article #content ::content a:not([class]):not([is])[href*="wsol"]:active, article #content a:not([class]):not([is])[href*="wsol"], article #content ::content a:not([class]):not([is])[href*="wsol"][pressed] {
+  article a:not([class]):not([is])[href*="wsol"], article ::content a:not([class]):not([is])[href*="wsol"]:active, article a:not([class]):not([is])[href*="wsol"], article ::content a:not([class]):not([is])[href*="wsol"][pressed] {
     background-color: #F79B48;
     box-shadow: 0.35em 0 0 #F79B48, -0.35em 0 0 #F79B48;
     margin-left: 0.35em;
@@ -4753,7 +6797,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(135, 67, 6, 0.1), 0 0.3em 0.4em rgba(135, 67, 6, 0.2); }
-  article #content a:not([class]):not([is])[href*="github"], article #content ::content a:not([class]):not([is])[href*="github"]:hover {
+  article a:not([class]):not([is])[href*="github"], article ::content a:not([class]):not([is])[href*="github"]:hover {
     background-color: #999999;
     box-shadow: 0.35em 0 0 #999999, -0.35em 0 0 #999999;
     margin-left: 0.35em;
@@ -4761,7 +6805,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
-  article #content a:not([class]):not([is])[href*="github"], article #content ::content a:not([class]):not([is])[href*="github"]:active, article #content a:not([class]):not([is])[href*="github"], article #content ::content a:not([class]):not([is])[href*="github"][pressed] {
+  article a:not([class]):not([is])[href*="github"], article ::content a:not([class]):not([is])[href*="github"]:active, article a:not([class]):not([is])[href*="github"], article ::content a:not([class]):not([is])[href*="github"][pressed] {
     background-color: #999999;
     box-shadow: 0.35em 0 0 #999999, -0.35em 0 0 #999999;
     margin-left: 0.35em;
@@ -4769,23 +6813,19 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(64, 64, 64, 0.1), 0 0.3em 0.4em rgba(64, 64, 64, 0.2); }
-  article #content a:not([class]):not([is])[href*="twitter"], article #content ::content a:not([class]):not([is])[href*="twitter"]:hover {
+  article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:hover {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
-  article #content a:not([class]):not([is])[href*="twitter"], article #content ::content a:not([class]):not([is])[href*="twitter"]:active, article #content a:not([class]):not([is])[href*="twitter"], article #content ::content a:not([class]):not([is])[href*="twitter"][pressed] {
+    text-decoration: none; }
+  article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"]:active, article a:not([class]):not([is])[href*="twitter"], article ::content a:not([class]):not([is])[href*="twitter"][pressed] {
     background-color: #55acee;
     box-shadow: 0.35em 0 0 #55acee, -0.35em 0 0 #55acee;
     margin-left: 0.35em;
     margin-right: 0.35em;
-    text-decoration: none;
-    color: #fff;
-    text-shadow: 0 0.0625em 0.0625em rgba(13, 80, 131, 0.1), 0 0.3em 0.4em rgba(13, 80, 131, 0.2); }
-  article #content a:not([class]):not([is])[href*="dribbble"], article #content ::content a:not([class]):not([is])[href*="dribbble"]:hover {
+    text-decoration: none; }
+  article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:hover {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
     margin-left: 0.35em;
@@ -4793,7 +6833,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
-  article #content a:not([class]):not([is])[href*="dribbble"], article #content ::content a:not([class]):not([is])[href*="dribbble"]:active, article #content a:not([class]):not([is])[href*="dribbble"], article #content ::content a:not([class]):not([is])[href*="dribbble"][pressed] {
+  article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"]:active, article a:not([class]):not([is])[href*="dribbble"], article ::content a:not([class]):not([is])[href*="dribbble"][pressed] {
     background-color: #ea4c89;
     box-shadow: 0.35em 0 0 #ea4c89, -0.35em 0 0 #ea4c89;
     margin-left: 0.35em;
@@ -4801,7 +6841,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(118, 14, 54, 0.1), 0 0.3em 0.4em rgba(118, 14, 54, 0.2); }
-  article #content a:not([class]):not([is])[href*="spotify"], article #content ::content a:not([class]):not([is])[href*="spotify"]:hover {
+  article a:not([class]):not([is])[href*="spotify"], article ::content a:not([class]):not([is])[href*="spotify"]:hover {
     background-color: #2ebd59;
     box-shadow: 0.35em 0 0 #2ebd59, -0.35em 0 0 #2ebd59;
     margin-left: 0.35em;
@@ -4809,7 +6849,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(11, 45, 21, 0.1), 0 0.3em 0.4em rgba(11, 45, 21, 0.2); }
-  article #content a:not([class]):not([is])[href*="spotify"], article #content ::content a:not([class]):not([is])[href*="spotify"]:active, article #content a:not([class]):not([is])[href*="spotify"], article #content ::content a:not([class]):not([is])[href*="spotify"][pressed] {
+  article a:not([class]):not([is])[href*="spotify"], article ::content a:not([class]):not([is])[href*="spotify"]:active, article a:not([class]):not([is])[href*="spotify"], article ::content a:not([class]):not([is])[href*="spotify"][pressed] {
     background-color: #2ebd59;
     box-shadow: 0.35em 0 0 #2ebd59, -0.35em 0 0 #2ebd59;
     margin-left: 0.35em;
@@ -4817,7 +6857,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(11, 45, 21, 0.1), 0 0.3em 0.4em rgba(11, 45, 21, 0.2); }
-  article #content a:not([class]):not([is])[href*="polymer"], article #content ::content a:not([class]):not([is])[href*="polymer"]:hover {
+  article a:not([class]):not([is])[href*="polymer"], article ::content a:not([class]):not([is])[href*="polymer"]:hover {
     background-color: #E23D75;
     box-shadow: 0.35em 0 0 #E23D75, -0.35em 0 0 #E23D75;
     margin-left: 0.35em;
@@ -4825,7 +6865,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(94, 14, 41, 0.1), 0 0.3em 0.4em rgba(94, 14, 41, 0.2); }
-  article #content a:not([class]):not([is])[href*="polymer"], article #content ::content a:not([class]):not([is])[href*="polymer"]:active, article #content a:not([class]):not([is])[href*="polymer"], article #content ::content a:not([class]):not([is])[href*="polymer"][pressed] {
+  article a:not([class]):not([is])[href*="polymer"], article ::content a:not([class]):not([is])[href*="polymer"]:active, article a:not([class]):not([is])[href*="polymer"], article ::content a:not([class]):not([is])[href*="polymer"][pressed] {
     background-color: #E23D75;
     box-shadow: 0.35em 0 0 #E23D75, -0.35em 0 0 #E23D75;
     margin-left: 0.35em;
@@ -4833,7 +6873,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(94, 14, 41, 0.1), 0 0.3em 0.4em rgba(94, 14, 41, 0.2); }
-  article #content a:not([class]):not([is])[href*="redux"], article #content ::content a:not([class]):not([is])[href*="redux"]:hover {
+  article a:not([class]):not([is])[href*="redux"], article ::content a:not([class]):not([is])[href*="redux"]:hover {
     background-color: #4183c4;
     box-shadow: 0.35em 0 0 #4183c4, -0.35em 0 0 #4183c4;
     margin-left: 0.35em;
@@ -4841,7 +6881,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(20, 41, 63, 0.1), 0 0.3em 0.4em rgba(20, 41, 63, 0.2); }
-  article #content a:not([class]):not([is])[href*="redux"], article #content ::content a:not([class]):not([is])[href*="redux"]:active, article #content a:not([class]):not([is])[href*="redux"], article #content ::content a:not([class]):not([is])[href*="redux"][pressed] {
+  article a:not([class]):not([is])[href*="redux"], article ::content a:not([class]):not([is])[href*="redux"]:active, article a:not([class]):not([is])[href*="redux"], article ::content a:not([class]):not([is])[href*="redux"][pressed] {
     background-color: #4183c4;
     box-shadow: 0.35em 0 0 #4183c4, -0.35em 0 0 #4183c4;
     margin-left: 0.35em;
@@ -4849,7 +6889,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(20, 41, 63, 0.1), 0 0.3em 0.4em rgba(20, 41, 63, 0.2); }
-  article #content a:not([class]):not([is])[href*="letterboxd"], article #content ::content a:not([class]):not([is])[href*="letterboxd"]:hover {
+  article a:not([class]):not([is])[href*="letterboxd"], article ::content a:not([class]):not([is])[href*="letterboxd"]:hover {
     background-color: #6DBC45;
     box-shadow: 0.35em 0 0 #6DBC45, -0.35em 0 0 #6DBC45;
     margin-left: 0.35em;
@@ -4857,7 +6897,7 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-decoration: none;
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(33, 58, 21, 0.1), 0 0.3em 0.4em rgba(33, 58, 21, 0.2); }
-  article #content a:not([class]):not([is])[href*="letterboxd"], article #content ::content a:not([class]):not([is])[href*="letterboxd"]:active, article #content a:not([class]):not([is])[href*="letterboxd"], article #content ::content a:not([class]):not([is])[href*="letterboxd"][pressed] {
+  article a:not([class]):not([is])[href*="letterboxd"], article ::content a:not([class]):not([is])[href*="letterboxd"]:active, article a:not([class]):not([is])[href*="letterboxd"], article ::content a:not([class]):not([is])[href*="letterboxd"][pressed] {
     background-color: #6DBC45;
     box-shadow: 0.35em 0 0 #6DBC45, -0.35em 0 0 #6DBC45;
     margin-left: 0.35em;
@@ -4867,13 +6907,49 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
     text-shadow: 0 0.0625em 0.0625em rgba(33, 58, 21, 0.1), 0 0.3em 0.4em rgba(33, 58, 21, 0.2); }
 
 :host {
-  z-index: 50 !important; }
-  :host::before {
-    display: none !important; }
+  padding-top: 0 !important; }
+  :host > * {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
 
 #header {
   background-color: var(--work-page-bg);
-  min-height: 100vh; }
+  max-height: 90vh;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  #header hgroup {
+    padding-top: calc((7vh + 4.406860421rem + 7vh)); }
+    #header hgroup h1 {
+      color: var(--work-page-fg); }
+  @media screen and (min-width: 780px) {
+    #header figure {
+      width: 65.699252714%;
+      float: right;
+      margin-right: 0;
+      -webkit-transform: translate3d(0, 5vh, 10rem) scale(0.5833333333);
+      transform: translate3d(0, 5vh, 10rem) scale(0.5833333333); }
+      #header * + figure {
+        margin-top: 0; }
+      #header figure:first-child + * {
+        margin-top: 0; }
+      #header figure img {
+        box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 100vh; } }
+
+.wrap {
+  box-sizing: content-box;
+  padding-left: 1.527696rem;
+  padding-right: 1.527696rem;
+  max-width: 52.63848rem;
+  margin-left: auto;
+  margin-right: auto; }
+  .wrap:after {
+    content: " ";
+    display: block;
+    clear: both; }
 
 </style>
 </template>
@@ -4884,1081 +6960,20 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
 
     <article>
       <header id="header">
-        <figure>
-          <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
-        </figure>
+        <div class="wrap">
+          <figure>
+            <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
+          </figure>
+          <hgroup>
+            <h1>[[workTitle]]</h1>
+          </hgroup>
+        </div>
       </header>
       <content></content>
     </article>
   </template>
 
-  </dom-module><dom-module id="floating-nav-styles" assetpath="floating-nav/">
-<template>
-<style>
-/**
- * Checks whether `$functions` exist in global scope.
- *
- * @access private
- *
- * @param {ArgList} $functions - list of functions to check for
- *
- * @return {Bool} Whether or not there are missing dependencies
- */
-/**
- * Compares `$a` and `$b` based on `$order`.
- *
- * @access private
- *
- * @param {*}       $a      - first value
- * @param {*}       $b      - second value
- * @param {List}    $matrix - alphabetical order
- *
- * @return {Bool}
- */
-/**
- * Returns truthiness of `$value`.
- *
- * @access private
- *
- * @param {*} $value - value to check
- *
- * @return {Bool}
- */
-/**
- * Check whether value is a number
- *
- * @access private
- *
- * @param {*} $value - value to run test against
- *
- * @return {Bool}
- */
-/**
- * Chunks `$list` into `$size` large lists.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
- *
- * @param {List}   $list  - list to chunk
- * @param {Number} $size  - length of lists
- *
- * @throws $size is not a number for `sl-chunk`.
- *
- * @requires sl-to-list
- *
- * @example
- * sl-chunk(a b c d e, 2)
- * // a b, c d, e
- *
- * @return {List | Null}
- */
-/**
- * Initialize an empty comma-separated list.
- * 
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
- *
- * @example
- * sl-comma-list()
- * // ()
- *
- * @return {List}
- */
-/**
- * Returns whether `$list` contains `$value`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-contain
- *
- * @param {List}    $list  - list to check
- * @param {*}       $value - value to look for
- *
- * @example
- * sl-contain(a b c, a)
- * // true
- *
- * @example
- * sl-contain(a b c, z)
- * // false
- *
- * @return {Bool}
- */
-/**
- * @requires sl-contain
- * @alias sl-contain
- */
-/**
- * Counts the number of occurrences of each value of `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-count-values
- *
- * @param {List} $list - list to count values from
- *
- * @example
- * sl-count-values(a b c a)
- * // (a: 2, b: 1, c: 1) 
- *
- * @return {Map} Values mapped to their count
- */
-/**
- * Returns `$list` as a string, prettified if `$pre` is set to true.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
- *
- * @param {List}   $list          - list to debug
- * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
- * @param {Number} $level (1)     - internal variable for recursion
- *
- * @requires sl-is-empty
- * @requires sl-is-single
- * @requires sl-has-multiple-values
- * 
- * @example
- * sl-debug(a b c)
- * // '("a", "b", "c")'
- *
- * @return {String}
- */
-/**
- * Mixin displaying clean debug
- *
- * @param {List} $list - list
- *
- * @requires sl-debug
- */
-/**
- * Tests whether all items from `$list` pass the test implemented by `$function`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-every
- *
- * @param {List}    $list     - list to run test against
- * @param {String}  $function - function to run against every item from list
- * @param {ArgList} $args     - extra arguments to pass to the function
- *
- * @example
- * sl-every(1 2 3, unitless)
- * // true
- *
- * @example
- * sl-every(1 2 3px, unitless)
- * // false
- *
- * @return {Bool}
- */
-/**
- * Explodes `$string` into a list using `$delimiter` as a delimiter.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
- *
- * @param {String} $string              - string to explode
- * @param {String} $delimiter ('')      - string to use as a delimiter
- * @param {String} $separator ('space') - list separator
- *
- * @throws $string is not a string for `sl-explode`.
- * @throws $delimiter is not a string for `sl-explode`.
- *
- * @example
- * sl-explode(abc)
- * // a b c
- *
- * @example
- * sl-explode(abc, b)
- * // a c
- * 
- * @return {List | Null}
- */
-/** Returns first element of `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-first
- *
- * @param {List} $list - list to retrieve first item from
- *
- * @throws Cannot find first item of empty list.
- *
- * @requires sl-is-empty
- *
- * @example
- * sl-first(a b c)
- * // a
- *
- * @example
- * sl-first(a)
- * // a
- *
- * @example
- * sl-first(())
- * // null
- * 
- * @return {*}
- */
-/**
- * @requires sl-first
- * @alias sl-first
- */
-/**
- * Turns multidimensional `$list` into a one-level list.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#flatten
- *
- * @param {List} $list - list to flatten
- * 
- * @requires sl-has-multiple-values
- *
- * @example
- * sl-flatten(a b c, d e f, g h i)
- * // a b c d e f g h i
- *
- * @return {List}
- */
-/** 
- * @requires sl-flatten
- * @alias sl-flatten
- */
-/** Tests whether `$list` is not empty.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
- *
- * @param {List} $list - list to run test against
- *
- * @example 
- * sl-has-values(a)
- * // true
- *
- * @example 
- * sl-has-values(())
- * // false
- * 
- * @return {Bool}
- */
-/**
- * Tests whether `$list` has at least 2 values.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-has-multiple-values
- *
- * @param {List} $list - list to run test against
- *
- * @example 
- * sl-has-multiple-values(a)
- * // false
- *
- * @example 
- * sl-has-multiple-values(a b)
- * // true
- * 
- * @return {Bool}
- */
-/** Adds `$value` at `$index` in `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
- *
- * @requires sl-is-true
- *
- * @param {List}    $list  - list to update
- * @param {Number}  $index - index to add
- * @param {*}       $value - value to add
- *
- * @throws List index $index is not a number for `sl-insert-nth`.
- * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
- *
- * @example
- * sl-insert-nth(a b c, 2, z)
- * // a z b c
- *
- * @example
- * sl-insert-nth(a b c, 42, z)
- * // a b c z
- *
- * @example 
- * sl-insert-nth(a b c, -42, z)
- * // null
- * 
- * @return {List | Null}
- */
-/**
- * Returns a list of shared value from `$list` and `$lists` minus duplicates.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
- *
- * @requires sl-remove-duplicates
- * @requires sl-to-list
- *
- * @param {List}    $list  - first list
- * @param {ArgList} $lists - other lists
- *
- * @example
- * sl-intersection(a b c, b e d, a c b)
- * // b
- * 
- * @return {List}
- */
-/** 
- * Tests whether `$list` is empty.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
- *
- * @param {List} $list - list to run test against
- *
- * @example
- * sl-is-empty(())
- * // true
- *
- * @example
- * sl-is-empty(a)
- * // false
- *
- * @return {Bool}
- */
-/**
- * @requires sl-is-empty
- * @alias sl-is-empty
- */
-/**
- * Tests whether `$list` has a single item.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
- *
- * @param {List} $list - list to run test against
- *
- * @example
- * sl-is-single(())
- * // false
- *
- * @example
- * sl-is-single(a)
- * // true
- *
- * @example
- * sl-is-single(a b)
- * // false
- *
- * @return {Bool}
- */
-/**
- * Checks whether `$list` is symmetrical.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-is-symmetrical
- *
- * @requires sl-reverse
- *
- * @param {List} $list - list to check
- *
- * @example
- * sl-is-symmetrical(a b c)
- * // false
- *
- * 
- * @example
- * sl-is-symmetrical(a b a)
- * // true
- *
- * @return {Bool}
- */
-/**
- * @requires sl-is-symmetrical
- * @alias sl-is-symmetrical
- */
-/**
- * Returns last element of `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-last
- *
- * @param {List} $list - list to retrieve last value from
- *
- * @throws Cannot find last item of empty list.
- *
- * @requires sl-is-empty
- *
- * @example
- * sl-last(a b c)
- * // c
- * 
- * @example
- * sl-last(a)
- * // a
- *
- * @example
- * sl-last(())
- * // null
- * 
- * @return {*}
- */
-/**
- * Returns last index of `$value` in `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-last-index
- *
- * @param {List} $list  - list to search
- * @param {*}    $value - value to be searched for
- *
- * @example
- * sl-last-index(a b a, a)
- * // 3
- *
- * @example
- * sl-last-index(a b a, z)
- * // null
- *
- * @return {Number | Null}
- */
-/**
- * Shift indexes from `$list` of `$value`.
- *
- * @author Ana Tudor
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
- *
- * @param {List}   $list      - list to update
- * @param {Number} $value (1) - number of position between old and new indexes
- *
- * @throws $value is not a number for `loop`.
- *
- * @requires sl-has-multiple-values
- *
- * @example
- * sl-loop(a b c)
- * // c a b
- * 
- * @example
- * sl-loop(a b c, 2)
- * // b c a
- *
- * @return {List | Null}
- */
-/**
- * @requires sl-loop
- * @alias sl-loop
- */
-/**
- * Adds `$value` as first index of `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
- *
- * @requires sl-is-true
- * @requires sl-to-list
- *
- * @param {List} $list  - list to preprend value to
- * @param {*}    $value - value to prepend to the list
- *
- * @example
- * sl-prepend(a b c, z)
- * // z a b c
- * 
- * @return {List}
- */
-/** Removes all false and null values from `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#purge
- *
- * @requires sl-is-true
- * @requires sl-to-list
- *
- * @param {List} $list - list to purge
- *
- * @example
- * sl-purge(null a false b)
- * // a b
- *
- * @return {List}
- */
-/**
- * @requires sl-purge
- * @alias sl-purge
- */
-/**
- * Returns a random value of `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#random-value
- *
- * @param {List} $list - list to random value from
- *
- * @throws Cannot find a random value in an empty list.
- *
- * @requires sl-is-empty
- *
- * @example
- * sl-random-value(a b c)
- * // a
- * 
- * @return {*}
- */
-/**
- * @requires sl-random-value
- * @alias sl-random-value
- */
-/**
- * @requires sl-random-value
- * @alias sl-random-value
- */
-/**
- * Build a list of values from 1 through `$n`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-range
- *
- * @param {Number} $n - maximum value
- *
- * @throws `$n` is not a number for `sl-range`.
- * @throws `$n` is not unitless for `sl-range`.
- * @throws `$n` is not greater than 0 for `sl-range`.
- *
- * @example
- * sl-range(5)
- * // 1 2 3 4 5
- *
- * @example
- * sl-range(1)
- * // 1
- *
- * @example
- * sl-range(-42)
- * // null
- *
- * @return {List | Number | Null}
- */
-/**
- * Removes value(s) `$value` from `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove
- *
- * @requires sl-replace
- *
- * @param {List}    $list      - list to update
- * @param {*}       $value     - value to remove
- *
- * @example
- * sl-remove(a b c, a)
- * // b c
- *
- * @return {List}
- */
-/**
- * @requires sl-remove
- * @alias sl-remove
- */
-/**
- * Removes duplicate values from `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-duplicates
- *
- * @param {List} $list - list to remove duplicates from
- *
- * @requires sl-to-list
- *
- * @example
- * sl-remove-duplicates(a b a b)
- * // a b
- *
- * @return {List}
- */
-/**
- * @requires sl-remove-duplicates
- * @alias sl-remove-duplicates
- */
-/**
- * Removes value from `$list` at index `$index`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-nth
- *
- * @requires sl-replace-nth
- *
- * @param {List}   $list  - list to remove value from
- * @param {Number} $index - index to remove
- *
- * @example
- * sl-remove-nth(a b c, 2)
- * // a c
- *
- * @example
- * sl-remove-nth(a b c, 42)
- * // null
- *
- * @return {List | Null}
- */
-/**
- * @requires sl-remove-nth
- * @alias sl-remove-nth
- */
-/**
- * Replaces `$old` by `$new` in `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#replace
- *
- * @requires sl-is-true
- * @requires sl-purge
- * @requires sl-to-list
- *
- * @param {List}    $list  - list to update
- * @param {*}       $old   - value to replace
- * @param {*}       $value - new value for $old
- *
- * @example
- * sl-replace(a b c, b, z)
- * // a z c
- *
- * @example
- * sl-replace(a b c, y, z)
- * // a b c
- * 
- * @return {List}
- */
-/**
- * Replaces value at `$index` from `$list` by `$value`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-replace-nth
- *
- * @requires sl-purge
- * @requires sl-is-true
- * @requires sl-to-list
- *
- * @param {List}   $list  - list to update
- * @param {Number} $index - index to update
- * @param {*}      $value - new value for index
- *
- * @throws Invalid index $index for `sl-replace-nth`.
- *
- * @example
- * sl-replace-nth(a b c, 2, z)
- * // a z c
- *
- * @example
- * sl-replace-nth(a b c, 100, z)
- * // null
- *
- * @return {List | Null}
- */
-/**
- * Reverses the order of `$list`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-reverse
- *
- * @param {List} $list - list to reverse
- *
- * @requires sl-to-list
- *
- * @example
- * sl-reverse(a b c)
- * // c b a
- * 
- * @return {List}
- */
-/**
- * @requires sl-reverse
- * @alias sl-reverse
- */
-/**
- * Shuffle `$list` using Fisher-Yates method.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-shuffle
- *
- * @param {List} $list - list to shuffle
- *
- * @requires sl-to-list
- * 
- * @example
- * sl-shuffle(a b c)
- * // b a c
- * 
- * @return {List}
- */
-/**
- * @requires sl-shuffle
- * @alias sl-shuffle
- */
-/**
- * Slices `$list` between `$start` and `$end`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-slice
- *
- * @param {List}   $list                  - list to slice
- * @param {Number} $start (1)             - start index
- * @param {Number} $end   (length($list)) - end index
- *
- * @throws List indexes $start and $end must be numbers for `sl-slice`.
- * @throws Start index has to be lesser than or equals to the end index for `sl-slice`.
- * @throws List indexes must be non-zero integers for `sl-slice`.
- * @throws Start index has to be lesser than or equal to list length for `sl-slice`.
- * @throws End index has to be lesser than or equal to list length for `sl-slice`.
- * 
- * @example
- * sl-slice(a b c d e, 2, 4)
- * // b c d
- *
- * @example
- * sl-slice(a b c d e, 2, 2)
- * // b
- *
- * @example
- * sl-slice(a b c d e, 4, 2)
- * // null
- *
- * @example
- * sl-slice(a b c d e, -1, 6)
- * // null
- * 
- * @return {List | Null}
- */
-/**
- * Sorts values of `$list` using quick-sort algorithm using `$order`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-sort
- *
- * @requires sl-str-compare
- * @requires sl-has-multiple-values
- * @requires sl-to-list
- *
- * @param {List} $list  - list to sort
- * @param {List} $order - order to respect
- *
- * @example
- * sl-sort(b a c)
- * // a b c
- *
- * @example
- * sl-sort(3 5 1)
- * // 1 3 5 
- *
- * @return {List}
- */
-/**
- * @requires sl-sort
- * @alias sl-sort
- */
-/**
- * Tests whether some items from `$list` pass the test implemented by `$function`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-some
- *
- * @param {List}    $list     - list to run test against
- * @param {String}  $function - function to run against every item from list
- * @param {ArgList} $args     - extra arguments to pass to the function
- *
- * @example
- * sl-some(1 2 3, unitless)
- * // true
- *
- * @example
- * sl-some(1 2 3px, unitless)
- * // true
- *
- * @example
- * sl-some(1px 2px 3px, unitless)
- * // false
- *
- * @return {Bool}
- */
-/**
- * Sums up all numeric values in `$list`, stripping unit if `$force` set to `true`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
- *
- * @param {List} $list          - list
- * @param {Bool} $force (false) - enable/disable parseInt
- *
- * @requires sl-every
- * @requires sl-is-number
- *
- * @throws All items from list are not numbers for `sl-sum`.
- *
- * @example
- * sl-sum(1 2 3)
- * // 6
- *
- * @example
- * sl-sum(a b 1)
- * null
- *
- * @example
- * sl-sum(1 2 3px, true)
- * // 6
- * 
- * @return {Number}
- */
-/**
- * Returns the tail of `$list`: all items except the first (head).
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
- *
- * @requires sl-slice
- *
- * @param {List} $list - list to retrieve tail from
- *
- * @example
- * sl-tail(a b c)
- * // b c 
- *
- * @return {List | Null}
- */
-/**
- * @requires sl-tail
- * @alias sl-tail
- */
-/**
- * Casts `$value` into a list.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
- *
- * @param {*} $value - value to cast to list
- * @param {String} $separator (space) - separator to use
- *
- * @example
- * sl-to-list(a b c, comma)
- * // a, b, c
- * 
- * @return {List}
- */
-/**
- * @requires sl-to-list
- * @alias sl-to-list
- */
-/**
- * Casts `$list` into a map, using indexes as keys (starting with `$start`).
- * Useful for iterating through a list with an index variable.
- * e.g. `@each $index, $value in to-map($list)`
- *
- * @author Andrey "Lolmaus" Mikhaylov
- * @author Chris Eppstein
- * 
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
- * 
- * @param {List} $list - list to turn into map
- *
- * @requires sl-range
- * @requires sl-is-empty
- * 
- * @throws List cannot be empty for `sl-to-map`.
- *
- * @example
- * sl-to-map(a b c)
- * // 1 a, 2 b, 3 c
- * 
- * @return {Map | Null}
- */
-/**
- * @requires sl-to-map
- * @alias sl-to-map
- */
-/**
- * @requires sl-to-map
- * @alias sl-to-map
- */
-/**
- * Joins all elements of `$list` with `$glue`.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-string
- *
- * @param {List}   $list      - list to cast
- * @param {String} $glue ('') - value to use as a join string
- *
- * @requires sl-has-multiple-values
- * @requires sl-last
- * 
- * @example
- * sl-to-string(a b c)
- * // abc
- *
- * @example
- * sl-to-string(a b c, '-')
- * // a-b-c
- * 
- * @return {String}
- */
-/**
- * @requires sl-to-string
- * @alias sl-to-string
- */
-/**
- * Returns a list of values from `$lists` minus duplicates.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-union
- *
- * @requires sl-flatten
- * @requires sl-remove-duplicates
- *
- * @param {ArgList} $lists - lists to unify
- *
- * @example
- * sl-union(a b c, b e d, a c b)
- * // a b c e d
- * 
- * @return {List}
- */
-/**
- * @requires sl-union
- * @alias sl-union
- */
-/**
- * Apply `$function` to every item from `$list` passing $args as parameters.
- *
- * @ignore Documentation: http://sassylists.com/documentation.html#sl-walk
- *
- * @param {List}    $list     - list to update
- * @param {String}  $function - function to call on each value
- * @param {ArgList} $args     - optional function arguments
- *
- * @throws There is no `$function` function for `sl-walk`.
- *
- * @requires sl-to-map
- * @requires sl-to-list
- *
- * @example
- * sl-walk(a b c, to-upper-case)
- * // A B C
- *
- * @return {List | Null}
- */
-:host ::content [is$="logo"]::before {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0; }
-
-.menu ::content a {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-  .menu ::content a:not(a):not(input):not(button) {
-    cursor: default; }
-
-.menu {
-  list-style-type: none;
-  padding-left: 0; }
-
-:host {
-  background: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.575) 65%, rgba(255, 255, 255, 0));
-  background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0.85) 35%, rgba(255, 255, 255, 0.575) 65%, rgba(255, 255, 255, 0));
-  padding-bottom: var(--nav-padding-bottom);
-  padding-top: var(--nav-padding-top);
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100; }
-  :host ::content a {
-    outline: none;
-    pointer-events: auto; }
-    :host ::content a, :host ::content a * {
-      -webkit-transition: fill 250ms linear, color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-      transition: fill 250ms linear, color 250ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-      transition: fill 250ms linear, color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-      transition: fill 250ms linear, color 250ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
-  :host ::content [is$="logo"] {
-    -webkit-transform: translate3d(0, 0.4rem, 1rem) scale(0.9583333333);
-    transform: translate3d(0, 0.4rem, 1rem) scale(0.9583333333); }
-    :host ::content [is$="logo"]::before {
-      border-radius: 100%;
-      bottom: 1px;
-      box-shadow: 0 0.58rem 1.17rem rgba(65, 67, 83, 0.4), 0 0.35rem 0.35rem rgba(65, 67, 83, 0.125);
-      content: ''; }
-    :host ::content [is$="logo"]:hover {
-      -webkit-transform: translate3d(0, 0.4rem, 1.5rem) scale(1.03125);
-      transform: translate3d(0, 0.4rem, 1.5rem) scale(1.03125); }
-    :host ::content [is$="logo"]:active, :host ::content [is$="logo"][pressed] {
-      -webkit-transform: translate3d(0, 0.4rem, 0.85rem) scale(0.9163541667);
-      transform: translate3d(0, 0.4rem, 0.85rem) scale(0.9163541667); }
-
-#wrap {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  box-sizing: content-box;
-  padding-left: 1.527696rem;
-  padding-right: 1.527696rem;
-  max-width: 52.63848rem;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-perspective: 24rem;
-  perspective: 24rem;
-  -webkit-perspective-origin: 50% 50vh;
-  perspective-origin: 50% 50vh; }
-  #wrap:after {
-    content: " ";
-    display: block;
-    clear: both; }
-
-.menu {
-  -webkit-box-align: baseline;
-  -webkit-align-items: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d; }
-  .menu ::content a {
-    display: block;
-    padding: 1em;
-    position: relative;
-    text-shadow: 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff, 0 0 3em #fff;
-    font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
-    -webkit-transform: translate3d(0, -5%, 0.25rem) scale(0.9895833333);
-    transform: translate3d(0, -5%, 0.25rem) scale(0.9895833333); }
-    .menu ::content a:not(.iron-selected):hover {
-      -webkit-transform: translate3d(0, -5%, 0.5rem) scale(1.0770833333);
-      transform: translate3d(0, -5%, 0.5rem) scale(1.0770833333); }
-    .menu ::content a:active, .menu ::content a[pressed] {
-      -webkit-transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667) !important;
-      transform: translate3d(0, -5%, 0.1rem) scale(0.9460416667) !important; }
-
-@media screen and (min-width: 780px) {
-  #left {
-    padding-left: 10%; } }
-
-@media screen and (min-width: 780px) {
-  #right {
-    padding-right: 10%; } }
-
-:host(.invert) {
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); }
-  :host(.invert) ul > li > a {
-    color: #fff;
-    text-shadow: none;
-    -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
-  :host(.invert) /deep/ [is$="logo"] #base {
-    fill: #fff !important; }
-  :host(.invert) /deep/ [is$="logo"] #text {
-    fill: black !important; }
-
-</style>
-</template>
-</dom-module><dom-module id="floating-nav" assetpath="floating-nav/">
-
-  <template>
-    <style include="floating-nav-styles"></style>
-
-    <div id="wrap">
-      <div id="left" class="menu">
-        <content select="*:nth-child(odd)"></content>
-      </div>
-      <content select="[is$=&quot;logo&quot;]"></content>
-      <div id="right" class="menu">
-        <content></content>
-      
-    </div>
-  </div></template>
-
-  </dom-module>
-<dom-module id="logo-styles" assetpath="logo/">
+  </dom-module><dom-module id="logo-styles" assetpath="logo/">
 <template>
 <style>
 /**
@@ -6876,6 +7891,10 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   :not(a):not(input):not(button):host {
     cursor: default; }
 
+a:host {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
+
 :host {
   border-radius: 95%;
   display: -webkit-box;
@@ -6890,9 +7909,9 @@ article #content a:not([class]):not([is]), article #content ::content a:not([cla
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  height: calc(var(--logo-size) + 2px);
+  height: calc(4.406860421rem + 2px);
   position: relative;
-  width: calc(var(--logo-size) + 2px); }
+  width: calc(4.406860421rem + 2px); }
 
 svg {
   height: 100%;
@@ -6902,14 +7921,10 @@ svg {
   width: 100%; }
 
 #base {
-  fill: var(--logo-bg, black);
-  -webkit-transition: fill 250ms linear;
-  transition: fill 250ms linear; }
+  fill: black; }
 
 #text {
-  fill: var(--logo-fg, white);
-  -webkit-transition: fill 250ms linear;
-  transition: fill 250ms linear; }
+  fill: #fff; }
 
 </style>
 </template>
@@ -6918,7 +7933,7 @@ svg {
   <template>
     <style include="logo-styles"></style>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 78">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 78 78">
       <path d="M39,78 C62.9405941,78 78,62.9405941 78,39 C78,15.0594059 62.9405941,0 39,0 C15.0594059,2.93187719e-15 1.4659386e-15,15.0594059 0,39 C0,62.9405941 15.0594059,78 39,78 L39,78 Z" id="base"></path>
       <path d="M17.0299988,49.5025003 L17.0299988,32.5700003 L21.2224988,32.5700003 L21.4824988,34.2925003 C21.6774998,34.0541658 21.9104141,33.8104182 22.1812488,33.5612503 C22.4520835,33.3120824 22.7716636,33.0845847 23.1399988,32.8787503 C23.508334,32.6729159 23.9308297,32.505001 24.4074988,32.3750003 C24.8841678,32.2449997 25.4366623,32.1800003 26.0649988,32.1800003 C26.4983343,32.1800003 26.9424965,32.2125 27.3974988,32.2775003 C27.8525011,32.3425006 28.2912467,32.4616661 28.7137488,32.6350003 C29.1362509,32.8083345 29.5316636,33.0520821 29.8999988,33.3662503 C30.268334,33.6804185 30.5824975,34.0758313 30.8424988,34.5525003 C31.4275017,33.7941632 32.1424946,33.209169 32.9874988,32.7975003 C33.832503,32.3858316 34.8074933,32.1800003 35.9124988,32.1800003 C36.7358362,32.1800003 37.4887454,32.2937492 38.1712488,32.5212503 C38.8537522,32.7487514 39.444163,33.1008313 39.9424988,33.5775003 C40.4408346,34.0541694 40.8254141,34.66083 41.0962488,35.3975003 C41.3670835,36.1341707 41.5024988,37.0116619 41.5024988,38.0300003 L41.5024988,49.5025003 L36.6924988,49.5025003 L36.6924988,39.1350003 C36.6924988,37.9649945 36.508334,37.1416694 36.1399988,36.6650003 C35.7716636,36.1883313 35.1758362,35.9500003 34.3524988,35.9500003 C33.9624968,35.9500003 33.6050004,36.0041664 33.2799988,36.1125003 C32.9549972,36.2208342 32.6733333,36.404999 32.4349988,36.6650003 C32.1966643,36.9250016 32.0124994,37.2770814 31.8824988,37.7212503 C31.7524981,38.1654192 31.6874988,38.7233303 31.6874988,39.3950003 L31.6874988,49.5025003 L26.8774988,49.5025003 L26.8774988,39.1025003 C26.8774988,37.9324945 26.6879173,37.114586 26.3087488,36.6487503 C25.9295802,36.1829146 25.3391695,35.9500003 24.5374988,35.9500003 C23.6058275,35.9500003 22.9233343,36.2424974 22.4899988,36.8275003 C22.0566633,37.4125032 21.8399988,38.3549938 21.8399988,39.6550003 L21.8399988,49.5025003 L17.0299988,49.5025003 Z M56.6150024,40.4024969 C56.6150024,38.8424891 56.3875047,37.7104171 55.9325024,37.0062469 C55.4775002,36.3020768 54.6758415,35.9499969 53.5275024,35.9499969 C52.4874972,35.9499969 51.7129217,36.2533272 51.2037524,36.8599969 C50.6945832,37.4666666 50.4400024,38.4524901 50.4400024,39.8174969 L50.4400024,45.6999969 C50.8083376,45.8733311 51.2308334,46.0033298 51.7075024,46.0899969 C52.1841715,46.176664 52.6500002,46.2199969 53.1050024,46.2199969 C54.3183418,46.2199969 55.2066663,45.8679171 55.7700024,45.1637469 C56.3333386,44.4595768 56.6150024,43.3600044 56.6150024,41.8649969 L56.6150024,40.4024969 Z M61.4900049,41.4374985 C61.4900049,42.9758395 61.2895902,44.2812431 60.8887549,45.3537485 C60.4879195,46.4262538 59.9137586,47.2983284 59.1662549,47.9699985 C58.4187511,48.6416685 57.5195935,49.1291636 56.4687549,49.4324985 C55.4179163,49.7358333 54.2533446,49.8874985 52.9750049,49.8874985 C51.5449977,49.8874985 50.2179277,49.7250001 48.9937549,49.3999985 C47.7695821,49.0749968 46.6483433,48.6308346 45.6300049,48.0674985 L45.6300049,25.3499985 L50.4400049,25.3499985 L50.4400049,33.9299985 C51.0250078,33.3449955 51.6804179,32.9062499 52.4062549,32.6137485 C53.1320918,32.321247 54.0149997,32.1749985 55.0550049,32.1749985 C57.2216824,32.1749985 58.8358329,32.8412418 59.8975049,34.1737485 C60.9591769,35.5062551 61.4900049,37.5808177 61.4900049,40.3974985 L61.4900049,41.4374985 Z" id="text"></path>
     </svg>
@@ -7842,6 +8857,10 @@ svg {
   user-select: none; }
   :not(a):not(input):not(button):host {
     cursor: default; }
+
+a:host {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation; }
 
 span {
   letter-spacing: 0.07em;
@@ -8875,20 +9894,12 @@ span {
     display: inline; }
     :host > ::content > .content:hover a {
       opacity: 0.3; }
-      :host > ::content > .content:hover a.highlight {
-        -webkit-filter: saturate(75%);
-        filter: saturate(75%); }
-        :host > ::content > .content:hover a.highlight:hover {
-          -webkit-filter: saturate(100%);
-          filter: saturate(100%); }
       :host > ::content > .content:hover a:not(:hover) {
         -webkit-transition-duration: 100ms;
         transition-duration: 100ms; }
     :host > ::content > .content a {
-      -webkit-transition: opacity 200ms linear, -webkit-filter 200ms linear;
-      transition: opacity 200ms linear, -webkit-filter 200ms linear;
-      transition: opacity 200ms linear, filter 200ms linear;
-      transition: opacity 200ms linear, filter 200ms linear, -webkit-filter 200ms linear; }
+      -webkit-transition: opacity 200ms linear;
+      transition: opacity 200ms linear; }
       :host > ::content > .content a:hover {
         opacity: 1; }
     :host > ::content > .content .sentence > * + * {
@@ -9832,15 +10843,16 @@ span {
   top: 0; }
 
 :host {
-  color: var(--work-card-fg);
   display: block;
   overflow: hidden;
   position: relative;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
   -webkit-transform: translate3d(0, 0, 0) scale(1);
   transform: translate3d(0, 0, 0) scale(1); }
 
 #bg {
-  background-color: var(--work-card-bg);
+  background-color: #f2f4f7;
   display: block;
   width: 100%; }
 
@@ -9848,6 +10860,9 @@ span {
   padding: var(--work-card-spacing, 1.527696rem); }
   #wrapper > a {
     display: block; }
+
+:host(.invert) header h1 {
+  color: var(--work-card-bg); }
 
 :host([href]) {
   -webkit-transform-style: preserve-3d;
@@ -9857,16 +10872,30 @@ span {
   -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%; }
   :host([href]), :host([href]) figure img {
-    -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+    -webkit-transition: box-shadow 125ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: box-shadow 125ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: box-shadow 125ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+    transition: box-shadow 125ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+  :host([href]) #bg {
+    -webkit-transition: background-color 100ms linear;
+    transition: background-color 100ms linear; }
+  :host([href]) header h1, :host([href]) header h2 {
+    -webkit-transition: color 100ms linear;
+    transition: color 100ms linear; }
   :host([href]):hover {
     -webkit-transform: translateZ(0.75rem);
     transform: translateZ(0.75rem); }
+    :host([href]):hover #bg {
+      background-color: var(--work-card-bg); }
+    :host([href]):hover figure img {
+      box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow); }
   :host([href]):active, :host([href])[pressed] {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }
+    :host([href]):active #bg, :host([href])[pressed] #bg {
+      background-color: var(--work-card-bg); }
+    :host([href]):active figure img, :host([href])[pressed] figure img {
+      box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow); }
   :host([href]) figure {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d; }
@@ -9874,7 +10903,14 @@ span {
       -webkit-transform: translateZ(0);
       transform: translateZ(0); }
 
+:host([href].invert):hover header h1, :host([href].invert):hover header h2 {
+  color: var(--work-card-fg); }
+
+:host([href].invert):active header h1, :host([href].invert):active header h2, :host([href].invert)[pressed] header h1, :host([href].invert)[pressed] header h2 {
+  color: var(--work-card-fg); }
+
 header h1 {
+  color: var(--work-card-fg);
   line-height: 1.236;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
   font-size: 1.236rem;
@@ -9893,7 +10929,7 @@ figure {
   display: block;
   position: relative; }
   figure > img {
-    box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+    box-shadow: 0 0.4rem 1.333rem -0.25rem rgba(65, 67, 83, 0.4);
     display: block; }
 
 :host(.portrait) #bg {

@@ -4,10 +4,12 @@
 // ==========
 
 :host {
-  &::before { height: calc(var(--page-padding-top) - 2vh) !important; }
-
   > * {
     transform-style: preserve-3d;
+  }
+
+  @include query(bravo) {
+    padding-top: calc(#{$page-padding-top} - 2vh) !important;
   }
 }
 
@@ -18,7 +20,7 @@ article {
 #header {
   @include layout;
 
-  @include trailing(var(--nav-padding-bottom));
+  @include trailing($nav-padding-bottom);
   text-align: center;
   transform-style: preserve-3d;
 }
@@ -41,19 +43,21 @@ article {
 
   > ::content img {
     display: block;
-    max-height: 100%;
     max-width: 100%;
 
     @include flush;
+    @include query(bravo, true) {
+      min-height: 8rem;
+      max-height: 20vh;
+      max-width: 14rem;
+    }
   }
 
   @include query(bravo, true) {
     display: inline-block;
-    min-height: 8rem;
-    max-height: 20vh;
-    max-width: 14rem;
 
     @include trailing;
+
   }
   @include query(bravo) {
     @include span(2);
@@ -69,6 +73,10 @@ article {
   transform-style: preserve-3d;
 
   ::content [is="barvian-button"] {
+  }
+
+  ::content h1 {
+    @include level(1rem);
   }
 
   @include query(bravo) {

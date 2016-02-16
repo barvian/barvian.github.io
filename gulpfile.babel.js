@@ -26,7 +26,7 @@ gulp.registry(new CommonRegistry({
     server: jekyll.destination,
     snippetOptions: {
       rule: {
-        match: /<\/body\>/i,
+        match: /<\/html\>/i,
         fn: (snippet, match) => snippet + match
       }
     }
@@ -35,7 +35,7 @@ gulp.registry(new CommonRegistry({
   copy: {
     src: [
       `${bower}/webcomponentsjs/webcomponents-lite.min.js`,
-      `${src}/${vendor}/modernizr*.js`
+      `${bower}/picturefill/dist/picturefill.min.js`
     ],
     dest: [`${dest}/${vendor}`, `${jekyll.destination}/${dest}/${vendor}`]
   },
@@ -48,22 +48,10 @@ gulp.registry(new CommonRegistry({
   },
 
   styles: {
-    src: `${src}/styles/{app,barvian}.scss`,
+    src: `${src}/styles/barvian.scss`,
     all: [`${src}/styles/**/*.scss`, `${src}/variables.json`],
     includePaths: [bower],
-    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`],
-    modularize: 'app.css'
-  },
-
-  scripts: {
-    src: `${src}/scripts/barvian.js`,
-    all: [
-      `${src}/scripts/**/*.js`,
-      `!${src}/${vendor}/**/*`,
-      path.basename(__filename)
-    ],
-    bundle: 'barvian.js',
-    dest: [`${dest}/scripts`, `${jekyll.destination}/${dest}/scripts`]
+    dest: [`${dest}/styles`, `${jekyll.destination}/${dest}/styles`]
   },
 
   fonts: {

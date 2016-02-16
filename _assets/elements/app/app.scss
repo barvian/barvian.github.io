@@ -1,0 +1,38 @@
+@import "../../styles/shared";
+
+// App
+// ===
+
+:host {
+  display: block;
+  height: 100%;
+  position: relative;
+}
+
+// Pages
+// -----
+
+#pages {
+  @extend %stretch;
+
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+
+  @include surface;
+
+  ::content > .page {
+    bottom: auto;
+    height: auto;
+    padding-bottom: calc(#{$page-padding-bottom});
+    padding-top: calc(#{$page-padding-top});
+    transform-style: preserve-3d;
+    z-index: $page-z-index;
+
+    &::before, &::after {
+      content: '';
+      display: block;
+      pointer-events: none;
+    }
+  }
+}
