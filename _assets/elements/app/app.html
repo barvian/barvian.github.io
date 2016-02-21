@@ -10,14 +10,13 @@
     <style include="app-styles"></style>
 
     <page-title title="[[currentPage.pageTitle]]"></page-title>
-
-    <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[currentPage]]" selectable=':not([href^="mailto:"])'>
-      <content select="a"></content>
-    </nav>
     <neon-animated-pages id="pages" attr-for-selected="data-route" selected="[[route]]"
       selected-item="{{currentPage}}">
       <content select=".page"></content>
     </neon-animated-pages>
+    <nav id="nav" is="floating-nav" attr-for-selected="data-route" selected="[[compressRoute(route)]]" selected-page="[[currentPage]]" selectable=':not([href^="mailto:"])'>
+      <content select="a"></content>
+    </nav>
   </template>
 
   <script src="../../bower_components/page/page.js"></script>

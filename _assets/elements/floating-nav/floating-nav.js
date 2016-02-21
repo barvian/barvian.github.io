@@ -26,6 +26,7 @@ Polymer({
 
   updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
+    Polymer.dom(this).classList.remove('modal');
     this.shadow = '';
 
     if (!navStyle) {
@@ -34,6 +35,9 @@ Polymer({
 
     if (navStyle.invert) {
       Polymer.dom(this).classList.add('invert');
+    }
+    if (navStyle.modal) {
+      Polymer.dom(this).classList.add('modal');
     }
     this.shadow = navStyle.shadow || '';
   }

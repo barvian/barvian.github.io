@@ -3,6 +3,8 @@
     "alpha": "screen and (min-width: 560px)",
     "bravo": "screen and (min-width: 780px)",
     "charlie": "screen and (min-width: 1240px)",
-    "tall": "screen and (min-width: 780px) and (min-height: 740px)"
+    "tall": "screen and (min-width: 780px) and (min-height: 740px)",
+    "tall-not-towering": "screen and (min-width: 780px) and (min-height: 740px) and (max-height: 1280px)",
+    "towering": "screen and (min-height: 1280px)"
   }
 }

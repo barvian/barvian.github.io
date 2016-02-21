@@ -40,6 +40,7 @@
       text-shadow 150ms linear,
       transform 225ms $ease-out-back;
     touch-action: manipulation;
+    transform: translateZ(0);
 
     @include font($sans, $weight: semibold);
     @include highlight($light);

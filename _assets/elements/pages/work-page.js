@@ -70,9 +70,10 @@ Polymer({
     const rgb = bg.match(/\d+/g).map(Number);
     const yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
-    return yiq < 175 ? {
-      invert: true,
-      shadow
-    } : {};
+    return {
+      modal: true,
+      shadow,
+      ...(yiq < 175 ? {invert: true} : {})
+    };
   }
 });

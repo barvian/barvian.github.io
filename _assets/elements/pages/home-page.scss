@@ -4,7 +4,6 @@
 // =========
 
 :host {
-  padding-bottom: 0 !important;
 }
 
 #greeting {
@@ -16,7 +15,7 @@
   transform-style: preserve-3d;
 
   @include container;
-  @include query(tall) {
+  @include query(tall-not-towering) {
     min-height: calc(100vh - #{$page-padding-top} - #{$logo-size} - #{$nav-padding-bottom});
     padding-bottom: 15vh;
   }
@@ -30,12 +29,7 @@
   margin-top: -$work-grid-spacing;
   transform-style: preserve-3d;
 
-  @include level(2rem, $y: -3rem);
-  @include query(tall) {
-    margin-top: calc(-1 * #{$work-grid-spacing} - 10rem);
-
-    @include level(7.5rem, $y: -4rem);
-  }
+  @include level(1.5rem, $y: -2.75rem);
 
   > ::content {
     .work {

@@ -146,7 +146,7 @@ Polymer({
   _beforePageLeave(event) {
     const {fromPage} = event.detail;
 
-    fromPage._lastScrollTop = this.$.pages.scrollTop;
+    fromPage._lastScrollTop = this.scrollTop;
   },
 
   scrollTo(top, duration = 500) {
@@ -157,7 +157,7 @@ Polymer({
       };
       const animationId = Math.random();
       const startTime = Date.now();
-      const currentScrollTop = this.$.pages.scrollTop;
+      const currentScrollTop = this.scrollTop;
       const deltaScrollTop = top - currentScrollTop;
 
       this._currentAnimationId = animationId;
@@ -167,15 +167,15 @@ Polymer({
         const elapsedTime = now - startTime;
 
         if (elapsedTime > duration) {
-          this.$.pages.scrollTop = top;
+          this.scrollTop = top;
         } else if (this._currentAnimationId === animationId) {
-          this.$.pages.scrollTop = easingFn(elapsedTime, currentScrollTop,
+          this.scrollTop = easingFn(elapsedTime, currentScrollTop,
             deltaScrollTop, duration);
           requestAnimationFrame(updateFrame.bind(this));
         }
       }).call(this);
     } else {
-      this.$.pages.scrollTop = top;
+      this.scrollTop = top;
     }
   },
 

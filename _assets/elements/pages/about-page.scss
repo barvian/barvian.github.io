@@ -64,20 +64,13 @@ article {
     margin-right: size(xxlarge);
     shape-outside: circle();
 
-    @include level(5rem, $x: 22.5%, $y: 3.5vh);
+    @include level(2rem, $x: 10%, $y: 2.25vh);
     @include removed;
   }
 }
 
 #title {
   transform-style: preserve-3d;
-
-  ::content [is="barvian-button"] {
-  }
-
-  ::content h1 {
-    @include level(1rem);
-  }
 
   @include query(bravo) {
     padding-top: 2%;
