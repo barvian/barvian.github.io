@@ -109,7 +109,6 @@
 
     height: calc(#{size(huge)} + 1px);
     width: calc(#{size(huge)} + 1px);
-    transition: all 200ms ease-in-out;
 
     @include level(0);
 
@@ -124,15 +123,15 @@
   }
 
   @include query(bravo) {
+    .menu {
+      opacity: 0;
+    }
+
     #left {
       flex: 0;
       overflow: hidden;
       padding: 0 !important;
       width: 0 !important;
-    }
-
-    #right {
-      visibility: hidden;
     }
   }
 }
