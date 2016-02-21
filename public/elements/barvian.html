@@ -1409,7 +1409,7 @@ animations to be run when switching to or switching out of the page.
       padding: 0 !important;
       width: 0 !important; }
     :host(.modal) #right {
-      display: none; } }
+      visibility: hidden; } }
 
 :host(.invert) {
   background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
@@ -6721,13 +6721,6 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
  *
  * @return {List | Null}
  */
-#img::before {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0; }
-
 #header hgroup h1, article h1, article ::content h1 {
   line-height: 1.236; }
 
@@ -6996,39 +6989,23 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     padding-top: calc((7vh + 4.406860421rem + 7vh)); }
     #header hgroup h1 {
       color: var(--work-page-fg); }
-  #header figure {
-    text-align: center; }
-    @media screen and (min-width: 780px) {
-      #header figure {
-        width: 65.699252714%;
-        float: right;
-        margin-right: 0; }
-        #header * + figure {
-          margin-top: 0; }
-        #header figure:first-child + * {
-          margin-top: 0; } }
-
-#img {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  max-height: 100vh;
-  -webkit-transform: translate3d(0, 7vh, 10rem) scale(0.5833333333);
-  transform: translate3d(0, 7vh, 10rem) scale(0.5833333333);
-  position: relative;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d; }
-  #img::before {
-    content: '';
-    background-color: var(--work-page-shadow);
-    border-radius: 0;
-    -webkit-filter: blur(0.667rem);
-    filter: blur(0.667rem);
-    -webkit-transform: scale(1.1041666667) translate3d(7%, 4%, -2.5rem);
-    transform: scale(1.1041666667) translate3d(7%, 4%, -2.5rem); }
-  #img > img {
-    display: block;
-    max-height: 100%; }
+  @media screen and (min-width: 780px) {
+    #header figure {
+      width: 65.699252714%;
+      float: right;
+      margin-right: 0;
+      -webkit-transform: translate3d(0, 5vh, 10rem) scale(0.5833333333);
+      transform: translate3d(0, 5vh, 10rem) scale(0.5833333333); }
+      #header * + figure {
+        margin-top: 0; }
+      #header figure:first-child + * {
+        margin-top: 0; }
+      #header figure img {
+        box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 100vh; } }
 
 .wrap {
   box-sizing: content-box;
