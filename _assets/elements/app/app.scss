@@ -6,20 +6,36 @@
 :host {
   display: block;
   height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+
+  @include surface;
+
+  > * {
+    transform-style: preserve-3d;
+  }
+}
+
+// Nav
+// ---
+
+#nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  &.modal {
+    position: absolute;
+  }
 }
 
 // Pages
 // -----
 
 #pages {
-  @extend %stretch;
-
   height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
-
-  @include surface;
 
   ::content > .page {
     bottom: auto;
@@ -27,7 +43,6 @@
     padding-bottom: calc(#{$page-padding-bottom});
     padding-top: calc(#{$page-padding-top});
     transform-style: preserve-3d;
-    z-index: $page-z-index;
 
     &::before, &::after {
       content: '';

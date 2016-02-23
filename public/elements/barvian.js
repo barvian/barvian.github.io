@@ -10931,6 +10931,7 @@ Polymer({
 
   updateStyle: function updateStyle(navStyle) {
     Polymer.dom(this).classList.remove('invert');
+    Polymer.dom(this).classList.remove('modal');
     this.shadow = '';
 
     if (!navStyle) {
@@ -10939,6 +10940,9 @@ Polymer({
 
     if (navStyle.invert) {
       Polymer.dom(this).classList.add('invert');}
+
+    if (navStyle.modal) {
+      Polymer.dom(this).classList.add('modal');}
 
     this.shadow = navStyle.shadow || '';} });
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.page=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
@@ -12199,7 +12203,7 @@ Polymer({
   _beforePageLeave: function _beforePageLeave(event) {var 
     fromPage = event.detail.fromPage;
 
-    fromPage._lastScrollTop = this.$.pages.scrollTop;}, 
+    fromPage._lastScrollTop = this.scrollTop;}, 
 
 
   scrollTo: function scrollTo(top) {var _this4 = this;var duration = arguments.length <= 1 || arguments[1] === undefined ? 500 : arguments[1];
@@ -12210,7 +12214,7 @@ Polymer({
 
         var animationId = Math.random();
         var startTime = Date.now();
-        var currentScrollTop = _this4.$.pages.scrollTop;
+        var currentScrollTop = _this4.scrollTop;
         var deltaScrollTop = top - currentScrollTop;
 
         _this4._currentAnimationId = animationId;
@@ -12220,15 +12224,15 @@ Polymer({
           var elapsedTime = now - startTime;
 
           if (elapsedTime > duration) {
-            this.$.pages.scrollTop = top;} else 
+            this.scrollTop = top;} else 
           if (this._currentAnimationId === animationId) {
-            this.$.pages.scrollTop = easingFn(elapsedTime, currentScrollTop, 
+            this.scrollTop = easingFn(elapsedTime, currentScrollTop, 
             deltaScrollTop, duration);
             requestAnimationFrame(updateFrame.bind(this));}}).
 
         call(_this4);})();} else 
     {
-      this.$.pages.scrollTop = top;}}, 
+      this.scrollTop = top;}}, 
 
 
 
@@ -12312,7 +12316,7 @@ Polymer({
 
   behaviors: [
   Barvian.PageBehavior] });
-'use strict'; // Work page
+'use strict';var _extends = Object.assign || function (target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i];for (var key in source) {if (Object.prototype.hasOwnProperty.call(source, key)) {target[key] = source[key];}}}return target;}; // Work page
 // =========
 
 Polymer({ 
@@ -12384,10 +12388,10 @@ Polymer({
     var rgb = bg.match(/\d+/g).map(Number);
     var yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
-    return yiq < 175 ? { 
-      invert: true, 
-      shadow: shadow } : 
-    {};} });
+    return _extends({ 
+      modal: true, 
+      shadow: shadow }, 
+    yiq < 175 ? { invert: true } : {});} });
 'use strict'; // Floating logo
 // =============
 
