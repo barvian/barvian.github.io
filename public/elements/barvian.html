@@ -6984,9 +6984,12 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
   #header hgroup {
+    color: var(--work-page-fg);
     padding-top: calc((7vh + 4.406860421rem + 7vh)); }
-    #header hgroup h1 {
-      color: var(--work-page-fg); }
+    #header hgroup h1 + * {
+      margin-top: 0.763848rem; }
+    #header hgroup h2 {
+      opacity: 0.6; }
   @media screen and (min-width: 780px) {
     #header figure {
       width: 65.699252714%;
@@ -7034,6 +7037,7 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
           </figure>
           <hgroup>
             <h1>[[workTitle]]</h1>
+            <h2>[[blurb]]</h2>
           </hgroup>
         </div>
       </header>
@@ -10928,12 +10932,14 @@ span {
 #bg {
   background-color: #f2f4f7;
   display: block;
+  padding-bottom: 100%;
   width: 100%; }
 
 #wrapper {
   padding: var(--work-card-spacing, 1.527696rem); }
   #wrapper > a {
-    display: block; }
+    display: block;
+    padding: var(--work-card-spacing, 1.527696rem); }
 
 :host(.invert) header h1 {
   color: var(--work-card-bg); }
@@ -10962,7 +10968,9 @@ span {
     :host([href]):hover #bg {
       background-color: var(--work-card-bg); }
     :host([href]):hover figure img {
-      box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow); }
+      box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+      -webkit-transform: translate3d(0, -3%, -2rem);
+      transform: translate3d(0, -3%, -2rem); }
   :host([href]):active, :host([href])[pressed] {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }
@@ -10983,68 +10991,61 @@ span {
 :host([href].invert):active header h1, :host([href].invert):active header h2, :host([href].invert)[pressed] header h1, :host([href].invert)[pressed] header h2 {
   color: var(--work-card-fg); }
 
-header h1 {
-  color: var(--work-card-fg);
-  line-height: 1.236;
-  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
-  font-size: 1.236rem;
-  font-weight: 400; }
-  header h1 + * {
-    margin-top: 0.25em; }
-
-header h2 {
-  line-height: 1.236;
-  opacity: 0.6;
-  font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1rem;
-  font-weight: 400; }
+header {
+  padding: calc(var(--work-card-spacing, 1.527696rem) / 2);
+  margin-bottom: 7.5%;
+  text-align: center; }
+  header h1 {
+    color: var(--work-card-fg);
+    line-height: 1.236;
+    font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+    font-size: 1.236rem;
+    font-weight: 400; }
+    header h1 + * {
+      margin-top: 0.25em; }
+  header h2 {
+    line-height: 1.236;
+    opacity: 0.6;
+    font-family: "source-sans-pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 1rem;
+    font-weight: 400; }
+    @media screen and (max-width: 560px) {
+      header h2 {
+        display: none !important; }
+        header * + h2 {
+          margin-top: 0; }
+        header h2:first-child + * {
+          margin-top: 0; } }
 
 figure {
   display: block;
   position: relative; }
   figure > img {
     box-shadow: 0 0.4rem 1.333rem -0.25rem rgba(65, 67, 83, 0.4);
-    display: block; }
+    display: block;
+    max-width: 100%; }
 
-:host(.portrait) #bg {
-  padding-bottom: 150%; }
-
-:host(.portrait) #wrapper > a {
-  padding: var(--work-card-spacing, 1.527696rem); }
-
-:host(.portrait) header {
-  padding: calc(var(--work-card-spacing, 1.527696rem) / 2);
-  margin-bottom: 7.5%;
-  text-align: center; }
-
-:host(.portrait) figure > img {
-  max-width: 100%; }
-
-:host(.portrait[href]):hover figure img {
-  -webkit-transform: translate3d(0, -3%, -2rem);
-  transform: translate3d(0, -3%, -2rem); }
-
-:host(.landscape) #bg {
-  padding-bottom: 57.5%; }
-
-:host(.landscape) header {
-  left: 0;
-  padding: calc(var(--work-card-spacing, 1.527696rem) * 2);
-  position: absolute;
-  text-align: left;
-  top: 0;
-  width: 40%; }
-
-:host(.landscape) figure {
-  left: 40%;
-  position: absolute;
-  top: calc(var(--work-card-spacing, 1.527696rem) * 1.5); }
-  :host(.landscape) figure > img {
-    max-width: 120%; }
-
-:host(.landscape[href]):hover figure img {
-  -webkit-transform: translate3d(-2%, -2%, -1.5rem);
-  transform: translate3d(-2%, -2%, -1.5rem); }
+@media screen and (min-width: 560px) {
+  :host(.portrait) #bg {
+    padding-bottom: 150%; }
+  :host(.landscape) #bg {
+    padding-bottom: 57.5%; }
+  :host(.landscape) header {
+    left: 0;
+    padding: calc(var(--work-card-spacing, 1.527696rem) * 2);
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 40%; }
+  :host(.landscape) figure {
+    left: 40%;
+    position: absolute;
+    top: calc(var(--work-card-spacing, 1.527696rem) * 1.5); }
+    :host(.landscape) figure > img {
+      max-width: 120%; }
+  :host(.landscape[href]):hover figure img {
+    -webkit-transform: translate3d(-2%, -2%, -1.5rem);
+    transform: translate3d(-2%, -2%, -1.5rem); } }
 
 </style>
 </template>

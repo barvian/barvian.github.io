@@ -12,9 +12,13 @@
   @include level(0);
 }
 
+// Portrait / mobile
+// -----------------
+
 #bg {
   background-color: lighten($light, 3.5%);
   display: block;
+  padding-bottom: 100%;
   width: 100%;
 }
 
@@ -28,6 +32,7 @@
     @extend %unstyled-link;
 
     display: block;
+    padding: var(--work-card-spacing, #{size(spacing)});
   }
 }
 
@@ -59,6 +64,7 @@
       }
       figure img {
         box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
+        transform: translate3d(0, -3%, -2rem);
       }
       transform: translateZ(0.75rem);
     }
@@ -95,6 +101,10 @@
   }
 
 header {
+  padding: calc(var(--work-card-spacing, #{size(spacing)}) / 2);
+  margin-bottom: 7.5%;
+  text-align: center;
+
   h1 {
     color: var(--work-card-fg);
     line-height: strip-units(size(medium));
@@ -108,6 +118,9 @@ header {
     opacity: 0.6;
 
     @include font($sans, $weight: normal, $size: base);
+    @include query(alpha, true) {
+      @include hidden;
+    }
   }
 }
 
@@ -118,73 +131,51 @@ figure {
   > img {
     box-shadow: 0 0.4rem 1.333rem -0.25rem rgba($base, 0.4);
     display: block;
-  }
-}
-
-// Portrait
-// --------
-
-:host(.portrait) {
-  #bg {
-    padding-bottom: 150%;
-  }
-
-  #wrapper > a {
-    padding: var(--work-card-spacing, #{size(spacing)});
-  }
-
-  header {
-    padding: calc(var(--work-card-spacing, #{size(spacing)}) / 2);
-    margin-bottom: 7.5%;
-    text-align: center;
-  }
-
-  figure > img {
     max-width: 100%;
   }
 }
 
-  :host(.portrait[href]) {
-    @include attention {
-      figure img {
-        transform: translate3d(0, -3%, -2rem);
+
+@include query(alpha) {
+  :host(.portrait) {
+    #bg {
+      padding-bottom: 150%;
+    }
+  }
+
+  // Landscape
+  // ---------
+
+  :host(.landscape) {
+    #bg {
+      padding-bottom: 57.5%;
+    }
+
+    header {
+      left: 0;
+      padding: calc(var(--work-card-spacing, #{size(spacing)}) * 2);
+      position: absolute;
+      text-align: left;
+      top: 0;
+      width: 40%;
+    }
+
+    figure {
+      left: 40%;
+      position: absolute;
+      top: calc(var(--work-card-spacing, #{size(spacing)}) * 1.5);
+
+      > img {
+        max-width: 120%;
       }
     }
   }
 
-
-// Landscape
-// ---------
-
-:host(.landscape) {
-  #bg {
-    padding-bottom: 57.5%;
-  }
-
-  header {
-    left: 0;
-    padding: calc(var(--work-card-spacing, #{size(spacing)}) * 2);
-    position: absolute;
-    text-align: left;
-    top: 0;
-    width: 40%;
-  }
-
-  figure {
-    left: 40%;
-    position: absolute;
-    top: calc(var(--work-card-spacing, #{size(spacing)}) * 1.5);
-
-    > img {
-      max-width: 120%;
+    :host(.landscape[href]) {
+      @include attention {
+        figure img {
+          transform: translate3d(-2%, -2%, -1.5rem);
+        }
+      }
     }
-  }
 }
-
-  :host(.landscape[href]) {
-    @include attention {
-      figure img {
-        transform: translate3d(-2%, -2%, -1.5rem);
-      }
-    }
-  }
