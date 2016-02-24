@@ -2360,7 +2360,6 @@ animations to be run when switching to or switching out of the page.
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: auto;
-  position: relative;
   -webkit-perspective: 24rem;
   perspective: 24rem;
   -webkit-perspective-origin: 50% 50%;
@@ -2370,11 +2369,9 @@ animations to be run when switching to or switching out of the page.
     transform-style: preserve-3d; }
 
 #nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%; }
-  #nav.modal {
-    position: absolute; }
 
 #pages {
   height: 100%; }

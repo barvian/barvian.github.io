@@ -9,7 +9,6 @@
   -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: auto;
-  position: relative;
 
   @include surface;
 
@@ -22,13 +21,9 @@
 // ---
 
 #nav {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
-
-  &.modal {
-    position: absolute;
-  }
 }
 
 // Pages
