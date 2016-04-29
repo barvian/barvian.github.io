@@ -38,7 +38,7 @@
 
   :host(.invert) {
     header h1 {
-      color: var(--work-card-bg);
+      color: var(--work-card-base);
     }
   }
 
@@ -60,17 +60,18 @@
     @include surface;
     @include attention {
       #bg {
-        background-color: var(--work-card-bg);
+        background-color: var(--work-card-base);
       }
       figure img {
         box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
         transform: translate3d(0, -3%, -2rem);
       }
       transform: translateZ(0.75rem);
+      header h2 { color: var(--work-card-secondary); opacity: 1; }
     }
     @include pressed {
       #bg {
-        background-color: var(--work-card-bg);
+        background-color: var(--work-card-base);
       }
       figure img {
         box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
@@ -89,13 +90,13 @@
 
   :host([href].invert) {
     @include attention {
-      header h1, header h2 {
-        color: var(--work-card-fg);
+      header {
+        h1 { color: var(--work-card-primary); }
       }
     }
     @include pressed {
-      header h1, header h2 {
-        color: var(--work-card-fg);
+      header {
+        h1 { color: var(--work-card-primary); }
       }
     }
   }
@@ -106,7 +107,7 @@ header {
   text-align: center;
 
   h1 {
-    color: var(--work-card-fg);
+    color: var(--work-card-primary);
     line-height: strip-units(size(medium));
 
     @include font($ui, $weight: normal, $size: medium);

@@ -4,55 +4,70 @@
 // =========
 
 :host {
-  padding-top: 0 !important;
-
   > * {
     transform-style: preserve-3d;
   }
 }
 
-  :host(.invert) {
-  }
-
 #header {
-  background-color: var(--work-page-bg);
-  max-height: 90vh;
+  margin-top: $logo-size--modal - $logo-size;
+  // max-height: calc(100vh - #{$page-padding-top} - #{$page-padding-top});
   transform-style: preserve-3d;
 
-  hgroup {
-    color: var(--work-page-fg);
-    padding-top: calc(#{$page-padding-top});
+  &Wrap {
+    position: relative;
 
-    h1 {
-      @extend %title;
-
-      @include trailing(size(spacing)/2);
-    }
-
-    h2 {
-      opacity: 0.6;
-    }
-  }
-
-  figure {
-    @include query(bravo) {
-      @include span(last 4);
-      @include level(10rem, $y: 5vh);
-      @include removed;
-
-      img {
-        box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-height: 100vh;
-      }
-    }
+    @include layout;
   }
 }
 
-.wrap {
-  @include layout;
+#bg {
+  background: var(--work-page-base);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+#desc {
+  @include query(bravo) {
+    padding-bottom: $nav-padding-top;
+    padding-top: $nav-padding-bottom;
+
+    @include span(last 3);
+  }
+
+  &Title {
+    @extend %title;
+
+    color: var(--work-page-primary);
+  }
+
+  &Body {
+    color: var(--work-page-secondary);
+
+    @include font($ui, $size: medium, $weight: normal);
+  }
+}
+
+#hero {
+  @include query(bravo) {
+    position: absolute;
+
+    @include level(10rem, $x: 12%, $y: -5vh);
+    @include span(3);
+    @include removed;
+  }
+
+  &Img {
+    box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+  }
 }
 
 article {

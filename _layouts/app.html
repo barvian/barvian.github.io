@@ -14,9 +14,11 @@ layout: default
 
 <body unresolved>
   {% assign routes = site.pages | map: 'url' | join: ',' %}
-  {% if site.works.size > 0 %}
-    {% assign works = site.works | map: 'url' | join: ',' %}
-    {% assign routes = routes | append: ',' | append: works %}
+  {% if site.collections.size > 0 %}
+    {% for c in site.collections %}{% if c.output and c.docs.size > 0 %}
+      {% assign urls = c.docs | map: 'url' | join: ',' %}
+      {% assign routes = routes | append: ',' | append: urls %}
+    {% endif %}{% endfor %}
   {% endif %}
   <barvian-app base-url="{{ site.baseurl }}" routes='["{{ routes | replace: ',', '","'}}"]'>
 
@@ -35,7 +37,8 @@ layout: default
 
     {% for work in site.works %}
     <work-page class="page" data-route="{{ work.url }}" page-title='{% include _title.html page=work %}'
-      work-title="{{ work.title }}" blurb='{{ work.blurb }}' bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+      work-title="{{ work.title }}" description='{{ work.description }}' type="{{ work.type }}" url="{{ work.url }}"
+      base="{{ work.base }}" primary="{{ work.primary }}" secondary="{{ work.secondary }}" shadow="{{ work.shadow }}"
       hero="{{ work.hero | prepend: work.url }}" hero2x="{{ work.hero2x | prepend: work.url }}" order="{{ homePageOrder }}">
       {% include _content.html page=work %}
     </work-page>

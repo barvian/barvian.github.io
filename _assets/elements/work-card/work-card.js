@@ -6,12 +6,13 @@ Polymer({
 
   behaviors: [
     Barvian.StyleReflectionBehavior,
-    Barvian.InvertibleBehavior('bg')
+    Barvian.InvertibleBehavior('base')
   ],
 
   properties: {
-    bg: {reflectToStyle: true},
-    fg: {reflectToStyle: true},
+    base: {reflectToStyle: true},
+    primary: {reflectToStyle: true},
+    secondary: {reflectToStyle: true},
     shadow: {reflectToStyle: true},
 
     href: String,

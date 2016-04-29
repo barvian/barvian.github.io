@@ -1261,7 +1261,7 @@ animations to be run when switching to or switching out of the page.
  *
  * @return {List | Null}
  */
-:host ::content [is$="logo"]::before {
+::content [is$="logo"]::before {
   bottom: 0;
   left: 0;
   position: absolute;
@@ -1290,30 +1290,32 @@ animations to be run when switching to or switching out of the page.
   padding-bottom: 7vh;
   padding-top: 7vh;
   pointer-events: none; }
-  :host ::content a {
-    outline: none;
-    pointer-events: auto; }
-    :host ::content a, :host ::content a * {
-      -webkit-transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
-      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
-      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
-      transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important; }
-  :host ::content [is$="logo"] {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-transform: translate3d(0, 4.15vh, 3.15rem) scale(0.86875);
-    transform: translate3d(0, 4.15vh, 3.15rem) scale(0.86875); }
-    :host ::content [is$="logo"]::before {
-      border-radius: 100%;
-      bottom: 1px;
-      box-shadow: 0 0.58rem 1.17rem var(--floating-nav-shadow, rgba(65, 67, 83, 0.5));
-      content: ''; }
-    :host ::content [is$="logo"]:hover {
-      -webkit-transform: translate3d(0, 4.15vh, 3.55rem) scale(0.9245104167);
-      transform: translate3d(0, 4.15vh, 3.55rem) scale(0.9245104167); }
-    :host ::content [is$="logo"]:active, :host ::content [is$="logo"][pressed] {
-      -webkit-transform: translate3d(0, 4.15vh, 3rem) scale(0.83125);
-      transform: translate3d(0, 4.15vh, 3rem) scale(0.83125); }
+
+::content a {
+  outline: none;
+  pointer-events: auto; }
+  ::content a, ::content a * {
+    -webkit-transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+    transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+    transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important;
+    transition: fill 175ms linear, color 175ms linear, opacity 200ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55) !important; }
+
+::content [is$="logo"] {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 4.15vh, 3.15rem) scale(0.86875);
+  transform: translate3d(0, 4.15vh, 3.15rem) scale(0.86875); }
+  ::content [is$="logo"]::before {
+    border-radius: 100%;
+    bottom: 1px;
+    box-shadow: 0 0.58rem 1.17rem var(--floating-nav-shadow, rgba(65, 67, 83, 0.5));
+    content: ''; }
+  ::content [is$="logo"]:hover {
+    -webkit-transform: translate3d(0, 4.15vh, 3.55rem) scale(0.9245104167);
+    transform: translate3d(0, 4.15vh, 3.55rem) scale(0.9245104167); }
+  ::content [is$="logo"]:active, ::content [is$="logo"][pressed] {
+    -webkit-transform: translate3d(0, 4.15vh, 3rem) scale(0.83125);
+    transform: translate3d(0, 4.15vh, 3rem) scale(0.83125); }
 
 #wrap {
   -webkit-box-align: center;
@@ -1383,7 +1385,7 @@ animations to be run when switching to or switching out of the page.
     padding-right: 10%; } }
 
 :host(.modal) {
-  background: none; }
+  background: transparent; }
   :host(.modal) ::content [is$="logo"] {
     height: calc(3.5654210526rem + 1px);
     width: calc(3.5654210526rem + 1px);
@@ -1398,32 +1400,23 @@ animations to be run when switching to or switching out of the page.
     :host(.modal) ::content [is$="logo"] #text {
       fill: var(--floating-nav-shadow, #414353) !important; }
   @media screen and (min-width: 780px) {
-    :host(.modal) .menu {
-      opacity: 0; }
-    :host(.modal) #left {
-      -webkit-box-flex: 0;
-      -webkit-flex: 0;
-      -ms-flex: 0;
-      flex: 0;
-      overflow: hidden;
-      padding: 0 !important;
-      width: 0 !important; } }
+    :host(.modal) .menu ::content a {
+      opacity: 0;
+      pointer-events: none; } }
 
-:host(.invert) {
-  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)); }
-  :host(.invert) .menu ::content a {
-    color: #fff;
-    text-shadow: 0 0.125em 0.25em var(--floating-nav-shadow, rgba(20, 21, 26, 0.2));
-    -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-    transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
-  :host(.invert) /deep/ [is$="logo"] #base {
-    fill: #fff;
-    stroke: #fff; }
-  :host(.invert) /deep/ [is$="logo"] #text {
-    fill: black; }
+:host(.invert) .menu ::content a {
+  color: #fff;
+  -webkit-transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
+  transition: transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55); }
+
+:host(.invert) /deep/ [is$="logo"] #base {
+  fill: #fff;
+  stroke: #fff; }
+
+:host(.invert) /deep/ [is$="logo"] #text {
+  fill: black; }
 
 </style>
 </template>
@@ -4336,14 +4329,14 @@ article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
-article p, article ::content p {
+article p:not([class]):not([is]), article ::content p:not([class]):not([is]) {
   box-sizing: content-box;
   padding-left: 1.527696rem;
   padding-right: 1.527696rem;
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto; }
-  article p:after, article ::content p:after {
+  article p:not([class]):not([is]):after, article ::content p:not([class]):not([is]):after {
     content: " ";
     display: block;
     clear: both; }
@@ -5583,14 +5576,14 @@ article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
-article p, article ::content p {
+article p:not([class]):not([is]), article ::content p:not([class]):not([is]) {
   box-sizing: content-box;
   padding-left: 1.527696rem;
   padding-right: 1.527696rem;
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto; }
-  article p:after, article ::content p:after {
+  article p:not([class]):not([is]):after, article ::content p:not([class]):not([is]):after {
     content: " ";
     display: block;
     clear: both; }
@@ -6716,10 +6709,10 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
  *
  * @return {List | Null}
  */
-#header hgroup h1, article h1, article ::content h1 {
+#descTitle, article h1, article ::content h1 {
   line-height: 1.236; }
 
-#header hgroup h1 {
+#descTitle {
   letter-spacing: 0;
   text-transform: none;
   font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
@@ -6758,14 +6751,14 @@ article h1 a:not([class]):not([is]), article ::content h1 a:not([class]):not([is
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(15, 114, 87, 0.1), 0 0.3em 0.4em rgba(15, 114, 87, 0.2); }
 
-article p, article ::content p {
+article p:not([class]):not([is]), article ::content p:not([class]):not([is]) {
   box-sizing: content-box;
   padding-left: 1.527696rem;
   padding-right: 1.527696rem;
   max-width: 34.583088rem;
   margin-left: auto;
   margin-right: auto; }
-  article p:after, article ::content p:after {
+  article p:not([class]):not([is]):after, article ::content p:not([class]):not([is]):after {
     content: " ";
     display: block;
     clear: both; }
@@ -6969,53 +6962,72 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
     color: #fff;
     text-shadow: 0 0.0625em 0.0625em rgba(0, 2, 3, 0.1), 0 0.3em 0.4em rgba(0, 2, 3, 0.2); }
 
-:host {
-  padding-top: 0 !important; }
-  :host > * {
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d; }
-
-#header {
-  background-color: var(--work-page-bg);
-  max-height: 90vh;
+:host > * {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d; }
-  #header hgroup {
-    color: var(--work-page-fg);
-    padding-top: calc((7vh + 4.406860421rem + 7vh)); }
-    #header hgroup h1 + * {
-      margin-top: 0.763848rem; }
-    #header hgroup h2 {
-      opacity: 0.6; }
-  @media screen and (min-width: 780px) {
-    #header figure {
-      width: 65.699252714%;
-      float: right;
-      margin-right: 0;
-      -webkit-transform: translate3d(0, 5vh, 10rem) scale(0.5833333333);
-      transform: translate3d(0, 5vh, 10rem) scale(0.5833333333); }
-      #header * + figure {
-        margin-top: 0; }
-      #header figure:first-child + * {
-        margin-top: 0; }
-      #header figure img {
-        box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-height: 100vh; } }
 
-.wrap {
-  box-sizing: content-box;
-  padding-left: 1.527696rem;
-  padding-right: 1.527696rem;
-  max-width: 52.63848rem;
+#header {
+  margin-top: -0.8414393684rem;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+  #headerWrap {
+    position: relative;
+    box-sizing: content-box;
+    padding-left: 1.527696rem;
+    padding-right: 1.527696rem;
+    max-width: 52.63848rem;
+    margin-left: auto;
+    margin-right: auto; }
+    #headerWrap:after {
+      content: " ";
+      display: block;
+      clear: both; }
+
+#bg {
+  background: var(--work-page-base);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1; }
+
+@media screen and (min-width: 780px) {
+  #desc {
+    padding-bottom: 7vh;
+    padding-top: 7vh;
+    width: 48.548879071%;
+    float: right;
+    margin-right: 0; } }
+
+#descTitle {
+  color: var(--work-page-primary); }
+
+#descBody {
+  color: var(--work-page-secondary);
+  font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
+  font-size: 1.236rem;
+  font-weight: 400; }
+
+@media screen and (min-width: 780px) {
+  #hero {
+    position: absolute;
+    -webkit-transform: translate3d(12%, -5vh, 10rem) scale(0.5833333333);
+    transform: translate3d(12%, -5vh, 10rem) scale(0.5833333333);
+    width: 48.548879071%;
+    float: left;
+    margin-right: 2.902241858%; }
+    * + #hero {
+      margin-top: 0; }
+    #hero:first-child + * {
+      margin-top: 0; } }
+
+#heroImg {
+  box-shadow: 0 2.4rem 5rem var(--work-page-shadow), 0 1.66rem 1.4rem var(--work-page-shadow);
+  display: block;
   margin-left: auto;
-  margin-right: auto; }
-  .wrap:after {
-    content: " ";
-    display: block;
-    clear: both; }
+  margin-right: auto;
+  max-width: 100%; }
 
 </style>
 </template>
@@ -7026,16 +7038,35 @@ article a:not([class]):not([is]), article ::content a:not([class]):not([is]) {
 
     <article>
       <header id="header">
-        <div class="wrap">
-          <figure>
-            <div id="img">
-              <img id="hero" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
-            </div>
+        <div id="bg"></div>
+        <div id="headerWrap">
+          <figure id="hero">
+            <img id="heroImg" srcset="[[hero]] 1x, [[hero2x]] 2x" alt="[[pageTitle]]">
           </figure>
-          <hgroup>
-            <h1>[[workTitle]]</h1>
-            <h2>[[blurb]]</h2>
-          </hgroup>
+          <div id="desc" class="invert">
+            <h1 id="descTitle">[[workTitle]]</h1>
+            <p id="descBody">[[description]]</p>
+            <template is="dom-if" if="[[hasLink]]">
+              <a is="barvian-button" href="[[url]]" invert="">
+                <!--?xml version="1.0" encoding="utf-8"?-->
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+                  <path d="M10,0.4c-5.295,0-9.601,4.307-9.601,9.6c0,5.293,4.306,9.6,9.601,9.6c5.293,0,9.6-4.307,9.6-9.6
+                    C19.6,4.707,15.293,0.4,10,0.4z M18.188,10c0,1.873-0.636,3.6-1.696,4.98c-0.3-0.234-0.619-0.867-0.319-1.523
+                    c0.303-0.66,0.382-2.188,0.312-2.783c-0.066-0.594-0.375-2.025-1.214-2.039c-0.838-0.012-1.413-0.289-1.911-1.283
+                    c-1.033-2.068,1.939-2.465,0.906-3.609c-0.289-0.322-1.783,1.322-2.002-0.869C12.25,2.717,12.399,2.482,12.6,2.238
+                    C15.844,3.328,18.188,6.395,18.188,10z M8.875,1.893C8.679,2.275,8.162,2.43,7.848,2.717C7.164,3.336,6.87,3.25,6.502,3.844
+                    C6.131,4.438,4.935,5.293,4.935,5.723s0.604,0.936,0.906,0.838c0.302-0.1,1.099-0.094,1.567,0.07
+                    c0.469,0.166,3.914,0.332,2.816,3.244c-0.348,0.926-1.873,0.77-2.279,2.303c-0.061,0.225-0.272,1.186-0.285,1.5
+                    c-0.025,0.486,0.344,2.318-0.125,2.318c-0.471,0-1.738-1.639-1.738-1.936c0-0.297-0.328-1.338-0.328-2.23
+                    c0-0.891-1.518-0.877-1.518-2.062c0-1.068,0.823-1.6,0.638-2.113c-0.181-0.51-1.627-0.527-2.23-0.59
+                    C3.412,4.334,5.889,2.307,8.875,1.893z M7.424,17.77c0.492-0.26,0.542-0.596,0.988-0.613c0.51-0.023,0.925-0.199,1.5-0.326
+                    c0.51-0.111,1.423-0.629,2.226-0.695c0.678-0.055,2.015,0.035,2.375,0.689c-1.295,0.861-2.848,1.363-4.514,1.363
+                    C9.1,18.188,8.234,18.039,7.424,17.77z"></path>
+                </svg>
+                Download my résumé
+              </a>
+            </template>
+          </div>
         </div>
       </header>
       <content></content>
@@ -8958,23 +8989,23 @@ span {
   transition: color 100ms linear, background 100ms linear, -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: color 100ms linear, background 100ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
   transition: color 100ms linear, background 100ms linear, transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55), -webkit-transform 250ms cubic-bezier(0.175, 0.885, 0.365, 1.55);
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0); }
+  -webkit-transform: translate3d(0, 0, 0.15rem) scale(0.99375);
+  transform: translate3d(0, 0, 0.15rem) scale(0.99375); }
   :host > * + * {
     margin-top: 0; }
 
 :host(:focus), :host(:hover) {
   background-color: black;
   color: #fff;
-  -webkit-transform: translateZ(0.5rem) scale(1.015);
-  transform: translateZ(0.5rem) scale(1.015); }
+  -webkit-transform: translate3d(0, 0, 0.5rem) scale(1.1260416667);
+  transform: translate3d(0, 0, 0.5rem) scale(1.1260416667); }
   :host(:focus) span ::content > svg, :host(:hover) span ::content > svg {
     border-right-color: #bfbfbf;
     fill: #fff; }
 
 :host(:active) {
-  -webkit-transform: translateZ(0.075rem) scale(0.975);
-  transform: translateZ(0.075rem) scale(0.975); }
+  -webkit-transform: translate3d(0, 0, 0.075rem) scale(0.94703125);
+  transform: translate3d(0, 0, 0.075rem) scale(0.94703125); }
 
 span {
   -webkit-box-align: center;
@@ -9001,6 +9032,9 @@ span {
     align-self: stretch;
     padding-right: 0.8em;
     border-right: 1.5px dotted #414353; }
+
+.invert :host {
+  border-color: #fff; }
 
 </style>
 </template>
@@ -10939,7 +10973,7 @@ span {
     padding: var(--work-card-spacing, 1.527696rem); }
 
 :host(.invert) header h1 {
-  color: var(--work-card-bg); }
+  color: var(--work-card-base); }
 
 :host([href]) {
   -webkit-transform-style: preserve-3d;
@@ -10963,16 +10997,19 @@ span {
     -webkit-transform: translateZ(0.75rem);
     transform: translateZ(0.75rem); }
     :host([href]):hover #bg {
-      background-color: var(--work-card-bg); }
+      background-color: var(--work-card-base); }
     :host([href]):hover figure img {
       box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow);
       -webkit-transform: translate3d(0, -3%, -2rem);
       transform: translate3d(0, -3%, -2rem); }
+    :host([href]):hover header h2 {
+      color: var(--work-card-secondary);
+      opacity: 1; }
   :host([href]):active, :host([href])[pressed] {
     -webkit-transform: translateZ(-0.4rem);
     transform: translateZ(-0.4rem); }
     :host([href]):active #bg, :host([href])[pressed] #bg {
-      background-color: var(--work-card-bg); }
+      background-color: var(--work-card-base); }
     :host([href]):active figure img, :host([href])[pressed] figure img {
       box-shadow: 0 0.4rem 1.333rem -0.25rem var(--work-card-shadow); }
   :host([href]) figure {
@@ -10982,18 +11019,18 @@ span {
       -webkit-transform: translateZ(0);
       transform: translateZ(0); }
 
-:host([href].invert):hover header h1, :host([href].invert):hover header h2 {
-  color: var(--work-card-fg); }
+:host([href].invert):hover header h1 {
+  color: var(--work-card-primary); }
 
-:host([href].invert):active header h1, :host([href].invert):active header h2, :host([href].invert)[pressed] header h1, :host([href].invert)[pressed] header h2 {
-  color: var(--work-card-fg); }
+:host([href].invert):active header h1, :host([href].invert)[pressed] header h1 {
+  color: var(--work-card-primary); }
 
 header {
   padding: calc(var(--work-card-spacing, 1.527696rem) / 2);
   margin-bottom: 7.5%;
   text-align: center; }
   header h1 {
-    color: var(--work-card-fg);
+    color: var(--work-card-primary);
     line-height: 1.236;
     font-family: "soleto", "San Francisco Display", "Avenir", sans-serif;
     font-size: 1.236rem;

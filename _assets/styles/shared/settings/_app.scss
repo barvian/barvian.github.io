@@ -7,6 +7,7 @@ $nav-padding-bottom: $nav-padding-top;
 $logo-bg: $invert;
 $logo-fg: $bg;
 $logo-size: size(giant);
+$logo-size--modal: size(huge);
 
 $page-padding-top: unquote("(#{$nav-padding-top} + #{$logo-size} + #{$nav-padding-bottom})");
 $page-padding-bottom: unquote("(#{$nav-padding-top} + #{$logo-size})");

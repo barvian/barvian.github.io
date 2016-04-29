@@ -15,15 +15,16 @@
   padding-left: 0.9em;
   padding-right: 0.9em;
   transition: color 100ms linear, background 100ms linear, transform 250ms $ease-out-back;
-  transform: translateZ(0);
 
   @include compact;
+  @include level(0.15rem);
 }
 
   :host(:focus), :host(:hover) {
     background-color: $invert;
     color: $bg;
-    transform: translateZ(0.5rem) scale(1.015);
+
+    @include level(0.5rem, $scale: 1.15);
 
     span ::content > svg {
       border-right-color: darken($bg, 25%);
@@ -32,7 +33,7 @@
   }
 
   :host(:active) {
-    transform: translateZ(0.075rem) scale(0.975);
+    @include level(0.075rem, $scale: 0.95);
   }
 
 // #left, #right {
@@ -66,4 +67,11 @@ span {
     padding-right: 0.8em;
     border-right: 1.5px dotted $base;
   }
+}
+
+// Invert
+// ------
+
+:host([invert]) {
+  border-color: $bg;
 }

@@ -7,5 +7,9 @@ Polymer({
 
   behaviors: [
     Polymer.IronControlState
-  ]
+  ],
+
+  properties: {
+    invert: Boolean
+  }
 });

@@ -43,12 +43,12 @@ Polymer({
 
   _onClick(event) {
     let work = event.target;
-    while (work.parentNode !== this.$.works) {
+    while (work.is !== 'work-card') {
       work = work.parentNode;
     }
 
     // trick neon-page-behavior so it defaults to these elements & config
-    this._neonPageBehaviorInitialized = false;
+    this._set_neonPageBehaviorInitialized(false);
     // configure page animation
     this.sharedElements = {
       hero: work.$.image,

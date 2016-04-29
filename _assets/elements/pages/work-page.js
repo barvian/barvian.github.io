@@ -6,32 +6,41 @@ Polymer({
 
   behaviors: [
     Barvian.StyleReflectionBehavior,
-    Barvian.InvertibleBehavior('bg'),
+    Barvian.InvertibleBehavior('base'),
     Barvian.PageBehavior,
     Polymer.NeonSharedElementAnimatableBehavior
   ],
 
   properties: {
-    bg: {reflectToStyle: true},
-    fg: {reflectToStyle: true},
+    base: {reflectToStyle: true},
+    primary: {reflectToStyle: true},
+    secondary: {reflectToStyle: true},
     shadow: {reflectToStyle: true},
 
     workTitle: String,
-    blurb: String,
+    description: String,
+    type: String,
+    url: String,
+
     hero: String,
     hero2x: String,
 
     navStyle: {
       type: String,
-      computed: '_computeNavStyle(bg, shadow)'
+      computed: '_computeNavStyle(base, shadow)'
+    },
+
+    hasLink: {
+      type: Boolean,
+      computed: '_computeHasLink(type, url)'
     },
 
     sharedElements: {
       type: Object,
       value() {
         return {
-          hero: this.$.hero,
-          bg: this.$.header
+          hero: this.$.heroImg,
+          bg: this.$.bg
         }
       }
     },
@@ -66,8 +75,8 @@ Polymer({
     }
   },
 
-  _computeNavStyle(bg, shadow) {
-    const rgb = bg.match(/\d+/g).map(Number);
+  _computeNavStyle(base, shadow) {
+    const rgb = base.match(/\d+/g).map(Number);
     const yiq = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
 
     return {
@@ -75,5 +84,9 @@ Polymer({
       shadow,
       ...(yiq < 175 ? {invert: true} : {})
     };
+  },
+
+  _computeHasLink(type, url) {
+    return type === 'web' && url;
   }
 });

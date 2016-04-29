@@ -16,7 +16,7 @@ order: 1
 {% for work in works %}
 <work-card class="work" href="{{ work.url }}"
   work-title='{{ work.title }}' blurb='{{ work.blurb }}'
-  bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
+  base="{{ work.base }}" primary="{{ work.primary }}" secondary="{{ work.secondary }}" shadow="{{ work.shadow }}"
   thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"
   orientation="{{ work.orientation }}"></work-card>
 {% endfor %}

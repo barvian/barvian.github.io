@@ -26,7 +26,7 @@
     }
   }
 
-  @include sel(p) {
+  @include sel("p:not([class]):not([is])") {
     @include layout($line center);
   }
 
