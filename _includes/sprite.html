@@ -1,0 +1,9 @@
+{% if include.name %}
+  {% if site.environment == 'production' %}
+    <svg>
+      <use xlink:href="#{{ include.name }}"></use>
+    </svg>
+  {% else %}
+    {% include src/sprites/{{include.name}}.svg %}
+  {% endif %}
+{% endif %}

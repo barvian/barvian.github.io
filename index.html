@@ -1,19 +1,7 @@
 ---
-title: Home
-order: 1
+title: Works
 ---
 
-<h1 is="floating-greeting">
-  <a href="/about/">
-    I'm a digital product designer who delights in creating thoughtful, selfless interfaces and codebases.
-  </a>
-</h1>
-
-{% assign works = site.works | sort: 'order' %}
-{% for work in works %}
-<work-card class="work"
-  work-title='{{ work.title }}' blurb='{{ work.blurb }}'
-  bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
-  thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"
-  orientation="{{ work.orientation }}"></work-card>
-{% endfor %}
+Hello world
+{% include _includes/sprite.html name="oval" %}
+<mb-button>look ma</mb-button>
