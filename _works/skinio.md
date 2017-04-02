@@ -3,6 +3,7 @@ title: SkinIO
 ---
 
 # Redesigning SkinIO
+
 I started at SkinIO in July of 2017, back when it was called ECD Network (short for Early Cancer Detection). I was the first full-time designer the company brought onboard, having outsourced it all before me. My first task was to help revision and redesign their existing iOS app; within a week and a half we redesigned nearly every screen in the app, and many of those designs haven’t changed over the last 9 months.
 
 

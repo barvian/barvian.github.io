@@ -6,23 +6,23 @@
   "scripts": {
     "bower": "bower install",
     "postinstall": "npm run bower",
-    "clean": "rm -r dist; rm -r _site",
+    "clean": "rm -rf dist; rm -rf _site",
     "prebundle": "mkdir -p dist/elements",
     "bundle": "polymer-bundler src/elements/index.html --out-html dist/elements/index.html",
-    "bundle:watch": "watch \"npm run bundle\" src/elements",
+    "bundle:watch": "onchange 'src/elements/**/*.html' -- npm run bundle",
     "sprites": "svgo -q -f src/sprites -o dist/sprites && svg-sprite-generate -d dist/sprites -o dist/sprites.svg",
-    "sprites:watch": "watch \"npm run sprites\" src/sprites",
+    "sprites:watch": "onchange 'src/sprites/*.svg' -- npm run sprites",
     "assets": "npm run sprites && npm run bundle",
     "assets:watch": "npm run bundle:watch & npm run sprites:watch",
     "prebuild": "npm run assets",
     "build": "jekyll build",
     "server": "jekyll serve --incremental --config _config.yml,_config-dev.yml",
     "server:prod": "jekyll serve --incremental",
-    "start": "concurrently \"npm run lint:watch\" \"npm run server\"",
+    "start": "concurrently 'npm run lint:watch' 'npm run server'",
     "prestart:prod": "npm run assets",
-    "start:prod": "concurrently \"npm run assets:watch\" \"npm run lint:watch\" \"npm run server:prod\"",
+    "start:prod": "concurrently 'npm run assets:watch' 'npm run lint:watch' 'npm run server:prod'",
     "lint": "eslint src --ext js,html --ignore-path .gitignore || true",
-    "lint:watch": "watch \"npm run lint\" src",
+    "lint:watch": "onchange 'src/**/*.{js,html}' -- npm run lint src",
     "build:add": "git add dist"
   },
   "precommit": [
@@ -38,8 +38,8 @@
     "eslint": "^3.12.0",
     "eslint-config-google": "^0.7.1",
     "eslint-plugin-html": "^1.7.0",
+    "onchange": "^3.2.1",
     "polymer-bundler": "^2.0.0-pre.6",
-    "pre-commit": "^1.2.2",
-    "watch": "^1.0.2"
+    "pre-commit": "^1.2.2"
   }
 }
