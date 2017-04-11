@@ -3,8 +3,9 @@
 
 name: Maxwell Barvian
 title: Digital product designer
+location: Chicago, IL
+
 url: http://barvian.me
-baseurl: ''
 keywords:
   - designer
   - web designer
@@ -15,11 +16,15 @@ keywords:
 
 email: max@barvian.me
 social:
-  dribbble: https://dribbble.com/barvian
-  github: https://github.com/barvian
-  linkedin: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
-
-location: Chicago, IL
+  -
+    name: Dribbble
+    url: https://dribbble.com/barvian
+  -
+    name: Github
+    url: https://github.com/barvian
+  -
+    name: LinkedIn
+    url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
 
 
 # Collections

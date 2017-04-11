@@ -1,0 +1,20 @@
+<header class="site-header">
+  <a class="site-header__logo" href="/">
+    {{ site.name }}
+  </a>
+  <nav role="navigation" class="site-header__nav">
+    {% assign pages = site.pages | sort: 'order' %}
+    {% for p in pages %}
+    <a href="{{p.url}}"{% if p.url == page.url %} class="is-active"{% endif %}>
+      {{p.title}}
+    </a>
+    {% endfor %}
+  </nav>
+  <nav class="site-header__social">
+    {% for network in site.social %}
+    <a href="{{network.url}}">
+      {{network.name}}
+    </a>
+    {% endfor %}
+  </nav>
+</header>
