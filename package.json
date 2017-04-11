@@ -6,40 +6,30 @@
   "scripts": {
     "bower": "bower install",
     "postinstall": "npm run bower",
-    "clean": "rm -rf dist; rm -rf _site",
+    "clean": "rm -rf _includes/sprites.svg; rm -rf _site",
     "prebundle": "mkdir -p dist/elements",
-    "bundle": "polymer-bundler src/elements/index.html --out-html dist/elements/index.html",
-    "bundle:watch": "onchange 'src/elements/**/*.html' -- npm run bundle",
-    "sprites": "svgo -q -f src/sprites -o dist/sprites && svg-sprite-generate -d dist/sprites -o dist/sprites.svg",
-    "sprites:watch": "onchange 'src/sprites/*.svg' -- npm run sprites",
-    "assets": "npm run sprites && npm run bundle",
-    "assets:watch": "npm run bundle:watch & npm run sprites:watch",
+    "sprites": "svgo -q -f _sprites -o _sprites && svg-sprite-generate -d _sprites -o _includes/sprites.svg",
+    "sprites:watch": "onchange '_sprites/*.svg' -- npm run sprites",
+    "sprites:add": "git add _includes/sprites.svg",
+    "assets": "npm run sprites",
+    "assets:watch": "npm run sprites:watch",
     "prebuild": "npm run assets",
     "build": "jekyll build",
-    "server": "jekyll serve --incremental --config _config.yml,_config-dev.yml",
-    "server:prod": "jekyll serve --incremental",
-    "start": "concurrently 'npm run lint:watch' 'npm run server'",
-    "prestart:prod": "npm run assets",
-    "start:prod": "concurrently 'npm run assets:watch' 'npm run lint:watch' 'npm run server:prod'",
-    "lint": "eslint src --ext js,html --ignore-path .gitignore || true",
-    "lint:watch": "onchange 'src/**/*.{js,html}' -- npm run lint src",
-    "build:add": "git add dist"
+    "prestart": "npm run assets",
+    "start": "concurrently 'npm run assets:watch' 'jekyll serve --incremental'"
   },
   "precommit": [
     "clean",
     "bower",
-    "lint",
-    "build",
-    "build:add"
+    "assets",
+    "sprites:add"
   ],
   "devDependencies": {
     "bower": "^1.8.0",
     "concurrently": "^3.4.0",
-    "eslint": "^3.12.0",
-    "eslint-config-google": "^0.7.1",
-    "eslint-plugin-html": "^1.7.0",
     "onchange": "^3.2.1",
-    "polymer-bundler": "^2.0.0-pre.6",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^0.7.2"
   }
 }

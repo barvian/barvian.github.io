@@ -1,5 +1,3 @@
-environment: production
-
 # Barvian.me
 # ==========
 
@@ -22,12 +20,6 @@ social:
   linkedin: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
 
 location: Chicago, IL
-
-
-# Sources
-# -------
-
-includes_dir: .
 
 
 # Collections

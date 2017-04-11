@@ -1,6 +1,7 @@
 # barvian.me
 
-My personal website.  Safe-mode Jekyll with Polymer.
+My personal website.  Safe-mode Jekyll with precompiled sprites. Nothing fancy
+here, just something that's performant and easy for me to iterate. 🙂
 
 ## Developing locally
 
