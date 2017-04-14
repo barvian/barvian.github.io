@@ -1,0 +1,18 @@
+// Colors
+// ======
+
+@function hsb($h, $s, $b) {
+  @if $b == 0 {
+    @return hsl(0, 0, 0);
+  } @else if $b == 100 {
+    @return hsl(0, 0, 100);
+  } @else {
+    $l-hsl: ($b/2) * (2 - ($s/100));
+    $s-hsl: ($b * $s) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2);
+    @return hsl($h, $s-hsl, $l-hsl);
+  }
+}
+
+@function hsba($h, $s, $b, $a) {
+  @return rgba(hsb($h, $s, $b), $a);
+}

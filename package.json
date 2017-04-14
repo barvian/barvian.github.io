@@ -5,8 +5,8 @@
   "private": "true",
   "scripts": {
     "bower": "bower install",
+    "bower:prune": "bower prune",
     "postinstall": "npm run bower",
-    "clean": "rm -rf _includes/sprites.svg; rm -rf _site",
     "presprites": "mkdir -p assets/_sprites/_compressed",
     "sprites": "svgo -q -f assets/_sprites -o assets/_sprites/_compressed && svg-sprite-generate -d assets/_sprites/_compressed -o _includes/sprites.svg",
     "postsprites": "rm -rf assets/_sprites/_compressed",
@@ -20,7 +20,7 @@
     "start": "concurrently 'npm run assets:watch' 'jekyll serve --incremental'"
   },
   "precommit": [
-    "clean",
+    "bower:prune",
     "bower",
     "assets",
     "sprites:add"

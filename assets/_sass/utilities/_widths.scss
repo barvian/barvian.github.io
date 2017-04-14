@@ -1,0 +1,21 @@
+// Widths
+// ======
+
+@mixin widths($max, $prefix: '', $postfix: '') {
+  @for $denom from 1 through $max {
+    @for $num from 1 through $denom {
+      .#{$prefix}w#{$num}\/#{$denom}#{$postfix} {
+        width: percentage($num/$denom) !important;
+
+        &.layout__unit { @include leading(0); }
+      }
+    }
+  }
+}
+
+@include widths($columns);
+@each $name, $query in $breakpoints {
+  @include query($name) {
+    @include widths($columns, $postfix: '\\@'+$name);
+  }
+}

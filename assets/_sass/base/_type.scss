@@ -1,0 +1,19 @@
+// Type
+// ====
+
+// Base
+// ----
+
+html {
+  color: $base;
+  line-height: strip-units(ms(3));
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: none;
+  // @include font$serif, $size: percentage(13/16), $weight: normal);
+}
+
+// Headings
+// --------
