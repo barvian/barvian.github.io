@@ -18,12 +18,15 @@ email: max@barvian.me
 social:
   -
     name: Dribbble
+    sprite: dribbble
     url: https://dribbble.com/barvian
   -
     name: Github
+    sprite: github
     url: https://github.com/barvian
   -
     name: LinkedIn
+    sprite: linkedin
     url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
 
 
@@ -55,6 +58,9 @@ defaults:
     values:
       layout: 'default'
 
+sass:
+  sass_dir: assets/_sass
+  style: compressed
 
 # Writing
 # -------
