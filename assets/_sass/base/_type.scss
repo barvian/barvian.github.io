@@ -4,16 +4,28 @@
 // Base
 // ----
 
-html {
-  color: $base;
-  line-height: strip-units(ms(3));
+:root {
+  color: $black;
+  line-height: map-get($modularscale, ratio);
   text-rendering: optimizeLegibility;
+  font-family: $serif;
+  font-size: ms(0);
+  font-weight: 500;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-size-adjust: none;
-  // @include font$serif, $size: percentage(13/16), $weight: normal);
 }
 
 // Headings
 // --------
+
+// Misc
+// ----
+
+.lede {
+  font-size: ms(2);
+  font-family: $sans;
+  font-weight: 600;
+  line-height: 1.333;
+}

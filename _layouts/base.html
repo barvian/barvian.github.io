@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" {% if page.class %} class="{{page.class}}-page{% endif %}">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,10 +12,12 @@
   {% include author.html page=page %}
   <link rel="canonical" href="{{ page.url | prepend: site.url }}" />
 
+  {% include typekit.html %}
   <link rel="stylesheet" href="/assets/css/barvian.css" />
 
-  <div style="display:none">{% include sprites.svg %}</div>
+  <div class="sprites hidden">{% include sprites.svg %}</div>
 
-  {% include components/site-header.html %}
-  {{ content }}
+  <div class="page">
+    {{ content }}
+  </div>
 </html>

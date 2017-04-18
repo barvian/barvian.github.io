@@ -1,0 +1,48 @@
+// Icons
+// =====
+
+.icon {
+  display: inline-block;
+  height: 1em;
+}
+
+// Sprites
+// -------
+
+/**
+ * Style a sprite's contents directly.
+ */
+@mixin sprite($name: null) {
+  @at-root {
+    .sprites > svg {
+      @if $name {
+        ##{$name} {
+          @content;
+        }
+      } @else { // style all sprites
+        @content;
+      }
+    }
+  }
+}
+
+@include sprite {
+  path {
+    fill: currentColor;
+  }
+}
+
+.dribbble-icon {
+  color: #EA4C89;
+  width: 1em;
+}
+
+.github-icon {
+  color: #4078C0;
+  width: 19/18 * 1em;
+}
+
+.linkedin-icon {
+  color: #0077B5;
+  width: 19/18 * 1em;
+}

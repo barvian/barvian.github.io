@@ -7,7 +7,12 @@
       .#{$prefix}w#{$num}\/#{$denom}#{$postfix} {
         width: percentage($num/$denom) !important;
 
-        &.layout__unit { @include leading(0); }
+        &.col {
+          @include leading(0);
+
+          flex: 0 0 percentage($num/$denom);
+          max-width: percentage($num/$denom) !important;
+        }
       }
     }
   }

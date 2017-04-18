@@ -1,19 +1,27 @@
 <header class="site-header">
   <a class="site-header__logo" href="/">
-    {{ site.name }}
+    {{ site.name }},
+    <span class="site-header__role">
+      {{ site.role }}
+    </span>
   </a>
+
   <nav role="navigation" class="site-header__nav">
     {% assign pages = site.pages | sort: 'order' %}
     {% for p in pages %}
-    <a href="{{p.url}}"{% if p.url == page.url %} class="is-active"{% endif %}>
-      {{p.title}}
-    </a>
+      {% unless p.url contains "assets/" %}
+        <a href="{{p.url}}"{% if p.url == page.url %} class="is-active"{% endif %}><!--
+        -->{{p.title}}<!--
+        --></a>
+      {% endunless %}
     {% endfor %}
+    <a href="mailto:{{site.email}}">Contact</a>
   </nav>
-  <nav class="site-header__social">
-    {% for network in site.social %}
-    <a href="{{network.url}}">
-      {{network.name}}
+
+  <nav class="site-header__external">
+    {% for network in site.external %}
+    <a href="{{network.url}}" target="_blank" rel="external">
+      {% include sprite.html name=network.sprite %}
     </a>
     {% endfor %}
   </nav>

@@ -3,6 +3,7 @@
 
 name: Maxwell Barvian
 title: Digital product designer
+role: Designer
 location: Chicago, IL
 
 url: http://barvian.me
@@ -15,7 +16,7 @@ keywords:
   - web design
 
 email: max@barvian.me
-social:
+external:
   -
     name: Dribbble
     sprite: dribbble
@@ -28,6 +29,9 @@ social:
     name: LinkedIn
     sprite: linkedin
     url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
+
+social:
+  letterboxd: https://letterboxd.com/mbarvian/
 
 
 # Collections
@@ -50,13 +54,15 @@ exclude:
   - bower.json
   - README.md
 
+destination: _build
+
 permalink: pretty
 defaults:
   -
     scope:
       path: '' # all files
     values:
-      layout: 'default'
+      layout: 'base'
 
 sass:
   sass_dir: assets/_sass

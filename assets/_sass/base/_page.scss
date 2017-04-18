@@ -1,0 +1,37 @@
+// Page
+// ====
+
+:root {
+  background-color: $bg;
+}
+
+:root, body {
+  height: 100%;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @include surface;
+}
+
+.page {
+  min-height: 100%;
+  padding-top: unquote("calc(#{ms(2)} + 2vh)");
+}
+
+// Pages
+// -----
+
+.home-page {
+  &:root {
+    // I will never understand why this needs to be flipped
+    background-image: linear-gradient(to top, $bg 50%, #fff 50%);
+  }
+
+  body {
+    background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
+  }
+}

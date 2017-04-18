@@ -5,12 +5,15 @@
 // -----
 
 $modularscale: (
-  base: 1rem,
-  ratio: 1.618
+  base: 18px,
+  ratio: $fifth,
+  tight: (
+    ratio: $major-second
+  )
 );
 
 // Stacks
 // ------
 
-$sans: helvetica, sans-serif;
-$serif: georgia, serif;
+$sans: "soleil", "Futura", "Helvetica", sans-serif;
+$serif: "ff-meta-serif-web-pro", "Georgia", serif;

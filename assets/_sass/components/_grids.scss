@@ -1,0 +1,23 @@
+// Grids
+// =====
+//
+// Not layout related.
+//
+
+.grid {
+  align-items: stretch;
+  display: flex;
+
+  > *, &__col > * {
+    flex: 1;
+  }
+
+  @include horizontal;
+
+  &__col {
+    display: flex;
+    flex-flow: column;
+
+    @include vertical;
+  }
+}
