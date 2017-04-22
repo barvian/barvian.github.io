@@ -6,8 +6,7 @@
     @include unstyled-link;
 
     color: $black;
-    // font-family: $sans;
-    font-size: ms(1, $thread: tight);
+    font-size: ms(1);
     font-weight: 700;
   }
 
@@ -17,7 +16,7 @@
   }
 
   &__nav {
-    @include horizontal(ms(1));
+    @include horizontal(ms(3));
 
     > a {
       @include unstyled-link;

@@ -6,7 +6,7 @@
 
 :root {
   color: $black;
-  line-height: map-get($modularscale, ratio);
+  line-height: ms(3)/ms(0);
   text-rendering: optimizeLegibility;
   font-family: $serif;
   font-size: ms(0);
@@ -24,8 +24,8 @@
 // ----
 
 .lede {
-  font-size: ms(2);
+  font-size: ms(7);
   font-family: $sans;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.333;
 }
