@@ -1,0 +1,14 @@
+// Lists
+// =====
+
+@mixin inline-list($space: null) {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  @include horizontal($space);
+
+  > * {
+    display: inline-block;
+  }
+}

@@ -16,7 +16,7 @@
   }
 
   &__nav {
-    @include horizontal(ms(3));
+    @include inline-list(ms(3));
 
     > a {
       @include unstyled-link;

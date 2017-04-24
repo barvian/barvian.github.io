@@ -1,5 +1,10 @@
 ---
 title: SkinIO
+description: Redesigning an app to save lives.
+teaser: teaser.png
+teaser2x: teaser@2x.png
+tags:
+  - iOS
 ---
 
 # Redesigning SkinIO

@@ -19,6 +19,7 @@ body {
 
 .page {
   min-height: 100%;
+  padding-bottom: unquote("calc(#{ms(7)} + 2vh)");
   padding-top: unquote("calc(#{ms(7)} + 2vh)");
 }
 

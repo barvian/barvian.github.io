@@ -1,0 +1,18 @@
+// Button
+// ======
+
+.button {
+  @include unstyled-link;
+
+  appearance: none;
+  background: none;
+  border: 1px solid #000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $sans;
+  font-size: ms(0);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  padding: ms(1) ms(3);
+  text-transform: uppercase;
+}

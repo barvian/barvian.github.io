@@ -8,13 +8,15 @@
   align-items: stretch;
   display: flex;
 
-  > *, &__col > * {
+  > *, &__col > *, &__item {
+    display: flex;
     flex: 1;
   }
 
   @include horizontal;
 
   &__col {
+    align-items: stretch;
     display: flex;
     flex-flow: column;
 

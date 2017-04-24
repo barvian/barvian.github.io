@@ -14,3 +14,8 @@ figure, button, input, optgroup, select, textarea {
 body {
   @include leading(0);
 }
+
+.landmark {
+  @include leading(scalc("4vh + #{ms(1)}"));
+  @include trailing(scalc("4vh + #{ms(1)}"));
+}

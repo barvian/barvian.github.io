@@ -5,3 +5,7 @@
   color: currentColor;
   text-decoration: none;
 }
+
+a.is-unstyled {
+  @include unstyled-link;
+}

@@ -15,24 +15,24 @@ class: home
     <div class="col w5/6">
       <p class="lede">
         I’m a dedicated problem solver with a passion for learning
-        and iteration. I strive to make software that's purposeful and
-        accessible to human beings ❤️.
+        and iteration. I strive to build software that makes people's
+        days just a little brighter. ☀️
       </p>
     </div>
   </div>
 </div>
 
-<div class="container">
+<div class="container landmark">
   <div class="row">
     <div class="col">
 
       <div class="grid grid--2">
         <div class="grid__col">
-          <div style="background-color: lightblue;">hi</div>
-          <div style="background-color: lightblue;">there</div>
+          {% include components/work.html name="Doing" class="grid__item" %}
+          {% include components/work.html name="Clear" class="grid__item" %}
         </div>
         <div class="grid__col">
-          <div style="background-color: lightblue;">well hello</div>
+          {% include components/work.html name="SkinIO" class="grid__item" %}
         </div>
       </div>
 
@@ -40,6 +40,14 @@ class: home
   </div>
 </div>
 
-I appreciate you checking out my tiny website.
-If you'd like to get in touch, I'd love to chat.
-<a href="mailto:{{site.email}}">Send me a message</a>
+<footer class="container">
+  <div class="row">
+    <div class="col cta">
+      <p>
+        I appreciate you checking out my tiny website.<br/>
+        If you'd like to get in touch, I'd love to chat.
+      </p>
+      <a class="button" href="mailto:{{site.email}}">Send me a message</a>
+    </div>
+  </div>
+</footer>

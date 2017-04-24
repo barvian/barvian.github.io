@@ -1,0 +1,140 @@
+// Work card
+// =========
+
+.work {
+  display: flex;
+  flex-flow: column;
+  padding: ms(7);
+  position: relative;
+
+  // Shadow
+  &::before {
+    box-shadow: 0 0.16em 1.5em -0.625em currentColor;
+    content: '';
+    height: 100%;
+    left: 0;
+    opacity: 0.35;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  // Elements
+  // --------
+
+  &__title {
+    color: #fff;
+    font-family: $sans;
+    font-size: ms(6);
+    font-weight: 700;
+  }
+
+  &__desc {
+    @include leading(ms(1));
+
+    color: #fff;
+    flex: 1;
+    font-size: ms(2);
+  }
+
+  &__tags {
+    @include leading(ms(-10));
+    @include inline-list(0);
+
+    > * {
+      color: #fff;
+      font-family: $sans;
+      font-size: ms(1);
+      letter-spacing: 0.015em;
+      text-transform: uppercase;
+
+      + *::before {
+        content: ',';
+        margin-right: 0.333em;
+      }
+    }
+  }
+
+  // Modifiers
+  // ---------
+
+  &--link {
+    &, &::before, .work__teaser-wrapper {
+      transition-duration: 0.2s;
+      transition-timing-function: cubic-bezier(0.15, 1.2, 0.82, 1.02);
+    }
+
+    &::before {
+      transition-property: opacity;
+    }
+
+    &:hover {
+      transition-property: transform;
+      transform: scale(1.025);
+
+      .work__teaser-wrapper {
+        transition-property: transform;
+        transform: scale(0.97);
+      }
+
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        background-position: 230% 50%;
+      }
+    }
+
+    // Chevron
+    &::after {
+      background: url('/assets/images/chevron.svg') repeat-x 3.5% 50%;
+      background-size: auto 45%;
+      border: 2px solid #fff;
+      border-radius: 100%;
+      content: '';
+      display: inline-block;
+      height: ms(6);
+      overflow: hidden;
+      transition: background-position 0.15s ease-in-out;
+      width: ms(6);
+    }
+  }
+}
+
+
+// Specific works
+// --------------
+
+.doing-work {
+  background-image: linear-gradient(-231deg, #6159E4 0%, #1282F1 100%);
+  color: rgba(#0E5687, 0.8);
+}
+
+.skinio-work {
+  background-image: linear-gradient(14deg, #238AC0 2%, #4D98CC 100%);
+  color: rgba(#1e3aaa, 0.8);
+
+  .work__desc {
+    padding-right: 50%;
+  }
+
+  .work__teaser-wrapper {
+    height: 100%;
+    min-height: 20rem;
+    right: -15%;
+    position: absolute;
+    top: 0;
+  }
+
+  .work__teaser {
+    // @include level(4rem);
+  }
+}
+
+.clear-work {
+  background-image: linear-gradient(-153deg, #4DC7D2 0%, #00CEE1 100%);
+  color: rgba(#0694a1, 0.8);
+  text-align: right;
+}

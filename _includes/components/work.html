@@ -1,0 +1,20 @@
+{% assign work = site.works | where: 'title', include.name | first %}
+<a href="{{work.url}}" class="is-unstyled">
+  <article class="work work--link {{ work.title | downcase | handle }}-work{% if include.class %} {{include.class}}{% endif %}">
+    <h1 class="work__title">{{work.title}}</h1>
+    <ul class="work__tags"><!--
+      {% for tag in work.tags %}
+      --><li>{{tag}}</li><!--
+      {% endfor %}
+    --></ul>
+    <p class="work__desc">{{work.description}}</p>
+    {% if work.teaser %}
+      <div class="work__teaser-wrapper">
+        <img class="work__teaser"
+          srcset="{{work.url}}{{work.teaser}} 1x{% if work.teaser2x %}, {{work.url}}{{work.teaser2x}} 2x{% endif %}"
+          alt="{{work.title}}"
+        />
+      </div>
+    {% endif %}
+  </article>
+</a>
