@@ -21,10 +21,30 @@
     > a {
       @include unstyled-link;
 
-      color: $gray;
+      color: darken($light-gray, 7.5%);
       font-family: $sans;
-      // padding-bottom: $xsmall;
-      // padding-top: $xsmall;
+      // padding-bottom: ms(-6);
+      // padding-top: ms(-6);
+      // position: relative;
+
+      // &::after {
+      //   background: currentColor;
+      //   bottom: 0;
+      //   content: '';
+      //   height: 2px;
+      //   left: 0;
+      //   position: absolute;
+      //   transform: scaleX(0);
+      //   transform-origin: left center;
+      //   transition: transform 125ms ease-in-out;
+      //   width: 100%;
+      // }
+
+      // &:hover, &.is-active {
+      //   &::after {
+      //     transform: scale(1);
+      //   }
+      // }
 
       &.is-active {
         // box-shadow: 0 2px 0 $black;
@@ -55,7 +75,7 @@
   }
 
   @include query(expanded) {
-    align-items: center;
+    align-items: baseline;
     display: flex;
 
     @include compact;

@@ -62,7 +62,7 @@ defaults:
     scope:
       path: '' # all files
     values:
-      layout: 'base'
+      layout: 'page'
 
 sass:
   sass_dir: assets/_sass

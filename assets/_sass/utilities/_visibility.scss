@@ -1,6 +1,6 @@
 // Visibility
 // ==========
 
-.hidden {
+.hidden, [hidden] {
   @include hidden;
 }
