@@ -1,6 +1,19 @@
 {% assign work = site.works | where: 'title', include.name | first %}
-<a href="{{work.url}}" class="is-unstyled">
-  <article class="work work--link {{ work.title | downcase | handle }}-work{% if include.class %} {{include.class}}{% endif %}">
+{% assign parallax = 1 %}
+{% if include.parallax != null %}{% assign parallax = include.parallax %}{% endif %}
+<a href="{{work.url}}"
+  class="is-unstyled work work--link {{ work.title | downcase | handle }}-work{% if include.class %} {{include.class}}{% endif %}"
+>
+  <article class="work__wrapper">
+    {% if work.teaser %}
+      <div class="work__teaser-wrapper">
+        <img class="work__teaser js-rellax"
+          data-rellax-speed="{{parallax}}"
+          srcset="{{work.url}}{{work.teaser}} 1x{% if work.teaser2x %}, {{work.url}}{{work.teaser2x}} 2x{% endif %}"
+          alt="{{work.title}}"
+        />
+      </div>
+    {% endif %}
     <h1 class="work__title">{{work.title}}</h1>
     <ul class="work__tags"><!--
       {% for tag in work.tags %}
@@ -8,13 +21,5 @@
       {% endfor %}
     --></ul>
     <p class="work__desc">{{work.description}}</p>
-    {% if work.teaser %}
-      <div class="work__teaser-wrapper">
-        <img class="work__teaser"
-          srcset="{{work.url}}{{work.teaser}} 1x{% if work.teaser2x %}, {{work.url}}{{work.teaser2x}} 2x{% endif %}"
-          alt="{{work.title}}"
-        />
-      </div>
-    {% endif %}
   </article>
 </a>

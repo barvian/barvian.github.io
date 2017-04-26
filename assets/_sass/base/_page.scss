@@ -5,22 +5,11 @@
   background-color: $bg;
 }
 
-:root, body {
-  height: 100%;
-}
-
-body {
-  -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  @include surface;
-}
-
 .page {
-  min-height: 100%;
-  padding-bottom: unquote("calc(#{ms(7)} + 2vh)");
-  padding-top: unquote("calc(#{ms(7)} + 2vh)");
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: scalc("#{ms(7)} + 2vh");
+  padding-top: scalc("#{ms(7)} + 2vh");
 }
 
 // Pages

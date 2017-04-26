@@ -1,8 +1,8 @@
 ---
 title: SkinIO
-description: Redesigning an app to save lives.
-teaser: teaser.png
-teaser2x: teaser@2x.png
+description: Bridging the gap between dermatologist and patient.
+teaser: teaser.jpg
+teaser2x: teaser@2x.jpg
 tags:
   - iOS
 ---

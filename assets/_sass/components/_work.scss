@@ -2,10 +2,21 @@
 // =========
 
 .work {
-  display: flex;
-  flex-flow: column;
-  padding: ms(7);
   position: relative;
+
+  &, &__wrapper {
+    display: flex;
+  }
+
+  &__wrapper {
+    background-color: currentColor;
+    flex-flow: column;
+    flex: 1;
+    overflow: hidden;
+    padding: ms(7);
+    position: relative;
+    text-shadow: 0 1px 12px currentColor, 0 1px 12px currentColor;
+  }
 
   // Shadow
   &::before {
@@ -13,11 +24,10 @@
     content: '';
     height: 100%;
     left: 0;
-    opacity: 0.35;
+    opacity: 0.15;
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: -1;
   }
 
   // Elements
@@ -28,6 +38,7 @@
     font-family: $sans;
     font-size: ms(6);
     font-weight: 700;
+    position: relative;
   }
 
   &__desc {
@@ -36,24 +47,30 @@
     color: #fff;
     flex: 1;
     font-size: ms(2);
+    line-height: ms(2)/ms(0);
+    position: relative;
   }
 
   &__tags {
-    @include leading(ms(-10));
+    @include leading(0);
     @include inline-list(0);
 
     > * {
       color: #fff;
       font-family: $sans;
-      font-size: ms(1);
       letter-spacing: 0.015em;
-      text-transform: uppercase;
+      position: relative;
 
       + *::before {
         content: ',';
         margin-right: 0.333em;
       }
     }
+  }
+
+  &__teaser-wrapper {
+    @include removed;
+    position: absolute;
   }
 
   // Modifiers
@@ -65,6 +82,7 @@
       transition-timing-function: cubic-bezier(0.15, 1.2, 0.82, 1.02);
     }
 
+    // Shadow
     &::before {
       transition-property: opacity;
     }
@@ -82,13 +100,14 @@
         opacity: 1;
       }
 
-      &::after {
+      .work__wrapper::after {
         background-position: 230% 50%;
+        opacity: 1;
       }
     }
 
     // Chevron
-    &::after {
+    .work__wrapper::after {
       background: url('/assets/images/chevron.svg') repeat-x 3.5% 50%;
       background-size: auto 45%;
       border: 2px solid #fff;
@@ -96,8 +115,11 @@
       content: '';
       display: inline-block;
       height: ms(6);
+      margin-top: ms(1);
+      opacity: 0.8;
       overflow: hidden;
-      transition: background-position 0.15s ease-in-out;
+      position: relative;
+      transition: background-position 0.15s ease-in-out, opacity 0.15s ease-in-out;
       width: ms(6);
     }
   }
@@ -107,34 +129,61 @@
 // Specific works
 // --------------
 
-.doing-work {
-  background-image: linear-gradient(-231deg, #6159E4 0%, #1282F1 100%);
-  color: rgba(#0E5687, 0.8);
-}
-
 .skinio-work {
-  background-image: linear-gradient(14deg, #238AC0 2%, #4D98CC 100%);
-  color: rgba(#1e3aaa, 0.8);
+  &.skinio-work {
+    color: rgba(#0b6391, 0.8);
+  }
+
+  .work__wrapper {
+    color: #4297CC;
+  }
 
   .work__desc {
     padding-right: 50%;
   }
 
   .work__teaser-wrapper {
-    height: 100%;
-    min-height: 20rem;
-    right: -15%;
+    right: 7.5%;
     position: absolute;
-    top: 0;
+    top: 25%;
+  }
+}
+
+.doing-work {
+  &.doing-work {
+    color: rgba(#222b94, 0.8);
   }
 
-  .work__teaser {
-    // @include level(4rem);
+  .work__wrapper {
+    color: #3E4BE3;
+  }
+
+  .work__desc {
+    padding-right: 30%;
+  }
+
+  .work__teaser-wrapper {
+    right: 10%;
+    top: 20%;
   }
 }
 
 .clear-work {
-  background-image: linear-gradient(-153deg, #4DC7D2 0%, #00CEE1 100%);
-  color: rgba(#0694a1, 0.8);
-  text-align: right;
+  &.clear-work {
+    color: rgba(#0694a1, 0.8); // shadow
+  }
+
+  .work__wrapper {
+    color: #23CBDA;
+    text-align: right;
+  }
+
+  .work__desc {
+    padding-left: 15%;
+  }
+
+  .work__teaser-wrapper {
+    left: 5%;
+    bottom: -25%;
+  }
 }
