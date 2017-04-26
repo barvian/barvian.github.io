@@ -15,13 +15,11 @@
 // Pages
 // -----
 
-.home-page {
-  &:root {
-    // I will never understand why this needs to be flipped
-    background-image: linear-gradient(to top, $bg 50%, #fff 50%);
-  }
+.home-page:root {
+  // I will never understand why this needs to be flipped
+  background-image: linear-gradient(to top, $bg 50%, #fff 50%);
+}
 
-  body {
-    background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
-  }
+.home-page body {
+  background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
 }

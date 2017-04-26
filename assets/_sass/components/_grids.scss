@@ -8,18 +8,20 @@
   align-items: stretch;
   display: flex;
 
-  > *, &__col > *, &__item {
-    display: flex;
-    flex: 1;
-  }
-
   @include horizontal;
+}
 
-  &__col {
-    align-items: stretch;
-    display: flex;
-    flex-flow: column;
+.grid > *,
+.grid__col > *,
+.grid__item {
+  display: flex;
+  flex: 1;
+}
 
-    @include vertical;
-  }
+.grid__col {
+  align-items: stretch;
+  display: flex;
+  flex-flow: column;
+
+  @include vertical;
 }

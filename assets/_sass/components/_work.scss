@@ -3,24 +3,15 @@
 
 .work {
   position: relative;
+}
 
-  &, &__wrapper {
+  .work, .work__wrapper {
     display: flex;
   }
 
-  &__wrapper {
-    background-color: currentColor;
-    flex-flow: column;
-    flex: 1;
-    overflow: hidden;
-    padding: ms(7);
-    position: relative;
-    text-shadow: 0 1px 12px currentColor, 0 1px 12px currentColor;
-  }
-
   // Shadow
-  &::before {
-    box-shadow: 0 0.16em 1.5em -0.625em currentColor;
+  .work::before {
+    box-shadow: 0 0.16em 1.5em -0.625em var(--work-shadow);
     content: '';
     height: 100%;
     left: 0;
@@ -30,160 +21,175 @@
     width: 100%;
   }
 
-  // Elements
-  // --------
+// Elements
+// --------
 
-  &__title {
+.work__wrapper {
+  background-color: var(--work-color);
+  flex-flow: column;
+  flex: 1;
+  overflow: hidden;
+  padding: ms(7);
+  position: relative;
+  text-shadow: 0 1px 12px var(--work-color), 0 1px 12px var(--work-color);
+}
+
+.work__title {
+  color: #fff;
+  font-family: $sans;
+  font-size: ms(6);
+  font-weight: 700;
+  position: relative;
+}
+
+.work__desc {
+  @include leading(ms(1));
+
+  color: #fff;
+  flex: 1;
+  font-size: ms(2);
+  line-height: ms(2)/ms(0);
+  position: relative;
+}
+
+.work__tags {
+  @include leading(0);
+  @include inline-list(0);
+
+  > * {
     color: #fff;
     font-family: $sans;
-    font-size: ms(6);
-    font-weight: 700;
+    letter-spacing: 0.015em;
     position: relative;
-  }
 
-  &__desc {
-    @include leading(ms(1));
-
-    color: #fff;
-    flex: 1;
-    font-size: ms(2);
-    line-height: ms(2)/ms(0);
-    position: relative;
-  }
-
-  &__tags {
-    @include leading(0);
-    @include inline-list(0);
-
-    > * {
-      color: #fff;
-      font-family: $sans;
-      letter-spacing: 0.015em;
-      position: relative;
-
-      + *::before {
-        content: ',';
-        margin-right: 0.333em;
-      }
+    + *::before {
+      content: ',';
+      margin-right: 0.333em;
     }
   }
+}
 
-  &__teaser-wrapper {
-    @include removed;
-    position: absolute;
+.work__teaser-wrapper {
+  @include removed;
+
+  position: absolute;
+}
+
+// Modifiers
+// ---------
+
+//
+// Linked work
+//
+
+.work--link, .work--link::before,
+.work--link .work__teaser-wrapper {
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.15, 1.2, 0.82, 1.02);
+}
+
+// Shadow
+.work--link::before {
+  transition-property: opacity;
+}
+
+.work--link:hover {
+  transition-property: transform;
+  transform: scale(1.025);
+}
+
+  .work--link:hover .work__teaser-wrapper {
+    transition-property: transform;
+    transform: scale(0.97);
   }
 
-  // Modifiers
-  // ---------
-
-  &--link {
-    &, &::before, .work__teaser-wrapper {
-      transition-duration: 0.2s;
-      transition-timing-function: cubic-bezier(0.15, 1.2, 0.82, 1.02);
-    }
-
-    // Shadow
-    &::before {
-      transition-property: opacity;
-    }
-
-    &:hover {
-      transition-property: transform;
-      transform: scale(1.025);
-
-      .work__teaser-wrapper {
-        transition-property: transform;
-        transform: scale(0.97);
-      }
-
-      &::before {
-        opacity: 1;
-      }
-
-      .work__wrapper::after {
-        background-position: 230% 50%;
-        opacity: 1;
-      }
-    }
-
-    // Chevron
-    .work__wrapper::after {
-      background: url('/assets/images/chevron.svg') repeat-x 3.5% 50%;
-      background-size: auto 45%;
-      border: 2px solid #fff;
-      border-radius: 100%;
-      content: '';
-      display: inline-block;
-      height: ms(6);
-      margin-top: ms(1);
-      opacity: 0.8;
-      overflow: hidden;
-      position: relative;
-      transition: background-position 0.15s ease-in-out, opacity 0.15s ease-in-out;
-      width: ms(6);
-    }
+  .work--link:hover::before {
+    opacity: 1;
   }
+
+  .work--link:hover .work__wrapper::after {
+    background-position: 230% 50%;
+    opacity: 1;
+  }
+
+// Chevron
+.work--link .work__wrapper::after {
+  background: url('/assets/images/chevron.svg') repeat-x 3.5% 50%;
+  background-size: auto 45%;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  content: '';
+  display: inline-block;
+  height: ms(6);
+  margin-top: ms(1);
+  opacity: 0.8;
+  overflow: hidden;
+  position: relative;
+  transition:
+    background-position 0.15s ease-in-out,
+    opacity 0.15s ease-in-out;
+  width: ms(6);
 }
 
 
 // Specific works
 // --------------
 
+//
+// SkinIO
+//
+
 .skinio-work {
-  &.skinio-work {
-    color: rgba(#0b6391, 0.8);
-  }
+  --work-color: #4297CC;
+  --work-shadow: rgba(11, 99, 145, 0.8);
+}
 
-  .work__wrapper {
-    color: #4297CC;
-  }
-
-  .work__desc {
+  .skinio-work .work__desc {
     padding-right: 50%;
   }
 
-  .work__teaser-wrapper {
+  .skinio-work .work__teaser-wrapper {
     right: 7.5%;
     position: absolute;
     top: 25%;
   }
-}
+
+//
+// Doing
+//
 
 .doing-work {
-  &.doing-work {
-    color: rgba(#222b94, 0.8);
-  }
+  --work-color: #3E4BE3;
+  --work-shadow: rgba(34, 43, 148, 0.8);
+}
 
-  .work__wrapper {
-    color: #3E4BE3;
-  }
-
-  .work__desc {
+  .doing-work .work__desc {
     padding-right: 30%;
   }
 
-  .work__teaser-wrapper {
+  .doing-work .work__teaser-wrapper {
     right: 10%;
     top: 20%;
   }
-}
+
+//
+// Clear
+//
 
 .clear-work {
-  &.clear-work {
-    color: rgba(#0694a1, 0.8); // shadow
-  }
+  --work-color: #23CBDA;
+  --work-shadow: rgba(6, 148, 161, 0.8);
+}
 
-  .work__wrapper {
-    color: #23CBDA;
+  .clear-work .work__wrapper {
     text-align: right;
   }
 
-  .work__desc {
+  .clear-work .work__desc {
     padding-left: 15%;
   }
 
-  .work__teaser-wrapper {
+  .clear-work .work__teaser-wrapper {
     left: 5%;
     bottom: -25%;
   }
-}

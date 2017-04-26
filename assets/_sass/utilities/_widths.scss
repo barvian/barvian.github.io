@@ -1,10 +1,10 @@
 // Widths
 // ======
 
-@mixin widths($max, $prefix: '', $postfix: '') {
+@mixin widths($max, $postfix: '') {
   @for $denom from 1 through $max {
     @for $num from 1 through $denom {
-      .#{$prefix}w#{$num}\/#{$denom}#{$postfix} {
+      .w#{$num}\/#{$denom}#{$postfix} {
         width: percentage($num/$denom) !important;
 
         &.col {
