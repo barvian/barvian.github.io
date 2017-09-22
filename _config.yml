@@ -30,6 +30,8 @@ external:
     sprite: linkedin
     url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
 
+available: true
+
 social:
   letterboxd: https://letterboxd.com/mbarvian/
 
@@ -63,6 +65,13 @@ defaults:
       path: '' # all files
     values:
       layout: 'page'
+  -
+    scope:
+      path: ''
+      type: 'works'
+    values:
+      layout: 'work'
+      class: 'work'
 
 sass:
   sass_dir: assets/_sass

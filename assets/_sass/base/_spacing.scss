@@ -15,7 +15,18 @@ body {
   @include leading(0);
 }
 
+[role="main"], .landmark {
+  @include leading(scalc("3vh + #{ms(2)}"));
+}
+
+[role="main"], .monument {
+  @include trailing(scalc("3vh + #{ms(6)}"));
+}
+
 .landmark {
-  @include leading(scalc("4vh + #{ms(1)}"));
-  @include trailing(scalc("4vh + #{ms(1)}"));
+  @include trailing(scalc("3vh + #{ms(2)}"));
+}
+
+.monument {
+  @include leading(scalc("3vh + #{ms(6)}"));
 }

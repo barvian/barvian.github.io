@@ -7,15 +7,15 @@
   </a>
 
   <nav role="navigation" class="site-header__nav">
-    {% assign pages = site.pages | sort: 'order' %}
-    {% for p in pages %}
-      {% unless p.url contains "assets/" %}
-        <a href="{{p.url}}"{% if p.url == page.url %} class="is-active"{% endif %}><!--
-        -->{{p.title}}<!--
-        --></a>
-      {% endunless %}
-    {% endfor %}
-    <a href="mailto:{{site.email}}">Contact</a>
+    <a href="{% link about.md %}"{% if page.path == 'about.md' %} class="is-active"{% endif %}>
+      About
+    </a>
+    <a href="mailto:{{site.email}}" class="has-popup">
+      Contact
+      {% if site.available %}
+        <span class="site-header__popup">available for hire</span>
+      {% endif %}
+    </a>
   </nav>
 
   <nav class="site-header__external">

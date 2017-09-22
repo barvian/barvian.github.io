@@ -1,8 +1,12 @@
 ---
 title: About
-order: 2
 layout: page
+lede: 
+  I’m a dedicated problem solver with a passion for learning
+  and iteration. I strive to build software that makes people's
+  days a little brighter. ☀️
 ---
+
 
 I love building meaningful products in a healthy, constructive team that prioritizes learning, iteration, and teamwork. Success, to me, is when the interest of the product and end user win out over the personal preferences of its creators. I'm very interested in getting behind the intention of things (enough that I'm even building a [purpose-driven todo list app](/works/doing) 😇); I'm usually the person who asks "why?", or "what are we hoping to accomplish with ___?" during project planning meetings. Internally, I try to monitor when my own conversation with team members becomes more intent on winning them over to "my side" vs. trying to get us all to the best solution for the product, whatever that is.
 

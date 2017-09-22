@@ -1,5 +1,8 @@
 {% if include.name %}
-  <svg class="icon {{include.name}}-icon">
+  <svg
+    class="icon {{include.name}}-icon"
+    {% if include.style %}style="{{include.style}}"{% endif %}
+  >
     <use xlink:href="#{{include.name}}" />
   </svg>
 {% endif %}

@@ -1,13 +1,23 @@
+:root {
+  --site-header-popup-background: #{$green};
+  --site-header-popup-size: 0.333em;
+}
+
 // Site header
 // ===========
 
 .site-header__logo {
   @include unstyled-link;
 
-  color: $black;
+  color: $gray;
   font-size: ms(1);
   font-weight: 700;
 }
+
+  .home-page .site-header__logo,
+  .work-page .site-header__logo {
+    color: $black;
+  }
 
 .site-header__role {
   color: $gray;
@@ -23,33 +33,14 @@
 
     color: darken($light-gray, 7.5%);
     font-family: $sans;
-    // padding-bottom: ms(-6);
-    // padding-top: ms(-6);
-    // position: relative;
-
-    // &::after {
-    //   background: currentColor;
-    //   bottom: 0;
-    //   content: '';
-    //   height: 2px;
-    //   left: 0;
-    //   position: absolute;
-    //   transform: scaleX(0);
-    //   transform-origin: left center;
-    //   transition: transform 125ms ease-in-out;
-    //   width: 100%;
-    // }
-
-    // &:hover, &.is-active {
-    //   &::after {
-    //     transform: scale(1);
-    //   }
-    // }
   }
 
     .site-header__nav > a.is-active {
-      // box-shadow: 0 2px 0 $black;
       color: $black;
+    }
+
+    .site-header__nav > a.has-popup {
+      position: relative;
     }
 
 .site-header__external {
@@ -71,6 +62,52 @@
       font-size: 1.333em;
     }
 
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(-15%) translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+.site-header__popup {
+  animation: popup-in 0.3s ease-in-out 1s 1 both;
+  background-color: var(--site-header-popup-background);
+  bottom: 133%;
+  color: #fff;
+  font-size: ms(-2);
+  font-weight: 700;
+  left: 50%;
+  padding: 0.25em 0.75em;
+  position: absolute;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+  .has-seen-popup .site-header__popup {
+    animation: none;
+    transform: translateX(-50%);
+  }
+
+  .site-header__popup::after {
+    border-left: var(--site-header-popup-size) solid transparent;
+    border-right: var(--site-header-popup-size) solid transparent;
+    border-top: var(--site-header-popup-size) solid var(--site-header-popup-background);
+    content: '';
+    height: 0;
+    left: 50%;
+    margin-left: calc(var(--site-header-popup-size) / -2);
+    position: absolute;
+    top: 100%;
+    width: 0;
+  }
+
 @include query(expanded) {
   .site-header {
     align-items: baseline;
@@ -79,8 +116,13 @@
     @include compact;
   }
 
+  .site-header__external {
+    margin-left: auto;
+  }
+
   .site-header__nav {
-    flex: 1;
-    text-align: center;
+    @include inline-list(ms(5));
+
+    margin-left: ms(10);
   }
 }

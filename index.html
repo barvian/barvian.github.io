@@ -1,6 +1,5 @@
 ---
 title: Works
-order: 1
 class: home
 layout: default
 ---
@@ -11,7 +10,9 @@ layout: default
       {% include components/site-header.html %}
     </div>
   </div>
+</div>
 
+<main role="main" class="container">
   <div class="row row--center">
     <div class="col w5/6">
       <p class="lede">
@@ -19,33 +20,32 @@ layout: default
         and iteration. I strive to build software that makes people's
         days a little brighter. ☀️
       </p>
+      <p>
+        <i class="marker-icon"></i>
+        Currently at <a href="http://skinio.com">SkinIO</a> in Chicago.
+      </p>
     </div>
   </div>
-</div>
-
-<div class="container landmark">
-  <div class="row">
+  <div class="row monument">
     <div class="col">
-
       <div class="grid grid--2">
         <div class="grid__col">
-          {% include components/work.html name="Doing" class="grid__item" parallax=0.65 %}
-          {% include components/work.html name="Clear" class="grid__item" parallax=0.5 %}
+          {% include components/work.html name="Doing" class="grid__item" parallax=0.2 %}
+          {% include components/work.html name="Clear" class="grid__item" parallax=0.3 %}
         </div>
         <div class="grid__col">
-          {% include components/work.html name="SkinIO" class="grid__item" %}
+          {% include components/work.html name="SkinIO" class="grid__item" parallax=0.5 %}
         </div>
       </div>
-
     </div>
   </div>
-</div>
+</main>
 
 <footer class="container">
   <div class="row">
     <div class="col cta">
       <p>
-        I appreciate you checking out my tiny website.<br/>
+        Thanks for checking out my tiny website.<br/>
         If you'd like to get in touch, I'd love to chat.
       </p>
       <a class="button" href="mailto:{{site.email}}">Send me a message</a>

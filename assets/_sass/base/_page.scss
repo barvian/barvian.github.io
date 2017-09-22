@@ -3,6 +3,12 @@
 
 :root {
   background-color: $bg;
+  // I will never understand why this needs to be flipped
+  background-image: linear-gradient(to top, $bg 50%, #fff 50%);
+}
+
+body {
+  background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
 }
 
 .page {
@@ -10,16 +16,5 @@
   overflow: hidden;
   padding-bottom: scalc("#{ms(7)} + 2vh");
   padding-top: scalc("#{ms(7)} + 2vh");
-}
-
-// Pages
-// -----
-
-.home-page:root {
-  // I will never understand why this needs to be flipped
-  background-image: linear-gradient(to top, $bg 50%, #fff 50%);
-}
-
-.home-page body {
-  background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
+  position: relative;
 }
