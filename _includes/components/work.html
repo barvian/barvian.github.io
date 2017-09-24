@@ -2,7 +2,7 @@
 {% assign parallax = 1 %}
 {% if include.parallax != null %}{% assign parallax = include.parallax %}{% endif %}
 <a href="{{work.url}}"
-  class="is-unstyled work work--link {{ work.title | downcase | handle }}-work{% if include.class %} {{include.class}}{% endif %}"
+  class="work work--link {{ work.title | downcase | handle }}-work{% if include.class %} {{include.class}}{% endif %}"
 >
   <article class="work__wrapper">
     {% if work.teaser %}

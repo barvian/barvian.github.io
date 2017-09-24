@@ -7,8 +7,6 @@
 // ===========
 
 .site-header__logo {
-  @include unstyled-link;
-
   color: $gray;
   font-size: ms(1);
   font-weight: 700;
@@ -29,8 +27,6 @@
 }
 
   .site-header__nav > a {
-    @include unstyled-link;
-
     color: darken($light-gray, 7.5%);
     font-family: $sans;
   }
