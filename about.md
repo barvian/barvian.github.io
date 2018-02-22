@@ -1,17 +1,12 @@
 ---
-title: About
+title: About Maxwell Barvian
 layout: page
-lede: 
-  I’m a dedicated problem solver with a passion for learning
-  and iteration. I strive to build software that makes people's
-  days a little brighter. ☀️
 ---
 
+I'm a designer from Chicago, Illinois, currently living in San Diego, California. I’ve worked as a product designer for [SkinIO](http://skinio.com) and a web designer for [WSOL](http://wsol.com) before that. I’m currently doing contract and personal work.
 
-I love building meaningful products in a healthy, constructive team that prioritizes learning, iteration, and teamwork. Success, to me, is when the interest of the product and end user win out over the personal preferences of its creators. I'm very interested in getting behind the intention of things (enough that I'm even building a [purpose-driven todo list app](/works/doing) 😇); I'm usually the person who asks "why?", or "what are we hoping to accomplish with ___?" during project planning meetings. Internally, I try to monitor when my own conversation with team members becomes more intent on winning them over to "my side" vs. trying to get us all to the best solution for the product, whatever that is.
+My favorite things about my job are empathy, good communication, and intentionality. I’m very interested in the [consciousness hacking](http://www.cohack.life)/positive computing/[humane tech](http://humanetech.com) movements and projects like [Headspace](http://headspace.com), [Pillow](http://pillow.io), [MeetMindful](https://www.meetmindful.com), [Productive](http://productiveapp.io), and [Meetup](https://www.meetup.com). I've written a [tiny article](https://medium.com/@barvian/how-to-configure-your-smartphone-so-it-doesnt-run-your-life-87bfa64c06e3) on my attempts to reclaim attention from my devices, and I plan to write more like it in the future.
 
-Right now, my focus is on web and mobile apps.
+Outside of design I spend most of my time meditating, taking walks, reading, gardening, and volunteering. I’m a former cinephile but I still ❤️ film and try to log everything I watch on [Letterboxd]({{ site.social.letterboxd }}).
 
-Tech-wise, I'm currently interested in React (Native), and even [Elm](http://elm-lang.org) for building apps. I've dabbled with Web Components, and while I like the flexibility, I think the ecosystem has a long way to come. That being said, I really like the idea of building a component library with something like [Polymer](https://www.polymer-project.org). I'm waiting for the day when the web becomes as engaging and polished as the best native apps, especially in terms of motion and other UI trends that are becoming best practices elsewhere.
-
-Outside of work, I'm a bit of a hippie when it comes to health and wellness. I love finding ways to promote wholesomeness in the workplace, and I'm an avid standing desk user 😁. I'm a former cinephile but still love a good movie now and then (I try to log most of them on [Letterboxd]({{ site.social.letterboxd }})).
+Thanks for reading! If it sounds like I'd be a good fit for your company or you just think we have a lot in common, [I’d love to chat](mailto:{{site.email}}). ✌🏻

@@ -1,8 +1,0 @@
-{% assign page = include.page %}
-{% capture title %}{{ page.title }} {{ site.name }}{% endcapture %}
-{% if page.collection %}
-  {% capture title %}"{{ page.title }}", by {{ site.name }}{% endcapture %}
-{% elsif page.url == '/' %}
-  {% capture title %}{{ site.name }}, {{ site.title | downcase }}{% endcapture %}
-{% endif %}
-<title>{{ title }}</title>

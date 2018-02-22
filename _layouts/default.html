@@ -3,12 +3,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {% include title.html page=page %}
-  {% include description.html %}
+  <title>{{page.title}}</title>>
+  <meta name="description" content="Portfolio of Maxwell Barvian, designer" />
   {% if site.keywords %}
     <meta name="keywords" content="{{ site.keywords | join: ', ' }}" />
   {% endif %}
-  {% include author.html page=page %}
+  <meta name="author" content="Maxwell Barvian" />
   <link rel="canonical" href="{{ page.url | prepend: site.url }}" />
 
   {% include typekit.html %}
@@ -18,7 +18,4 @@
   <div class="page">
     {{ content }}
   </div>
-
-  <script src="{% link assets/js/lib/rellax.min.js %}"></script>
-  <script src="{% link assets/js/barvian.js %}"></script>
 </html>

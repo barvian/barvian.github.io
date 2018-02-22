@@ -1,8 +1,8 @@
 <header class="site-header">
   <a class="site-header__logo" href="{% link index.html %}">
-    {{ site.name }},
+    Maxwell Barvian,
     <span class="site-header__role">
-      {{ site.role }}
+      Designer
     </span>
   </a>
 
@@ -19,7 +19,8 @@
   </nav>
 
   <nav class="site-header__external">
-    {% for network in site.external %}
+    {% for networkKV in site.external %}
+    {% assign network = networkKV[1] %}
     <a href="{{network.url}}" target="_blank" rel="external">
       {% include sprite.html name=network.sprite %}
     </a>

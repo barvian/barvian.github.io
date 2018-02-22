@@ -1,0 +1,124 @@
+:root {
+  --site-header-popup-background: #{$green};
+  --site-header-popup-size: 0.333em;
+}
+
+// Site header
+// ===========
+
+.site-header__logo {
+  color: $gray;
+  font-size: ms(1);
+  font-weight: 700;
+}
+
+  .home-page .site-header__logo,
+  .work-page .site-header__logo {
+    color: $black;
+  }
+
+.site-header__role {
+  color: $gray;
+  font-weight: 500;
+}
+
+.site-header__nav {
+  @include inline-list(ms(3));
+}
+
+  .site-header__nav > a {
+    color: darken($light-gray, 7.5%);
+    font-family: $sans;
+  }
+
+    .site-header__nav > a.is-active {
+      color: $black;
+    }
+
+    .site-header__nav > a.has-popup {
+      position: relative;
+    }
+
+.site-header__external {
+  @include horizontal(ms(0));
+}
+
+  .site-header__external > a {
+    display: inline-block;
+    user-select: none;
+    vertical-align: middle;
+  }
+
+    .site-header__external > a:not(:hover):not(:focus) > .icon {
+        color: $light-gray;
+    }
+
+    .site-header__external > a > .icon {
+      display: inline-block;
+      font-size: 1.333em;
+    }
+
+@keyframes popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(-15%) translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+.site-header__popup {
+  animation: popup-in 0.3s ease-in-out 1s 1 both;
+  background-color: var(--site-header-popup-background);
+  bottom: 133%;
+  color: #fff;
+  font-size: ms(-2);
+  font-weight: 700;
+  left: 50%;
+  padding: 0.25em 0.75em;
+  position: absolute;
+  pointer-events: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+  .has-seen-popup .site-header__popup {
+    animation: none;
+    transform: translateX(-50%);
+  }
+
+  .site-header__popup::after {
+    border-left: var(--site-header-popup-size) solid transparent;
+    border-right: var(--site-header-popup-size) solid transparent;
+    border-top: var(--site-header-popup-size) solid var(--site-header-popup-background);
+    content: '';
+    height: 0;
+    left: 50%;
+    margin-left: calc(var(--site-header-popup-size) / -2);
+    position: absolute;
+    top: 100%;
+    width: 0;
+  }
+
+@include query(expanded) {
+  .site-header {
+    align-items: baseline;
+    display: flex;
+
+    @include compact;
+  }
+
+  .site-header__external {
+    margin-left: auto;
+  }
+
+  .site-header__nav {
+    @include inline-list(ms(5));
+
+    margin-left: ms(8);
+  }
+}

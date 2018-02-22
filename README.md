@@ -7,11 +7,11 @@ here, just something that's performant and easy for me to iterate. 🙂
 
 Requirements:
 
-* Node, NPM
+* Node, Yarn
 * Jekyll (Bundler optional)
 
 Steps:
 
 1. Clone the repo
-2. Install node packages: `npm install`
-3. Start the dev server with `npm start`
+2. Install node packages: `yarn install`
+3. Start the dev server with `yarn start`

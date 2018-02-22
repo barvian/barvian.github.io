@@ -1,8 +1,7 @@
-node_modules
 *.log
 *.tmp
-npm-debug*
 .DS_Store
+.sass-cache
 
-_build
+_site
 .jekyll-metadata

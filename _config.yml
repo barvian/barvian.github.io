@@ -1,11 +1,6 @@
 # Barvian.me
 # ==========
 
-name: Maxwell Barvian
-title: Digital product designer
-role: Designer
-location: San Diego, CA
-
 url: http://barvian.me
 keywords:
   - designer
@@ -17,20 +12,18 @@ keywords:
 
 email: max@barvian.me
 external:
-  -
+  dribbble:
     name: Dribbble
     sprite: dribbble
     url: https://dribbble.com/barvian
-  -
+  github:
     name: Github
     sprite: github
     url: https://github.com/barvian
-  -
+  linkedin:
     name: LinkedIn
     sprite: linkedin
     url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
-
-available: true
 
 social:
   letterboxd: https://letterboxd.com/mbarvian/
@@ -49,14 +42,8 @@ collections:
 # --------------
 
 exclude:
-  - node_modules
-  - npm-debug*
-  - package.json
   - CNAME
-  - bower.json
   - README.md
-
-destination: _build
 
 permalink: pretty
 defaults:
@@ -74,12 +61,4 @@ defaults:
       class: 'work'
 
 sass:
-  sass_dir: assets/_sass
   style: compressed
-
-# Writing
-# -------
-
-markdown: kramdown
-kramdown:
-  auto_ids: false

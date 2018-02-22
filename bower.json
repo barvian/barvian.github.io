@@ -1,9 +1,0 @@
-{
-  "name": "barvian.me",
-  "main": "index.html",
-  "dependencies": {
-    "modular-scale": "^3.0.2",
-    "SassyLists": "^3.0.1",
-    "normalize-scss": "normalize.scss#^6.0.0"
-  }
-}

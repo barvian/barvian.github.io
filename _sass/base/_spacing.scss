@@ -1,0 +1,29 @@
+// Spacing
+// =======
+
+* {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  @include leading;
+}
+
+body {
+  @include leading(0);
+}
+
+[role="main"], .landmark {
+  @include leading(scalc("3vh + #{ms(2)}"));
+}
+
+[role="main"], .monument {
+  @include trailing(scalc("3vh + #{ms(7)}"));
+}
+
+.landmark {
+  @include trailing(scalc("3vh + #{ms(2)}"));
+}
+
+.monument {
+  @include leading(scalc("3vh + #{ms(7)}"));
+}
