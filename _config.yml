@@ -12,6 +12,10 @@ keywords:
 
 email: max@barvian.me
 external:
+  medium:
+    name: Medium
+    sprite: medium
+    url: https://medium.com/@barvian
   dribbble:
     name: Dribbble
     sprite: dribbble

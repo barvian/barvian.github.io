@@ -44,10 +44,12 @@
 
     .site-header__external > a:not(:hover):not(:focus) > .icon {
       color: $light-gray;
+      transition-duration: 150ms;
     }
 
     .site-header__external > a > .icon {
       display: inline-block;
+      transition: color 100ms ease-in-out;
     }
 
 @include query(expanded) {
