@@ -4,33 +4,14 @@
 .icon {
   display: inline-block;
   height: 1em;
-}
 
-// Sprites
-// -------
-
-/**
- * Style a sprite's contents directly.
- */
-@mixin sprite($name: null) {
-  @at-root {
-    .sprites > svg {
-      @if $name {
-        ##{$name} {
-          @content;
-        }
-      } @else { // style all sprites
-        @content;
-      }
-    }
-  }
-}
-
-@include sprite {
   path {
     fill: currentColor;
   }
 }
+
+// Sprites
+// -------
 
 .dribbble-icon {
   color: #EA4C89;

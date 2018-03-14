@@ -9,11 +9,7 @@
 
 body {
   background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
-}
-
-.page {
   min-height: 100vh;
-  overflow: hidden;
   padding-top: scalc("#{ms(7)} + 2vh");
   padding-bottom: scalc("#{ms(8)} + 3vh");
   position: relative;

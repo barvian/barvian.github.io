@@ -10,11 +10,8 @@
     <a href="{% link about.md %}"{% if page.path == 'about.md' %} class="is-active"{% endif %}>
       About
     </a>
-    <a href="mailto:{{site.email}}" class="has-popup">
+    <a href="mailto:{{site.email}}">
       Contact
-      {% if site.available %}
-        <span class="site-header__popup">available for hire</span>
-      {% endif %}
     </a>
   </nav>
 
@@ -22,7 +19,7 @@
     {% for networkKV in site.external %}
     {% assign network = networkKV[1] %}
     <a href="{{network.url}}" target="_blank" rel="external">
-      {% include sprite.html name=network.sprite %}
+      {% include sprites/{{network.sprite}}.svg %}
     </a>
     {% endfor %}
   </nav>

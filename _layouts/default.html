@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" {% if page.class %} class="{{page.class}}-page"{% endif %}>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{page.title}}</title>>
+  <title>{{page.title}}</title>
   <meta name="description" content="Portfolio of Maxwell Barvian, designer" />
   {% if site.keywords %}
     <meta name="keywords" content="{{ site.keywords | join: ', ' }}" />
@@ -12,10 +12,11 @@
   <link rel="canonical" href="{{ page.url | prepend: site.url }}" />
 
   {% include typekit.html %}
-  <link rel="stylesheet" href="/assets/css/barvian.css" />
+  <link rel="stylesheet" href="/css/site.css" />
 
-  <aside hidden class="sprites">{% include sprites.svg %}</aside>
-  <div class="page">
-    {{ content }}
+  <div class="container">
+    {% include components/site-header.html %}
   </div>
+
+  {{ content }}
 </html>

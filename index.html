@@ -4,55 +4,34 @@ class: home
 layout: default
 ---
 
-<div class="container">
-  <div class="row row--center">
-    <div class="col w5/6">
-      {% include components/site-header.html %}
-    </div>
+<main role="main">
+  <div class="container">
+    <p class="lede">
+      I’m a dedicated problem solver with a passion for learning
+      and empathy. I strive to build software that makes people's
+      days a little brighter. ☀️
+    </p>
+    <p>
+      <i class="marker-icon"></i>
+      Currently contracting at <a href="http://skinio.com">SkinIO</a> from San Diego, CA.
+    </p>
   </div>
-</div>
 
-<main role="main" class="container">
-  <div class="row row--center">
-    <div class="col w5/6">
-      <p class="lede">
-        I’m a dedicated problem solver with a passion for learning
-        and empathy. I strive to build software that makes people's
-        days a little brighter. ☀️
-      </p>
-      <p>
-        <i class="marker-icon"></i>
-        Currently contracting at <a href="http://skinio.com">SkinIO</a> from {{site.location}}.
-      </p>
-    </div>
-  </div>
-  <div class="row monument">
-    <div class="col">
-      <div class="grid grid--2">
-        <div class="grid__col">
-          {% include components/work.html name="Doing" class="grid__item" parallax=0.2 %}
-          {% include components/work.html name="Clear" class="grid__item" parallax=0.3 %}
-        </div>
-        <div class="grid__col">
-          {% include components/work.html name="SkinIO" class="grid__item" parallax=0.5 %}
-        </div>
+  <div class="container container--wide monument">
+    <div class="grid grid--2">
+      <div class="grid__col">
+        {% include components/work.html name="Doing" class="grid__item" parallax=0.2 %}
+        {% include components/work.html name="Clear" class="grid__item" parallax=0.3 %}
+      </div>
+      <div class="grid__col">
+        {% include components/work.html name="SkinIO" class="grid__item" parallax=0.5 %}
       </div>
     </div>
   </div>
-</main>
 
-<footer class="container">
-  <div class="row">
-    <div class="col cta">
-      {% comment %}
-      <p>
-        Thanks for checking out my tiny website.<br/>
-        If you'd like to get in touch, I'd love to chat.
-      </p>
-      {% endcomment %}
-      <a class="button" href="{{site.external.dribbble.url}}">View more work on Dribbble</a>
-    </div>
-  </div>
-</footer>
+  <footer class="container cta">
+    <a class="button" href="{{site.external.dribbble.url}}">View more work on Dribbble</a>
+  </footer>
+</main>
 
 <script src="{% link js/home.js %}" defer async></script>

@@ -1,7 +1,7 @@
 ---
 ---
 
-{% include_relative js/lib/rellax/rellax.min.js %}
+{% include_relative lib/rellax/rellax.min.js %}
 
 let rellax
 if (document.querySelectorAll('.js-rellax').length > 0) {

@@ -46,19 +46,6 @@ exclude:
   - README.md
 
 permalink: pretty
-defaults:
-  -
-    scope:
-      path: '' # all files
-    values:
-      layout: 'page'
-  -
-    scope:
-      path: ''
-      type: 'works'
-    values:
-      layout: 'work'
-      class: 'work'
 
 sass:
   style: compressed
