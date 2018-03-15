@@ -5,23 +5,10 @@
 //
 
 .grid {
-  align-items: stretch;
-  display: flex;
+  display: grid;
+  grid-gap: $spacing;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
 
-  @include horizontal;
-}
-
-.grid > *,
-.grid__col > *,
-.grid__item {
-  display: flex;
-  flex: 1;
-}
-
-.grid__col {
-  align-items: stretch;
-  display: flex;
-  flex-flow: column;
-
-  @include vertical;
+  @include compact;
 }

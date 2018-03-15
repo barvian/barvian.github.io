@@ -1,20 +1,21 @@
-{% assign work = site.works | where: 'title', include.name | first %}
+{% assign work = site.data.works.[include.id] %}
 {% assign parallax = 1 %}
 {% if include.parallax != null %}{% assign parallax = include.parallax %}{% endif %}
 <a href="{{work.url}}"
-  class="work work--link {{ work.title | downcase | handle }}-work{% if include.class %} {{include.class}}{% endif %}"
+  class="work work--link {{ include.id }}-work{% if include.class %} {{include.class}}{% endif %}"
+  style="grid-column: {{include.column}}; grid-row: {{include.row}}"
 >
   <article class="work__wrapper">
     {% if work.teaser %}
       <div class="work__teaser-wrapper">
         <img class="work__teaser js-rellax"
           data-rellax-speed="{{parallax}}"
-          srcset="{{work.url}}{{work.teaser}} 1x{% if work.teaser2x %}, {{work.url}}{{work.teaser2x}} 2x{% endif %}"
-          alt="{{work.title}}"
+          srcset="{{work.teaser}} 1x{% if work.teaser2x %}, {{work.teaser2x}} 2x{% endif %}"
+          alt="{{work.name}}"
         />
       </div>
     {% endif %}
-    <h1 class="work__title">{{work.title}}</h1>
+    <h1 class="work__title">{{work.name}}</h1>
     <ul class="work__tags"><!--
       {% for tag in work.tags %}
       --><li>{{tag}}</li><!--

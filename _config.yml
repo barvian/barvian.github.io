@@ -33,15 +33,6 @@ social:
   letterboxd: https://letterboxd.com/mbarvian/
 
 
-# Collections
-# -----------
-
-collections:
-  works:
-    output: true
-    permalink: /:path/
-
-
 # Build settings
 # --------------
 

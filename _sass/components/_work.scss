@@ -193,3 +193,21 @@
     left: 5%;
     bottom: -25%;
   }
+
+//
+// Thesis
+//
+
+.thesis-work {
+  --work-color: #1B232E;
+  --work-shadow: rgba(16, 23, 32, 0.8);
+}
+
+  .thesis-work .work__wrapper {
+    text-shadow: 0 1px 12px rgba(16, 23, 32, 0.25);
+  }
+
+  .thesis-work .work__teaser-wrapper {
+    bottom: -25%;
+    right: -15%;
+  }

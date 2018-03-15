@@ -1,0 +1,32 @@
+skinio:
+  name: SkinIO
+  description: Bridging the gap between dermatologist and patient.
+  teaser: /img/works/skinio.jpg
+  teaser2x: /img/works/skinio@2x.jpg
+  tags:
+    - iOS
+
+doing:
+  name: Doing
+  description: A to-do list app with a purpose.
+  teaser: /img/works/doing.jpg
+  teaser2x: /img/works/doing@2x.jpg
+  tags:
+    - iOS
+
+clear:
+  name: Clear
+  description: Tracking treatment efficacy over time.
+  teaser: /img/works/clear.jpg
+  teaser2x: /img/works/clear@2x.jpg
+  tags:
+    - iOS
+
+thesis:
+  name: Honors Thesis
+  description: A self-help app for Generalized Anxiety Disorder.
+  url: http://barvian.me/thesis
+  teaser: /img/works/thesis.jpg
+  teaser2x: /img/works/thesis@2x.jpg
+  tags:
+    - iOS
