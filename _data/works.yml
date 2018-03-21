@@ -1,6 +1,7 @@
 skinio:
   name: SkinIO
   description: Bridging the gap between dermatologist and patient.
+  url: https://medium.com/@barvian/redesigning-skinio-a96ee33cb942
   teaser: /img/works/skinio.jpg
   teaser2x: /img/works/skinio@2x.jpg
   tags:
@@ -17,16 +18,17 @@ doing:
 clear:
   name: Clear
   description: Tracking treatment efficacy over time.
+  url: 'mailto:max@barvian.me?subject=Clear%20case%20study%20request&body=I%27m%20interested%20in%20the%20case%20study%20for%20Clear%20on%20barvian.me.%20'
   teaser: /img/works/clear.jpg
   teaser2x: /img/works/clear@2x.jpg
   tags:
     - iOS
 
-thesis:
-  name: Honors Thesis
-  description: A self-help app for Generalized Anxiety Disorder.
-  url: http://barvian.me/thesis
-  teaser: /img/works/thesis.jpg
-  teaser2x: /img/works/thesis@2x.jpg
+naperville:
+  name: Naperville
+  description: Redesigning the website for one of the top communities in the nation.
+  url:
+  teaser: /img/works/naperville.jpg
+  teaser2x: /img/works/naperville@2x.jpg
   tags:
-    - iOS
+    - Web
