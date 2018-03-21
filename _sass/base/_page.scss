@@ -10,7 +10,7 @@
 body {
   background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
   min-height: 100vh;
-  padding-top: scalc("#{ms(7)} + 2vh");
-  padding-bottom: scalc("#{ms(8)} + 3vh");
+  padding-top: scalc("#{ms(6)} + 3vh");
+  padding-bottom: scalc("#{ms(10)} + 3vh");
   position: relative;
 }
