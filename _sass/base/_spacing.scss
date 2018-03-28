@@ -10,7 +10,7 @@ body {
 }
 
 [role="main"], .landmark {
-  @include leading(scalc("3vh + #{ms(2)}"));
+  @include leading(scalc("3vh + #{ms(1)}"));
 }
 
 [role="main"], .monument {
@@ -18,7 +18,7 @@ body {
 }
 
 .landmark {
-  @include trailing(scalc("3vh + #{ms(2)}"));
+  @include trailing(scalc("3vh + #{ms(1)}"));
 }
 
 .monument {

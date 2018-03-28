@@ -1,6 +1,10 @@
 // Site header
 // ===========
 
+.site-header {
+  @include vertical(ms(-1));
+}
+
 .site-header__logo {
   color: $gray;
   font-weight: 700;
@@ -23,33 +27,11 @@
   .site-header__nav > a {
     color: darken($light-gray, 7.5%);
     font-family: $sans;
-    font-size: ms(-1);
+    @include respond(font-size, -1);
   }
 
     .site-header__nav > a.is-active {
       color: $black;
-    }
-
-.site-header__external {
-  @include horizontal(ms(0));
-}
-
-  .site-header__external > a {
-    display: inline-block;
-    height: 1em;
-    font-size: ms(1);
-    user-select: none;
-    vertical-align: middle;
-  }
-
-    .site-header__external > a:not(:hover):not(:focus) > .icon {
-      color: $light-gray;
-      transition-duration: 150ms;
-    }
-
-    .site-header__external > a > .icon {
-      display: inline-block;
-      transition: color 100ms ease-in-out;
     }
 
 @include query(expanded) {

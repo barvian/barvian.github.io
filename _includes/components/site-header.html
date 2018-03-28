@@ -15,12 +15,5 @@
     </a>
   </nav>
 
-  <nav class="site-header__external">
-    {% for networkKV in site.external %}
-    {% assign network = networkKV[1] %}
-    <a href="{{network.url}}" target="_blank" rel="external">
-      {% include sprites/{{network.sprite}}.svg %}
-    </a>
-    {% endfor %}
-  </nav>
+  {% include components/external.html class='site-header__external visible@expanded' %}
 </header>

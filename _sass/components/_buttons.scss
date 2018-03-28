@@ -9,7 +9,7 @@
   cursor: pointer;
   display: inline-flex;
   font-family: $sans;
-  font-size: ms(0);
+  @include respond(font-size, 0);
   font-weight: 600;
   justify-content: center;
   letter-spacing: 0.07em;

@@ -52,11 +52,11 @@
 
 .marker-icon {
   display: inline-block;
-  height: ms(-4);
+  @include respond(height, -4);
   margin-right: 0.35em;
   position: relative;
   top: -0.07em;
-  width: ms(-4);
+  @include respond(width, -4);
   vertical-align: baseline;
 }
 

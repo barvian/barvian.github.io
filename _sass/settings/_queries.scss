@@ -1,8 +1,10 @@
 // Queries
 // =======
 
+$expanded: 760px;
+
 $breakpoints: (
-  expanded: "screen and (min-width: 780px)"
+  expanded: "screen and (min-width: #{$expanded})"
 );
 
 $queries: map-merge((

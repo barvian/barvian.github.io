@@ -6,7 +6,7 @@
   line-height: ms(3)/ms(0);
   text-rendering: optimizeLegibility;
   font-family: $serif;
-  font-size: ms(0);
+  @include respond(font-size, 0);
   font-weight: 500;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +15,7 @@
 }
 
 .lede {
-  font-size: ms(7);
+  font-size: ms(4);
   font-family: $sans;
   font-weight: 600;
   line-height: ms(2)/ms(0);
@@ -23,4 +23,14 @@
 
 article p {
   max-width: 36rem;
+}
+
+.nobr {
+  white-space: nowrap;
+}
+
+@include query(expanded) {
+  .lede {
+    font-size: ms(7, $thread: $expanded);
+  }
 }

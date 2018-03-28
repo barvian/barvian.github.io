@@ -19,7 +19,7 @@ a {
     -0.35em -0.175em 0 var(--link-color), 0.35em -0.175em 0 var(--link-color);
   display: inline-block;
   font-family: $sans;
-  font-size: ms(-1);
+  @include respond(font-size, -1);
   margin-left: 0.35em;
   margin-right: 0.35em;
   transition:

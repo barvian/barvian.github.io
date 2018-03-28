@@ -5,8 +5,11 @@
 // -----
 
 $modularscale: (
-  base: 21px,
-  ratio: $major-second
+  base: 18px,
+  ratio: $major-second,
+  $expanded: (
+    base: 21px
+  )
 );
 
 // Stacks

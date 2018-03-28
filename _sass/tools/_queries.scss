@@ -18,3 +18,39 @@ $queries: () !default;
     @warn "Oops! Query `#{$query}` does not exist.";
   }
 }
+
+// The built-in ms-respond doesn't work quite as expected
+@mixin respond($prop, $val, $map: $modularscale, $ms-important: false) {
+  $base: $ms-base;
+  $ratio: $ms-ratio;
+
+  $last-break: null;
+
+  $important: '';
+  @if $ms-important == true {
+    $important: ' !important';
+  }
+
+  #{$prop}: ms-function($val, $settings: $map)#{$important};
+
+  // loop through all settings with a breakpoint type value
+  @each $v, $s in $map {
+    @if type-of($v) == number and unit($v) != '' {
+      @if $last-break {
+        @media (min-width: $last-break) and (max-width: $v) {
+          $val1: ms-function($val, $thread: $last-break, $settings: $map);
+          $val2: ms-function($val, $thread: $v, $settings: $map);
+          #{$prop}: ms-fluid($val1,$val2,$last-break,$v)#{$important};
+        }
+      }
+      $last-break: $v;
+    }
+  }
+
+  // Write the last breakpoint.
+  @if $last-break {
+    @media (min-width: $last-break) {
+      #{$prop}: ms-function($val, $thread: $last-break, $settings: $map)#{$important};
+    }
+  }
+}

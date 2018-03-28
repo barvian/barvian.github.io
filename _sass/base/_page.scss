@@ -10,7 +10,14 @@
 body {
   background-image: linear-gradient(to bottom, $bg 0%, #fff 41%);
   min-height: 100vh;
-  padding-top: scalc("#{ms(6)} + 3vh");
-  padding-bottom: scalc("#{ms(10)} + 3vh");
+  padding-bottom: scalc("3vh + #{ms(1)}");
+  padding-top: scalc("3vh + #{ms(1)}");
   position: relative;
+}
+
+@include query(expanded) {
+  body {
+    padding-top: scalc("#{ms(6)} + 3vh");
+    padding-bottom: scalc("#{ms(10)} + 3vh");
+  }
 }
