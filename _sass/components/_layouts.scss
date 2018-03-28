@@ -1,16 +1,29 @@
 // Layouts
 // =======
 
+:root {
+  #{--gutter}: ms(2);
+  --container: 32rem;
+  --container-wide: 52rem;
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
   max-width: 100%;
-  padding-left: $gutter;
-  padding-right: $gutter;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
   position: relative;
-  width: $container;
+  width: var(--container);
+}
 
-  &--wide {
-    width: $container-wide;
+@include query(expanded) {
+  :root {
+    #{--gutter}: ms(5);
+    --container: 44rem;
+  }
+
+  .container--wide {
+    width: var(--container-wide);
   }
 }
