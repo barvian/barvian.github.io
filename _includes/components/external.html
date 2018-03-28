@@ -1,7 +1,8 @@
 <nav class="external{% if include.class %} {{include.class}}{% endif %}">
-  {% for networkKV in site.external %} {% assign network = networkKV[1] %}
-  <a href="{{network.url}}" target="_blank" rel="external">
-    {% include sprites/{{network.sprite}}.svg %}
-  </a>
+  {% for networkKV in site.external %}
+    {% assign network = networkKV[1] %}
+    <a href="{{network.url}}" target="_blank" rel="external">
+      {% include sprites/{{networkKV | first}}.svg %}
+    </a>
   {% endfor %}
 </nav>

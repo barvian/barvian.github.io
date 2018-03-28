@@ -14,19 +14,15 @@ email: max@barvian.me
 external:
   medium:
     name: Medium
-    sprite: medium
     url: https://medium.com/@barvian
   dribbble:
     name: Dribbble
-    sprite: dribbble
     url: https://dribbble.com/barvian
   github:
     name: Github
-    sprite: github
     url: https://github.com/barvian
   linkedin:
     name: LinkedIn
-    sprite: linkedin
     url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
 
 social:
