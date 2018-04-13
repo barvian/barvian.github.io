@@ -37,6 +37,3 @@ exclude:
   - README.md
 
 permalink: pretty
-
-sass:
-  style: compressed
