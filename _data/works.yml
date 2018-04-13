@@ -15,6 +15,15 @@ doing:
   tags:
     - iOS
 
+gad:
+  name: Anxiety self-help
+  description: An iPhone app combining proven treatment options.
+  url: http://barvian.me/gad/
+  teaser: /img/works/gad.jpg
+  teaser2x: /img/works/gad@2x.jpg
+  tags:
+    - iOS
+
 clear:
   name: Clear
   description: Tracking treatment efficacy over time.
@@ -27,7 +36,7 @@ clear:
 naperville:
   name: Naperville
   description: Redesigning the website for one of the top communities in the nation.
-  url:
+  url: https://medium.com/@barvian/redesigning-the-website-for-the-city-of-naperville-il-6d91c708be58
   teaser: /img/works/naperville.jpg
   teaser2x: /img/works/naperville@2x.jpg
   tags:
