@@ -1,23 +1,26 @@
+---
+layout: compress
+---
+
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-  <meta charset="utf-8">
+<html lang="en" {% if page.class %} class="{{page.class}}-page"{% endif %}>
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  {% include _title.html page=page tag=true %}
-  {% include _description.html %}
-  {% if site.keywords %}<meta name="keywords" content="{{ site.keywords | join: ', ' }}" />{% endif %}
-  <meta name="author" content="{% if page.author %}{{ page.author}}{% else %}{{ site.name }}{% endif %}" />
+  <title>{{page.title}}</title>
+  <meta name="description" content="Portfolio of Maxwell Barvian, designer" />
+  {% if site.keywords %}
+    <meta name="keywords" content="{{ site.keywords | join: ', ' }}" />
+  {% endif %}
+  <meta name="author" content="Maxwell Barvian" />
+  <link rel="canonical" href="{{ page.url | prepend: site.url }}" />
 
-  <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl | prepend: site.url }}" />
+  <link rel="stylesheet" href="https://use.typekit.net/rwl2eno.css">
+  <link rel="stylesheet" href="/css/site.css" />
 
-  <!-- Vendor -->
-  <script src="{{ '/public/scripts/vendor/picturefill.min.js' | prepend: site.baseurl }}"></script>
-
-  <!-- Styles -->
-  {% include _typekit.html %}
-  <link rel="stylesheet" href="{{ '/public/styles/barvian.css' | prepend: site.baseurl }}" />
+  <div class="container">
+    {% include components/site-header.html %}
+  </div>
 
   {{ content }}
-
-  {% include _ga.html %}
 </html>

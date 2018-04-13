@@ -1,0 +1,36 @@
+// Button
+// ======
+
+.button {
+  align-items: center;
+  appearance: none;
+  background: none;
+  box-shadow: inset 0 0 0 1px $light-gray;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: $sans;
+  @include respond(font-size, 0);
+  font-weight: 600;
+  justify-content: center;
+  letter-spacing: 0.07em;
+  padding: ms(0) ms(2) ms(0)*1.05;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  transition:
+    background-color 150ms ease-out,
+    box-shadow 200ms ease-out,
+    color 150ms linear,
+    transform 200ms ease-in-out;
+}
+
+  .button:hover, .button:focus {
+    background-color: var(--button-color, $black);
+    box-shadow: 0 0.16em 1.5em -0.625em var(--button-color, transparent);
+    color: $bg;
+    transform: scale3d(1.025, 1.025, 1);
+  }
+
+.dribbble-button:hover, .dribbble-button:focus {
+  --button-color: #EA4C89;
+}

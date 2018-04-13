@@ -1,19 +1,36 @@
 ---
-title: Home
-order: 1
+title: Maxwell Barvian, Designer
+class: home
+layout: default
 ---
 
-<h1 is="floating-greeting">
-  <a href="/about/">
-    I'm a digital product designer who delights in creating thoughtful, selfless interfaces and codebases.
-  </a>
-</h1>
+<main role="main">
+  <div class="container">
+    <p class="lede">
+      I’m a dedicated problem solver with a passion for learning
+      and empathy. I strive to build software that makes people's
+      days a little brighter. ☀️
+    </p>
+    <p>
+      <i class="marker-icon"></i>
+      Currently contracting from San Diego, CA.
+    </p>
+  </div>
 
-{% assign works = site.works | sort: 'order' %}
-{% for work in works %}
-<work-card class="work"
-  work-title='{{ work.title }}' blurb='{{ work.blurb }}'
-  bg="{{ work.bg }}" fg="{{ work.fg }}" shadow="{{ work.shadow }}"
-  thumb="{{ work.thumb | prepend: work.url }}" thumb2x="{{ work.thumb2x | prepend: work.url }}"
-  orientation="{{ work.orientation }}"></work-card>
-{% endfor %}
+  <div class="container container--wide monument">
+    <div class="grid">
+      {% include components/work.html id="skinio" class="grid__item" parallax=0.5 column="1" row="1 / 3" %}
+      {% include components/work.html id="naperville" class="grid__item" parallax=0.3 column="2" row="1" %}
+      {% include components/work.html id="clear" class="grid__item" parallax=0.3 column="2" row="2" %}
+      {% include components/work.html id="gad" class="grid__item" parallax=0.2 column="1" row="3" %}
+      <a class="button dribbble-button" style="grid-column: 2; grid-row: 3" href="{{site.external.dribbble.url}}">View more work on Dribbble</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="container hidden@expanded">
+  {% include components/external.html %}
+</footer>
+
+<script src="{% link js/home.js %}" defer async></script>

@@ -1,0 +1,24 @@
+// External
+// ========
+
+.external {
+  @include horizontal(ms(0));
+}
+
+  .external > a {
+    display: inline-block;
+    height: 1em;
+    font-size: ms(1, $thread: $expanded);
+    user-select: none;
+    vertical-align: middle;
+  }
+
+    .external > a:not(:hover):not(:focus) > .icon {
+      color: $light-gray;
+      transition-duration: 150ms;
+    }
+
+    .external > a > .icon {
+      display: inline-block;
+      transition: color 100ms ease-in-out;
+    }

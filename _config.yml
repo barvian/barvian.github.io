@@ -1,77 +1,42 @@
 # Barvian.me
 # ==========
 
-name: Maxwell Barvian
-title: Digital product designer
 url: http://barvian.me
-baseurl: ''
 keywords:
   - designer
   - web designer
-  - web
-  - developer
-  - web developer
-  - chicago web designer
-  - chicago web developer
+  - ios designer
+  - san diego web designer
   - front-end development
   - web design
 
 email: max@barvian.me
+external:
+  medium:
+    name: Medium
+    url: https://medium.com/@barvian
+  dribbble:
+    name: Dribbble
+    url: https://dribbble.com/barvian
+  github:
+    name: Github
+    url: https://github.com/barvian
+  linkedin:
+    name: LinkedIn
+    url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
+
 social:
-  dribbble: https://dribbble.com/barvian
-  spotify: https://play.spotify.com/user/1223716913
-  twitter: https://twitter.com/mbarvian
-  github: https://github.com/barvian
-  letterboxd: http://letterboxd.com/mbarvian/
-  linkedin: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
-
-location: Chicago, IL
-availability: none
-
-
-# Sources
-# -------
-
-destination:  _site
-plugins_dir:  _plugins
-layouts_dir:  _layouts
-data_dir:     _data
-includes_dir: .
-
-
-# Collections
-# -----------
-
-collections:
-  works:
-    output: true
-    permalink: /work/:path/
+  letterboxd: https://letterboxd.com/mbarvian/
 
 
 # Build settings
 # --------------
 
 exclude:
-  - node_modules
-  - npm-debug*
-  - gulpfile.*
-  - package.json
   - CNAME
-  - bower.json
   - README.md
 
 permalink: pretty
-defaults:
-  -
-    scope:
-      path: '' # all files
-    values:
-      layout: 'app'
 
-
-# Writing
-# -------
-
-markdown: kramdown
-kramdown:
-  auto_ids: false
+sass:
+  style: compressed

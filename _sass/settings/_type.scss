@@ -1,0 +1,19 @@
+// Type
+// ====
+
+// Scale
+// -----
+
+$modularscale: (
+  base: 18px,
+  ratio: $major-second,
+  $expanded: (
+    base: 21px
+  )
+);
+
+// Stacks
+// ------
+
+$sans: "soleil", "Futura", "Helvetica", sans-serif;
+$serif: "ff-meta-serif-web-pro", "Georgia", serif;

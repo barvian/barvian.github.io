@@ -1,0 +1,21 @@
+// Grids
+// =====
+//
+// Not layout related.
+//
+
+.grid {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+@include query(expanded) {
+  .grid {
+    display: grid;
+    grid-gap: $spacing;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+
+    @include compact;
+  }
+}

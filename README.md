@@ -1,19 +1,17 @@
 # barvian.me
 
-My personal website.  Safe-mode Jekyll with precompiled assets checked into `public/`.
+My personal website.  Safe-mode Jekyll with precompiled sprites. Nothing fancy
+here, just something that's performant and easy for me to iterate. 🙂
 
 ## Developing locally
 
 Requirements:
 
-* Node, NPM
-* Bower
+* Node, Yarn
 * Jekyll (Bundler optional)
 
 Steps:
 
 1. Clone the repo
-2. Install node packages: `npm install`
-3. Install bower packages: `bower install`
-4. Start the BrowserSync and Jekyll livereload process with `npm run gulp`
-5. Edit files refresh-free
+2. Install node packages: `yarn install`
+3. Start the dev server with `yarn start`

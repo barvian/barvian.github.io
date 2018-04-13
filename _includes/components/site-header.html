@@ -1,0 +1,17 @@
+<header class="site-header">
+  <a class="site-header__logo" href="{% link index.html %}">
+    Maxwell Barvian,
+    <span class="site-header__role">
+      Designer
+    </span>
+  </a>
+  <nav role="navigation" class="site-header__nav">
+    <a href="{% link about.md %}"{% if page.path == 'about.md' %} class="is-active"{% endif %}>
+      About
+    </a>
+    <a href="mailto:{{site.email}}">
+      Contact
+    </a>
+  </nav>
+  {% include components/external.html class='site-header__external visible@expanded' %}
+</header>

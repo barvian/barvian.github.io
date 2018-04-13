@@ -1,0 +1,54 @@
+// Site header
+// ===========
+
+.site-header {
+  @include vertical(ms(-1));
+}
+
+.site-header__logo {
+  color: $gray;
+  font-weight: 700;
+}
+
+  .home-page .site-header__logo,
+  .work-page .site-header__logo {
+    color: $black;
+  }
+
+.site-header__role {
+  color: $gray;
+  font-weight: 500;
+}
+
+.site-header__nav {
+  @include inline-list(ms(3));
+}
+
+  .site-header__nav > a {
+    color: darken($light-gray, 7.5%);
+    font-family: $sans;
+    @include respond(font-size, -1);
+  }
+
+    .site-header__nav > a.is-active {
+      color: $black;
+    }
+
+@include query(expanded) {
+  .site-header {
+    align-items: baseline;
+    display: flex;
+
+    @include compact;
+  }
+
+  .site-header__external {
+    margin-left: auto;
+  }
+
+  .site-header__nav {
+    @include inline-list(ms(5));
+
+    margin-left: ms(8);
+  }
+}

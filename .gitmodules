@@ -1,0 +1,9 @@
+[submodule "js/lib/rellax"]
+	path = js/lib/rellax
+	url = https://github.com/dixonandmoe/rellax
+[submodule "_sass/tools/SassyLists"]
+	path = _sass/tools/SassyLists
+	url = https://github.com/at-import/SassyLists.git
+[submodule "_sass/tools/modularscale"]
+	path = _sass/tools/modularscale
+	url = https://github.com/modularscale/modularscale-sass.git

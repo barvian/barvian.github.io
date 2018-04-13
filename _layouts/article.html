@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+<main role="main" class="container">
+  <article>
+    {% comment %} Pre-process links {% endcomment %}
+
+    {% assign byLink = content | split: '<a ' %}
+    {% assign total = byLink | size | minus: 1 %}
+    {% assign firstChars = content | slice: 0, 3 %}
+    {% assign start = 1 %}
+    {% if firstChars == '<a ' %}
+      {% assign start = 0 %}
+    {% else %}
+      {{ byLink | first }}
+    {% endif %}
+
+    {% for l in (start..total) %}
+      {% assign link = byLink[l] | split: '</a>' | first %}
+      {% assign post = byLink[l] | split: '</a>' | last %}
+      {% assign postLength = post | size | minus: -1 %}
+      {% assign firstNextChar = post | slice: 0, 1 %}
+      {% if firstNextChar == ',' or firstNextChar == '.' or firstNextChar == '/' %}
+        <span class="nobr"><a {{link}}</a>{{firstNextChar}}</span>{{post | slice: 1, postLength}}
+      {% else %}
+        <a {{link}}</a>{{post}}
+      {% endif %}
+
+    {% endfor %}
+  </article>
+</main>
+
+<footer class="container hidden@expanded">
+  {% include components/external.html %}
+</footer>

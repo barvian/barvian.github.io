@@ -1,0 +1,19 @@
+// Visibility
+// ==========
+
+.hidden, [hidden] {
+  @include hidden;
+}
+
+@each $breakpoint, $query in $breakpoints {
+  @include query($breakpoint, true) {
+    .visible\@#{$breakpoint} {
+      @include hidden;
+    }
+  }
+  @include query($breakpoint) {
+    .hidden\@#{$breakpoint} {
+      @include hidden;
+    }
+  }
+}
