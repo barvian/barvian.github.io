@@ -8,6 +8,7 @@
 .site-header__logo {
   color: $gray;
   font-weight: 700;
+  white-space: nowrap;
 }
 
   .home-page .site-header__logo,
@@ -47,8 +48,15 @@
   }
 
   .site-header__nav {
-    @include inline-list(ms(5));
+    @include horizontal(ms(1));
 
-    margin-left: ms(8);
+    margin-left: ms(3);
+    white-space: nowrap;
+
+    @media (min-width: 41rem) {
+      @include horizontal(ms(5));
+
+      margin-left: ms(8);
+    }
   }
 }

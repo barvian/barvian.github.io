@@ -3,14 +3,16 @@
 
 .external {
   @include horizontal(ms(0));
+
+  white-space: nowrap;
 }
 
   .external > a {
     display: inline-block;
     height: 1em;
     font-size: ms(1, $thread: $expanded);
-    user-select: none;
-    vertical-align: middle;
+    line-height: 1;
+    vertical-align: text-bottom;
   }
 
     .external > a:not(:hover):not(:focus) > .icon {
