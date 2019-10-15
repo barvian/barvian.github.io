@@ -1,14 +1,16 @@
 <header class="site-header">
   <a class="site-header__logo" href="{% link index.html %}">
-    Maxwell Barvian<!--,
+    Maxwell Barvian{% comment %},
     <span class="site-header__role">
       Designer
-    </span>-->
+    </span>{% endcomment %}
   </a>
   <nav role="navigation" class="site-header__nav">
+    {% comment %}
     <a href="{% link about.md %}"{% if page.path == 'about.md' %} class="is-active"{% endif %}>
       About
     </a>
+    {% endcomment %}
     <a href="{{ site.resume }}" target="_blank">
       Résumé
     </a>
