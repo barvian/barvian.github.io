@@ -10,30 +10,38 @@ a {
 // ------------
 
 [role="main"] a:not([class]) {
-  --link-color: #{lighten($light-gray, 15%)};
+//   --link-color: #{lighten($light-gray, 15%)};
 
-  background-color: var(--link-color);
-  box-shadow:
-    0.35em 0 0 var(--link-color), -0.35em 0 0 var(--link-color),
-    -0.35em 0.175em 0 var(--link-color), 0.35em 0.175em 0 var(--link-color),
-    -0.35em -0.175em 0 var(--link-color), 0.35em -0.175em 0 var(--link-color);
-  display: inline-block;
-  font-family: $sans;
-  @include respond(font-size, -1);
-  margin-left: 0.35em;
-  margin-right: 0.35em;
-  transition:
-    background-color 50ms linear,
-    box-shadow 50ms linear,
-    color 50ms linear,
-    transform 150ms ease-in-out;
+//   background-color: var(--link-color);
+//   box-shadow:
+//     0.35em 0 0 var(--link-color), -0.35em 0 0 var(--link-color),
+//     -0.35em 0.175em 0 var(--link-color), 0.35em 0.175em 0 var(--link-color),
+//     -0.35em -0.175em 0 var(--link-color), 0.35em -0.175em 0 var(--link-color);
+//   display: inline-block;
+//   font-family: $sans;
+//   @include respond(font-size, -1);
+//   margin-left: 0.35em;
+//   margin-right: 0.35em;
+//   transition:
+//     background-color 50ms linear,
+//     box-shadow 50ms linear,
+//     color 50ms linear,
+//     transform 150ms ease-in-out;
 
-  @include flush;
+//   @include flush;
+  
+  --link-border-weight: 2px;
+  
+  color: #4297CC;
+  font-weight: 600;
+  border-bottom: var(--link-border-weight) solid;
 }
 
   [role="main"] a:not([class]):hover {
-    --link-color: #{$gray};
+//     --link-color: #{$gray};
 
-    color: $bg;
-    transform: scale3d(1.05, 1.05, 1);
+//     color: $bg;
+//     transform: scale3d(1.05, 1.05, 1);
+    color: #27668d;
+    
   }
