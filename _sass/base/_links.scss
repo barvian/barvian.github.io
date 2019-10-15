@@ -1,6 +1,10 @@
 // Links
 // =====
 
+:root {
+  --link-border-weight: 2px;
+}
+
 a {
   color: currentColor;
   text-decoration: none;
@@ -29,8 +33,6 @@ a {
 //     transform 150ms ease-in-out;
 
 //   @include flush;
-  
-  --link-border-weight: 2px;
   
   color: #4297CC;
   font-weight: 600;
