@@ -16,9 +16,9 @@ keywords:
 email: max@barvian.me
 resume: https://www.dropbox.com/s/x2asbomk564h2dj/maxwell_barvian_designer_may2017.pdf?dl=0
 external:
-  medium:
-    name: Medium
-    url: https://medium.com/@barvian
+  # medium:
+  #   name: Medium
+  #   url: https://medium.com/@barvian
   dribbble:
     name: Dribbble
     url: https://dribbble.com/barvian
