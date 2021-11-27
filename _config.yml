@@ -19,16 +19,16 @@ external:
   # medium:
   #   name: Medium
   #   url: https://medium.com/@barvian
+  linkedin:
+    name: LinkedIn
+    url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
   dribbble:
     name: Dribbble
     url: https://dribbble.com/barvian
   github:
     name: Github
     url: https://github.com/barvian
-  linkedin:
-    name: LinkedIn
-    url: https://www.linkedin.com/in/maxwell-barvian-8bb1b610a
-
+ 
 social:
   letterboxd: https://letterboxd.com/mbarvian/
 
