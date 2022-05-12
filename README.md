@@ -1,7 +1,6 @@
 # barvian.me
 
-My personal website.  Safe-mode Jekyll with precompiled sprites. Nothing fancy
-here, just something that's performant and easy for me to iterate. 🙂
+My personal website. Safe-mode Jekyll with precompiled sprites. Total overkill at this point.
 
 ## Developing locally
 
