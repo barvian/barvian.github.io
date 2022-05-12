@@ -1,8 +1,9 @@
 {% assign work = site.data.works.[include.id] %}
 {% assign parallax = 1 %}
 {% if include.parallax != null %}{% assign parallax = include.parallax %}{% endif %}
-<a href="{{work.url}}"
-  class="work work--link {{ include.id }}-work{% if include.class %} {{include.class}}{% endif %}"
+
+<{% if work.url %}a href="{{work.url}}"{% else %}div{% endif %}
+  class="work{% if work.url %} work--link{% endif %} {{ include.id }}-work{% if include.class %} {{include.class}}{% endif %}"
   style="grid-column: {{include.column}}; grid-row: {{include.row}}"
 >
   <article class="work__wrapper">
@@ -23,4 +24,4 @@
     --></ul>
     <p class="work__desc">{{work.description}}</p>
   </article>
-</a>
+</{% if work.url %}a{% else %}div{% endif %}>

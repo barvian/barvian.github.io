@@ -152,6 +152,10 @@
   @include respond(width, 6);
 }
 
+.work:not(.work--link) .work__wrapper {
+  padding-bottom: ms(16);
+}
+
 
 // Specific works
 // --------------
