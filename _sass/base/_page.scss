@@ -13,9 +13,6 @@ body {
   padding-bottom: scalc("3vh + #{ms(1)}");
   padding-top: scalc("3vh + #{ms(1)}");
   position: relative;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
 }
 
 @include query(expanded) {

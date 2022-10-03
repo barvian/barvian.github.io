@@ -4,19 +4,19 @@ class: home
 layout: default
 ---
 
-{% comment %}<script src="{% link js/home.js %}" defer></script>{% endcomment %}
-
-{% include components/site-header.html %}
+<script src="{% link js/home.js %}" defer></script>
 
 <main role="main">
-  <p class="lede">
-    {{ site.tagline }}
-  </p>
-  <p>
-    <i class="marker-icon"></i>
-    {{ site.location }}
-  </p>
-  {% comment %}
+  <div class="container">
+    <p class="lede">
+      {{ site.tagline }}
+    </p>
+    <p>
+      <i class="marker-icon"></i>
+      {{ site.location }}
+    </p>
+  </div>
+
   <div class="container container--wide monument">
     <div class="grid">
       {% include components/work.html id="skinio" class="grid__item" parallax=0.5 column="1" row="1 / 3" %}
@@ -26,9 +26,9 @@ layout: default
       <a class="button dribbble-button" style="grid-column: 2; grid-row: 3" href="{{site.external.dribbble.url}}">View more work on Dribbble</a>
     </div>
   </div>
-  {% endcomment %}
+
 </main>
 
-<footer>
+<footer class="container hidden@expanded">
   {% include components/external.html %}
 </footer>
