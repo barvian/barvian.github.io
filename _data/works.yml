@@ -1,7 +1,7 @@
 skinio:
   name: SkinIO
   description: Bridging the gap between dermatologist and patient.
-  # url: https://medium.com/@barvian/redesigning-skinio-a96ee33cb942
+  url: https://medium.com/@barvian/redesigning-skinio-a96ee33cb942
   teaser: /img/works/skinio.jpg
   teaser2x: /img/works/skinio@2x.jpg
   tags:
@@ -18,7 +18,7 @@ doing:
 gad:
   name: Anxiety self-help
   description: An iPhone app combining proven treatment options.
-  # url: http://barvian.me/gad/
+  url: http://barvian.me/gad/
   teaser: /img/works/gad.jpg
   teaser2x: /img/works/gad@2x.jpg
   tags:
@@ -27,7 +27,7 @@ gad:
 clear:
   name: Clear
   description: Tracking treatment efficacy over time.
-  # url: 'mailto:max@barvian.me?subject=Clear%20case%20study%20request&body=I%27m%20interested%20in%20the%20case%20study%20for%20Clear%20on%20barvian.me.%20'
+  url: https://medium.com/@barvian/designing-an-iphone-app-for-tracking-acne-treatment-efficacy-f9d0056480de
   teaser: /img/works/clear.jpg
   teaser2x: /img/works/clear@2x.jpg
   tags:
@@ -36,7 +36,7 @@ clear:
 naperville:
   name: Naperville
   description: Redesigning the website for one of the top communities in the nation.
-  # url: https://medium.com/@barvian/redesigning-the-website-for-the-city-of-naperville-il-6d91c708be58
+  url: https://medium.com/@barvian/redesigning-the-website-for-the-city-of-naperville-il-6d91c708be58
   teaser: /img/works/naperville.jpg
   teaser2x: /img/works/naperville@2x.jpg
   tags:
